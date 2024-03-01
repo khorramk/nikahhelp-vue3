@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.08 283.08">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #39b54a;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 35px;
+      }
+    </style>
+  </defs>
+  <g id="page_name" data-name="page name">
+    <path class="cls-1" d="M141.54,283.08C63.49,283.08,0,219.59,0,141.54S63.49,0,141.54,0s141.54,63.49,141.54,141.54-63.49,141.54-141.54,141.54Z"/>
+    <polyline class="cls-2" points="83.93 141.54 122.7 178.68 209.15 104.4"/>
+  </g>
+</svg>

@@ -1,0 +1,90 @@
+.ant-steps-item-icon { 
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  line-height: 27px;
+  font-weight: 600;
+}
+.ant-steps-item-process {
+  .ant-steps-item-icon {
+    background: #fff;
+    border-color: #522e8e;
+  }
+}
+
+.ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon {
+  // color: #fff;
+  color: #522e8e;
+}
+
+// have to find the source
+.ant-steps-item-finish {
+  .ant-steps-item-icon {
+    background-color: #522e8e;
+  }
+}
+
+.stepper {
+  .ant-steps {
+    margin: auto;
+    max-width: 600px;
+  }
+  .ant-steps-item-title {
+    font-size: 14px;
+    line-height: normal;
+  }
+}
+.steps {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: auto;
+  width: 800px;
+  @media only screen and (max-width: 600px) {
+   width: 100%;
+  }
+  .ant-collapse-borderless > .ant-collapse-item,
+  .ant-collapse > .ant-collapse-item {
+    border-bottom: none;
+  }
+  .ant-steps-item-finish .ant-steps-item-icon {
+    border-color: $border-primary;
+  }
+  .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+    color:#fff;
+    // color: $color-primary;
+  }
+  .ant-steps-item-finish
+    > .ant-steps-item-container
+    > .ant-steps-item-tail::after {
+    // background-color: $bg-primary;
+    background-color: $bg-primary;
+   
+  }
+  .ant-steps-item-container{
+    cursor: pointer;
+  }
+  .steps-content {
+    overflow: auto;
+    .ant-collapse-item:last-child .ant-collapse-header {
+      border-radius: 5px;
+    }
+    padding: 25px 0;
+    @media (max-width: 700px) {
+     padding: 0;
+    }
+
+    .ant-collapse-header {
+      background: $bg-primary;
+      border-radius: 5px;
+      color: $color-white !important;
+    }
+
+    .ant-switch-checked {
+      background-color: $color-primary;
+    }
+
+  }
+}
+.ant-steps-item-title {
+  line-height: normal;
+}

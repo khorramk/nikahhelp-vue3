@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #39b54a;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 8px;
+      }
+
+      .cls-2 {
+        fill: #635ba9;
+      }
+
+      .cls-3 {
+        font-family: Poppins-Bold, Poppins;
+        font-size: 10px;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-5 {
+        fill: #f2f2f2;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-5" d="M100.02,0C44.86,0,0,44.86,0,100.02s44.86,99.98,100.02,99.98,99.98-44.86,99.98-99.98S155.14,0,100.02,0Z"/>
+      <path class="cls-2" d="M138.3,41.11H61.74c-7.24,0-13.12,5.88-13.12,13.12v91.54c0,7.24,5.88,13.12,13.12,13.12h76.56c7.2,0,13.08-5.88,13.08-13.12V54.23c0-7.24-5.88-13.12-13.08-13.12Z"/>
+      <text class="cls-3" transform="translate(86.73 150.23)"><tspan x="0" y="0">Done</tspan></text>
+      <g>
+        <circle class="cls-4" cx="100" cy="94" r="39.78"/>
+        <polyline class="cls-1" points="84.76 95.66 96.12 107.03 118.85 84.3"/>
+      </g>
+    </g>
+  </g>
+</svg>

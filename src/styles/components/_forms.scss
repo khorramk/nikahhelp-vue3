@@ -1,0 +1,48 @@
+.ma-form {
+    .ant-form-item-children,
+    .ant-calendar-picker,
+    .ant-input-number {
+        width: 100%;
+    }
+    .ant-slider-handle {
+        border-radius: 0;
+    }
+    .ant-form-item {
+        margin-bottom: 15px;
+    }
+}
+
+.form-ma {
+   
+
+    .ant-input,
+    .ant-input-number,
+    .ant-calendar-picker-input,
+    .ant-select-selection {
+        border-radius: 18px;
+    }
+    .select-ma {
+        &.rounded-right {
+            .ant-select-selection {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+        .ant-select-selection {
+            .ant-select-selection__placeholder {
+                background: #e6e6e6;
+                padding: 0 8px;
+                border-radius: 12px;
+            }
+            .ant-select-selection-selected-value {
+                background: #e6e6e6;
+                padding: 0 8px;
+                border-radius: 12px;
+                width: 100%;
+                margin: 5px 0;
+                line-height: 20px;
+            }
+        }
+    }
+}
+

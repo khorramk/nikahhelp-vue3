@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.08 18.07">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6159a7;
+      }
+
+      .cls-2 {
+        fill: #6159a7;
+        stroke: #6159a7;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="popup">
+    <g>
+      <path class="cls-2" d="M8.97,5.96c4.84,.53,8.6,4.63,8.6,9.61"/>
+      <polygon class="cls-1" points="10.6 12.46 0 5.9 10.98 0 10.6 12.46"/>
+    </g>
+  </g>
+</svg>

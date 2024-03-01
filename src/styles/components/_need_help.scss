@@ -1,0 +1,25 @@
+.card.bubble {
+    background-color: #cdedf7;
+    border: none;
+}
+.bubble {
+    position: relative;
+    width: 280px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    &::before{
+        content: "\0020";
+        display: block;
+        position: absolute;
+        top: -12px;
+        left: 20px;
+        z-index: 2;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        border: solid 12px transparent;
+        border-top: 0;
+        border-bottom-color: #cdedf7;
+    }
+}

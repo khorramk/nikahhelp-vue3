@@ -1,0 +1,67 @@
+// Theme Name:
+// Theme URI:
+// Author:
+// Author URI: https://
+// Version: 1.0
+
+//Global Style
+@import url("https://fonts.googleapis.com/css2?family=Rochester&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap");
+* {
+  scroll-behavior: smooth;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: $body-font;
+}
+h1,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $body-font;
+  font-weight: 600;
+}
+h2 {
+  font-family: $header-font;
+  font-size: 50px;
+  @media (max-width: 991px) {
+    font-size: 40px;
+  }
+  @media (max-width: 575px) {
+    font-size: 32px;
+  }
+}
+p {
+  font-size: 16px;
+}
+a {
+  text-decoration: none;
+  color: $color-default;
+  &.link {
+    color: $color-secondary;
+  }
+}
+a:hover {
+  text-decoration: none;
+  color: $color-primary;
+}
+img {
+  max-width: 100%;
+}
+ul {
+  margin-bottom: 0;
+  list-style: none;
+  padding-left: 0;
+}
+span {
+  display: inline-block;
+}
+:focus {
+  box-shadow: none;
+}
+:disabled {
+  cursor: not-allowed;
+}
