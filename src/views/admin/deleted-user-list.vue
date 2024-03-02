@@ -67,7 +67,7 @@
             </td>
             <td class="id">{{ item["id"] }}</td>
             <td class="email_verified_at">
-              {{ item["email_verified_at"] | formatDate }}
+              {{ $filter.formatDate(item["email_verified_at"])}}
             </td>
             <td class="full_name">{{ item["full_name"] }}</td>
             <td class="account_type_meaning">
