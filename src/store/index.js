@@ -1,7 +1,7 @@
-import Vue from "vue";
-import Vuex from "vuex";
+// import Vue from "vue";
+import { createStore } from 'vuex'
 
-Vue.use(Vuex);
+// Vue.use(Vuex);
 import authModule from "./modules/auth/index.js";
 import userModule from "./modules/user/index.js";
 import candidateInfoModule from "./modules/candidateInfo/index.js";
@@ -15,7 +15,24 @@ import chat from "./modules/chat/index.js";
 import AdminModule from "./modules/admin/index.js";
 import SupportTicketModule from "@/store/modules/supportTicket";
 
-const store = new Vuex.Store({
+// const store = new Vuex.Store({
+//   modules: {
+//     auth: authModule,
+//     user: userModule,
+//     candidateInfo: candidateInfoModule,
+//     team: teamModule,
+//     representativeInfo: representativeInfo,
+//     shortList: shortListModule,
+//     blockList: blockListModule,
+//     notification: notificationModule,
+//     search: searchModule,
+//     chat: chat,
+//     Admin: AdminModule,
+//     SupportTicket: SupportTicketModule
+//   },
+// });
+
+const store = createStore({
   modules: {
     auth: authModule,
     user: userModule,
