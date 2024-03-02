@@ -15,7 +15,7 @@ import moment from 'moment'
 import HighchartsVue from 'highcharts-vue';
 // import axios from "axios";
 // * This is the vue-web-storage package
-import Storage from "vue-web-storage";
+// import Storage from "vue-web-storage";
 // import TextareaAutosize from 'vue-textarea-autosize';
 // * ApiService for the application
 import vuetify from "@/plugins/vuetify";
@@ -27,20 +27,28 @@ import VueViewer from 'v-viewer';
 const Vue = createApp(App)
 Vue.use(VueViewer);
 Vue.use(HighchartsVue);
-Vue.use(Storage, {
-  prefix: "",
-  drivers: ["local"],
-});
+// Vue.use(Storage, {
+//   prefix: "",
+//   drivers: ["local"],
+// });
 ApiService.init();
 
 
-Vue.filter('formatDate', function (value) {
-  if (value) {
-    return moment(String(value)).format('MM/DD/YYYY hh:mm')
-  }
-});
+// Vue.filter('formatDate', function (value) {
+//   if (value) {
+//     return moment(String(value)).format('MM/DD/YYYY hh:mm')
+//   }
+// });
 
-Vue.use(VueCompositionAPI);
+Vue.config.globalProperties.$filters = {
+    formatDate(value) {
+        if (value) {
+            return moment(String(value)).format('MM/DD/YYYY hh:mm')
+        }
+    }
+}
+
+
 Vue.use(VueTelInput);
 Vue.use(Antd);
 Vue.component('MainHeader', MainHeader);
