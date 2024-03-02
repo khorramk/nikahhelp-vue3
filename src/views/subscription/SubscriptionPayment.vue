@@ -897,7 +897,7 @@ export default {
     }
   }
 }
-.sub-back-btn::v-deep {
+.sub-back-btn {
   width: 100% !important;
 
   background-color: #fff !important;
@@ -1020,7 +1020,7 @@ export default {
   font-weight: bold;
 }
 
-.card-info-form::v-deep {
+.card-info-form {
   @media (max-width: 768px) {
     .form-group {
       padding-top: 0px !important;

@@ -1593,7 +1593,7 @@ export default {
   border-radius: 10px !important;
 }
 
-.sub-back-btn::v-deep {
+.sub-back-btn {
   width: 30% !important;
   .v-btn {
     background-color: #fff !important;
@@ -1605,7 +1605,7 @@ export default {
 .sub-cont-btn {
   width: 70% !important;
 }
-.mobile-view::v-deep {
+.mobile-view {
   .v-btn {
     font-size: 1rem !important;
   }

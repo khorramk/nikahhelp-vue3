@@ -905,7 +905,7 @@ export default {
 
 }
 
-.style-chooser::v-deep {
+.style-chooser {
   .vti__dropdown {
     background-color: transparent !important;
   }

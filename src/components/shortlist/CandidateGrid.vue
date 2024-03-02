@@ -505,7 +505,7 @@ export default {
   }
 }
 
-.block-button::v-deep {
+.block-button {
   .v-custom:hover {
     background: #fff !important;
     color: #d81b60 !important;
@@ -516,7 +516,7 @@ export default {
     }
   }
 }
-.connect-button::v-deep {
+.connect-button {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-success !important;

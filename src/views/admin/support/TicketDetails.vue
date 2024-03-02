@@ -394,7 +394,7 @@ $primary_dark_3: #291e63;
   min-height: 150px !important;
 }
 
-.connect-button::v-deep {
+.connect-button {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-success !important;

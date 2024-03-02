@@ -371,7 +371,7 @@ export default {
   }
 }
 
-.age-group::v-deep {
+.age-group {
   .customize-color {
     color: $bg-primary !important;
   }

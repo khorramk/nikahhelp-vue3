@@ -654,7 +654,7 @@ export default {
     min-height: 150px !important;
 }
 
-.page2::v-deep {
+.page2 {
     .mobile-back-btn {
         display: none;
 

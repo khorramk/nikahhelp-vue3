@@ -468,7 +468,7 @@ export default {
 }
 //}
 
-.ant-form-item::v-deep {
+.ant-form-item {
   margin-bottom: 0px;
   
   .ant-input {

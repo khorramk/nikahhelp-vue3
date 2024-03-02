@@ -2912,7 +2912,7 @@ export default {
     }
   }
 
-  .style-chooser::v-deep {
+  .style-chooser {
     .vti__dropdown {
       background-color: transparent !important;
     }
@@ -2983,7 +2983,7 @@ input[type="file"] {
 //input[type="file"]::-webkit-file-upload-button {
 //  visibility: hidden;
 //}
-.mobile-margin::v-deep {
+.mobile-margin {
   margin-top: 0.5rem;
   .ant-form-explain {
     margin-left: 0.3rem;

@@ -1067,7 +1067,7 @@ export default {
 
 <style scoped lang="scss">
 @import "@/styles/base/_variables.scss";
-.main-content-1::v-deep {
+.main-content-1 {
   width: 100%;
   //margin: 4px 0 20px;
   padding: 12px 15px 12px 15px;

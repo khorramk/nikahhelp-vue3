@@ -649,7 +649,7 @@ legend {
 @import "@/styles/base/_variables.scss";
 .rep-profile {
 	padding: 10px;
-	.profile-heading::v-deep {
+	.profile-heading {
 		margin-bottom: 20px;
 		.cover-img {
 			width: 100%;

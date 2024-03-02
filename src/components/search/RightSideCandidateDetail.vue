@@ -152,12 +152,12 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "@/styles/base/_variables.scss";
-.v-sheet.v-card:not(.v-sheet--outlined)::v-deep {
+.v-sheet.v-card:not(.v-sheet--outlined) {
     box-shadow: none !important;
     border: 2px solid #dddddd78 !important;
 }
 
-.partner-prefs::v-deep {
+.partner-prefs {
     tr > div {
         padding-bottom: 5px !important;
     }

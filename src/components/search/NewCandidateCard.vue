@@ -542,7 +542,7 @@ import ButtonComponent from '@/components/atom/ButtonComponent'
     overflow: hidden;
 }
 
-.block-button::v-deep {
+.block-button {
   .v-custom:hover {
     background: #fff !important;
     color: #d81b60 !important;
@@ -553,7 +553,7 @@ import ButtonComponent from '@/components/atom/ButtonComponent'
     }
   }
 }
-.connect-button::v-deep {
+.connect-button {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-success !important;
@@ -565,7 +565,7 @@ import ButtonComponent from '@/components/atom/ButtonComponent'
   }
 }
 
-.unblock-button::v-deep {
+.unblock-button {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-primary !important;
@@ -576,7 +576,7 @@ import ButtonComponent from '@/components/atom/ButtonComponent'
     }
   }
 }
-.v-sheet.v-card:not(.v-sheet--outlined)::v-deep {
+.v-sheet.v-card:not(.v-sheet--outlined) {
   box-shadow: none !important;
   border: 2px solid #dddddd78;
 }

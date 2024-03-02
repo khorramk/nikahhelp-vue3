@@ -375,7 +375,7 @@ export default {
     }
   }
 }
-.team-container::v-deep {
+.team-container {
   margin-left: 7px !important;
   padding: 0px !important;
 

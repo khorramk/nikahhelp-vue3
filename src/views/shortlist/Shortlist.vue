@@ -787,7 +787,7 @@ export default {
 .shortlist-content-wrapper {
   flex-wrap: wrap;
   margin-top: 4px;
-  .main-content-1::v-deep {
+  .main-content-1 {
     width: 100%;
     //margin: 4px 10px 20px;
     padding: 12px 15px 12px 15px;
@@ -875,7 +875,7 @@ export default {
   transform: translatey(-288px);
   opacity: 0;
 }
-.v-sheet.v-card:not(.v-sheet--outlined)::v-deep {
+.v-sheet.v-card:not(.v-sheet--outlined) {
   box-shadow: none !important;
   border: 2px solid #dddddd78;
 }

@@ -376,7 +376,7 @@ export default {
 <style scoped lang="scss">
 @import "@/styles/base/_variables.scss";
 
-.unauth-card.v-sheet.v-card:not(.v-sheet--outlined)::v-deep {
+.unauth-card.v-sheet.v-card:not(.v-sheet--outlined) {
   box-shadow: none !important;
   border: 2px solid #dddddd78;
 }
@@ -396,7 +396,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.block-button::v-deep {
+.block-button {
   .v-custom:hover {
     background: #fff !important;
     color: #d81b60 !important;
@@ -407,7 +407,7 @@ export default {
     }
   }
 }
-.unblock-button::v-deep {
+.unblock-button {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-primary !important;
@@ -419,7 +419,7 @@ export default {
   }
 }
 
-.connect-button::v-deep {
+.connect-button {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-success !important;

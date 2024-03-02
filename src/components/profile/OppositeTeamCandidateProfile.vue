@@ -1153,7 +1153,7 @@ export default {
 	cursor: pointer;
 }
 
-.buttons-div::v-deep {
+.buttons-div {
 	@media (max-width: 600px) {
 		flex-direction: column;
 
@@ -1455,7 +1455,7 @@ legend {
     background: white;
 }
 
-.info-div::v-deep {
+.info-div {
 	.v-list-item__subtitle {
 		font-family: "Roboto", sans-serif !important;
 		line-height: 1.7 !important;
@@ -1473,7 +1473,7 @@ legend {
 		color: rgba(0,0,0,.6) !important;
 	}
 }
-.v-sheet.v-card:not(.v-sheet--outlined)::v-deep {
+.v-sheet.v-card:not(.v-sheet--outlined) {
 	box-shadow: none !important;
 	border: 2px solid #dddddd78;
 }	

@@ -1240,7 +1240,7 @@ export default {
   line-height: 160%;
   padding-left: 0;
 }
-.card-custom::v-deep {
+.card-custom {
   .v-list-item__subtitle {
     font-family: "Roboto", sans-serif !important;
     line-height: 1.7 !important;

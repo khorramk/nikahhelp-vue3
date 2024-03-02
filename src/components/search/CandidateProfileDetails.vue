@@ -463,7 +463,7 @@ export default {
     right: 29px;
 }
 
-.buttons-div::v-deep {
+.buttons-div {
 	@media (max-width: 1355px) {
 		flex-direction: column;
 
@@ -478,7 +478,7 @@ export default {
 	}
 }
 
-.block-button::v-deep {
+.block-button {
     .v-custom:hover {
       background: #fff !important;
       color: #d81b60 !important;
@@ -489,7 +489,7 @@ export default {
       }
     }
 }
-  .connect-button::v-deep {
+  .connect-button {
     .v-custom {
         background: $bg-success;
         color: #fff;
@@ -506,7 +506,7 @@ export default {
     }
 }
 
-.prev-next-btns::v-deep {
+.prev-next-btns {
     .v-btn:not(.v-btn--round).v-size--default {
         min-width: 40px !important;
     }

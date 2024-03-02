@@ -280,7 +280,7 @@ export default {
       justify-content: center;
       margin-top: 36px;
 
-      .button-container::v-deep {
+      .button-container {
         width: 100%;
         display: flex;
         //height: 35px;
@@ -336,7 +336,7 @@ export default {
     }
   }
 }
-.ant-form-item::v-deep {
+.ant-form-item {
   margin-bottom: 0px;
   
   .ant-input {

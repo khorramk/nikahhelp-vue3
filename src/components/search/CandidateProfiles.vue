@@ -135,7 +135,7 @@ export default {
 		}
 	}
 }
-.mobile-margin::v-deep {
+.mobile-margin {
 	img {
 		margin: 0px 10px !important;
 	}

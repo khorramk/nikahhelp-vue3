@@ -397,7 +397,7 @@ export default {
   }
 }
 
-.v-btn:not(.v-btn--round).v-size--small::v-deep {
+.v-btn:not(.v-btn--round).v-size--small {
   height: 35px !important;
 }
 

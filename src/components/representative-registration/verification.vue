@@ -1041,7 +1041,7 @@ input[type="file"]::-webkit-file-upload-button {
   margin: 5px;
 }
 
-.style-chooser::v-deep {
+.style-chooser {
   .vti__dropdown {
     background-color: transparent !important;
   }

@@ -537,7 +537,7 @@ export default {
   box-shadow: none !important;
   border-right: 2px solid #dddddd78 !important;
 }
-.sidebar-trigger::v-deep {
+.sidebar-trigger {
   .d-sidebar {
     .trigger {
       top: 2% !important;

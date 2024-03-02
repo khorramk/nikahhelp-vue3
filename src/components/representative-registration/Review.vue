@@ -536,7 +536,7 @@ export default {
     height: 390px
   }
 }
-.card-custom::v-deep {
+.card-custom {
   .v-list-item__content {
     padding: 0 !important;
   }

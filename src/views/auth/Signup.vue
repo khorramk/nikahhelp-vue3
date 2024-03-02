@@ -1221,7 +1221,7 @@ h3 {
     font-weight: 100;
   }
 }
-.btn-join-now::v-deep {
+.btn-join-now {
   width: 250px; 
   margin-top: 35px; 
   height: 100px;

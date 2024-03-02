@@ -213,7 +213,7 @@ export default {
   border-right: 2px solid #dddddd78 !important;
 }
 
-.sidebar-trigger::v-deep {
+.sidebar-trigger {
   .d-sidebar {
     .trigger {
       background: #fff !important;

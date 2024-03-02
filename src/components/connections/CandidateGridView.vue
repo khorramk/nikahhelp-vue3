@@ -927,7 +927,7 @@ export default {
 .flip-icon {
   width: 16px;
 }
-.v-sheet.v-card:not(.v-sheet--outlined)::v-deep {
+.v-sheet.v-card:not(.v-sheet--outlined) {
   box-shadow: none !important;
   border: 2px solid #dddddd78;
 }

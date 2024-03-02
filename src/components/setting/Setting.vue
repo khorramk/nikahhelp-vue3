@@ -769,7 +769,7 @@ export default {
     //border-left: 1px solid #b7b5b5;
 
   }
-  .panel-content::v-deep {
+  .panel-content {
     display: flex;
     width: 100%;
     justify-content: flex-start;

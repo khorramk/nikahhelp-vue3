@@ -507,7 +507,7 @@ export default {
 	font-size: 14px;
 }
 
-.search-modal::v-deep {
+.search-modal {
 	.ant-modal-centered {
 		.ant-modal {
 			vertical-align: inherit !important;
