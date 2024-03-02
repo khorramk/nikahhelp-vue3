@@ -1,11 +1,10 @@
 import 'vuetify/dist/vuetify.min.css';
-import Vue from "vue";
-import VueCompositionAPI from "@vue/composition-api";
+import { createApp } from 'vue'
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "vue-select/src/scss/vue-select.scss";
-import Layout from '@/views/design/Layout';
-import Loader from "@/plugins/loader/loader";
+import "vue-select/dist/vue-select.css";
+import Layout from "@/views/design/Layout.vue";
+import Loader from "@/plugins/loader/loader.vue";
 import AdminLayout from "@/components/admin/layout/AdminLayout.vue";
 import MainHeader from "@/views/design/Header.vue";
 import Antd from "ant-design-vue";
@@ -17,13 +16,15 @@ import HighchartsVue from 'highcharts-vue';
 // import axios from "axios";
 // * This is the vue-web-storage package
 import Storage from "vue-web-storage";
-import TextareaAutosize from 'vue-textarea-autosize';
+// import TextareaAutosize from 'vue-textarea-autosize';
 // * ApiService for the application
 import vuetify from "@/plugins/vuetify";
 import ApiService from "./services/api.service";
 import 'viewerjs/dist/viewer.css';
 import VueTelInput from 'vue-tel-input';
 import VueViewer from 'v-viewer';
+
+const Vue = createApp(App)
 Vue.use(VueViewer);
 Vue.use(HighchartsVue);
 Vue.use(Storage, {
@@ -59,9 +60,15 @@ Vue.use(new VueSocketIO({
 })
 );
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: (h) => h(App),
-}).$mount("#app");
+Vue.use(vuetify);
+Vue.use(router);
+Vue.use(store);
+Vue.mount("#app");
+
+// new Vue({
+//   router,
+//   store,
+//   vuetify,
+//   render: (h) => h(App),
+// }).$mount("#app");
+
