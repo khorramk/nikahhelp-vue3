@@ -28,7 +28,7 @@ export default {
 
 
 <style lang="scss">
-@import "../node_modules/ant-design-vue/dist/antd.css";
+@import "../node_modules/ant-design-vue/dist/reset.css";
 @import "@/styles/style";
 
 .ant-card-head-title {
