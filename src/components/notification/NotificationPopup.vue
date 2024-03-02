@@ -75,14 +75,14 @@
 </template>
 
 <script>
-import { notificationMixin } from "../../mixins/notification";
-import NotificationChatItem from "./NotificationChatItem";
-import NotificationListItem from "./NotificationListItem";
-import ShortListItem from "./ShortListItem";
-import TeamListItem from "./TeamListItem";
-import ChatListItem from "./ChatListItem";
-import ConnectedTeamChat from "../chat/ConnectedTeamChat";
-import ButtonComponent from "../atom/ButtonComponent";
+import { notificationMixin } from "../../mixins/notification.js";
+import NotificationChatItem from "./NotificationChatItem.vue";
+import NotificationListItem from "./NotificationListItem.vue";
+import ShortListItem from "./ShortListItem.vue";
+import TeamListItem from "./TeamListItem.vue";
+import ChatListItem from "./ChatListItem.vue";
+import ConnectedTeamChat from "../chat/ConnectedTeamChat.vue";
+import ButtonComponent from "../atom/ButtonComponent.vue";
 
 const selectComponent = {
   chat: {

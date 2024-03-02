@@ -188,7 +188,7 @@
 </template>
 
 <script>
-import SidebarHeader from "@/components/dashboard/layout/SidebarHeader";
+import SidebarHeader from "@/components/dashboard/layout/SidebarHeader.vue";
 export default {
   name: "Sidebar",
   components: {

@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import NotificationPopup from "@/components/notification/NotificationPopup";
+import NotificationPopup from "@/components/notification/NotificationPopup.vue";
 import ApiService from "@/services/api.service";
 import JwtService from "../../../services/jwt.service";
 export default {
