@@ -1,5 +1,5 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+// import Vue from "vue";
+import { createRouter, createWebHistory } from 'vue-router'
 // import DHome from "@/views/dashboard/DHome.vue";
 // import AboutPage from "@/components/landing-page/about.vue";
 // import HelpPage from "@/components/landing-page/help.vue";
@@ -88,10 +88,9 @@ import { InitRoute, lazyLoadComponent, lazyLoadView, InitAdminRoute } from './gu
 // import SendTicketMessage from "@/views/admin/support/SendTicketMessage";
 // import TicketMessages from "@/views/admin/support/TicketMessages";
 
-Vue.use(VueRouter);
-const AppRouter = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
+// Vue.use(VueRouter);
+const AppRouter = new createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition
