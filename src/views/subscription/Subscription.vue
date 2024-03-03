@@ -774,7 +774,7 @@
 import Header from "@/components/dashboard/layout/Header.vue";
 import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
 import Footer from "@/components/auth/Footer.vue";
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 import ApiService from "../../services/api.service";
 import { format } from "timeago.js";
 

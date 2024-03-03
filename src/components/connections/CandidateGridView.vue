@@ -267,7 +267,7 @@
 import {getAge, dateFromDateTime, dateFromTimeStamp} from "@/common/helpers.js";
 import JwtService from "@/services/jwt.service";
 import GridButtons from "./GridButtons";
-import ButtonComponent from '@/components/atom/ButtonComponent';
+import ButtonComponent from '@/components/atom/ButtonComponent.vue';
 
 export default {
   name: "CandidateGridView",

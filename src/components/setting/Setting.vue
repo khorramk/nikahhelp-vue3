@@ -335,7 +335,7 @@ import ApiService from "@/services/api.service";
 import VerificationRepresentative from "@/components/setting/Verification-Representative.vue";
 import VerificationCandidate from "@/components/setting/Verification-Candidate.vue";
 import EditContactModal from "@/components/setting/EditContactModal.vue";
-import ButtonComponent from "@/components/atom/ButtonComponent";
+import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 import jwtService from "@/services/jwt.service";
 export default {
   name: "Setting",

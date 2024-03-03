@@ -101,9 +101,9 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
-import Observer from "@/components/atom/Observer"
+import Observer from "@/components/atom/Observer.vue"
 import Loader from "@/plugins/loader/loader.vue";
 import CandidateProfiles from "@/components/search/CandidateProfiles.vue";
 import ModalContainer from "@/plugins/modal/modal-container";
@@ -112,7 +112,7 @@ import AddComponent from "@/components/add/addComponent";
 import JwtService from "@/services/jwt.service";
 import { createModalMixin, openModalRoute } from "@/plugins/modal/modal.mixin";
 import { mapGetters, mapMutations, mapActions } from "vuex";
-import TeamOffRedirection from "../../components/redirection/TeamOffRedirection";
+import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
 import ApiService from '../../services/api.service';
 import Notification from "@/common/notification.js";
 

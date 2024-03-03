@@ -403,7 +403,7 @@
 
 <script>
 import RatingComponent from "./RatingComponent.vue";
-import improveMyselfThings from '@/common/improveMyselfThings'
+import improveMyselfThings from '@/common/improveMyselfThings.js'
 import { dateFromDateTime } from "@/common/helpers.js";
 
 // import Footer from "@/components/auth/Footer.vue";
@@ -412,16 +412,16 @@ import ProfileBanner from "@/components/atom/ProfileBanner";
 import PersonalInformationTable from '@/components/search/personal-information/PersonalInformationTable.vue'
 import FamilyInfoTable from '@/components/search/personal-information/FamilyInfoTable.vue'
 import MyPrefTable from '@/components/search/personal-information/MyPrefTableProfile.vue'
-import CardInfo from '@/components/atom/CardInfo'
+import CardInfo from '@/components/atom/CardInfo.vue'
 import MoreAbout from '@/components/search/personal-information/MoreAbout.vue'
-import Scroller from  '@/components/atom/Scroller'
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import Scroller from  '@/components/atom/Scroller.vue'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 import JwtService from "@/services/jwt.service";
 import ApiService from '@/services/api.service';
 import Notification from "@/common/notification.js";
 
-import OutlinedButton from '@/components/atom/OutlinedButton'
-import ComingSoonModal from "@/components/search/ComingSoonModal"
+import OutlinedButton from '@/components/atom/OutlinedButton.vue'
+import ComingSoonModal from "@/components/search/ComingSoonModal.vue"
 import {mapActions} from 'vuex'
 
 export default {

@@ -450,18 +450,18 @@
 import PersonalInformationTable from "@/components/search/personal-information/PersonalInformationTable.vue";
 import FamilyInfoTable from "@/components/search/personal-information/FamilyInfoTable.vue";
 import MyPrefTable from "@/components/search/personal-information/MyPrefTable.vue";
-import CardInfo from "@/components/atom/CardInfo";
+import CardInfo from "@/components/atom/CardInfo.vue";
 import MoreAbout from "@/components/search/personal-information/MoreAbout.vue";
-import Scroller from "@/components/atom/Scroller";
-import ButtonComponent from "@/components/atom/ButtonComponent";
+import Scroller from "@/components/atom/Scroller.vue";
+import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 
 import RatingComponent from "./RatingComponent.vue";
-import ProfileBanner from "@/components/atom/ProfileBanner";
+import ProfileBanner from "@/components/atom/ProfileBanner.vue";
 import Footer from "@/components/auth/Footer.vue";
 import ApiService from "@/services/api.service";
-import OutlinedButton from "@/components/atom/OutlinedButton";
-import ComingSoonModal from "@/components/search/ComingSoonModal";
-import improveMyselfThings from "@/common/improveMyselfThings";
+import OutlinedButton from "@/components/atom/OutlinedButton.vue";
+import ComingSoonModal from "@/components/search/ComingSoonModal.vue";
+import improveMyselfThings from "@/common/improveMyselfThings.js";
 import { dateFromDateTime } from "@/common/helpers.js";
 export default {
   name: "CandidateProfile",

@@ -261,7 +261,7 @@ import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
 import Footer from "@/components/auth/Footer.vue";
 import CardInput from "@/components/subscription/CardInput.vue";
 import Spinner from "@/components/ui/Spinner.vue";
-import ButtonComponent from "@/components/atom/ButtonComponent";
+import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 import ApiService from "../../services/api.service";
 import Notification from "@/common/notification.js";
 

@@ -190,8 +190,8 @@
 import ApiService from "../../services/api.service";
 import Footer from "@/components/auth/Footer.vue";
 import CandidateGrid from '@/components/search/UnauthCard.vue';
-import Observer from "@/components/atom/Observer";
-import Modal from '@/components/ui/Modal';
+import Observer from "@/components/atom/Observer.vue";
+import Modal from '@/components/ui/Modal.vue';
 import ButtonComponent from '../../components/atom/ButtonComponent.vue';
 
 

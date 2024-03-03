@@ -576,9 +576,9 @@
 <script>
 import Footer from "@/components/auth/Footer.vue";
 import Spinner from "@/components/ui/Spinner.vue";
-import InputPassword from "@/components/ui/InputPassword";
+import InputPassword from "@/components/ui/InputPassword.vue";
 import { CapitalizeFirstLetter } from "../../models/utilities";
-import ButtonComponent from "@/components/atom/ButtonComponent";
+import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 
 export default {
   name: "Signup",

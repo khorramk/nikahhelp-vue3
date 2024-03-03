@@ -114,9 +114,9 @@
 <script>
 import jwtService from '@/services/jwt.service'
 import PersonalInformation from '@/components/search/personal-information/PersonalInformation'
-import {btnData} from '@/data/candidate.button'
-import ButtonComponent from '@/components/atom/ButtonComponent'
-import ProfileBanner from '@/components/atom/ProfileBanner'
+import {btnData} from '@/data/candidate.button.js'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
+import ProfileBanner from '@/components/atom/ProfileBanner.vue'
 import {mapMutations, mapActions, mapGetters} from 'vuex'
 import JwtService from "@/services/jwt.service";
 

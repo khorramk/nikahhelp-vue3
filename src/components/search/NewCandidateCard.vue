@@ -135,7 +135,7 @@ import {mapMutations, mapActions, mapGetters} from 'vuex'
 import JwtService from "@/services/jwt.service";
 import Notification from "@/common/notification.js";
 import ApiService from '@/services/api.service';
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
   export default {
     name: 'CandidateListCard',
     sockets: {

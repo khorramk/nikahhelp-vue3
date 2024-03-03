@@ -121,7 +121,7 @@
 <script>
 import Footer from "@/components/auth/Footer.vue";
 import Spinner from "@/components/ui/Spinner.vue";
-import ButtonComponent from '@/components/atom/ButtonComponent';
+import ButtonComponent from '@/components/atom/ButtonComponent.vue';
 
 export default {
   name: "ForgetPassword",

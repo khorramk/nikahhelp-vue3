@@ -382,10 +382,10 @@
 // };
 
 import { getAge } from "@/common/helpers.js";
-import ApiService from "@/services/api.service";
-import ProfileBanner from "@/components/atom/ProfileBanner";
-import TableRow from '@/components/atom/TableRow'
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import ApiService from "@/services/api.service.js";
+import ProfileBanner from "@/components/atom/ProfileBanner.vue";
+import TableRow from '@/components/atom/TableRow.vue'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 
 export default {
 	name: "RepresentativeProfile",

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 export default {
     name: 'CardInfo',
     components: {

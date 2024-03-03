@@ -41,7 +41,7 @@
 
 <script>
 import Footer from "@/components/auth/Footer";
-import ButtonComponent from '@/components/atom/ButtonComponent'
+import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 
 export default {
   name: "Success",

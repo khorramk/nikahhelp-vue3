@@ -179,8 +179,8 @@
 <script>
 import {mapMutations, mapActions} from 'vuex'
 import JwtService from "@/services/jwt.service";
-import ButtonComponent from '@/components/atom/ButtonComponent';
-import Modal from '@/components/ui/Modal';
+import ButtonComponent from '@/components/atom/ButtonComponent.vue';
+import Modal from '@/components/ui/Modal.vue';
 export default {
   name: 'UnauthCard',
   props: ["candidate"],
