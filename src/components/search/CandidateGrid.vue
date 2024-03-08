@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import Modal from '@/components/ui/Modal'
+import Modal from '@/components/ui/Modal.vue'
 
 export default {
   props: ["candidate"],

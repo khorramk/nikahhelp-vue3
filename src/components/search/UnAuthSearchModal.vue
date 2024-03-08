@@ -10,7 +10,7 @@
 </template>
 <script>
 import UnAuthSearchForm from "@/components/search/UnAuthSearchForm.vue";
-import Modal from '@/components/ui/Modal'
+import Modal from '@/components/ui/Modal.vue'
 export default {
 	data() {
 		return {

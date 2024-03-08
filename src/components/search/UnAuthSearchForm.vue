@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import SelectGroup from "@/components/ui/selects/SelectGroup";
+import SelectGroup from "@/components/ui/selects/SelectGroup.vue";
 
 import { AGES, HEIGHTS } from "@/models/data";
 import ApiService from "@/services/api.service";

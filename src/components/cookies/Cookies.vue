@@ -64,8 +64,8 @@
   </div>
 </template>
 <script>
-  import CookiesAgreement from './CookiesAgreement';
-  import CookiesPreference from './CookiesPreference';
+  import CookiesAgreement from './CookiesAgreement.vue';
+  import CookiesPreference from './CookiesPreference.vue';
   import JwtService from '../../services/jwt.service';
 
   export default {

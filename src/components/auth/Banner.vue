@@ -33,7 +33,7 @@
 
 
 <script>
-import UnAuthSearchForm from "@/components/search/UnAuthSearchForm";
+import UnAuthSearchForm from "@/components/search/UnAuthSearchForm.vue";
 export default {
   name: "Banner",
   components: {UnAuthSearchForm },
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@vueform/slider/themes/default.css";
+//@import "~@vueform/slider/themes/default.css";
 @import "@/styles/base/_variables.scss";
 .banner {
   background: url("~@/assets/Top image.jpg") no-repeat center center / cover;

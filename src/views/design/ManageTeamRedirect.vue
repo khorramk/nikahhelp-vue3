@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import Modal from "@/plugins/modal/modal";
+import Modal from "@/plugins/modal/modal.js";
 export default {
   name: "Layout",
   components: {

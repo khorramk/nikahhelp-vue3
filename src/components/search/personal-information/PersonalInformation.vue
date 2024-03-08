@@ -330,7 +330,7 @@ import MoreAbout from './MoreAbout.vue'
 import {mapGetters} from 'vuex'
 import Scroller from  '@/components/atom/Scroller'
 import RatingComponent from "@/components/profile/RatingComponent.vue";
-import ComingSoonModal from "@/components/search/ComingSoonModal"
+import ComingSoonModal from "@/components/search/ComingSoonModal.vue"
 import improveMyselfThings from '@/common/improveMyselfThings'
 import { dateFromDateTime } from "@/common/helpers.js";
 
