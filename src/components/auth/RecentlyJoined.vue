@@ -5,51 +5,49 @@
 				<span style="padding-right: 50px">Recently Joined</span>
 			</h2>
 
-      <carousel
-          :perPageCustom="[
-              [320, 1],
-              [768, 2],
-              [1280, 3],
-            ]"
-          :autoplay="true"
-          :loop="true"
-          :paginationEnabled="false"
-          :navigationEnabled="false"
-      >
-        <slide v-for="(user, recIndex) in recJoin" :key="user.id">
-          <div class="item flex-between-center ml-2 mr-2">
-            <div class="item-img custom-size">
-              <img class="item-img"
-					v-if="user.image !== null"
-					@error="imgLoad(recIndex, user)"
-					:ref="`avatar-${recIndex}`"
-					:src="user.image"
-					alt="img"
-					style="border: 1px solid white;"/>
+			<carousel
+				:breakpoints="{
+					320: { itemsToShow: 1 },
+					768: { itemsToShow: 2 },
+					1280: { itemsToShow: 3 }
+				}"
+				:autoplay="2000"
+				:wrap-around="true"
+			>
+				<slide v-for="(user, recIndex) in recJoin" :key="user.id">
+					<div class="item flex-between-center ml-2 mr-2">
+						<div class="item-img custom-size">
+						<img class="item-img"
+								v-if="user.image !== null"
+								@error="imgLoad($event)"
+								:src="user.image"
+								alt="img"
+								style="border: 1px solid white;"/>
 
-              <img class="item-img"
-					v-else
-                   :ref="`avatar-${recIndex}`"
-                   :src="require('../../assets/no-image-available.jpg')"
-                   alt="img"
-                   style="border: 1px solid white;"/>
-				
-            </div>
-            <div class="item-content">
-              <div>{{ getUserGender(user) }}, {{ user.age ? getAge(user.age) + ' years' : 'N/A' }}</div>
-              <div>{{  user.ethnicity ? user.ethnicity : 'N/A' }}, {{ user.religion ? user.religion : 'N/A' }}</div>
-              <div>{{ user.study_level ? user.study_level : 'N/A' }}</div>
-            </div>
-          </div>
-        </slide>
-      </carousel>
+						<img class="item-img"
+							v-else
+							:src="require('../../assets/no-image-available.jpg')"
+							alt="img"
+							style="border: 1px solid white;"/>
+							
+						</div>
+						<div class="item-content">
+						<div>{{ getUserGender(user) }}, {{ user.age ? getAge(user.age) + ' years' : 'N/A' }}</div>
+						<div>{{  user.ethnicity ? user.ethnicity : 'N/A' }}, {{ user.religion ? user.religion : 'N/A' }}</div>
+						<div>{{ user.study_level ? user.study_level : 'N/A' }}</div>
+						</div>
+					</div>
+				</slide>
+			</carousel>
 		</div>
 	</div>
 </template>
 
 <script>
 import ApiService from "../../services/api.service";
-import { Carousel, Slide } from "vue-carousel";
+import { Carousel, Slide } from "vue3-carousel";
+import 'vue3-carousel/dist/carousel.css';
+import noImageAvailable from '../../assets/no-image-available.jpg';
 export default {
 	name: "RecentlyJoined",
 
@@ -90,10 +88,8 @@ export default {
 			return age;
 		},
 
-		imgLoad(index, user) {
-			let img = this.$refs[`avatar-${index}`][0];
-			// img.src = `https://ui-avatars.com/api/?name=${user.name}&background=b5b5b5&color=fff`;
-			img.src = require("../../assets/no-image-available.jpg");
+		imgLoad($event) {
+			$event.target.src = noImageAvailable;
 		}
 	},
 };
