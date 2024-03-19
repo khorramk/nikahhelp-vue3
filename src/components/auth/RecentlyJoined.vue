@@ -14,7 +14,7 @@
 				:autoplay="2000"
 				:wrap-around="true"
 			>
-				<slide v-for="(user, recIndex) in recJoin" :key="user.id">
+				<slide v-for="user in recJoin" :key="user.id">
 					<div class="item flex-between-center ml-2 mr-2">
 						<div class="item-img custom-size">
 						<img class="item-img"
@@ -52,9 +52,9 @@ export default {
 	name: "RecentlyJoined",
 
 	components: {
-    Carousel,
-    Slide,
-  },
+		Carousel,
+		Slide,
+	},
 
 	data() {
 		return {
