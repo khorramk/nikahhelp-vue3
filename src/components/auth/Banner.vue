@@ -43,7 +43,7 @@ export default {
       this.$router
           .push({
             name: "UnAuthSearch",
-            params: { url: _payload },
+            params: { search: _payload },
           });
     },
     goToSignUpPage() {
@@ -57,7 +57,7 @@ export default {
 //@import "~@vueform/slider/themes/default.css";
 @import "@/styles/base/_variables.scss";
 .banner {
-  background: url("~@/assets/Top image.jpg") no-repeat center center / cover;
+  background: url("@/assets/Top image.jpg") no-repeat center center / cover;
   background-size: 100% 100%;
   color: $color-white;
   text-align: center;
