@@ -83,7 +83,7 @@
                 size="large"
                 placeholder="Add as a"
                 class="fs-16 member-add mr-2"
-                v-model="addAs"
+                :value="addAs"
                 style="width: 100%"
             >
               <a-select-option value="Candidate" v-if="!joinedAsCandidate"> Candidate </a-select-option>
@@ -140,8 +140,8 @@
 
 <script>
 import ApiService from '@/services/api.service';
-import CreateAddMember from "./CreateAddMember";
-import TeamCreateSuccess from "./TeamCreateSuccess";
+import CreateAddMember from "./CreateAddMember.vue";
+import TeamCreateSuccess from "./TeamCreateSuccess.vue";
 export default {
 	name: "CreateTeam1",
 	components: {TeamCreateSuccess, CreateAddMember},

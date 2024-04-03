@@ -29,7 +29,7 @@
 
 <script>
 import ApiService from '@/services/api.service';
-import InviteMember from "./InviteMember";
+import InviteMember from "./InviteMember.vue";
 export default {
   name: "CreateAddMember",
   components: {InviteMember},

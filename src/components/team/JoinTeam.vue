@@ -151,7 +151,7 @@
 
 <script>
 import ApiService from "../../services/api.service";
-import LoadingSpinner from "../ui/LoadingSpinner";
+import LoadingSpinner from "../ui/LoadingSpinner.vue";
 export default {
 	name: "ManageTeam",
 	components: {LoadingSpinner},

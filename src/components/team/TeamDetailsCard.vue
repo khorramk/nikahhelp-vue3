@@ -495,8 +495,8 @@ import LTModal from "./Modals/LTModal.vue";
 import TNCModal from "./Modals/TeamNameChangeModal.vue";
 import TDCModal from "./Modals/TeamDescriptionChange.vue";
 // import { Modal } from 'ant-design-vue';
-import InviteMember from "./InviteMember";
-import TeamProfileCard from "./TeamProfileCard";
+import InviteMember from "./InviteMember.vue";
+import TeamProfileCard from "./TeamProfileCard.vue";
 import Notification from "@/common/notification.js";
 export default {
 	name: "TeamDetailsCard",

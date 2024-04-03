@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import InstantNotificationItem from "./InstantNotificationItem";
+import InstantNotificationItem from "./InstantNotificationItem.vue";
 
 export default {
   name: "InstantNotification",
