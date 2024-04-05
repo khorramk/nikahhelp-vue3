@@ -24,7 +24,7 @@ import 'viewerjs/dist/viewer.css';
 import VueTelInput from 'vue-tel-input';
 import VueViewer from 'v-viewer';
 
-const Vue = createApp(App)
+const Vue = createApp(App);
 Vue.use(VueViewer);
 Vue.use(HighchartsVue);
 // Vue.use(Storage, {
@@ -55,18 +55,19 @@ Vue.component('MainHeader', MainHeader);
 Vue.component('Layout', Layout);
 Vue.component('Loader', Loader);
 Vue.component('AdminLayout', AdminLayout);
-Vue.use(TextareaAutosize)
+// Vue.use(TextareaAutosize)
 
-import VueSocketIO from 'vue-socket.io'
-import SocketIO from 'socket.io-client'
+// import VueSocketIO from 'vue-socket.io'
+import SocketIO from 'socket.io-client';
 const socketConnection = SocketIO('https://biya.nikahhelp.com:4008');
 // const socketConnection = SocketIO('http://localhost:4009');
 
-Vue.use(new VueSocketIO({
-  debug: true,
-  connection: socketConnection
-})
-);
+// Vue.use(new VueSocketIO({
+//   debug: true,
+//   connection: socketConnection
+// }));
+
+Vue.config.globalProperties.$socket = socketConnection; 
 
 Vue.use(vuetify);
 Vue.use(router);
