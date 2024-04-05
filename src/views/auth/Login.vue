@@ -10,7 +10,7 @@
     </div>
 
     <div class="signin-inner login-body-container">
-      <a-form-model
+      <a-form
         ref="signinForm"
         :model="signinModel"
         :rules="rules"
@@ -18,22 +18,23 @@
       >
         <div class="" v-if="verifyTwoFactor">
           <p class="fs-16 text-black-50">{{ verifyTwoFactroMsg }}</p>
-          <a-form-model-item>
+          <a-form-item>
             <a-input
               type="text"
               class="fs-16"
               id="verficationCode"
-              v-model="signinModel.twoFACode"
+              v-model:value="signinModel.twoFACode"
               placeholder="Verfication Code"
             />
-          </a-form-model-item>
+          </a-form-item>
           <button
             type="button"
             @click="verify2fa(signinModel)"
             class="btn signin-btn h-32 w-100 mt-1"
             style="padding: 0px !important; line-height: 1.3 !important;"
           >
-            <a-icon type="loading" class="mr-2 fs-20" v-if="isLoading" />
+            <!-- <a-icon type="loading" class="mr-2 fs-20"/> -->
+            <LoadingOutlined class="mr-2 fs-20" v-if="isLoading" />
             Verify
           </button>
 
@@ -43,11 +44,11 @@
                 <div class="fs-14 mb-0 text-black-50">
                   If you didn't receive any verification code yet then please wait! Verification code may take up to 5 minutes to be sent to your email, you can request a 
                   <div class="ms-2 text-nowrap mt-1">
-                    <a-icon type="loading" class="mr-2 fs-20" v-if="isResendingCode" />
+                    <!-- <a-icon type="loading" class="mr-2 fs-20" v-if="isResendingCode" /> -->
+                    <LoadingOutlined class="mr-2 fs-20" v-if="isResendingCode" />
+
                     <a v-if="timeLeft == 0" class="resend-code" @click="handleResend">
-                      <v-else>
                         Resend code
-                      </v-else>
                     </a>
                     <span v-else>resend code in {{ formattedTimeLeft }}</span>
                   </div>
@@ -70,28 +71,27 @@
         <div v-else>
           <div class="">
             <!-- <h4 class="fs-16 text-black-50">Type your email & password</h4> -->
-            <a-form-model-item ref="email" prop="email">
+            <a-form-item ref="email" prop="email">
               <a-input
                 type="email"
                 id="email"
-                v-model="signinModel.email"
+                v-model:value="signinModel.email"
                 placeholder="Enter email"
                 class="fs-16"
               />
-            </a-form-model-item>
+            </a-form-item>
           </div>
 
-          <div class="">
-            <a-form-model-item ref="password" prop="password">
+          <div class="mt-2">
+            <a-form-item ref="password" prop="password">
               <a-input-password
-                type="password"
                 class="fs-16"
                 id="password"
-                v-model="signinModel.password"
+                v-model:value="signinModel.password"
                 placeholder="Password"
                 @keyup.enter="entered()"
               />
-            </a-form-model-item>
+            </a-form-item>
           </div>
           <button
             type="button"
@@ -99,7 +99,8 @@
             class="btn signin-btn h-32 w-100 mt-1"
             style="padding: 0px !important; line-height: 1.3 !important;"
           >
-            <a-icon type="loading" class="mr-2 fs-20" v-if="isLoading" />
+            <!-- <a-icon type="loading" class="mr-2 fs-20" v-if="isLoading" /> -->
+            <LoadingOutlined class="mr-2 fs-20" v-if="isLoading" />
             Sign in
           </button>
 
@@ -109,7 +110,7 @@
             </router-link>
           </p>
         </div>
-      </a-form-model>
+      </a-form>
 
       <div class="join-now pb-4">
         <p class="flex-center-center mt-3 text-white bottom-link-text">
@@ -144,13 +145,14 @@ import InputPassword from "@/components/ui/InputPassword.vue";
 import JwtService from "../../services/jwt.service";
 import axios from "axios";
 import router from "../../router";
-
+import { LoadingOutlined } from "@ant-design/icons-vue";
 export default {
   name: "Login",
   components: {
     Footer,
     Spinner,
     InputPassword,
+    LoadingOutlined
   },
   data() {
     return {
@@ -218,35 +220,41 @@ export default {
       }
     },
     async handleSubmit() {
-      this.$refs.signinForm.validate((valid) => {
-        if (valid) {
-          try {
-            this.isLoading = true;
-            let res = this.$store.dispatch("login", this.signinModel).then((response) => {
+      console.log('submit', this.$refs.signinForm.validate)
+      this.$refs.signinForm
+        .validate()
+        .then((valid) => {
+          console.log('submit validate', valid);
+          if (valid) {
+            try {
+              this.isLoading = true;
+              let res = this.$store.dispatch("login", this.signinModel).then((response) => {
+                this.isLoading = false;
+                if (this.$store.state.auth.errorMessage) {
+                  this.$error({
+                    title: this.$store.state.auth.errorMessage,
+                    centered: true,
+                  });
+                }
+                if(this.$store.state.auth.twoFAMessage){
+                  this.verifyTwoFactroMsg = this.$store.state.auth.twoFAMessage;
+                  this.verifyTwoFactor = true;
+                  this.onTimesUp();
+                  this.startTimer();
+                }
+                console.log(response, 'rest');
+              });
+            } catch (error) {
+              
+              this.error = error.response.data.message;
               this.isLoading = false;
-              if (this.$store.state.auth.errorMessage) {
-                this.$error({
-                  title: this.$store.state.auth.errorMessage,
-                  centered: true,
-                });
-              }
-              if(this.$store.state.auth.twoFAMessage){
-                this.verifyTwoFactroMsg = this.$store.state.auth.twoFAMessage;
-                this.verifyTwoFactor = true;
-                this.onTimesUp();
-                this.startTimer();
-              }
-              console.log(response, 'rest');
-            });
-          } catch (error) {
-           
-            this.error = error.response.data.message;
-            this.isLoading = false;
+            }
+          } else {
+            return false;
           }
-        } else {
-          return false;
-        }
-      });
+        })
+
+      console.log('submit end')
     },
     // resend btn timer
     onTimesUp() {
@@ -304,11 +312,11 @@ export default {
           let data = { token: token };
           JwtService.saveTokenAndUser(data);
           JwtService.setUser(response.data.data.user);
-    
-          if(router.history._startLocation === '/login' || router.history._startLocation.includes('/emailVerify/') || router.history._startLocation.includes('/email-verification-success')) {
+          
+          if(router.options.history.location === '/login' || router.options.history.location.includes('/emailVerify/') || router.options.history.location.includes('/email-verification-success')) {
             router.push({ name: 'root' });
           } else {
-            router.push({ path: `${router.history._startLocation}`});
+            router.push({ path: `${router.options.history.location}`});
           }
         }
         this.isResendingCode = false;
