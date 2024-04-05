@@ -80,7 +80,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import ChatWindow from "@/views/chat/ChatWindow.vue";
 
 
-import { InitRoute, lazyLoadComponent, lazyLoadView, InitAdminRoute } from './guard/guard'
+import { InitRoute, lazyLoadComponent, lazyLoadView, InitAdminRoute } from './guard/guard.js'
 // import SupportTickets from "@/views/admin/SupportTickets";
 // import Reporter from "@/views/admin/Reporter";
 // import Ticket from "@/views/admin/Ticket";
@@ -90,17 +90,18 @@ import { InitRoute, lazyLoadComponent, lazyLoadView, InitAdminRoute } from './gu
 
 // Vue.use(VueRouter);
 const AppRouter = new createRouter({
+    mode: "history",
     history: createWebHistory(import.meta.env.BASE_URL),
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition
         } else {
-            return { x: 0, y: 0 }
+            return { left: 0, top: 0 }
         }
     },
     routes: [
         {
-            path: "/",
+            path: "",
             name: "Home",
             component: lazyLoadView('auth', 'Home'),
             beforeEnter: InitRoute,
