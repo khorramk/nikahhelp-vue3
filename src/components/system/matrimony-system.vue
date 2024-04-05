@@ -116,18 +116,20 @@
 
 <script>
 import ApiService from '@/services/api.service';
-import InstantNotification from "../notification/InstantNotification";
+import InstantNotification from "../notification/InstantNotification.vue";
+import Layout from "@/views/design/Layout.vue";
 import { mapActions } from 'vuex';
 import JwtService from "../../services/jwt.service";
 export default {
   components: {
     InstantNotification,
-    Layout: () => import("@/views/design/Layout"),
+    // Layout: () => import("@/views/design/Layout.vue"),
+    Layout
   },
 
   data() {
     return {
-      imageSrc: require('@/assets/Icons/MA logo for start modal.svg'),
+      imageSrc: '@/assets/Icons/MA logo for start modal.svg',
       contentTitle: 'Welcome to MatrimonyAssist',
       contentGuidance: "Here you can create team, invite family and friends, shortlist potential candidates and connect and chat with respective teams.",
       currentGuide: 0,
@@ -167,14 +169,13 @@ export default {
     let loggedUser = JSON.parse(localStorage.getItem('user'));
     if (loggedUser) {
       this.$socket.emit('ping', {user_id: loggedUser.id});
-
-      this.sockets.subscribe('ping_success', function (res) {
+      this.$socket.on('ping_success', function (res) {
         if (res && res.online_users) {
           this.$store.state.chat.online_users = res.online_users;
         }
       });
 
-      this.sockets.subscribe('receive_message', async function (res) {
+      this.$socket.on('receive_message', async function (res) {
         if(res && !res.support) {
           // this.$store.state.chat.chats.unshift(res);
           // this.loadChatHistory();
@@ -245,31 +246,31 @@ export default {
       this.currentGuide = this.currentGuide > 0 ? this.currentGuide - 1 : 0;
 
       if(this.currentGuide == 0) {
-        this.imageSrc = require('@/assets/Icons/MA logo for start modal.svg');
+        this.imageSrc = '@/assets/Icons/MA logo for start modal.svg';
         this.contentTitle = 'Welcome to MatrimonyAssist';
-        this.contentGuidance = "Here you can create team, invite family and friends, shortlist potential candidates and connect and chat with respective teams."
+        this.contentGuidance = "Here you can create team, invite family and friends, shortlist potential candidates and connect and chat with respective teams.";
       } else if(this.currentGuide == 1) {
-        this.imageSrc = require('@/assets/help_guide_pics/Join_or_create_a_team.svg');
+        this.imageSrc = '@/assets/help_guide_pics/Join_or_create_a_team.svg';
         this.contentTitle = 'Join or create a team';
         this.contentGuidance = "Having a team is a must requirement in MartimonyAssist. Someone who is already registered with MatrimonyAssist, can send you an invite link to join their team. Alternatively, you can create a team and generate an invite link and then share it to your potential member(s) to join your team.";
       } else if(this.currentGuide == 2) {
-          this.imageSrc = require('@/assets/help_guide_pics/Chose_a_subscription_plan.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Chose_a_subscription_plan.svg';
           this.contentTitle = 'Chose a subscription plan';
           this.contentGuidance = 'In MattrimonyAssist subscription is team based. Anyone can pay for subscription and the rest of the members use it for free.';
       } else if(this.currentGuide == 3) {
-          this.imageSrc = require('@/assets/help_guide_pics/Search_for_suitable_prospect.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Search_for_suitable_prospect.svg';
           this.contentTitle = ' Search for suitable prospect';
           this.contentGuidance = 'Here you search according to your search criteria to find prospect of your choice. ';
       } else if (this.currentGuide == 4) {
-          this.imageSrc = require('@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg';
           this.contentTitle = 'Shortlist and connect with prospect’s team';
           this.contentGuidance = 'From the search results, you can create your own shortlist of prospects. ';
       } else if(this.currentGuide == 5) {
-          this.imageSrc = require('@/assets/help_guide_pics/Chat_and_exchange_information_with_connected_team.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Chat_and_exchange_information_with_connected_team.svg';
           this.contentTitle = 'Use chat feature of MatrimonyAssist to communicate with prospect team and find out more about the prospect. ';
           this.contentGuidance = 'Chat and exchange information with connected team';  
       } else if(this.currentGuide == 6) {
-          this.imageSrc = require('@/assets/help_guide_pics/Evaluate_information_and_make_decision.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Evaluate_information_and_make_decision.svg';
           this.contentTitle = 'Evaluate information and make decision';
           this.contentGuidance = 'Finally, when you are absolutely confident, only then make decision. ';
       }
@@ -279,31 +280,31 @@ export default {
       this.currentGuide = this.currentGuide < 6 ? this.currentGuide + 1 : 0;
       
       if(this.currentGuide == 0) {
-        this.imageSrc = require('@/assets/Icons/MA logo for start modal.svg');
+        this.imageSrc = '@/assets/Icons/MA logo for start modal.svg';
         this.contentTitle = 'Welcome to MatrimonyAssist';
         this.contentGuidance = "Here you can create team, invite family and friends, shortlist potential candidates and connect and chat with respective teams."
       } else if(this.currentGuide == 1) {
-        this.imageSrc = require('@/assets/help_guide_pics/Join_or_create_a_team.svg');
+        this.imageSrc = '@/assets/help_guide_pics/Join_or_create_a_team.svg';
         this.contentTitle = 'Join or create a team';
         this.contentGuidance = "Having a team is a must requirement in MartimonyAssist. Someone who is already registered with MatrimonyAssist, can send you an invite link to join their team. Alternatively, you can create a team and generate an invite link and then share it to your potential member(s) to join your team.";
       } else if(this.currentGuide == 2) {
-          this.imageSrc = require('@/assets/help_guide_pics/Chose_a_subscription_plan.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Chose_a_subscription_plan.svg';
           this.contentTitle = 'Chose a subscription plan';
           this.contentGuidance = 'In MattrimonyAssist subscription is team based. Anyone can pay for subscription and the rest of the members use it for free.';
       } else if(this.currentGuide == 3) {
-          this.imageSrc = require('@/assets/help_guide_pics/Search_for_suitable_prospect.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Search_for_suitable_prospect.svg';
           this.contentTitle = ' Search for suitable prospect';
           this.contentGuidance = 'Here you search according to your search criteria to find prospect of your choice. ';
       } else if (this.currentGuide == 4) {
-          this.imageSrc = require('@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg';
           this.contentTitle = 'Shortlist and connect with prospect’s team';
           this.contentGuidance = 'From the search results, you can create your own shortlist of prospects. ';
       } else if(this.currentGuide == 5) {
-          this.imageSrc = require('@/assets/help_guide_pics/Chat_and_exchange_information_with_connected_team.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Chat_and_exchange_information_with_connected_team.svg';
           this.contentTitle = 'Use chat feature of MatrimonyAssist to communicate with prospect team and find out more about the prospect. ';
           this.contentGuidance = 'Chat and exchange information with connected team';  
       } else if(this.currentGuide == 6) {
-          this.imageSrc = require('@/assets/help_guide_pics/Evaluate_information_and_make_decision.svg');
+          this.imageSrc = '@/assets/help_guide_pics/Evaluate_information_and_make_decision.svg';
           this.contentTitle = 'Evaluate information and make decision';
           this.contentGuidance = 'Finally, when you are absolutely confident, only then make decision. ';
       }
