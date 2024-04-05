@@ -47,7 +47,7 @@
           :uniqueNames="['heightMin', 'heightMax']"
           size="default"
           :options="getHeights"
-         :placeholder="['Min Height', 'Max Height']"
+          :placeholder="['Min Height', 'Max Height']"
           :size="'large'"
           :width="'120'"
           :suffixIcon="true"
@@ -59,21 +59,17 @@
       <div class="my-4">
         <a-select
           id="country"
-          v-model="searchModel.country"
+          v-model:value="searchModel.country"
           show-search
           size="large"
           :placeholder="'Select a country'"
+          :options="countriesTV"
+          :fieldNames="{ label: 'name', value: 'id' }"
           option-filter-prop="children"
+          :filter-option="filterOption"
           style="width: 100%"
           notFoundContent="Country not found"
         >
-          <a-select-option
-            v-for="c in countriesTV"
-            :value="c.id"
-            :key="c.id"
-          >
-            {{ c.name }}
-          </a-select-option>
           <template #suffixIcon>
             <img src="@/assets/select-arrow-big.png" alt="icon" />
           </template>
@@ -84,11 +80,14 @@
       <div class="my-4">
         <a-select
           id="religion"
-          v-model="searchModel.religion"
+          :value="searchModel.religion"
           show-search
           size="large"
           :placeholder="'Select a religion'"
           option-filter-prop="children"
+          :options="religionTV"
+          :fieldNames="{ label: 'name', value: 'id' }"
+          :filter-option="filterOption"
           style="width: 100%"
           notFoundContent="Religion not found"
         >
@@ -239,6 +238,9 @@ export default {
     onAfterChangeSlider(value) {
       this.age = value;
     },
+    filterOption(input, option) {
+      return option.name.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+    }
   },
 };
 </script>
