@@ -2,11 +2,8 @@
 /** Date: 06-05-2021 */
 
 //Importing things
-import Vue from "vue";
 import axios from "axios";
-import VueAxios from "vue-axios";
 import JwtService from "./jwt.service";
-import router from '../router'
 
 // * So, we initiated a config so we can use it for now, but
 // * in future this config will take access from .env
@@ -27,15 +24,14 @@ const ApiService = {
   // * there we need to call this init to initialize this service
   // * So we can use this Axios instance from all over the app
   init() {
-    Vue.use(VueAxios, axios);
-    Vue.axios.defaults.baseURL = API_URL;
+    axios.defaults.baseURL = API_URL;
     this.setHeader();
   },
 
   // * After succesfull login we will set token to header
   // * with this function so we can use it in every requests
   setHeader() {
-    Vue.axios.defaults.headers.common[
+    axios.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${JwtService.getToken()}`; // using jwt service to get and set header
 
@@ -44,12 +40,12 @@ const ApiService = {
   // * we can also use this function to set token and
   // * manualy
   setParamHeader(token) {
-    Vue.axios.defaults.headers.common["x-access-token"] = `${token}`;
+    axios.defaults.headers.common["x-access-token"] = `${token}`;
   },
 
   // * this function for executing custom querry
   query(resource, params) {
-    return Vue.axios.get(resource, params).catch((error) => {
+    return axios.get(resource, params).catch((error) => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
@@ -60,14 +56,14 @@ const ApiService = {
   // * error, then we can work for it here
   get(resource, slug = "") {
     this.setHeader();
-    const getReq = Vue.axios.get(`${resource}`);
+    const getReq = axios.get(`${resource}`);
     return getReq;
   },
 
   // * same as get
   post(resource, params) {
     this.setHeader();
-    return Vue.axios.post(`${resource}`, params);
+    return axios.post(`${resource}`, params);
   },
 
   // * Used only for upload image
@@ -77,7 +73,7 @@ const ApiService = {
     for (const [key, value] of Object.entries(params)) {
       data.append(key,value)
     }
-    return Vue.axios.post(`${resource}`, data, config);
+    return axios.post(`${resource}`, data, config);
   },
 
   // ! Services bellow this line is not important for now
@@ -86,19 +82,19 @@ const ApiService = {
   // * same as get
   update(resource, slug, params) {
     this.setHeader();
-    return Vue.axios.put(`${resource}/${slug}`, params);
+    return axios.put(`${resource}/${slug}`, params);
   },
 
   // * same as get
   put(resource, params) {
     this.setHeader();
-    return Vue.axios.put(`${resource}`, params);
+    return axios.put(`${resource}`, params);
   },
 
   // * same as get
   patch(resource, params) {
     this.setHeader();
-    return Vue.axios.patch(`${resource}`, params);
+    return axios.patch(`${resource}`, params);
   },
 
   // * same as get
@@ -106,7 +102,7 @@ const ApiService = {
   //! axios delete is a bit different, please read documentation for details
   delete(resource, data) {
     // this.setHeader();
-    return Vue.axios.delete(resource, { data })
+    return axios.delete(resource, { data })
   },
   // ! here ends the extra request method part
 
