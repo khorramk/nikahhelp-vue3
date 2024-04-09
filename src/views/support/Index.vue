@@ -18,7 +18,7 @@
             <v-tabs-items v-model="tab">
               <v-tab-item value="tab-2">
                 <div class="chat-area px-4" v-if="!ticketSubmitted">
-	                <a-form-model-item label="Type of issue">
+	                <a-form-item label="Type of issue">
 		                <a-select style="width: 100%; margin-bottom: 0.5rem;"
 		                          required
 		                          v-model="selectedIssue">
@@ -50,8 +50,8 @@
 				                Search
 			                </a-select-option>
 		                </a-select>
-									</a-form-model-item>
-	                <a-form-model-item label="Your message">
+									</a-form-item>
+	                <a-form-item label="Your message">
 		                <v-textarea v-model="issue"
                                 name="input-7-1"
                               filled
@@ -59,7 +59,7 @@
                               auto-grow
 		                            required
 		                            :auto-size="{ 'minRow': 800, }" style="height: 10rem; margin-bottom: 0.5rem;"></v-textarea>
-	                </a-form-model-item>
+	                </a-form-item>
 	                <v-btn type="primary" @click="ticketSumbission">Submit Ticket</v-btn>
                 </div>
                 <div class="chat-area px-4 " v-else>

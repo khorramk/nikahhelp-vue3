@@ -20,7 +20,7 @@
         key="1"
         header="1.1 Preferences about your prospective companion"
       >
-        <a-form-model
+        <a-form
           v-if="preferenceData && activeKey == 1"
           ref="preferenceFormOne"
           :model="preferenceData"
@@ -432,7 +432,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_partner_religion_id"
                 prop="pre_partner_religion_id"
               >
@@ -454,7 +454,7 @@
                     <a-icon type="down" />
                   </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
               <p>
@@ -497,7 +497,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="pre_ethnicities" prop="pre_ethnicities">
+              <a-form-item ref="pre_ethnicities" prop="pre_ethnicities">
                 <v-select
                   :clearable="false"
                   :multiple="true"
@@ -511,7 +511,7 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
               <p>
@@ -557,7 +557,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="preferred_nationality"
                 prop="preferred_nationality"
               >
@@ -579,7 +579,7 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
               <p>
@@ -623,7 +623,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_study_level_id"
                 prop="pre_study_level_id"
               >
@@ -639,7 +639,7 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
               <p>
@@ -682,7 +682,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_employment_status"
                 prop="pre_employment_status"
               >
@@ -702,7 +702,7 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
               <p>
@@ -748,7 +748,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="pre_occupation" prop="pre_occupation">
+              <a-form-item ref="pre_occupation" prop="pre_occupation">
                 <v-select
                   :clearable="false"
                   :multiple="true"
@@ -766,7 +766,7 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
               <p>
@@ -881,7 +881,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_other_preference"
                 prop="pre_other_preference"
               >
@@ -899,7 +899,7 @@
                   placeholder="maximum 1800 characters"
                   class="w-full form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   preferenceData.pre_other_preference
@@ -950,7 +950,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="pre_description" prop="pre_description">
+              <a-form-item ref="pre_description" prop="pre_description">
                 <a-textarea
                   @blur="onValueChange($event, 'pre_description')"
                   :rows="3"
@@ -964,7 +964,7 @@
                   placeholder="maximum 2000 charaters"
                   class="w-full form-right-input"
                 />
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   preferenceData.pre_description
@@ -1004,7 +1004,7 @@
               </div>
             </div>
           </div>
-        </a-form-model>
+        </a-form>
 
         <a-button
           shape="round"
@@ -1023,7 +1023,7 @@
         header="1.2 How would someone who knows you very well rate the following aspects on your behalf in searching for a compatibale companion?"
         style="margin-top: 5px"
       >
-        <a-form-model
+        <a-form
           v-if="preferenceData && activeKey == 2"
           ref="preferenceFormTwo"
           :model="preferenceData"
@@ -1042,7 +1042,7 @@
             </div>
 
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_strength_of_character_rate"
                 prop="pre_strength_of_character_rate"
                 class="text-center"
@@ -1054,7 +1054,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
 
             <div class="col-12 mobile-margin mobile-help">
@@ -1103,7 +1103,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_look_and_appearance_rate"
                 prop="pre_look_and_appearance_rate"
                 class="text-center"
@@ -1115,7 +1115,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1161,7 +1161,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_religiosity_or_faith_rate"
                 prop="pre_religiosity_or_faith_rate"
                 class="text-center"
@@ -1173,7 +1173,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1218,7 +1218,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_manners_socialskill_ethics_rate"
                 prop="pre_manners_socialskill_ethics_rate"
                 class="text-center"
@@ -1232,7 +1232,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1277,7 +1277,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_emotional_maturity_rate"
                 prop="pre_emotional_maturity_rate"
                 class="text-center"
@@ -1289,7 +1289,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1334,7 +1334,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_good_listener_rate"
                 prop="pre_good_listener_rate"
                 class="text-center"
@@ -1346,7 +1346,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1391,7 +1391,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_good_talker_rate"
                 prop="pre_good_talker_rate"
                 class="text-center"
@@ -1403,7 +1403,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1448,7 +1448,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_wiling_to_learn_rate"
                 prop="pre_wiling_to_learn_rate"
                 class="text-center"
@@ -1460,7 +1460,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1505,7 +1505,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_family_social_status_rate"
                 prop="pre_family_social_status_rate"
                 class="text-center"
@@ -1517,7 +1517,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1562,7 +1562,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_employment_wealth_rate"
                 prop="pre_employment_wealth_rate"
                 class="text-center"
@@ -1574,7 +1574,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1619,7 +1619,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6">
-              <a-form-model-item
+              <a-form-item
                 ref="pre_education_rate"
                 prop="pre_education_rate"
                 class="text-center"
@@ -1631,7 +1631,7 @@
                   :tooltips="desc"
                   class="form-right-content"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help">
               <p>
@@ -1675,7 +1675,7 @@
               Save & Continue
             </a-button>
           </div>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
     </a-collapse>
   </div>
@@ -1686,7 +1686,7 @@ import vSelect from "vue-select";
 import NeedHelp from "@/components/candidate-registration/NeedHelp.vue";
 import ethnicities from "@/common/ethnicities.js";
 import { ARR, RULES, RULES_RATE } from "./models/candidate";
-import SelectGroup from "@/components/ui/selects/SelectGroup";
+import SelectGroup from "@/components/ui/selects/SelectGroup.vue";
 import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 import ApiService from "@/services/api.service";
 export default {

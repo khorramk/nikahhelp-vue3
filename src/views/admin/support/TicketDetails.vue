@@ -100,14 +100,14 @@
           </span>
 
           <p class="text-black-50 text-center mt-3">Type your reply here</p>
-          <a-form-model-item>
+          <a-form-item>
             <textarea 
                 v-model="message" 
                 row="5"
                 placeholder="Write here.." 
                 class="text-black-50 border rounded w-100 p-2 text-area">
             </textarea>
-          </a-form-model-item>
+          </a-form-item>
       </div>
 
       <template slot="footer">

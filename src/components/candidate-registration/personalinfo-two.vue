@@ -18,7 +18,7 @@
       <!-- <pre>{{ $store.state.candidateInfo.personalInformation }}</pre> -->
       <!-- 1. Essential Information -->
       <a-collapse-panel key="1" header="2.1 Essential Information">
-        <a-form-model
+        <a-form
           ref="personalInfoFormOne"
           v-if="
             personalInformation &&
@@ -41,7 +41,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'CandidateRegistration'}">
-              <a-form-model-item ref="per_gender" prop="per_gender">
+              <a-form-item ref="per_gender" prop="per_gender">
                 <v-select
                   :disabled="activeRouteName !== 'CandidateRegistration'"
                   :clearable="true"
@@ -59,7 +59,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -103,7 +103,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'CandidateRegistration'}">
-              <a-form-model-item ref="dob" prop="dob" class="dob-select">
+              <a-form-item ref="dob" prop="dob" class="dob-select">
                 <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
@@ -117,7 +117,7 @@
                   :maxYear="new Date().getFullYear() - 18"
                   :minYear="1940"
                 ></DropdownDatePicker>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -161,7 +161,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_height" prop="per_height">
+              <a-form-item ref="per_height" prop="per_height">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -176,7 +176,7 @@
                   <template v-slot:option="option">
                     <div v-html="option.label"></div> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -219,7 +219,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_religion_id" prop="per_religion_id">
+              <a-form-item ref="per_religion_id" prop="per_religion_id">
                 <v-select
                   :calculate-position="withPopper"
                   append-to-body
@@ -235,7 +235,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -278,7 +278,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_education_level_id"
                 prop="per_education_level_id"
               >
@@ -297,7 +297,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -341,7 +341,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_employment_status"
                 prop="per_employment_status"
               >
@@ -360,7 +360,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -406,7 +406,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_occupation" prop="per_occupation">
+              <a-form-item ref="per_occupation" prop="per_occupation">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -420,7 +420,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -464,7 +464,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
 
       <!-- 2. General Information -->
@@ -473,7 +473,7 @@
         header="2.2 General Information"
         style="margin-top: 5px"
       >
-        <a-form-model
+        <a-form
           ref="personalInfoFormTwo"
           v-if="
             personalInformation && personalInformation.general && activeKey == 2
@@ -494,7 +494,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_ethnicity" prop="per_ethnicity">
+              <a-form-item ref="per_ethnicity" prop="per_ethnicity">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -532,7 +532,7 @@
                     {{ ethnicity }}
                   </a-select-option>
                 </a-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -576,7 +576,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_mother_tongue"
                 prop="per_mother_tongue"
               >
@@ -592,7 +592,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -636,7 +636,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_nationality" prop="per_nationality">
+              <a-form-item ref="per_nationality" prop="per_nationality">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -650,7 +650,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -694,7 +694,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_country_of_birth"
                 prop="per_country_of_birth"
               >
@@ -713,7 +713,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -758,7 +758,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_health_condition"
                 prop="per_health_condition"
               >
@@ -772,7 +772,7 @@
                   :maxLength="200"
                   v-model="personalInformation.general.per_health_condition"
                 ></a-textarea>
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   personalInformation.general.per_health_condition
@@ -822,7 +822,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
 
       <!-- 3. Contact Details -->
@@ -831,7 +831,7 @@
         header="2.3 Contact Details"
         style="margin-top: 5px"
       >
-        <a-form-model
+        <a-form
           ref="personalInfoFormThree"
           v-if="
             personalInformation && personalInformation.contact && activeKey == 3
@@ -857,7 +857,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <div class="row">
                 <div class="col-12 col-md-12">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_current_residence_country"
                     prop="per_current_residence_country"
                   >
@@ -904,10 +904,10 @@
                         {{ item.name }}
                       </a-select-option>
                     </a-select> 
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
                 <div class="col-12 col-md-6 mobile-margin">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_current_residence_city"
                     prop="per_current_residence_city"
                   >
@@ -957,7 +957,7 @@
                         >{{ city.name }}</a-select-option
                       >
                     </a-select> 
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
 
               </div>
@@ -1010,7 +1010,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="address_1" prop="address_1">
+              <a-form-item ref="address_1" prop="address_1">
                 <a-input
                   @blur="onValueChange($event, 'contact', 'address_1')"
                   id="address_1"
@@ -1018,7 +1018,7 @@
                   v-model="personalInformation.contact.address_1"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
-              </a-form-model-item>
+              </a-form-item>
 
               <!-- <span style="display: flex; justify-content: flex-end"
                 >{{
@@ -1063,7 +1063,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="address_2" prop="address_2">
+              <a-form-item ref="address_2" prop="address_2">
                 <a-input
                   @blur="onValueChange($event, 'contact', 'address_2')"
                   id="address_2"
@@ -1072,7 +1072,7 @@
                   v-model="personalInformation.contact.address_2"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
-              </a-form-model-item>
+              </a-form-item>
               <!-- <span style="display: flex; justify-content: flex-end"
                 >{{
                   personalInformation.contact.per_permanent_address
@@ -1117,7 +1117,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_city"
                 prop="per_permanent_city"
               >
@@ -1129,7 +1129,7 @@
                   v-model="personalInformation.contact.per_permanent_city"
                   placeholder="City"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1168,7 +1168,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_post_code"
                 prop="per_permanent_post_code"
               >
@@ -1197,7 +1197,7 @@
                   placeholder="Post Code"
                   v-model="personalInformation.contact.per_permanent_post_code"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1242,7 +1242,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <div class="row">
                 <div class="col-12 col-md-12">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_permanent_country"
                     prop="per_permanent_country"
                   >
@@ -1262,7 +1262,7 @@
                       <template #open-indicator>
                         <a-icon type="down" /> </template>
                     </v-select>
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
               </div>
             </div>
@@ -1308,7 +1308,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-               <a-form-model-item
+               <a-form-item
                 ref="mobile_number"
                 prop="mobile_number"
               >
@@ -1326,7 +1326,7 @@
               <span class="error-number" v-if="!isValidNumber"
                 >Please write a valid mobile number</span
               >
-               </a-form-model-item>
+               </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1368,7 +1368,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_email" prop="per_email">
+              <a-form-item ref="per_email" prop="per_email">
                 <a-input
                   @blur="onValueChange($event, 'contact', 'per_email')"
                   id="per_email"
@@ -1377,7 +1377,7 @@
                   placeholder="Sample email"
                   :disabled="true"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1417,7 +1417,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
 
       <!-- 4. More About You -->
@@ -1426,7 +1426,7 @@
         header="2.4 More About You"
         style="margin-top: 5px"
       >
-        <a-form-model
+        <a-form
           ref="personalInfoFormFour"
           v-if="
             personalInformation &&
@@ -1449,7 +1449,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_marital_status"
                 prop="per_marital_status"
               >
@@ -1488,7 +1488,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1532,7 +1532,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_currently_living_with"
                 prop="per_currently_living_with"
               >
@@ -1574,7 +1574,7 @@
                   >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1619,7 +1619,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_willing_to_relocate"
                 prop="per_willing_to_relocate"
               >
@@ -1654,7 +1654,7 @@
                   >
                     <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1698,7 +1698,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_smoker" prop="per_smoker">
+              <a-form-item ref="per_smoker" prop="per_smoker">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -1720,7 +1720,7 @@
                   >
                     <template #open-indicator> <a-icon type="down" /> </template>
                   </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1766,7 +1766,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_language_speak"
                 prop="per_language_speak"
               >
@@ -1790,7 +1790,7 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1837,7 +1837,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_hobbies_interests"
                 prop="per_hobbies_interests"
               >
@@ -1861,7 +1861,7 @@
                     <a-icon type="down" />
                   </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -1907,7 +1907,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_things_enjoy" prop="per_things_enjoy">
+              <a-form-item ref="per_things_enjoy" prop="per_things_enjoy">
                 <v-select
                   id="per_things_enjoy"
                   :clearable="true"
@@ -1924,7 +1924,7 @@
                     <a-icon type="down" />
                   </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -1971,7 +1971,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_food_cuisine_like"
                 prop="per_food_cuisine_like"
               >
@@ -1995,7 +1995,7 @@
                     <a-icon type="down" />
                   </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -2041,7 +2041,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_thankfull_for"
                 prop="per_thankfull_for"
               >
@@ -2075,7 +2075,7 @@
                     </div>
                   </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -2120,7 +2120,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_improve_myself"
                 prop="per_improve_myself"
               >
@@ -2151,7 +2151,7 @@
                     </div>
                   </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -2194,7 +2194,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_about" prop="per_about">
+              <a-form-item ref="per_about" prop="per_about">
                 <a-textarea
                   @blur="onValueChange($event, 'more_about', 'per_about')"
                   id="per_about"
@@ -2203,7 +2203,7 @@
                   :maxLength="2000"
                   v-model="personalInformation.more_about.per_about"
                 />
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   personalInformation.more_about.per_about
@@ -2256,7 +2256,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_additional_info_text"
                 prop="per_additional_info_text"
               >
@@ -2276,7 +2276,7 @@
                     personalInformation.more_about.per_additional_info_text
                   "
                 />
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   personalInformation.more_about.per_additional_info_text
@@ -2358,7 +2358,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
     </a-collapse>
   </div>

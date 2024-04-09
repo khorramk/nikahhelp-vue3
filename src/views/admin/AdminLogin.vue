@@ -10,7 +10,7 @@
     </div>
 
     <div class="signin-inner login-body-container">
-      <a-form-model
+      <a-form
         ref="signinForm"
         :model="signinModel"
         :rules="rules"
@@ -29,7 +29,7 @@
         <div v-else>
           <div class="">
             <h4 class="fs-16 text-black-50">Type your email & password</h4>
-            <a-form-model-item ref="email" prop="email">
+            <a-form-item ref="email" prop="email">
               <a-input
                 type="email"
                 id="email"
@@ -37,11 +37,11 @@
                 placeholder="Enter email"
                 class="fs-16"
               />
-            </a-form-model-item>
+            </a-form-item>
           </div>
 
           <div class="">
-            <a-form-model-item ref="password" prop="password">
+            <a-form-item ref="password" prop="password">
               <a-input-password
                 type="password"
                 class="form-control fs-16"
@@ -50,7 +50,7 @@
                 placeholder="Password"
                 @keyup.enter="entered()"
               />
-            </a-form-model-item>
+            </a-form-item>
           </div>
           <button
             type="button"
@@ -67,7 +67,7 @@
             </router-link>
           </p>
         </div>
-      </a-form-model>
+      </a-form>
 
       <div class="join-now pb-4">
         <p class="flex-center-center mt-3 text-white bottom-link-text">
