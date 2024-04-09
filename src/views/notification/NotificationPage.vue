@@ -120,7 +120,7 @@ export default {
     },
   },
   mounted() {
-    this.sockets.subscribe("receive_notification", function (res) {
+    this.$socket.on("receive_notification", function (res) {
       this.notifications.unshift(res);
     });
   },

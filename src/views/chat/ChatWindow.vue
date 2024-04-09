@@ -330,16 +330,16 @@
 </template>
 
 <script>
-import ChatListItem from '@/components/notification/ChatListItem';
+import ChatListItem from '@/components/notification/ChatListItem.vue';
 import ApiService from '@/services/api.service';
 import {map, pick} from 'lodash';
 import {format} from 'timeago.js'
 import JwtService from "@/services/jwt.service";
 import {openModalRoute} from "@/plugins/modal/modal.mixin";
-import ConnectedTeamChat from "../../components/chat/ConnectedTeamChat";
-import PrivateRequestChat from "../../components/chat/PrivateRequestChat";
+import ConnectedTeamChat from "../../components/chat/ConnectedTeamChat.vue";
+import PrivateRequestChat from "../../components/chat/PrivateRequestChat.vue";
 import Notification from "@/common/notification.js";
-import TeamOffRedirection from "../../components/redirection/TeamOffRedirection";
+import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
 import EmojiPicker from 'vue-emoji-picker'
 
 const messageKeys = ['id', 'user_id', 'chat_id', 'team_id', 'from_team_id', 'to_team_id', 'private_receiver_id', 'private_team_chat_id', 'body', 'seen', 'created_at'];
@@ -638,13 +638,13 @@ export default {
     if (loggedUser) {
       this.$socket.emit('ping', {user_id: loggedUser.id});
 
-      this.sockets.subscribe('ping_success', function (res) {
+      this.$socket.on('ping_success', function (res) {
         if (res && res.online_users) {
           this.online_users = res.online_users;
         }
       });
 
-      this.sockets.subscribe('receive_notification', function (res) {
+      this.$socket.on('receive_notification', function (res) {
         if (res && res.type) {
           this.loadPageData();
         }
@@ -652,7 +652,7 @@ export default {
 
 
 
-      this.sockets.subscribe('lis_typing', function (res) {
+      this.$socket.on('lis_typing', function (res) {
         if(res.team_id) {
           if(this.chatHistory.length > 0) {
             this.chatHistory[0].typing_status = res.status;

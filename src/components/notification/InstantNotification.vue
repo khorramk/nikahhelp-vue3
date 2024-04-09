@@ -36,7 +36,7 @@ export default {
   },
   mounted() {
     const self = this;
-    self.sockets.subscribe('receive_notification', function (res) {
+    self.$socket.on('receive_notification', function (res) {
       self.notifications.push(res);
       self.$store.state.notification.notifications.unshift(res);
       self.$store.state.notification.instantNotifications.unshift(res);
