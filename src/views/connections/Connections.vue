@@ -43,7 +43,7 @@
 <!--              </div>-->
 
               <div 
-                v-if="$vuetify.breakpoint.name === 'xs'" 
+                v-if="getDisplayName === 'xs'" 
                 class="w-100 text-center connection-filter-button"
                 @click="showVTabs = !showVTabs">
                 Connection Filter
@@ -53,9 +53,9 @@
                 color="indigo accent-4" 
                 active-class="active-v-tab" 
                 class="w-full d-flex justify-content-between support-tab"
-                :vertical="$vuetify.breakpoint.name === 'xs'" 
-                :grow="$vuetify.breakpoint.name === 'xs'"
-                v-if="$vuetify.breakpoint.name !== 'xs'"
+                :vertical="getDisplayName === 'xs'" 
+                :grow="getDisplayName === 'xs'"
+                v-if="getDisplayName !== 'xs'"
               >
                 <v-tab href="#tab-1" @click="tab = 'tab-1', connection_type_choosed = 'all'" class="font-weight-bold">All ({{ connectionReports.result.length }})</v-tab>
                 <v-tab href="#tab-2" @click="tab = 'tab-2', connection_type_choosed = 'connected'" class="font-weight-bold">Connected ({{connectionReports.connected_teams }}) </v-tab>
@@ -69,8 +69,8 @@
                   color="indigo accent-4" 
                   active-class="active-v-tab" 
                   class="w-full2 d-flex justify-content-between support-tab ml-sm-3 mt-2 mobile-v-tabs"
-                  :vertical="$vuetify.breakpoint.name === 'xs'" 
-                  :grow="$vuetify.breakpoint.name === 'xs'"
+                  :vertical="getDisplayName === 'xs'" 
+                  :grow="getDisplayName === 'xs'"
                   v-model="tab"
                   v-if="showVTabs"
                 >
@@ -572,10 +572,10 @@
 import Candidate from "@/components/connections/Candidate.vue";
 import JwtService from "@/services/jwt.service";
 import { dateFromDateTime, dateFromTimeStamp } from "@/common/helpers.js";
-import CandidateGridView from "../../components/connections/CandidateGridView";
+import CandidateGridView from "../../components/connections/CandidateGridView.vue";
 import Notification from "@/common/notification.js";
 import { openModalRoute } from "@/plugins/modal/modal.mixin";
-import TeamOffRedirection from "../../components/redirection/TeamOffRedirection";
+import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
 // import ApiService from "../../services/api.service";
 export default {
   name: "Connections",
@@ -640,7 +640,7 @@ export default {
         return this.connectionReports.result;
       }
       return [];
-    }
+    },
     // connectionStatus() {
     // 	return this.connectionOverview.connection_overview.connection_status;
     // },
@@ -678,6 +678,9 @@ export default {
     // 	return this.connectionOverview.profile_team_overview.team_created_by
     // 		.full_name;
     // },
+    getDisplayName() {
+      return this.$vuetify.display.name;
+    }
   },
   created() {
     this.getActiveTeamId();

@@ -8,18 +8,18 @@
       <div class="shortlist-content-wrapper">
         <div class="main-content-1">
           <div 
-            v-if="$vuetify.breakpoint.name === 'xs'" 
+            v-if="getDisplayName === 'xs'" 
             class="w-100 text-center connection-filter-button"
             @click="showVTabs = !showVTabs">
             Connection Filter
           </div>
           <v-tabs 
-            v-if="$vuetify.breakpoint.name !== 'xs'" 
+            v-if="getDisplayName !== 'xs'" 
             color="indigo accent-4" 
             active-class="active-v-tab" 
             class="w-full d-flex justify-content-between support-tab" 
-            :vertical="$vuetify.breakpoint.name === 'xs'" 
-            :grow="$vuetify.breakpoint.name === 'xs'"
+            :vertical="getDisplayName === 'xs'" 
+            :grow="getDisplayName === 'xs'"
           >
             <v-tab href="#tab-1" @click="tab = 'tab-1'" class="font-weight-bold">All ({{ fullData.length }})</v-tab>
             <v-tab href="#tab-2" @click="tab = 'tab-2'" class="font-weight-bold">Shortlisted Candidate ({{ shortlistedData.length }})</v-tab>
@@ -31,8 +31,8 @@
               color="indigo accent-4" 
               active-class="active-v-tab" 
               class="w-full2 d-flex justify-content-between support-tab mt-2 mobile-v-tabs" 
-              :vertical="$vuetify.breakpoint.name === 'xs'" 
-              :grow="$vuetify.breakpoint.name === 'xs'"
+              :vertical="getDisplayName === 'xs'" 
+              :grow="getDisplayName === 'xs'"
               v-if="showVTabs"
               v-model="tab"
             >
@@ -374,14 +374,14 @@ import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
 import LoadingSpinner from "@/components/ui/LoadingSpinner.vue";
 import Footer from "@/components/dashboard/layout/Footer.vue";
 import SelectTeamModal from "@/components/team/Modals/SelectTeamModal.vue";
-import SelectTeamForTeamlist from "@/components/team/Modals/SelectTeamForTeamlist";
+import SelectTeamForTeamlist from "@/components/team/Modals/SelectTeamForTeamlist.vue";
 import JwtService from "@/services/jwt.service";
 import { openModalRoute } from "@/plugins/modal/modal.mixin";
 import Candidate from "@/components/shortlist/Candidate.vue";
-import CandidateGrid from "../../components/shortlist/CandidateGrid";
+import CandidateGrid from "../../components/shortlist/CandidateGrid.vue";
 import ApiService from '@/services/api.service';
-import TeamOffRedirection from "../../components/redirection/TeamOffRedirection";
-import Notification from '@/common/notification';
+import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
+import Notification from '@/common/notification.js';
 export default {
   name: "Shortlist",
   components: {
@@ -481,6 +481,9 @@ export default {
         return null;
       }
     },
+    getDisplayName() {
+      return this.$vuetify.display.name;
+    }
   },
   methods: {
     socketNotification(payload) {
