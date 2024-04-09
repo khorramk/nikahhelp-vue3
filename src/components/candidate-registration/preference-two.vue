@@ -185,8 +185,8 @@
                     >
                       <span slot="no-options">Select Country</span>
                       <template #open-indicator>
-                        <a-icon type="down" /> </template
-                    ></v-select>
+                        <a-icon type="down" /> </template>
+                    </v-select>
                   </div>
 <!--                  <div class="col-md-6 mobile-margin">-->
 <!--                    <v-select-->
@@ -384,8 +384,8 @@
                       :options="candidateDetails.countries"
                       @input="onChangeCountry($event, 'listOne', 'disAllowed')"
                       ><template #open-indicator>
-                        <a-icon type="down" /> </template
-                    ></v-select>
+                        <a-icon type="down" /> </template>
+                      </v-select>
                   </div>
                 </div>
               </div>
@@ -509,8 +509,8 @@
                   label="name"
                   :options="[`Don't Mind`, ...ethnicityList]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  <template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -577,8 +577,8 @@
                     ...candidateDetails.countries,
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  <template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -637,8 +637,8 @@
                   label="name"
                   :options="[...candidateDetails.studylevels]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  <template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -700,8 +700,8 @@
                     ...employment_Statuses,
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  <template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -764,8 +764,8 @@
                     ...candidateDetails.occupations,
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  <template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
