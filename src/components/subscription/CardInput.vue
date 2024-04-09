@@ -73,7 +73,7 @@
 </template>
 
 <script>
-let stripe = Stripe(`${process.env.VUE_APP_STRIPE_PUBLIC_KEY}`);
+let stripe = Stripe(`${import.meta.env.VUE_APP_STRIPE_PUBLIC_KEY}`);
 let elements = stripe.elements();
 
 const style = {
