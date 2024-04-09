@@ -328,7 +328,7 @@
       </h3>
 
       <div v-if="showMemberForm && !errorMessage" class="signup-inner">
-        <a-form-model
+        <a-form
           ref="signupFormTwo"
           :model="signupModel"
           :rules="rules"
@@ -337,43 +337,43 @@
           <div>
             <!-- <h4 class="fs-16 text-white fw-400">Type your name</h4> -->
             <div class="mb-3">
-              <a-form-model-item ref="first_name" prop="first_name">
+              <a-form-item ref="first_name" name="first_name">
                 <a-input
                   type="text"
                   class="form-control fs-16"
                   id="first_name"
                   :maxLength="20"
                   @change="generateScreenName(); trimTheFirstName();"
-                  v-model="signupModel.first_name"
+                  v-model:value="signupModel.first_name"
                   placeholder="First Name"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="mb-3">
-              <a-form-model-item ref="last_name" prop="last_name">
+              <a-form-item ref="last_name" name="last_name">
                 <a-input
                   type="text"
                   class="form-control fs-16"
                   @change="generateScreenName(); trimTheLastName();"
                   id="lastName"
                   :maxLength="20"
-                  v-model="signupModel.last_name"
+                  v-model:value="signupModel.last_name"
                   placeholder="Last Name"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="mb-3">
-              <a-form-model-item ref="screen_name" prop="screen_name">
+              <a-form-item ref="screen_name" name="screen_name">
                 <a-input
                   type="text"
                   class="form-control fs-16"
                   id="screen_name"
-                  v-model="signupModel.screen_name"
+                  v-model:value="signupModel.screen_name"
                   placeholder="* Screen Name"
                   :maxLength="15"
                   @change="trimTheScreenName"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
 
             <a-tooltip placement="right" class="fs-12 mb-2">
@@ -397,7 +397,7 @@
               Continue
             </button>
           </div>
-        </a-form-model>
+        </a-form>
         <p class="flex-center-center mt-3 bottom-text">
           Already on <span class="logo-text ml-2"> MatrimonyAssist? </span>
 
@@ -419,47 +419,47 @@
         <!--        <a href="/" class="logo"-->
         <!--          ><img src="@/assets/logo.png" alt="logo" class="mat-logo"-->
         <!--        /></a>-->
-        <a-form-model
+        <a-form
           ref="signupFormOne"
           :model="signupModel"
-          :rules="rules"
+          :rules="rules2"
           class="form-signup"
         >
           <div>
             <!-- <h4 class="fs-16 text-white fw-400">Type your email & password</h4> -->
             <div class="mb-3">
-              <a-form-model-item ref="email" prop="email">
+              <a-form-item ref="email" name="email">
                 <a-input
                   type="email"
                   class="fs-16"
                   id="email"
-                  v-model="signupModel.email"
+                  v-model:value="signupModel.email"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="mb-3">
-              <a-form-model-item ref="password" prop="password">
+              <a-form-item ref="password" name="password">
                 <a-input-password
                   type="password"
                   id="password"
-                  v-model="signupModel.password"
+                  v-model:value="signupModel.password"
                   placeholder="Password"
                   class="fs-16"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="mb-3">
-              <a-form-model-item ref="confirmPassword" prop="confirmPassword">
+              <a-form-item ref="confirmPassword" name="confirmPassword">
                 <a-input-password
                   type="password"
                   id="confirmPassword"
-                  v-model="signupModel.confirmPassword"
+                  v-model:value="signupModel.confirmPassword"
                   placeholder="Confirm password"
                   class="fs-16"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <button
               @click="backToForm"
@@ -495,7 +495,7 @@
               >
             </span>
           </div>
-        </a-form-model>
+        </a-form>
         <p class="flex-center-center mt-3 bottom-text">
           Already on <span class="logo-text"> MatrimonyAssist? </span>
 
@@ -589,28 +589,27 @@ export default {
     ButtonComponent
   },
   data() {
-    let validatePass = (rule, value, callback) => {
+    let validatePass = async (_rule, value) => {
       var regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
       if (value === "") {
-        callback(new Error("Enter a password"));
+        return Promise.reject("Enter a password");
       }
       if (!regex.test(value)) {
-        callback(
-          new Error(
-            "Your password must contain at least 8 characters including a symbol, upper and lower case letters and a number."
-          )
+        return Promise.reject(
+          "Your password must contain at least 8 characters including a symbol, upper and lower case letters and a number."
         );
       } else {
-        callback();
+        return Promise.resolve();
       }
     };
-    let validatePass2 = (rule, value, callback) => {
+    let validatePass2 = async (_rule, value) => {
+      console.log("value valipass2", value);
       if (value === "") {
-        callback(new Error("Enter password again"));
+        return Promise.reject("Enter password again");
       } else if (value !== this.signupModel.password) {
-        callback(new Error("Passwords didn't match!"));
+        return Promise.reject("Passwords didn't match!");
       } else {
-        callback();
+        return Promise.resolve();
       }
     };
     return {
@@ -661,17 +660,6 @@ export default {
       isConfirm: false,
       showSignUpPage: false,
       rules: {
-        email: [
-          {
-            required: true,
-            message: "Choose a email address",
-            trigger: "change",
-          },
-          {
-            type: "email",
-            message: "Please input a valid email",
-          },
-        ],
         first_name: [
           { required: true, message: "Enter first name", trigger: "change" },
           {
@@ -707,11 +695,23 @@ export default {
             message: "Use 8-15 characters for your screen name",
             trigger: "blur",
           },
-        ],
-
-        password: [{ validator: validatePass, trigger: "change" }],
-        confirmPassword: [{ validator: validatePass2, trigger: "blur" }, ,],
+        ]
       },
+      rules2: {
+        email: [
+          {
+            required: true,
+            message: "Choose a email address",
+            trigger: "change",
+          },
+          {
+            type: "email",
+            message: "Please input a valid email",
+          },
+        ],
+        password: [{ validator: validatePass, trigger: "change" }],
+        confirmPassword: [{ validator: validatePass2, trigger: "blur" }],
+      }
     };
   },
   computed: {
@@ -750,7 +750,8 @@ export default {
       this.signupModel.last_name = this.signupModel.last_name.length > 0 ? this.signupModel.last_name[0] +  this.signupModel.last_name.substring(1).toLowerCase() : "";
     },
     handleSubmitSignUp() {
-      this.$refs.signupFormOne.validate((valid) => {
+      this.$refs.signupFormOne.validate()
+      .then((valid) => {
         if (valid) {
           const {
             email,
@@ -858,8 +859,9 @@ export default {
       localStorage.removeItem("token");
       this.isLoading = false;
     },
-    async handleSubmit() {
-      this.$refs.signupFormTwo.validate((valid) => {
+    handleSubmit() {
+      this.$refs.signupFormTwo.validate()
+      .then((valid) => {
         if (valid) {
           this.showMemberTypeForm = false;
           this.showSignupForm = true;
