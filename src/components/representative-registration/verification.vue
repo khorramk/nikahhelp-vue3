@@ -13,7 +13,7 @@
           <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
         </template>
         <a-collapse-panel key="1" header="1. Referee Information">
-          <a-form-model
+          <a-form
             v-if="verification && activeRouteName == 'RepresentativeRegistration'"
             ref="verification"
             :model="verification"
@@ -89,7 +89,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <div class="row">
                   <div class="col-12">
-                    <a-form-model-item ref="ver_country" prop="ver_country">
+                    <a-form-item ref="ver_country" prop="ver_country">
                       <v-select
                         :clearable="false"
                         class="style-chooser"
@@ -103,10 +103,10 @@
                         ><template #open-indicator>
                           <a-icon type="down" /> </template
                       ></v-select>
-                    </a-form-model-item>
+                    </a-form-item>
                   </div>
                    <div class="col-12 col-md-6">
-                    <a-form-model-item ref="ver_city" prop="ver_city">
+                    <a-form-item ref="ver_city" prop="ver_city">
                       <v-select
                         :clearable="false"
                         class="style-chooser"
@@ -121,7 +121,7 @@
                         ><template #open-indicator>
                           <a-icon type="down" /> </template
                       ></v-select>
-                    </a-form-model-item>
+                    </a-form-item>
                   </div> 
                 </div>
               </div> 
@@ -164,7 +164,7 @@
                 </div>
               </div>
               <div class="col-12 col-md-6 mobile-margin">
-                <a-form-model-item
+                <a-form-item
                   ref="ver_document_type"
                   prop="ver_document_type"
                 >
@@ -185,7 +185,7 @@
                     ><template #open-indicator>
                       <a-icon type="down" /> </template
                   ></v-select>
-                </a-form-model-item>
+                </a-form-item>
               </div>
               <div class="col-12 none-padding mobile-margin mobile-help">
                 <p>
@@ -411,7 +411,7 @@
               </div>
 
               <div class="col-12 col-md-6 mobile-margin">
-                <a-form-model-item
+                <a-form-item
                   ref="ver_recommender_title"
                   prop="ver_recommender_title"
                 >
@@ -423,11 +423,11 @@
                     required
                     @blur="onValueChange($event, 'ver_recommender_title')"
                   />
-                </a-form-model-item>
+                </a-form-item>
 
                 <div class="row">
                   <div class="col-6">
-                    <a-form-model-item
+                    <a-form-item
                       ref="ver_recommender_first_name"
                       prop="ver_recommender_first_name"
                     >
@@ -440,10 +440,10 @@
                           onValueChange($event, 'ver_recommender_first_name')
                         "
                       />
-                    </a-form-model-item>
+                    </a-form-item>
                   </div>
                   <div class="col-6">
-                    <a-form-model-item
+                    <a-form-item
                       ref="ver_recommender_last_name"
                       prop="ver_recommender_last_name"
                     >
@@ -456,11 +456,11 @@
                           onValueChange($event, 'ver_recommender_last_name')
                         "
                       />
-                    </a-form-model-item>
+                    </a-form-item>
                   </div>
                 </div>
 
-                <a-form-model-item
+                <a-form-item
                   ref="ver_recommender_occupation"
                   prop="ver_recommender_occupation"
                 >
@@ -478,9 +478,9 @@
                     ><template #open-indicator>
                       <a-icon type="down" /> </template
                   ></v-select>
-                </a-form-model-item>
+                </a-form-item>
 
-                <a-form-model-item
+                <a-form-item
                   class="mt-2"
                   ref="ver_recommender_address"
                   prop="ver_recommender_address"
@@ -492,8 +492,8 @@
                     v-model="verification.ver_recommender_address"
                     @blur="onValueChange($event, 'ver_recommender_address')"
                   />
-                </a-form-model-item>
-                <a-form-model-item>
+                </a-form-item>
+                <a-form-item>
                   <vue-tel-input
                     v-model="verification.ver_recommender_mobile_no"
                     @onInput="
@@ -508,8 +508,8 @@
                   ></vue-tel-input>
                   <span class="error-number" v-if="!isValidNumber"
                     >Please write a valid mobile number</span>
-                </a-form-model-item>
-                <a-form-model-item
+                </a-form-item>
+                <a-form-item
                   ref="ver_recommender_email"
                   prop="ver_recommender_email"
                 >
@@ -520,7 +520,7 @@
                     v-model="verification.ver_recommender_email"
                     @blur="onValueChange($event, 'ver_recommender_email')"
                   />
-                </a-form-model-item>
+                </a-form-item>
               </div>
               <div
                 class="col-12 col-md-6 none-padding mobile-margin mobile-help"
@@ -571,7 +571,7 @@
                 Save and continue
               </a-button>
             </div>
-          </a-form-model>
+          </a-form>
         </a-collapse-panel>
       </a-collapse>
 

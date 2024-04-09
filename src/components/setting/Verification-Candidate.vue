@@ -5,7 +5,7 @@
       <h3>Verification Information</h3>
       <!-- <p>Your Verification Information</p> -->
     </div>
-    <a-form-model v-if="verification" ref="verification" :model="verification" :rules="rules" class="form-ma">
+    <a-form v-if="verification" ref="verification" :model="verification" :rules="rules" class="form-ma">
       <div class="row">
         <div class="col-12 border-bottom pb-3">
           <div class="verification-header mt-2">
@@ -49,7 +49,7 @@
         <div class="col-12 col-md-6 mobile-margin">
           <div class="row">
             <div class="col-12">
-              <a-form-model-item ref="ver_country" prop="ver_country">
+              <a-form-item ref="ver_country" prop="ver_country">
                 <v-select :clearable="false" class="style-chooser" @input="onChangeCountry" id="ver_country"
                   placeholder="Country" v-model="verification.ver_country" label="name" :reduce="(option) => option.name"
                   :options="candidateDetails.countries"><template #open-indicator> <a-icon type="down" />
@@ -76,10 +76,10 @@
                           {{ _country.name }}
                         </a-select-option>
                       </a-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <!-- <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="ver_city_id" prop="ver_city_id">
+              <a-form-item ref="ver_city_id" prop="ver_city_id">
                 <v-select
                   :clearable="false"
                   class="style-chooser"
@@ -111,7 +111,7 @@
                           {{ _city.name }}
                         </a-select-option>
                       </a-select> 
-              </a-form-model-item>
+              </a-form-item>
             </div> -->
           </div>
         </div>
@@ -327,7 +327,7 @@
           Submit
         </a-button>
       </div>
-    </a-form-model>
+    </a-form>
   </div>
 </template>
 

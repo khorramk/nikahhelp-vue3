@@ -17,7 +17,7 @@
       </template>
       <!-- 1. Family Details  -->
       <a-collapse-panel key="1" header="3.1 Family Details">
-        <a-form-model
+        <a-form
           ref="familyInformationForm"
           v-if="familyInformation"
           :model="familyInformation"
@@ -36,7 +36,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="father_profession"
                 prop="father_profession"
               >
@@ -60,7 +60,7 @@
                   placeholder="write your father's profession"
                   v-model="familyInformation.father_profession"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="mother_profession"
                 prop="mother_profession"
                 ><a-input
@@ -127,7 +127,7 @@
                   :options="candidateDetails.occupations"
                   ><template #open-indicator> <a-icon type="down" /> </template
                 ></v-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -171,7 +171,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="siblings_desc" prop="siblings_desc">
+              <a-form-item ref="siblings_desc" prop="siblings_desc">
                 <a-textarea
                   @blur="onValueChange($event, 'siblings_desc')"
                   id="siblings_desc"
@@ -181,7 +181,7 @@
                   :maxLength="200"
                   v-model="familyInformation.siblings_desc"
                 ></a-textarea>
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   familyInformation.siblings_desc
@@ -234,7 +234,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="family_info" prop="family_info">
+              <a-form-item ref="family_info" prop="family_info">
                 <a-textarea
                   @blur="onValueChange($event, 'family_info')"
                   id="family_info"
@@ -243,7 +243,7 @@
                   :maxLength="200"
                   v-model="familyInformation.family_info"
                 ></a-textarea>
-              </a-form-model-item>
+              </a-form-item>
               <span style="display: flex; justify-content: flex-end"
                 >{{
                   familyInformation.family_info
@@ -295,7 +295,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="country_of_origin"
                 prop="country_of_origin"
               >
@@ -316,7 +316,7 @@
                   ]"
                   ><template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -357,7 +357,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
     </a-collapse>
   </div>

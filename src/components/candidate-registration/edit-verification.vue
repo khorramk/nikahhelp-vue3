@@ -15,7 +15,7 @@
           <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
         </template>
         <a-collapse-panel key="1" header="6. ID Verification Information">
-          <a-form-model v-if="verification" ref="verification" :model="verification" :rules="rules" class="form-ma">
+          <a-form v-if="verification" ref="verification" :model="verification" :rules="rules" class="form-ma">
             <div class="row">
               <div class="col-12 border-bottom pb-3">
                 <div class="verification-header my-2 text-black-70">
@@ -77,7 +77,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <div class="row">
                   <div class="col-12">
-                    <a-form-model-item ref="ver_country" prop="ver_country">
+                    <a-form-item ref="ver_country" prop="ver_country">
                       <v-select :clearable="false" class="style-chooser" @input="onChangeCountry($event, 'ver_country')"
                         id="ver_country" placeholder="please select" v-model="verification.ver_country" label="name"
                         :reduce="(option) => option.name" :options="candidateDetails.countries"><template #open-indicator>
@@ -104,11 +104,11 @@
                           {{ _country.name }}
                         </a-select-option>
                       </a-select> -->
-                    </a-form-model-item>
+                    </a-form-item>
                   </div>
 
                   <!-- <div class="col-12 col-md-6 mobile-margin">
-                    <a-form-model-item ref="ver_city_id" prop="ver_city_id">
+                    <a-form-item ref="ver_city_id" prop="ver_city_id">
                       <v-select
                         :clearable="false"
                         class="style-chooser"
@@ -143,7 +143,7 @@
                           {{ _city.name }}
                         </a-select-option>
                       </a-select>
-                    </a-form-model-item>
+                    </a-form-item>
                   </div> -->
                 </div>
               </div>
@@ -174,7 +174,7 @@
                 </div>
               </div>
               <div class="col-12 col-md-6 mobile-margin">
-                <a-form-model-item ref="ver_document_type" prop="ver_document_type">
+                <a-form-item ref="ver_document_type" prop="ver_document_type">
                   <v-select :clearable="false" class="style-chooser" id="ver_document_type" placeholder="Document type"
                     @input="onValueChange($event, 'ver_document_type')" :reduce="(option) => option.value"
                     v-model="verification.ver_document_type" label="name" :options="[
@@ -183,7 +183,7 @@
                       { name: 'Driving licence ', value: 'Driving licence ' },
                     ]"><template #open-indicator>
                       <a-icon type="down" /> </template></v-select>
-                </a-form-model-item>
+                </a-form-item>
               </div>
               <div class="col-12 none-padding mobile-margin mobile-help">
                 <p>
@@ -322,7 +322,7 @@
                 Save
               </a-button>
             </div>
-          </a-form-model>
+          </a-form>
         </a-collapse-panel>
       </a-collapse>
     </div>

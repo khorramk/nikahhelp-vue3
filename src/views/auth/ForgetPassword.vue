@@ -54,12 +54,12 @@
                 Please enter your registered email address below. You will receive a link
                 to reset your password. <Spinner v-if="isLoading" />
               </p>
-              <a-form-model
+              <a-form
                 ref="forgetPasswordForm"
                 :model="forgetPassword"
                 :rules="rules"
               >
-                <a-form-model-item ref="email" prop="email">
+                <a-form-item ref="email" prop="email">
                   <a-input
                     type="email"
                     class="form-control rounded-input fs-16"
@@ -67,8 +67,8 @@
                     v-model="forgetPassword.email"
                     placeholder="Enter email"
                   />
-                </a-form-model-item>
-              </a-form-model>
+                </a-form-item>
+              </a-form>
             </div>
             <p v-if="message" class="message">
               {{ message }}

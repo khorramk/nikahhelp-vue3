@@ -12,7 +12,7 @@
         <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
       </template>
       <a-collapse-panel key="1" header="1. Essential Information">
-        <a-form-model
+        <a-form
           ref="repPersonalInfoFormOne"
           :rules="rules"
           v-if="personalInformation && personalInformation.essential"
@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
-              <a-form-model-item ref="per_gender" prop="per_gender">
+              <a-form-item ref="per_gender" prop="per_gender">
                 <v-select
                 :disabled="activeRouteName !== 'RepresentativeRegistration'"
                   :clearable="false"
@@ -47,7 +47,7 @@
                   ]"
                   ><template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
-              <a-form-model-item ref="dob" prop="dob">
+              <a-form-item ref="dob" prop="dob">
                 <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
@@ -102,7 +102,7 @@
                   :maxYear="new Date().getFullYear() - 18"
                   :minYear="1940"
                 ></DropdownDatePicker>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -142,7 +142,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_occupation" prop="per_occupation">
+              <a-form-item ref="per_occupation" prop="per_occupation">
                 <v-select
                   :clearable="false"
                   :open="true"
@@ -156,7 +156,7 @@
                   :options="representativeDetails.occupations"
                   ><template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
 
               <!-- <a-input
                 class="w-100 mt-2"
@@ -205,14 +205,14 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
       <a-collapse-panel
         key="2"
         header="2. Contact Details"
         style="margin-top: 5px"
       >
-        <a-form-model
+        <a-form
           ref="repPersonalInfoFormTwo"
           v-if="personalInformation && personalInformation.personal"
           :model="personalInformation.personal"
@@ -237,7 +237,7 @@
 <!--            <div class="col-12 col-md-6 mobile-margin">-->
 <!--              <div class="row">-->
 <!--                <div class="col-12">-->
-<!--                  <a-form-model-item-->
+<!--                  <a-form-item-->
 <!--                    ref="per_current_residence_country"-->
 <!--                    prop="per_current_residence_country"-->
 <!--                  >-->
@@ -263,7 +263,7 @@
 <!--                      ><template #open-indicator>-->
 <!--                        <a-icon type="down" /> </template-->
 <!--                    ></v-select>-->
-<!--                  </a-form-model-item>-->
+<!--                  </a-form-item>-->
 <!--                </div>-->
 <!--              </div>-->
 <!--              <a-input-->
@@ -322,14 +322,14 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="address_1" prop="address_1">
+              <a-form-item ref="address_1" prop="address_1">
                 <a-input
                   @blur="onValueChange($event, 'address_1', 'contact')"
                   :maxLength="46"
                   v-model="personalInformation.personal.address_1"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -369,14 +369,14 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="address_2" prop="address_2">
+              <a-form-item ref="address_2" prop="address_2">
                 <a-input
                   @blur="onValueChange($event, 'address_2', 'contact')"
                   :maxLength="46"
                   v-model="personalInformation.personal.address_2"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -416,7 +416,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_city"
                 prop="per_permanent_city"
               >
@@ -426,7 +426,7 @@
                   placeholder="city"
                   maxLength="30"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -466,7 +466,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_post_code"
                 prop="per_permanent_post_code"
               >
@@ -478,7 +478,7 @@
                   placeholder="Post code, e.g. ME1 1BA"
                   v-model="personalInformation.personal.per_permanent_post_code"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -518,7 +518,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_country"
                 prop="per_permanent_country"
               >
@@ -535,7 +535,7 @@
                   :options="representativeDetails.countries"
                   ><template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -575,7 +575,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="mobile_number" prop="mobile_number">
+              <a-form-item ref="mobile_number" prop="mobile_number">
                 <vue-tel-input
                   v-model="personalInformation.personal.mobile_number"
                   @onInput="onNumberChange($event)"
@@ -588,7 +588,7 @@
                 <span class="error-number" v-if="!isValidNumber"
                   >Please write a valid mobile number</span
                 >
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
               <p>
@@ -667,7 +667,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
     </a-collapse>
   </div>

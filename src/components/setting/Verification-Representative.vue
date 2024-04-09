@@ -5,7 +5,7 @@
       <!-- <p>Your Verification Information</p> -->
     </div>
     <div class="verification-content">
-      <a-form-model v-if="verification" ref="verification" :model="verification" :rules="rules" class="form-ma">
+      <a-form v-if="verification" ref="verification" :model="verification" :rules="rules" class="form-ma">
         <div class="verification-header my-2 text-black-50">
           <!-- <p>
             To keep your account safe, we need to verify your identity. This is
@@ -43,20 +43,20 @@
           <div class="col-12 col-md-6 mobile-margin">
             <div class="row">
               <div class="col-12 col-md-6">
-                <a-form-model-item ref="ver_country" prop="ver_country">
+                <a-form-item ref="ver_country" prop="ver_country">
                   <v-select :clearable="false" class="style-chooser" @input="onChangeCountry" id="ver_country"
                     placeholder="Country" v-model="verification.ver_country" label="name" :reduce="(option) => option.id"
                     :options="representativeDetails.countries"><template #open-indicator>
                       <a-icon type="down" /> </template></v-select>
-                </a-form-model-item>
+                </a-form-item>
               </div>
               <div class="col-12 col-md-6">
-                <a-form-model-item ref="ver_city" prop="ver_city">
+                <a-form-item ref="ver_city" prop="ver_city">
                   <v-select :clearable="false" class="style-chooser" @input="onValueChange" id="ver_city"
                     placeholder="City" :reduce="(option) => option.name" v-model="verification.ver_city" label="name"
                     :options="verification.cities"><template #open-indicator>
                       <a-icon type="down" /> </template></v-select>
-                </a-form-model-item>
+                </a-form-item>
               </div>
             </div>
           </div>
@@ -212,42 +212,42 @@
             </div>
           </div>
           <div class="col-12 col-md-6 mobile-margin">
-            <a-form-model-item ref="ver_recommender_title" prop="ver_recommender_title">
+            <a-form-item ref="ver_recommender_title" prop="ver_recommender_title">
               <a-input v-model="verification.ver_recommender_title" class="w-100" placeholder="Title"
                 @blur="onValueChange" />
-            </a-form-model-item>
+            </a-form-item>
 
             <div class="row">
               <div class="col-6">
-                <a-form-model-item ref="ver_recommender_first_name" prop="ver_recommender_first_name">
+                <a-form-item ref="ver_recommender_first_name" prop="ver_recommender_first_name">
                   <a-input v-model="verification.ver_recommender_first_name" class="w-100 rounded-right"
                     placeholder="First Name" @blur="onValueChange" />
-                </a-form-model-item>
+                </a-form-item>
               </div>
               <div class="col-6">
-                <a-form-model-item ref="ver_recommender_last_name" prop="ver_recommender_last_name">
+                <a-form-item ref="ver_recommender_last_name" prop="ver_recommender_last_name">
                   <a-input v-model="verification.ver_recommender_last_name" class="w-100 rounded-left"
                     placeholder="Last Name" @blur="onValueChange" />
-                </a-form-model-item>
+                </a-form-item>
               </div>
             </div>
 
-            <a-form-model-item ref="ver_recommender_occupation" prop="ver_recommender_occupation">
+            <a-form-item ref="ver_recommender_occupation" prop="ver_recommender_occupation">
               <v-select :clearable="false" class="style-chooser" @input="onValueChange" id="ver_recommender_occupation"
                 placeholder="Occupation" v-model="verification.ver_recommender_occupation" label="name"
                 :reduce="(option) => option.name" :options="representativeDetails.occupations"><template #open-indicator>
                   <a-icon type="down" /> </template></v-select>
-            </a-form-model-item>
+            </a-form-item>
 
-            <a-form-model-item class="mt-2" ref="ver_recommender_address" prop="ver_recommender_address">
+            <a-form-item class="mt-2" ref="ver_recommender_address" prop="ver_recommender_address">
               <a-textarea placeholder="Address" :rows="4" v-model="verification.ver_recommender_address"
                 @blur="onValueChange" />
-            </a-form-model-item>
+            </a-form-item>
 
-            <a-form-model-item ref="ver_recommender_mobile_no" prop="ver_recommender_mobile_no">
+            <a-form-item ref="ver_recommender_mobile_no" prop="ver_recommender_mobile_no">
               <a-input class="w-100" id="inputNumber" placeholder="Mobile number"
                 v-model="verification.ver_recommender_mobile_no" @blur="onValueChange" />
-            </a-form-model-item>
+            </a-form-item>
           </div>
           <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
             <p>
@@ -274,7 +274,7 @@
             Submit
           </a-button>
         </div>
-      </a-form-model>
+      </a-form>
     </div>
   </div>
 </template>

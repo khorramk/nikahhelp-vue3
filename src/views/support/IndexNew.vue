@@ -48,7 +48,7 @@
             >
                 <div>
                     <p class="text-black-50 text-center">Describe Issue Type</p>
-                    <a-form-model-item>
+                    <a-form-item>
                         <a-select 
                             style="width: 100%; margin-bottom: 0.5rem;"
                             class="text-black-50"
@@ -83,10 +83,10 @@
                                 Search
                             </a-select-option>
                         </a-select>
-                    </a-form-model-item>
+                    </a-form-item>
     
                     <p class="text-black-50 text-center mt-3">Describe your issue</p>
-                    <a-form-model-item>
+                    <a-form-item>
                         <textarea 
                             v-model="issue" 
                             row="5"
@@ -94,7 +94,7 @@
                             class="text-black-50 border rounded w-100 p-2 text-area"
                         >
                         </textarea>
-                    </a-form-model-item>
+                    </a-form-item>
                 </div>
     
                 <template slot="footer">
@@ -215,14 +215,14 @@
                     </span>
 
                     <p class="text-black-50 text-center mt-3">Type your reply here</p>
-                    <a-form-model-item>
+                    <a-form-item>
                         <textarea 
                             v-model="message" 
                             row="5"
                             placeholder="Write here.." 
                             class="text-black-50 border rounded w-100 p-2 text-area">
                         </textarea>
-                    </a-form-model-item>
+                    </a-form-item>
                 </div>
     
                 <template slot="footer">

@@ -16,7 +16,7 @@
       </template>
       <!-- 1. Essential Information -->
       <a-collapse-panel key="1" header="2.1 Essential Information">
-        <a-form-model
+        <a-form
           ref="personalInfoFormOne"
           v-if="
             personalInformation &&
@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_gender" prop="per_gender">
+              <a-form-item ref="per_gender" prop="per_gender">
                 <v-select
                   :clearable="false"
                   class="style-chooser"
@@ -59,7 +59,7 @@
                   ><template #open-indicator> <a-icon type="down" /> </template
                 ></v-select>
                
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="dob" prop="dob" class="dob-select">
+              <a-form-item ref="dob" prop="dob" class="dob-select">
                 <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
@@ -118,7 +118,7 @@
                   :maxYear="new Date().getFullYear() - 18"
                   :minYear="1940"
                 ></DropdownDatePicker>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -163,7 +163,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_height" prop="per_height">
+              <a-form-item ref="per_height" prop="per_height">
                 <!-- <a-select
                   @change="onValueChange($event, 'essential')"
                   id="per_height"
@@ -202,7 +202,7 @@
                   <template v-slot:option="option">
                     <div v-html="option.label"></div> </template
                 ></v-select>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -248,7 +248,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_religion_id" prop="per_religion_id">
+              <a-form-item ref="per_religion_id" prop="per_religion_id">
                 <v-select
                   :calculate-position="withPopper"
                   append-to-body
@@ -285,7 +285,7 @@
                     {{ item.name }}
                   </a-select-option>
                 </a-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -329,7 +329,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_education_level_id"
                 prop="per_education_level_id"
               >
@@ -368,7 +368,7 @@
                     >{{ item.name }}</a-select-option
                   >
                 </a-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -414,7 +414,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_employment_status"
                 prop="per_employment_status"
               >
@@ -450,7 +450,7 @@
                     >Unemploymed</a-select-option
                   >
                 </a-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -497,7 +497,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_occupation" prop="per_occupation">
+              <a-form-item ref="per_occupation" prop="per_occupation">
                 <v-select
                   :clearable="false"
                   class="style-chooser"
@@ -534,7 +534,7 @@
                     {{ value }}
                   </a-select-option>
                 </a-select> -->
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -582,7 +582,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
 
       <!-- 3. Contact Details -->
@@ -591,7 +591,7 @@
         header="2.3 Contact Details"
         style="margin-top: 5px"
       >
-        <a-form-model
+        <a-form
           ref="personalInfoFormTwo"
           v-if="
             personalInformation && personalInformation.contact && activeKey == 2
@@ -617,7 +617,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <div class="row">
                 <div class="col-12 col-md-6">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_current_residence_country"
                     prop="per_current_residence_country"
                   >
@@ -664,10 +664,10 @@
                         {{ item.name }}
                       </a-select-option>
                     </a-select> -->
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
                 <div class="col-12 col-md-6 mobile-margin">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_current_residence_city"
                     prop="per_current_residence_city"
                   >
@@ -711,7 +711,7 @@
                         >{{ city.name }}</a-select-option
                       >
                     </a-select> -->
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
               </div>
             </div>
@@ -767,7 +767,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_post_code"
                 prop="per_permanent_post_code"
               >
@@ -778,7 +778,7 @@
                   placeholder="Post Code"
                   v-model="personalInformation.contact.per_permanent_post_code"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -830,7 +830,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <div class="row">
                 <div class="col-12 col-md-6">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_permanent_country"
                     prop="per_permanent_country"
                   >
@@ -875,10 +875,10 @@
                         {{ item.name }}
                       </a-select-option>
                     </a-select> -->
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
                 <div class="col-12 col-md-6 mobile-margin">
-                  <a-form-model-item
+                  <a-form-item
                     ref="per_permanent_city"
                     prop="per_permanent_city"
                   >
@@ -919,7 +919,7 @@
                         >{{ city.name }}</a-select-option
                       >
                     </a-select> -->
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
               </div>
             </div>
@@ -968,7 +968,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item
+              <a-form-item
                 ref="per_permanent_address"
                 prop="per_permanent_address"
               >
@@ -980,7 +980,7 @@
                   v-model="personalInformation.contact.per_permanent_address"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 ></a-textarea>
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1030,7 +1030,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <div class="row">
                 <div class="col-4">
-                  <a-form-model-item
+                  <a-form-item
                     ref="mobile_country_code"
                     prop="mobile_country_code"
                   >
@@ -1051,10 +1051,10 @@
                       <a-select-option value="+353">+353</a-select-option>
                       <a-select-option value="+011">+011</a-select-option>
                     </a-select>
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
                 <div class="col-8">
-                  <a-form-model-item ref="mobile_number" prop="mobile_number">
+                  <a-form-item ref="mobile_number" prop="mobile_number">
                     <a-input
                       @blur="onValueChange($event, 'contact')"
                       id="mobile_number"
@@ -1062,7 +1062,7 @@
                       v-model="personalInformation.contact.mobile_number"
                       placeholder="Mobile Number"
                     />
-                  </a-form-model-item>
+                  </a-form-item>
                 </div>
               </div>
             </div>
@@ -1111,7 +1111,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-model-item ref="per_email" prop="per_email">
+              <a-form-item ref="per_email" prop="per_email">
                 <a-input
                   @blur="onValueChange($event, 'contact')"
                   id="per_email"
@@ -1120,7 +1120,7 @@
                   placeholder="Sample email"
                   :disabled="true"
                 />
-              </a-form-model-item>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -1164,7 +1164,7 @@
           >
             Save & Continue
           </a-button>
-        </a-form-model>
+        </a-form>
       </a-collapse-panel>
     </a-collapse>
   </div>
