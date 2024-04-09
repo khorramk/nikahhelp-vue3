@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import Footer from "@/components/auth/Footer";
-import Loader from "@/plugins/loader/loader";
+import Footer from "@/components/auth/Footer.vue";
+import Loader from "@/plugins/loader/loader.vue";
 export default {
   name: "EmailVerification",
   components: {

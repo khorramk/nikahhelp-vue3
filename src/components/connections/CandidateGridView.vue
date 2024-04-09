@@ -266,7 +266,7 @@
 <script>
 import {getAge, dateFromDateTime, dateFromTimeStamp} from "@/common/helpers.js";
 import JwtService from "@/services/jwt.service";
-import GridButtons from "./GridButtons";
+import GridButtons from "./GridButtons.vue";
 import ButtonComponent from '@/components/atom/ButtonComponent.vue';
 
 export default {

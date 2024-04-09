@@ -88,7 +88,7 @@ import JoinTeam from "@/components/team/JoinTeam.vue";
 import CreateTeamPage1 from "@/components/team/CreateTeamPage1.vue";
 import JoinCreateTeam from "@/components/team/JoinCreateTeam.vue";
 import TeamDetailsCard from "@/components/team/TeamDetailsCard.vue";
-import Layout from "@/views/design/Layout";
+import Layout from "@/views/design/Layout.vue";
 import Banner from "@/components/team/Banner.vue";
 import Notification from "@/common/notification.js";
 import ApiService from '@/services/api.service';

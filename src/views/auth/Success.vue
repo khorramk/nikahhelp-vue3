@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Footer from "@/components/auth/Footer";
+import Footer from "@/components/auth/Footer.vue";
 import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 
 export default {

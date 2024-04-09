@@ -75,14 +75,14 @@
 <script>
 import Header from "@/components/dashboard/layout/Header.vue";
 import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
-import Footer from "@/components/auth/Footer";
+import Footer from "@/components/auth/Footer.vue";
 import BlockedCandidate from "@/components/blocklist/BlockedCandidate.vue";
 import BlockedTeam from "@/components/blocklist/BlockedTeam.vue";
 import JwtService from "@/services/jwt.service";
 import { openModalRoute } from "@/plugins/modal/modal.mixin";
-import BlockedCandidateGrid from "../../components/blocklist/BlockedCandidateGrid";
+import BlockedCandidateGrid from "../../components/blocklist/BlockedCandidateGrid.vue";
 import ApiService from '@/services/api.service';
-import TeamOffRedirection from "../../components/redirection/TeamOffRedirection";
+import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
 
 export default {
   name: "BlockList",

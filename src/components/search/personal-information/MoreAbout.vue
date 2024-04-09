@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import FieldsetCard from '@/components/atom/FieldsetCard'
+import FieldsetCard from '@/components/atom/FieldsetCard.vue'
 export default {
     name:'MoreAbout',
     components: {

@@ -998,8 +998,8 @@
 <script>
 import RatingComponent from "../profile/RatingComponent.vue";
 import ApiService from "@/services/api.service";
-import TableRow from "@/components/atom/TableRow";
-import FieldsetCard from "@/components/atom/FieldsetCard";
+import TableRow from "@/components/atom/TableRow.vue";
+import FieldsetCard from "@/components/atom/FieldsetCard.vue";
 import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 import Loader from '../../plugins/loader/loader.vue';
 

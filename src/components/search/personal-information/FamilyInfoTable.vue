@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import TableRow from '@/components/atom/TableRow'
+import TableRow from '@/components/atom/TableRow.vue'
 export default {
     name:'FamilyInfoTable',
     components: {
