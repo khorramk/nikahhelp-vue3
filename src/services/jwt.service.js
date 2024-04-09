@@ -33,24 +33,24 @@ const COOKIES = "cookies";
 
 // * to get Token
 export const getToken = () => {
-  return localStorage.getItem("token");
+  return JSON.parse(localStorage.getItem("token"));
 };
 export const getUser = () => {
-  return localStorage.getItem(USER);
+  return JSON.parse(localStorage.getItem(USER));
 };
 export const setUser = (data) => {
-  return localStorage.setItem(USER, data);
+  return localStorage.setItem(USER, JSON.stringify(data));
 };
 // * to get userId
 export const getUserId = () => {
-  return localStorage.getItem("userId");
+  return JSON.parse(localStorage.getItem("userId"));
 };
 
 // * to set Token
 // * we can implement save user data on first run from here
 // ! its better to use this method on first login, one time
 export const saveTokenAndUser = (data) => {
-  localStorage.setItem(ID_TOKEN_KEY, data.token);
+  localStorage.setItem(ID_TOKEN_KEY, JSON.stringify(data.token));
 };
 
 // * to logout/destroy user and token
