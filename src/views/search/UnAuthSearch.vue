@@ -70,7 +70,7 @@
 					:isSmall="true"
 					title="Advanced Search"
 					:responsive="false"
-					:icon="require('@/assets/icon/search-love-secondary.svg')"
+					:icon="'@/assets/icon/search-love-secondary.svg'"
 					@onClickButton="setSearchModalVisible"
 				/>
 			</div>
@@ -84,8 +84,8 @@
 					<div v-if="updatedResult.length == 0 && !isLoading" class="text-center mt-150"  >
 						<span
 						><a-icon
-								type="warning"
-								:style="{ fontSize: '50px', color: 'red'}"
+							type="warning"
+							:style="{ fontSize: '50px', color: 'red'}"
 						/></span>
 						<span class="fs-28 px-5" >Sorry! We did not seem to find matches according to your search criteria. </span>
 						<span class="fs-28 px-5" >You may wish to modify your search criteria and try again.</span>
@@ -197,7 +197,7 @@ import ButtonComponent from '../../components/atom/ButtonComponent.vue';
 
 export default {
 	name: "UnAuthSearch",
-	props: ["url"],
+	props: ["search"],
 
 	components: {
 		Footer,
@@ -231,7 +231,7 @@ export default {
 			per_page: 10
 		};
 		this.landingLoading = true;
-		this.handleSearch(this.url, pagination);
+		this.handleSearch(this.search, pagination);
 	},
 
 	watch: {
@@ -241,7 +241,7 @@ export default {
 					gender: curr.per_gender,
 					// location: curr.per_nationality,
 					location: curr.per_permanent_country_name,
-					age: this.url.split('&').map(item => {
+					age: this.search.split('&').map(item => {
 						return item.split('_').pop().split('=').pop();
 					}).filter((item, i) => i < 2).join('-'),
 					religion: curr.per_religion
