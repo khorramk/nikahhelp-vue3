@@ -71,7 +71,7 @@
         <div v-else>
           <div class="">
             <!-- <h4 class="fs-16 text-black-50">Type your email & password</h4> -->
-            <a-form-item ref="email" prop="email">
+            <a-form-item ref="email" name="email">
               <a-input
                 type="email"
                 id="email"
@@ -83,7 +83,7 @@
           </div>
 
           <div class="mt-2">
-            <a-form-item ref="password" prop="password">
+            <a-form-item ref="password" name="password">
               <a-input-password
                 class="fs-16"
                 id="password"

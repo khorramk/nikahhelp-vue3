@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
-              <a-form-item ref="per_gender" prop="per_gender">
+              <a-form-item ref="per_gender" name="per_gender">
                 <v-select
                 :disabled="activeRouteName !== 'RepresentativeRegistration'"
                   :clearable="false"
@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
-              <a-form-item ref="dob" prop="dob">
+              <a-form-item ref="dob" name="dob">
                 <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
@@ -142,7 +142,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_occupation" prop="per_occupation">
+              <a-form-item ref="per_occupation" name="per_occupation">
                 <v-select
                   :clearable="false"
                   :open="true"
@@ -239,7 +239,7 @@
 <!--                <div class="col-12">-->
 <!--                  <a-form-item-->
 <!--                    ref="per_current_residence_country"-->
-<!--                    prop="per_current_residence_country"-->
+<!--                    name="per_current_residence_country"-->
 <!--                  >-->
 <!--                    <v-select-->
 <!--                      :clearable="false"-->
@@ -322,7 +322,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="address_1" prop="address_1">
+              <a-form-item ref="address_1" name="address_1">
                 <a-input
                   @blur="onValueChange($event, 'address_1', 'contact')"
                   :maxLength="46"
@@ -369,7 +369,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="address_2" prop="address_2">
+              <a-form-item ref="address_2" name="address_2">
                 <a-input
                   @blur="onValueChange($event, 'address_2', 'contact')"
                   :maxLength="46"
@@ -418,7 +418,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_city"
-                prop="per_permanent_city"
+                name="per_permanent_city"
               >
                 <a-input
                   @blur="onValueChange($event, 'per_permanent_city', 'contact')"
@@ -468,7 +468,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_post_code"
-                prop="per_permanent_post_code"
+                name="per_permanent_post_code"
               >
                 <a-input
                   @blur="
@@ -520,7 +520,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_country"
-                prop="per_permanent_country"
+                name="per_permanent_country"
               >
                 <v-select
                   :clearable="false"
@@ -575,7 +575,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="mobile_number" prop="mobile_number">
+              <a-form-item ref="mobile_number" name="mobile_number">
                 <vue-tel-input
                   v-model="personalInformation.personal.mobile_number"
                   @onInput="onNumberChange($event)"

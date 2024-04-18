@@ -38,7 +38,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="father_profession"
-                prop="father_profession"
+                name="father_profession"
               >
                 <!-- <v-select
                   :clearable="false"
@@ -106,7 +106,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="mother_profession"
-                prop="mother_profession"
+                name="mother_profession"
                 ><a-input
                   @blur="onValueChange($event, 'mother_profession')"
                   id="mother_profession"
@@ -171,7 +171,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="siblings_desc" prop="siblings_desc">
+              <a-form-item ref="siblings_desc" name="siblings_desc">
                 <a-textarea
                   @blur="onValueChange($event, 'siblings_desc')"
                   id="siblings_desc"
@@ -234,7 +234,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="family_info" prop="family_info">
+              <a-form-item ref="family_info" name="family_info">
                 <a-textarea
                   @blur="onValueChange($event, 'family_info')"
                   id="family_info"
@@ -297,7 +297,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="country_of_origin"
-                prop="country_of_origin"
+                name="country_of_origin"
               >
                 <v-select
                   :calculate-position="withPopper"

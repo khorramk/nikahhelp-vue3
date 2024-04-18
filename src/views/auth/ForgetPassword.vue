@@ -59,7 +59,7 @@
                 :model="forgetPassword"
                 :rules="rules"
               >
-                <a-form-item ref="email" prop="email">
+                <a-form-item ref="email" name="email">
                   <a-input
                     type="email"
                     class="form-control rounded-input fs-16"
