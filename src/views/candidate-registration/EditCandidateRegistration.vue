@@ -190,7 +190,7 @@ import thankfulThings from "@/common/thankfulThings.js";
 import improveMyselfThings from "@/common/improveMyselfThings.js";
 import VueFixedHeader from "vue-fixed-header";
 import jwtService from "../../services/jwt.service";
-import Header from "../../components/header/header";
+import Header from "../../components/header/header.vue";
 export default {
   components: {
     PreferenceTwo,

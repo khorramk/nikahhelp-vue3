@@ -321,14 +321,14 @@
 </template>
 
 <script>
-import OutlinedButton from '@/components/atom/OutlinedButton'
+import OutlinedButton from '@/components/atom/OutlinedButton.vue'
 import PersonalInformationTable from './PersonalInformationTable.vue'
 import FamilyInfoTable from './FamilyInfoTable.vue'
 import MyPrefTable from './MyPrefTable.vue'
-import CardInfo from '@/components/atom/CardInfo'
+import CardInfo from '@/components/atom/CardInfo.vue'
 import MoreAbout from './MoreAbout.vue'
 import {mapGetters} from 'vuex'
-import Scroller from  '@/components/atom/Scroller'
+import Scroller from  '@/components/atom/Scroller.vue'
 import RatingComponent from "@/components/profile/RatingComponent.vue";
 import ComingSoonModal from "@/components/search/ComingSoonModal.vue"
 import improveMyselfThings from '@/common/improveMyselfThings'

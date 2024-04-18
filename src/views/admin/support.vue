@@ -147,7 +147,7 @@
 </template>
 
 <script>
-import ChatListItem from "../../components/support/ChatListItem";
+import ChatListItem from "../../components/support/ChatListItem.vue";
 import ApiService from '@/services/api.service';
 import {format} from "timeago.js";
 export default {

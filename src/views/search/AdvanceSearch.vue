@@ -106,9 +106,9 @@ import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
 import Observer from "@/components/atom/Observer.vue"
 import Loader from "@/plugins/loader/loader.vue";
 import CandidateProfiles from "@/components/search/CandidateProfiles.vue";
-import ModalContainer from "@/plugins/modal/modal-container";
+// import ModalContainer from "@/plugins/modal/modal-container";
 import ManageTeamRedirect from "@/views/design/ManageTeamRedirect.vue";
-import AddComponent from "@/components/add/addComponent";
+import AddComponent from "@/components/add/addComponent.vue";
 import JwtService from "@/services/jwt.service";
 import { createModalMixin, openModalRoute } from "@/plugins/modal/modal.mixin";
 import { mapGetters, mapMutations, mapActions } from "vuex";
@@ -121,10 +121,10 @@ export default {
   mixins: [createModalMixin("manageTeamRedirect")],
   components: {
     TeamOffRedirection,
-    ProfileDetail: () => import("@/components/search/CandidateProfileDetails"),
+    ProfileDetail: () => import("@/components/search/CandidateProfileDetails.vue"),
     RightSideCandidateDetail: () =>
-      import("@/components/search/RightSideCandidateDetail"),
-    RightSidebar: () => import("@/components/search/ProfileDetailRight"),
+      import("@/components/search/RightSideCandidateDetail.vue"),
+    RightSidebar: () => import("@/components/search/ProfileDetailRight.vue"),
     SimpleSearch: () => import("@/components/search/SimpleSearch.vue"),
     Sidebar,
     // ModalContainer,

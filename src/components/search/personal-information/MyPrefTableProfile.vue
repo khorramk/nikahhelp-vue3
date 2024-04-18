@@ -78,7 +78,7 @@
 
 <script>
 import { HEIGHTS } from "@/models/data";
-import TableRow from "@/components/atom/TableRow";
+import TableRow from "@/components/atom/TableRow.vue";
 export default {
   name: "MyPrefTable",
   data: () => ({

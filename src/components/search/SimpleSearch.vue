@@ -389,13 +389,13 @@
 
 <script>
 import SelectTeamModal from "@/components/team/Modals/SelectTeamModal.vue";
-import ComingSoonModal from "@/components/search/ComingSoonModal"
+import ComingSoonModal from "@/components/search/ComingSoonModal.vue"
 import ApiService from "@/services/api.service";
 import ethnicities from "@/common/ethnicities.js";
 import languages from "@/common/languages.js";
 import hobbies from "@/common/hobbies.js";
 import { AGES, HEIGHTS } from "../../models/data";
-import SelectGroup from "@/components/ui/selects/SelectGroup";
+import SelectGroup from "@/components/ui/selects/SelectGroup.vue";
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {

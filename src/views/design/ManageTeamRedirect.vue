@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import Modal from "@/plugins/modal/modal.js";
+import Modal from "@/plugins/modal/modal.vue";
 export default {
   name: "Layout",
   components: {

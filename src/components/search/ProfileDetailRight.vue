@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AcceptDecline from '@/components/atom/AcceptDecline'
+import AcceptDecline from '@/components/atom/AcceptDecline.vue'
 // import SuggestionCandidate from '@/components/search/SuggestionCandidate'
 export default {
     name: 'ProfileDetailRight',

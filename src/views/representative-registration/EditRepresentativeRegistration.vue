@@ -190,10 +190,10 @@ import ImageUpload from "@/components/representative-registration/ImageUpload.vu
 import AgreementSubmit from "@/components/representative-registration/AgreementSubmit.vue";
 import Review from "@/components/representative-registration/Review.vue";
 import ApiService from "../../services/api.service";
-import Header from "../../components/header/header";
+import Header from "../../components/header/header.vue";
 import { API_URL } from "../../configs/config";
 import VueFixedHeader from "vue-fixed-header";
-import validator from "validator";
+// import validator from "validator";
 import jwtService from "../../services/jwt.service";
 export default {
 	name: "EditRepresentativeRegistration",

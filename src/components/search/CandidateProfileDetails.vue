@@ -113,7 +113,7 @@
 
 <script>
 import jwtService from '@/services/jwt.service'
-import PersonalInformation from '@/components/search/personal-information/PersonalInformation'
+import PersonalInformation from '@/components/search/personal-information/PersonalInformation.vue'
 import {btnData} from '@/data/candidate.button.js'
 import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 import ProfileBanner from '@/components/atom/ProfileBanner.vue'

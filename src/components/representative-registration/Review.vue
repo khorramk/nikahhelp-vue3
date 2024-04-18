@@ -321,7 +321,7 @@
 </template>
 <script>
 import RatingComponent from "../profile/RatingComponent.vue";
-import TableRow from "@/components/atom/TableRow";
+import TableRow from "@/components/atom/TableRow.vue";
 export default {
   name: "Review",
   components: {
