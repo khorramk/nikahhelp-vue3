@@ -89,9 +89,9 @@
 <script>
   
 import {format} from "timeago.js";
-import Tickets from "@/views/support/Tickets";
+import Tickets from "@/views/support/Tickets.vue";
 import {mapActions, mapGetters} from "vuex";
-import UserTicket from "@/views/support/UserTicket";
+import UserTicket from "@/views/support/UserTicket.vue";
 import TicketMessages from '@/views/support/TicketMessages.vue';
 import SendMessageForTickets from '@/views/support/SendMessageForTickets.vue';
 import ApiService from '../../services/api.service';

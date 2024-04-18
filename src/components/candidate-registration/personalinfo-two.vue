@@ -41,7 +41,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'CandidateRegistration'}">
-              <a-form-item ref="per_gender" prop="per_gender">
+              <a-form-item ref="per_gender" name="per_gender">
                 <v-select
                   :disabled="activeRouteName !== 'CandidateRegistration'"
                   :clearable="true"
@@ -103,7 +103,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'CandidateRegistration'}">
-              <a-form-item ref="dob" prop="dob" class="dob-select">
+              <!-- <a-form-item ref="dob" name="dob" class="dob-select">
                 <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
@@ -117,7 +117,7 @@
                   :maxYear="new Date().getFullYear() - 18"
                   :minYear="1940"
                 ></DropdownDatePicker>
-              </a-form-item>
+              </a-form-item> -->
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -161,7 +161,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_height" prop="per_height">
+              <a-form-item ref="per_height" name="per_height">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -219,7 +219,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_religion_id" prop="per_religion_id">
+              <a-form-item ref="per_religion_id" name="per_religion_id">
                 <v-select
                   :calculate-position="withPopper"
                   append-to-body
@@ -280,7 +280,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_education_level_id"
-                prop="per_education_level_id"
+                name="per_education_level_id"
               >
                 <v-select
                   :clearable="true"
@@ -343,7 +343,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_employment_status"
-                prop="per_employment_status"
+                name="per_employment_status"
               >
                 <v-select
                   :clearable="true"
@@ -406,7 +406,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_occupation" prop="per_occupation">
+              <a-form-item ref="per_occupation" name="per_occupation">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -494,7 +494,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_ethnicity" prop="per_ethnicity">
+              <a-form-item ref="per_ethnicity" name="per_ethnicity">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -578,7 +578,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_mother_tongue"
-                prop="per_mother_tongue"
+                name="per_mother_tongue"
               >
                 <v-select
                   :clearable="true"
@@ -636,7 +636,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_nationality" prop="per_nationality">
+              <a-form-item ref="per_nationality" name="per_nationality">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -696,7 +696,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_country_of_birth"
-                prop="per_country_of_birth"
+                name="per_country_of_birth"
               >
                 <v-select
                   :clearable="true"
@@ -760,7 +760,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_health_condition"
-                prop="per_health_condition"
+                name="per_health_condition"
               >
                 <a-textarea
                   @blur="
@@ -859,7 +859,7 @@
                 <div class="col-12 col-md-12">
                   <a-form-item
                     ref="per_current_residence_country"
-                    prop="per_current_residence_country"
+                    name="per_current_residence_country"
                   >
                     <v-select
                       :clearable="true"
@@ -909,7 +909,7 @@
                 <div class="col-12 col-md-6 mobile-margin">
                   <a-form-item
                     ref="per_current_residence_city"
-                    prop="per_current_residence_city"
+                    name="per_current_residence_city"
                   >
                     <v-select
                       :clearable="true"
@@ -1010,7 +1010,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="address_1" prop="address_1">
+              <a-form-item ref="address_1" name="address_1">
                 <a-input
                   @blur="onValueChange($event, 'contact', 'address_1')"
                   id="address_1"
@@ -1063,7 +1063,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="address_2" prop="address_2">
+              <a-form-item ref="address_2" name="address_2">
                 <a-input
                   @blur="onValueChange($event, 'contact', 'address_2')"
                   id="address_2"
@@ -1119,7 +1119,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_city"
-                prop="per_permanent_city"
+                name="per_permanent_city"
               >
                 <a-input
                   @blur="onValueChange($event, 'contact', 'per_permanent_city')"
@@ -1170,7 +1170,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_post_code"
-                prop="per_permanent_post_code"
+                name="per_permanent_post_code"
               >
                 <!-- <v-select
                   :clearable="true"
@@ -1244,7 +1244,7 @@
                 <div class="col-12 col-md-12">
                   <a-form-item
                     ref="per_permanent_country"
-                    prop="per_permanent_country"
+                    name="per_permanent_country"
                   >
                     <v-select
                       :clearable="true"
@@ -1310,7 +1310,7 @@
             <div class="col-12 col-md-6 mobile-margin">
                <a-form-item
                 ref="mobile_number"
-                prop="mobile_number"
+                name="mobile_number"
               >
               <vue-tel-input
                 @onInput="onNumberChange($event)"
@@ -1368,7 +1368,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_email" prop="per_email">
+              <a-form-item ref="per_email" name="per_email">
                 <a-input
                   @blur="onValueChange($event, 'contact', 'per_email')"
                   id="per_email"
@@ -1451,7 +1451,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_marital_status"
-                prop="per_marital_status"
+                name="per_marital_status"
               >
                 <v-select
                   :clearable="true"
@@ -1534,7 +1534,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_currently_living_with"
-                prop="per_currently_living_with"
+                name="per_currently_living_with"
               >
                 <v-select
                   :clearable="true"
@@ -1621,7 +1621,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_willing_to_relocate"
-                prop="per_willing_to_relocate"
+                name="per_willing_to_relocate"
               >
                 <v-select
                   :clearable="true"
@@ -1698,7 +1698,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_smoker" prop="per_smoker">
+              <a-form-item ref="per_smoker" name="per_smoker">
                 <v-select
                   :clearable="true"
                   class="style-chooser"
@@ -1768,7 +1768,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_language_speak"
-                prop="per_language_speak"
+                name="per_language_speak"
               >
                 <v-select
                   required
@@ -1839,7 +1839,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_hobbies_interests"
-                prop="per_hobbies_interests"
+                name="per_hobbies_interests"
               >
                 <v-select
                   id="per_hobbies_interests"
@@ -1907,7 +1907,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_things_enjoy" prop="per_things_enjoy">
+              <a-form-item ref="per_things_enjoy" name="per_things_enjoy">
                 <v-select
                   id="per_things_enjoy"
                   :clearable="true"
@@ -1973,7 +1973,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_food_cuisine_like"
-                prop="per_food_cuisine_like"
+                name="per_food_cuisine_like"
               >
                 <v-select
                   id="per_food_cuisine_like"
@@ -2043,7 +2043,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_thankfull_for"
-                prop="per_thankfull_for"
+                name="per_thankfull_for"
               >
                 <v-select
                   id="per_things_enjoy"
@@ -2122,7 +2122,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_improve_myself"
-                prop="per_improve_myself"
+                name="per_improve_myself"
               >
                 <v-select
                   id="per_improve_myself"
@@ -2194,7 +2194,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_about" prop="per_about">
+              <a-form-item ref="per_about" name="per_about">
                 <a-textarea
                   @blur="onValueChange($event, 'more_about', 'per_about')"
                   id="per_about"
@@ -2258,7 +2258,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_additional_info_text"
-                prop="per_additional_info_text"
+                name="per_additional_info_text"
               >
                 <a-textarea
                   @blur="

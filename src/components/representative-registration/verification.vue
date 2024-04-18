@@ -89,7 +89,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <div class="row">
                   <div class="col-12">
-                    <a-form-item ref="ver_country" prop="ver_country">
+                    <a-form-item ref="ver_country" name="ver_country">
                       <v-select
                         :clearable="false"
                         class="style-chooser"
@@ -106,7 +106,7 @@
                     </a-form-item>
                   </div>
                    <div class="col-12 col-md-6">
-                    <a-form-item ref="ver_city" prop="ver_city">
+                    <a-form-item ref="ver_city" name="ver_city">
                       <v-select
                         :clearable="false"
                         class="style-chooser"
@@ -166,7 +166,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <a-form-item
                   ref="ver_document_type"
-                  prop="ver_document_type"
+                  name="ver_document_type"
                 >
                   <v-select
                     :clearable="false"
@@ -413,7 +413,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <a-form-item
                   ref="ver_recommender_title"
-                  prop="ver_recommender_title"
+                  name="ver_recommender_title"
                 >
                   <a-input
                     v-model="verification.ver_recommender_title"
@@ -429,7 +429,7 @@
                   <div class="col-6">
                     <a-form-item
                       ref="ver_recommender_first_name"
-                      prop="ver_recommender_first_name"
+                      name="ver_recommender_first_name"
                     >
                       <a-input
                         v-model="verification.ver_recommender_first_name"
@@ -445,7 +445,7 @@
                   <div class="col-6">
                     <a-form-item
                       ref="ver_recommender_last_name"
-                      prop="ver_recommender_last_name"
+                      name="ver_recommender_last_name"
                     >
                       <a-input
                         v-model="verification.ver_recommender_last_name"
@@ -462,7 +462,7 @@
 
                 <a-form-item
                   ref="ver_recommender_occupation"
-                  prop="ver_recommender_occupation"
+                  name="ver_recommender_occupation"
                 >
                   <v-select
                     :clearable="false"
@@ -483,7 +483,7 @@
                 <a-form-item
                   class="mt-2"
                   ref="ver_recommender_address"
-                  prop="ver_recommender_address"
+                  name="ver_recommender_address"
                 >
                   <a-textarea
                     placeholder="Address"
@@ -511,7 +511,7 @@
                 </a-form-item>
                 <a-form-item
                   ref="ver_recommender_email"
-                  prop="ver_recommender_email"
+                  name="ver_recommender_email"
                 >
                   <a-input
                     class="w-100"

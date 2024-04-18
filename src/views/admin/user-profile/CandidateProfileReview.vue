@@ -692,15 +692,15 @@
         </div>
       </div>
     </fieldset>
-    <NoteModal @save="save" @cancel="cancel" :dialog="dialog" />
+    <NoteModal @save="save" @cancel="cancel" />
   </div>
 </template>
 <script>
 import NoteModal from "@/views/admin/NoteModal.vue";
 import RatingComponent from "@/components/profile/RatingComponent.vue";
 import ApiService from "@/services/api.service";
-import TableRow from "@/components/atom/TableRow";
-import FieldsetCard from "@/components/atom/FieldsetCard";
+import TableRow from "@/components/atom/TableRow.vue";
+import FieldsetCard from "@/components/atom/FieldsetCard.vue";
 import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 import Notification from "@/common/notification.js";
 

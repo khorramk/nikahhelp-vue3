@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_gender" prop="per_gender">
+              <a-form-item ref="per_gender" name="per_gender">
                 <v-select
                   :clearable="false"
                   class="style-chooser"
@@ -56,8 +56,8 @@
                     { name: 'Male', value: 1 },
                     { name: 'Female', value: 2 },
                   ]"
-                  ><template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
                
               </a-form-item>
             </div>
@@ -104,7 +104,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="dob" prop="dob" class="dob-select">
+              <a-form-item ref="dob" name="dob" class="dob-select">
                 <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
@@ -163,7 +163,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_height" prop="per_height">
+              <a-form-item ref="per_height" name="per_height">
                 <!-- <a-select
                   @change="onValueChange($event, 'essential')"
                   id="per_height"
@@ -200,8 +200,8 @@
                   :options="heightTV"
                   ><template #open-indicator> <a-icon type="down" /> </template>
                   <template v-slot:option="option">
-                    <div v-html="option.label"></div> </template
-                ></v-select>
+                    <div v-html="option.label"></div> </template>
+                  </v-select>
               </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
@@ -248,7 +248,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_religion_id" prop="per_religion_id">
+              <a-form-item ref="per_religion_id" name="per_religion_id">
                 <v-select
                   :calculate-position="withPopper"
                   append-to-body
@@ -261,8 +261,8 @@
                   v-model="personalInformation.essential.per_religion_id"
                   label="name"
                   :options="candidateDetails.religions"
-                  ><template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
                 <!-- <a-select
                   @change="onValueChange($event, 'essential')"
                   id="per_religion_id"
@@ -331,7 +331,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_education_level_id"
-                prop="per_education_level_id"
+                name="per_education_level_id"
               >
                 <v-select
                   :clearable="false"
@@ -343,8 +343,8 @@
                   v-model="personalInformation.essential.per_education_level_id"
                   label="name"
                   :options="candidateDetails.studylevels"
-                  ><template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
                 <!-- <a-select
                   @change="onValueChange($event, 'essential')"
                   id="per_education_level_id"
@@ -416,7 +416,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_employment_status"
-                prop="per_employment_status"
+                name="per_employment_status"
               >
                 <v-select
                   :clearable="false"
@@ -428,8 +428,8 @@
                   v-model="personalInformation.essential.per_employment_status"
                   label="name"
                   :options="employment_Statuses"
-                  ><template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
                 <!-- <a-select
                   @change="onValueChange($event, 'essential')"
                   id="per_employment_status"
@@ -497,7 +497,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_occupation" prop="per_occupation">
+              <a-form-item ref="per_occupation" name="per_occupation">
                 <v-select
                   :clearable="false"
                   class="style-chooser"
@@ -508,8 +508,8 @@
                   v-model="personalInformation.essential.per_occupation"
                   label="name"
                   :options="candidateDetails.occupations"
-                  ><template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
                 <!-- <a-select
                   @change="onValueChange($event, 'essential')"
                   id="per_occupation"
@@ -619,7 +619,7 @@
                 <div class="col-12 col-md-6">
                   <a-form-item
                     ref="per_current_residence_country"
-                    prop="per_current_residence_country"
+                    name="per_current_residence_country"
                   >
                     <v-select
                       :clearable="false"
@@ -635,8 +635,8 @@
                       label="name"
                       :options="candidateDetails.countries"
                       ><template #open-indicator>
-                        <a-icon type="down" /> </template
-                    ></v-select>
+                        <a-icon type="down" /> </template>
+                      </v-select>
                     <!-- <a-select
                       @change="
                         onCountryChange($event, 'contact', 'residence')
@@ -669,7 +669,7 @@
                 <div class="col-12 col-md-6 mobile-margin">
                   <a-form-item
                     ref="per_current_residence_city"
-                    prop="per_current_residence_city"
+                    name="per_current_residence_city"
                   >
                     <v-select
                       :clearable="false"
@@ -685,8 +685,8 @@
                       label="name"
                       :options="personalInformation.contact.residenceCities"
                       ><template #open-indicator>
-                        <a-icon type="down" /> </template
-                    ></v-select>
+                        <a-icon type="down" /> </template>
+                      </v-select>
                     <!-- <a-select
                       @change="onValueChange($event, 'contact')"
                       id="per_current_residence_city"
@@ -769,7 +769,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_post_code"
-                prop="per_permanent_post_code"
+                name="per_permanent_post_code"
               >
                 <a-input
                   @blur="onValueChange($event, 'contact')"
@@ -832,7 +832,7 @@
                 <div class="col-12 col-md-6">
                   <a-form-item
                     ref="per_permanent_country"
-                    prop="per_permanent_country"
+                    name="per_permanent_country"
                   >
                     <v-select
                       :clearable="false"
@@ -847,8 +847,8 @@
                       label="name"
                       :options="candidateDetails.countries"
                       ><template #open-indicator>
-                        <a-icon type="down" /> </template
-                    ></v-select>
+                        <a-icon type="down" /> </template>
+                      </v-select>
                     <!-- <a-select
                       @change="
                         onCountryChange($event, 'contact', 'permanant')
@@ -880,7 +880,7 @@
                 <div class="col-12 col-md-6 mobile-margin">
                   <a-form-item
                     ref="per_permanent_city"
-                    prop="per_permanent_city"
+                    name="per_permanent_city"
                   >
                     <v-select
                       :clearable="false"
@@ -894,8 +894,8 @@
                       label="name"
                       :options="personalInformation.contact.permanantCities"
                       ><template #open-indicator>
-                        <a-icon type="down" /> </template
-                    ></v-select>
+                        <a-icon type="down" /> </template>
+                      </v-select>
                     <!-- <a-select
                       @change="onValueChange($event, 'contact')"
                       id="per_permanent_city"
@@ -970,7 +970,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="per_permanent_address"
-                prop="per_permanent_address"
+                name="per_permanent_address"
               >
                 <a-textarea
                   @blur="onValueChange($event, 'contact')"
@@ -1032,7 +1032,7 @@
                 <div class="col-4">
                   <a-form-item
                     ref="mobile_country_code"
-                    prop="mobile_country_code"
+                    name="mobile_country_code"
                   >
                     <a-select
                       @change="onValueChange($event, 'contact')"
@@ -1054,7 +1054,7 @@
                   </a-form-item>
                 </div>
                 <div class="col-8">
-                  <a-form-item ref="mobile_number" prop="mobile_number">
+                  <a-form-item ref="mobile_number" name="mobile_number">
                     <a-input
                       @blur="onValueChange($event, 'contact')"
                       id="mobile_number"
@@ -1111,7 +1111,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="per_email" prop="per_email">
+              <a-form-item ref="per_email" name="per_email">
                 <a-input
                   @blur="onValueChange($event, 'contact')"
                   id="per_email"

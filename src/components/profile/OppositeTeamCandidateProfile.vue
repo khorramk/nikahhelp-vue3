@@ -408,7 +408,7 @@ import { dateFromDateTime } from "@/common/helpers.js";
 
 // import Footer from "@/components/auth/Footer.vue";
 
-import ProfileBanner from "@/components/atom/ProfileBanner";
+import ProfileBanner from "@/components/atom/ProfileBanner.vue";
 import PersonalInformationTable from '@/components/search/personal-information/PersonalInformationTable.vue'
 import FamilyInfoTable from '@/components/search/personal-information/FamilyInfoTable.vue'
 import MyPrefTable from '@/components/search/personal-information/MyPrefTableProfile.vue'

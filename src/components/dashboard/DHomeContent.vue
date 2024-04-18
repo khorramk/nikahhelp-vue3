@@ -194,7 +194,7 @@
 import DChart from "@/components/dashboard/DChart.vue";
 import CandidateGrid from "@/components/dashboard/CandidateGrid.vue";
 import ApiService from "../../services/api.service";
-import { Carousel, Slide } from "vue-carousel";
+import { Carousel, Slide } from "vue3-carousel";
 
 export default {
   name: "DHomeContent",

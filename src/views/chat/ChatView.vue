@@ -211,7 +211,7 @@
 </template>
 
 <script>
-import ChatListItem from '@/components/notification/ChatListItem';
+import ChatListItem from '@/components/notification/ChatListItem.vue';
 import ApiService from '@/services/api.service';
 import { pick, map } from 'lodash';
 const messageKeys = ['id', 'chat_id', 'team_id', 'body', 'seen', 'created_at'];

@@ -82,7 +82,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import TableRow from '@/components/atom/ListItem'
+import TableRow from '@/components/atom/ListItem.vue'
 import { HEIGHTS } from "@/models/data";
 export default {
     name: 'RightSideCandidateDetail',

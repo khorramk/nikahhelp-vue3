@@ -74,7 +74,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <div class="row">
                   <div class="col-12 col-md-12">
-                    <a-form-item ref="ver_country" prop="ver_country">
+                    <a-form-item ref="ver_country" name="ver_country">
                       <v-select :clearable="false" class="style-chooser" @input="onChangeCountry($event, 'ver_country')"
                         id="ver_country" placeholder="please select" v-model="verification.ver_country" label="name"
                         :reduce="(option) => option.name" :options="candidateDetails.countries"><template #open-indicator>
@@ -105,7 +105,7 @@
                   </div>
 
                   <!-- <div class="col-12 col-md-6 mobile-margin">
-                    <a-form-item ref="ver_city_id" prop="ver_city_id">
+                    <a-form-item ref="ver_city_id" name="ver_city_id">
                       <v-select
                         :clearable="false"
                         class="style-chooser"
@@ -171,7 +171,7 @@
                 </div>
               </div>
               <div class="col-12 col-md-6 mobile-margin">
-                <a-form-item ref="ver_document_type" prop="ver_document_type">
+                <a-form-item ref="ver_document_type" name="ver_document_type">
                   <v-select :clearable="false" class="style-chooser" id="ver_document_type" placeholder="Document type"
                     @input="onValueChange($event, 'ver_document_type')" :reduce="(option) => option.value"
                     v-model="verification.ver_document_type" label="name" :options="[

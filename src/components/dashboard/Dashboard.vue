@@ -193,7 +193,7 @@
 </template>
 
 <script>
-import { Carousel, Slide } from "vue-carousel";
+import { Carousel, Slide } from "vue3-carousel";
 import ApiService from "@/services/api.service";
 import JwtService from "../../services/jwt.service";
 import ButtonComponent from "../atom/ButtonComponent.vue";

@@ -9,8 +9,8 @@ import ApiService from "@/services/api.service";
 // import JwtService from "@/services/jwt.service";
 // import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 
-import CandidateProfileReview from "@/views/admin/user-profile/CandidateProfileReview"
-import RepresentativeProfileReview from "@/views/admin/user-profile/RepresentativeProfileReview"
+import CandidateProfileReview from "@/views/admin/user-profile/CandidateProfileReview.vue"
+import RepresentativeProfileReview from "@/views/admin/user-profile/RepresentativeProfileReview.vue"
 export default {
   name: "AdminReview",
   components: {
