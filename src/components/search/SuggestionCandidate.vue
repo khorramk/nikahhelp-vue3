@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import CandidateSuggestionCard from '@/components/search/CandidateSuggestionCard'
-import { Carousel, Slide } from 'vue-carousel';
+import CandidateSuggestionCard from '@/components/search/CandidateSuggestionCard.vue'
+import { Carousel, Slide } from 'vue3-carousel';
 export default {
     name: 'SuggestionCandidate',
     components: {
