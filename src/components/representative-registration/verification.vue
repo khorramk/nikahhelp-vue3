@@ -475,9 +475,11 @@
                     label="name"
                     :reduce="(option) => option.name"
                     :options="representativeDetails.occupations"
-                    ><template #open-indicator>
-                      <a-icon type="down" /> </template
-                  ></v-select>
+                  >
+                    <template #open-indicator>
+                      <a-icon type="down" /> 
+                    </template>
+                  </v-select>
                 </a-form-item>
 
                 <a-form-item
