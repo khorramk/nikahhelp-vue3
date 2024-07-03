@@ -52,32 +52,32 @@ export const createModalMixin = (key = '', aliases = [], {
   }
 }
 
-export const watchQueryModal = (modalQuery, containerKey, modalKey) => (to, from, component) => {
-  if (to && to.query.modal === modalQuery) {
-    component[containerKey] = true;
-    waitForAnimation(() => {
-      component[modalKey] = true;
-    });
-  } else if (from && from.query.modal === modalQuery && to.query.modal !== modalQuery) {
-    component[modalKey] = false;
-    waitForAnimation(() => {
-      component[containerKey] = false;
-    })
-  }
-}
+// export const watchQueryModal = (modalQuery, containerKey, modalKey) => (to, from, component) => {
+//   if (to && to.query.modal === modalQuery) {
+//     component[containerKey] = true;
+//     waitForAnimation(() => {
+//       component[modalKey] = true;
+//     });
+//   } else if (from && from.query.modal === modalQuery && to.query.modal !== modalQuery) {
+//     component[modalKey] = false;
+//     waitForAnimation(() => {
+//       component[containerKey] = false;
+//     })
+//   }
+// }
 
-export const ModalContainer = ({ props }) => {
-  return (
-    <div>
-      {props.modalContainerFlag && <VDialog
-        vModel={props.modalFlag}
-        persistent={true}
-        width="800"
-      >
-      </VDialog>}
-    </div>
-  );
-}
+// export const ModalContainer = ({ props }) => {
+//   return (
+//     <div>
+//       {props.modalContainerFlag && <VDialog
+//         vModel={props.modalFlag}
+//         persistent={true}
+//         width="800"
+//       >
+//       </VDialog>}
+//     </div>
+//   );
+// }
 
 
 export const openModalRoute = (component, modalKey, openModalQuery = {}) => {
@@ -91,16 +91,16 @@ export const openModalRoute = (component, modalKey, openModalQuery = {}) => {
   });
 }
 
-export const closeModalRoute = (component, modalCloseQuery = {}) => {
-  component.$router.push({
-    ...component.$route,
-    query: {
-      ...Object.assign({}, component.$route.query),
-      modal: undefined,
-      ...modalCloseQuery
-    }
-  })
-}
+// export const closeModalRoute = (component, modalCloseQuery = {}) => {
+//   component.$router.push({
+//     ...component.$route,
+//     query: {
+//       ...Object.assign({}, component.$route.query),
+//       modal: undefined,
+//       ...modalCloseQuery
+//     }
+//   })
+// }
 
 
 
@@ -110,6 +110,6 @@ export const closeModalRoute = (component, modalCloseQuery = {}) => {
 export const toSnakeCase = (string) => {
   return string && string.replace(/([A-Z])/g, e => `_${e.toLowerCase()}`)
 }
-export function waitForAnimation(f, delay = 1) {
-  setTimeout(f, delay);
-}
+// export function waitForAnimation(f, delay = 1) {
+//   setTimeout(f, delay);
+// }
