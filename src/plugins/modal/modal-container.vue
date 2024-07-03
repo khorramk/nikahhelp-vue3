@@ -1,4 +1,4 @@
-\<template>
+<template>
   <div class="dt-dialog-container">
     <template v-if="containerFlag">
       <v-dialog
