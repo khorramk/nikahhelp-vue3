@@ -80,7 +80,7 @@
       <div class="my-4">
         <a-select
           id="religion"
-          :value="searchModel.religion"
+          v-model:value="searchModel.religion"
           show-search
           size="large"
           :placeholder="'Select a religion'"
