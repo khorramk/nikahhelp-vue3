@@ -26,9 +26,11 @@ export default {
   components: {
     ButtonComponent,
   },
-  props: ["dialog"],
   data() {
-    return { note: null };
+    return { 
+      note: null,
+      dialog: false
+    };
   },
   computed: {
     dialogFlag: function () {
@@ -40,6 +42,7 @@ export default {
       this.$emit("save", this.note);
     },
     cancel() {
+      this.dialog = false;
       this.$emit("cancel", false);
     },
   },

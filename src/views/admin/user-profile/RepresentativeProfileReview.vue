@@ -450,7 +450,7 @@
       </div> -->
     </fieldset>
 
-    <NoteModal @save="save" @cancel="cancel" :dialog="dialog" />
+    <NoteModal @save="save" @cancel="cancel"/>
   </div>
 </template>
 <script>
@@ -459,7 +459,7 @@ import NoteModal from "@/views/admin/NoteModal.vue";
 import ApiService from "@/services/api.service";
 // import JwtService from "@/services/jwt.service";
 // import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
-import TableRow from "@/components/atom/TableRow";
+import TableRow from "@/components/atom/TableRow.vue";
 import Notification from "@/common/notification.js";
 
 export default {

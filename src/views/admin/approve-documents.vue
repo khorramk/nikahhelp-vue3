@@ -44,7 +44,7 @@
         </div> -->
       </div>
       <div class="bottom-header">
-        <v-tabs @change="onSelectedTab" v-model="selectedTab">
+        <v-tabs @update:modelValue="onSelectedTab" :model-value="selectedTab">
           <v-tab
             ><v-badge color="red" :content="totalNumberOfItems"
               >All</v-badge
@@ -87,9 +87,9 @@
           'items-per-page-text': 'Show',
         }"
       >
-        <template slot="headers" slot-scope="props">
+        <template #headers="props">
           <tr>
-            <th v-for="header in props.headers" :key="header.value">
+            <th v-for="header in props.headers[0]" :key="header.value">
               <span v-if="header.text !== 'actions'"> {{ header.text }}</span>
               <span v-if="header.text == 'actions'">
                 <v-menu offset-y>
@@ -124,7 +124,7 @@
             </td>
             <td class="id">{{ item["id"] }}</td>
             <td class="created_at">
-              {{ $filter.formatDate(item["created_at"]) }}
+              {{ $filters.formatDate(item["created_at"]) }}
             </td>
             <td class="full_name">{{ item["full_name"] }}</td>
             <td class="account_type">
@@ -217,7 +217,7 @@
         </template>
       </v-data-table>
     </div>
-    <NoteModal @save="save" @cancel="cancel" :dialog="dialog" />
+    <NoteModal @save="save" @cancel="cancel" />
   </div>
 </template>
 
