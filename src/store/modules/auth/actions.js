@@ -32,10 +32,10 @@ export default {
   
         });
   
-        if(router.history._startLocation === '/login' || router.history._startLocation.includes('/emailVerify/') || router.history._startLocation.includes('/email-verification-success')) {
+        if(router.options.history.location === '/login' || router.options.history.location.includes('/emailVerify/') || router.options.history.location.includes('/email-verification-success')) {
           router.push({ name: 'root' });
         } else {
-          router.push({ path: `${router.history._startLocation}`});
+          router.push({ path: `${router.options.history.location}`});
         }
       } catch (e) {
         if(response.data.data.includes("A verification code was sent to your email.")) {
