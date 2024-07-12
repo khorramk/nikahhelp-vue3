@@ -112,13 +112,13 @@
       </div>
 
 
-      <VueFixedHeader
+      <!-- <VueFixedHeader
         @change="updateFixedStatus"
         :threshold="propsData.threshold"
         :headerClass="propsData.headerClass"
         :fixedClass="propsData.fixedClass"
         :hideScrollUp="propsData.hideScrollUp"
-      >
+      > -->
         <div class="step-bar">
           <a-steps
             class="desktop-block"
@@ -127,7 +127,7 @@
           >
             <a-step
               v-for="(item, index) in steps"
-              @click="onStep(index)"
+              @click="onStep(index); updateFixedStatus"
               :key="item.title"
               :title="item.title"
             />
@@ -165,7 +165,7 @@
             </div>
           </div>
         </div>
-      </VueFixedHeader>
+      <!-- </VueFixedHeader> -->
       <div class="steps-content" v-if="current == 0">
         <PreferenceTwo
           :candidateDetails="candidateDetails"
@@ -297,12 +297,12 @@
   </div>
 </template>
 <script>
-const createData = () => ({
-  threshold: 0,
-  headerClass: "vue-fixed-header",
-  fixedClass: "vue-fixed-header--isFixed",
-  hideScrollUp: false,
-});
+// const createData = () => ({
+//   threshold: 0,
+//   headerClass: "vue-fixed-header",
+//   fixedClass: "vue-fixed-header--isFixed",
+//   hideScrollUp: false,
+// });
 import ReviewAndPublishModal from "@/views/candidate-registration/ReviewAndPublishModal.vue";
 import PreferenceTwo from "@/components/candidate-registration/preference-two.vue";
 import VerificationAgreement from "@/components/candidate-registration/verification-agreement.vue";
@@ -318,10 +318,10 @@ import hobbies from "@/common/hobbies.js";
 import foods from "@/common/foods.js";
 import thankfulThings from "@/common/thankfulThings.js";
 import improveMyselfThings from "@/common/improveMyselfThings.js";
-import VueFixedHeader from "vue-fixed-header";
+// import VueFixedHeader from "vue-fixed-header";
 import jwtService from "../../services/jwt.service";
-import Header from "../../components/header/header";
-import blockRegistrationRouteAfter from "../../mixins/blockRegistrationRouteAfter";
+import Header from "../../components/header/header.vue";
+import blockRegistrationRouteAfter from "../../mixins/blockRegistrationRouteAfter.js";
 export default {
   components: {
     PreferenceTwo,
@@ -330,7 +330,7 @@ export default {
     UploadProfile,
     Review,
     Verification,
-    VueFixedHeader,
+    // VueFixedHeader,
     Header,
     ReviewAndPublishModal,
     VerificationAgreement,
@@ -356,7 +356,7 @@ export default {
       fixedStatus: {
         headerIsFixed: false,
       },
-      propsData: { ...createData() },
+      // propsData: { ...createData() },
       current: 0,
       enabledNextBtn: false,
       nextBtnLoader: false,

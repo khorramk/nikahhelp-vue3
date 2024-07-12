@@ -8,13 +8,13 @@
         <p>To get the best results please complete the questions fully</p>
       </div>
 
-      <VueFixedHeader
+      <!-- <VueFixedHeader
         @change="updateFixedStatus"
         :threshold="propsData.threshold"
         :headerClass="propsData.headerClass"
         :fixedClass="propsData.fixedClass"
         :hideScrollUp="propsData.hideScrollUp"
-      >
+      > -->
         <div class="step-bar">
           <a-steps
             class="desktop-block"
@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-      </VueFixedHeader>
+      <!-- </VueFixedHeader> -->
 
       <div class="steps-content" v-if="current == 0">
         <ShortPersonalInfo
@@ -128,12 +128,12 @@
   </div>
 </template>
 <script>
-const createData = () => ({
-  threshold: 0,
-  headerClass: "vue-fixed-header",
-  fixedClass: "vue-fixed-header--isFixed",
-  hideScrollUp: false,
-});
+// const createData = () => ({
+//   threshold: 0,
+//   headerClass: "vue-fixed-header",
+//   fixedClass: "vue-fixed-header--isFixed",
+//   hideScrollUp: false,
+// });
 import ReviewAndPublishModal from "@/views/candidate-registration/ReviewAndPublishModal.vue";
 import VerificationAgreement from "@/components/candidate-registration/verification-agreement.vue";
 import PersonalInfoTwo from "@/components/candidate-registration/personalinfo-two.vue";
@@ -147,7 +147,7 @@ import hobbies from "@/common/hobbies.js";
 import foods from "@/common/foods.js";
 import thankfulThings from "@/common/thankfulThings.js";
 import improveMyselfThings from "@/common/improveMyselfThings.js";
-import VueFixedHeader from "vue-fixed-header";
+// import VueFixedHeader from "vue-fixed-header";
 import jwtService from "../../services/jwt.service";
 import Header from "../../components/header/header.vue";
 
@@ -156,7 +156,7 @@ export default {
     ShortPersonalInfo,
     ShortUploadProfile,
     ShortReview,
-    VueFixedHeader,
+    // VueFixedHeader,
     Header,
     ReviewAndPublishModal,
     VerificationAgreement,
@@ -172,7 +172,7 @@ export default {
       fixedStatus: {
         headerIsFixed: false,
       },
-      propsData: { ...createData() },
+      // propsData: { ...createData() },
       current: 0,
       enabledNextBtn: false,
       candidateDetails: {
