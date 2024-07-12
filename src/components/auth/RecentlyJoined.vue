@@ -26,7 +26,7 @@
 
 						<img class="item-img"
 							v-else
-							:src="require('../../assets/no-image-available.jpg')"
+							:src="NoImageAvailable"
 							alt="img"
 							style="border: 1px solid white;"/>
 							
@@ -47,7 +47,7 @@
 import ApiService from "../../services/api.service";
 import { Carousel, Slide } from "vue3-carousel";
 import 'vue3-carousel/dist/carousel.css';
-import noImageAvailable from '../../assets/no-image-available.jpg';
+import NoImageAvailable from '../../assets/no-image-available.jpg';
 export default {
 	name: "RecentlyJoined",
 
@@ -89,7 +89,7 @@ export default {
 		},
 
 		imgLoad($event) {
-			$event.target.src = noImageAvailable;
+			$event.target.src =NoImageAvailable;
 		}
 	},
 };
