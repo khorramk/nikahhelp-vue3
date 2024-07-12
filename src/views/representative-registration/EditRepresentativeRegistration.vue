@@ -9,13 +9,13 @@
 				<p>Please answer all question accurately and in full</p>
 			</div>
 
-			<VueFixedHeader
+			<!-- <VueFixedHeader
 					@change="updateFixedStatus"
 					:threshold="propsData.threshold"
 					:headerClass="propsData.headerClass"
 					:fixedClass="propsData.fixedClass"
 					:hideScrollUp="propsData.hideScrollUp"
-			>
+			> -->
 				<div class="step-bar">
 					<a-steps
 							class="desktop-block"
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 				</div>
-			</VueFixedHeader>
+			<!-- </VueFixedHeader> -->
 
 			<div class="text-center mt-5" v-if="current == 0">
 				<h5 class="color-brand fs-20">Personal Information</h5>
@@ -177,12 +177,12 @@
 	</div>
 </template>
 <script>
-const createData = () => ({
-	threshold: 0,
-	headerClass: "vue-fixed-header",
-	fixedClass: "vue-fixed-header--isFixed",
-	hideScrollUp: false,
-});
+// const createData = () => ({
+// 	threshold: 0,
+// 	headerClass: "vue-fixed-header",
+// 	fixedClass: "vue-fixed-header--isFixed",
+// 	hideScrollUp: false,
+// });
 import VerificationAgreement from "@/components/representative-registration/verification-agreement.vue";
 import PersonalInfoTwo from "@/components/representative-registration/personal-info-two.vue";
 import Verification from "@/components/representative-registration/verification.vue";
@@ -192,7 +192,7 @@ import Review from "@/components/representative-registration/Review.vue";
 import ApiService from "../../services/api.service";
 import Header from "../../components/header/header.vue";
 import { API_URL } from "../../configs/config";
-import VueFixedHeader from "vue-fixed-header";
+// import VueFixedHeader from "vue-fixed-header";
 // import validator from "validator";
 import jwtService from "../../services/jwt.service";
 export default {
@@ -205,7 +205,7 @@ export default {
 		AgreementSubmit,
 		VerificationAgreement,
 		Header,
-		VueFixedHeader,
+		// VueFixedHeader,
 		Review,
 	},
 
@@ -215,7 +215,7 @@ export default {
 			fixedStatus: {
 				headerIsFixed: false,
 			},
-			propsData: { ...createData() },
+			// propsData: { ...createData() },
 			current: 0,
 			enabledNextBtn: false,
 			dialog: false,
