@@ -73,7 +73,7 @@
 </template>
 
 <script>
-let stripe = Stripe(`${import.meta.env.VUE_APP_STRIPE_PUBLIC_KEY}`);
+let stripe = Stripe(`${import.meta.env.VITE_STRIPE_PUBLIC_KEY}`);
 let elements = stripe.elements();
 
 const style = {
@@ -100,7 +100,7 @@ export default {
 			city: "",
 			postCode: "",
 			payment_method: null,
-      loading: false
+      		loading: false
 		};
 	},
   created() {
