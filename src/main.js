@@ -1,4 +1,3 @@
-import 'vuetify/dist/vuetify.min.css';
 import { createApp } from 'vue'
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,7 +21,9 @@ import vuetify from "@/plugins/vuetify";
 import ApiService from "./services/api.service";
 import 'viewerjs/dist/viewer.css';
 import VueTelInput from 'vue-tel-input';
+import 'vue-tel-input/vue-tel-input.css';
 import VueViewer from 'v-viewer';
+import 'vuetify/dist/vuetify.min.css';
 
 const Vue = createApp(App);
 Vue.use(VueViewer);
