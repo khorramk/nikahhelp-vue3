@@ -416,7 +416,7 @@
                   name="ver_recommender_title"
                 >
                   <a-input
-                    v-model="verification.ver_recommender_title"
+                    v-model:value="verification.ver_recommender_title"
                     class="w-100"
                     :maxLength="20"
                     placeholder="Title"
@@ -432,7 +432,7 @@
                       name="ver_recommender_first_name"
                     >
                       <a-input
-                        v-model="verification.ver_recommender_first_name"
+                        v-model:value="verification.ver_recommender_first_name"
                         class="w-100 rounded-right"
                         :maxLength="20"
                         placeholder="First Name"
@@ -448,7 +448,7 @@
                       name="ver_recommender_last_name"
                     >
                       <a-input
-                        v-model="verification.ver_recommender_last_name"
+                        v-model:value="verification.ver_recommender_last_name"
                         class="w-100 rounded-left"
                         placeholder="Last Name"
                         :maxLength="20"
@@ -464,22 +464,17 @@
                   ref="ver_recommender_occupation"
                   name="ver_recommender_occupation"
                 >
-                  <v-select
+                  <a-select
                     :clearable="false"
                     class="style-chooser"
-                    @input="onValueChange($event, 'ver_recommender_occupation')"
+                    @change="onValueChange($event, 'ver_recommender_occupation')"
                     id="ver_recommender_occupation"
                     placeholder="Occupation"
-                    v-model="verification.ver_recommender_occupation"
-                    :maxLength="20"
+                    v-model:value="verification.ver_recommender_occupation"
                     label="name"
-                    :reduce="(option) => option.name"
-                    :options="representativeDetails.occupations"
-                  >
-                    <template #open-indicator>
-                      <a-icon type="down" /> 
-                    </template>
-                  </v-select>
+                    :options="representativeDetails.occupations.map(item => ({ value: item.name, label: item.name}))"
+                    ><template #open-indicator> <a-icon type="down" /> </template>
+                  </a-select>
                 </a-form-item>
 
                 <a-form-item
@@ -491,13 +486,13 @@
                     placeholder="Address"
                     :rows="4"
                     :maxLength="92"
-                    v-model="verification.ver_recommender_address"
+                    v-model:value="verification.ver_recommender_address"
                     @blur="onValueChange($event, 'ver_recommender_address')"
                   />
                 </a-form-item>
                 <a-form-item>
-                  <vue-tel-input
-                    v-model="verification.ver_recommender_mobile_no"
+                  <!-- <vue-tel-input
+                    v-model:value="verification.ver_recommender_mobile_no"
                     @onInput="
                       onNumberChange($event, 'ver_recommender_mobile_no')
                     "
@@ -507,19 +502,32 @@
                     :validCharactersOnly="true"
                     placeholder="Mobile Number"
                     style="background: #fff"
-                  ></vue-tel-input>
+                  ></vue-tel-input> -->
+                  <vue-tel-input 
+                    v-model="verification.ver_recommender_mobile_no"
+                    :autoFormat="false"
+                    :inputOptions="{showDialCode: true}"
+                    :dropdownOptions="{
+                      showDialCodeInSelection: true,
+                      showDialCodeInList: true,
+                      showFlags: true
+                    }"
+                    @validate="onNumberChange($event)"
+                  >
+                  </vue-tel-input>
                   <span class="error-number" v-if="!isValidNumber"
                     >Please write a valid mobile number</span>
                 </a-form-item>
                 <a-form-item
                   ref="ver_recommender_email"
-                  name="ver_recommender_email"
+                  :name="['ver_recommender_email']"
+                  :rules="[{ type: 'email' }]"
                 >
                   <a-input
                     class="w-100"
                     id="inputNumber"
                     placeholder="Email Address"
-                    v-model="verification.ver_recommender_email"
+                    v-model:value="verification.ver_recommender_email"
                     @blur="onValueChange($event, 'ver_recommender_email')"
                   />
                 </a-form-item>
@@ -715,8 +723,9 @@ export default {
 
   methods: {
     onNumberChange(e) {
-      this.isValidNumber = e.isValid;
-      if (e.isValid) {
+      console.log(e, 'inside nubmer changte');
+      this.isValidNumber = e.valid === undefined ? true : e.valid;
+      if (e.valid) {
         //this.verification.ver_recommender_mobile_no = `${e.country.dialCode} ${this.verification.ver_recommender_mobile_no}`;
         this.saveVerificationInfo();
       }
@@ -726,7 +735,7 @@ export default {
     },
 
     handleSubmitFormOne() {
-      this.$refs.verification.validate((valid) => {
+      this.$refs.verification.validate().then((valid) => {
         if (valid) {
           this.activeKey = null;
         } else {
@@ -749,11 +758,7 @@ export default {
       this.saveVerificationInfo();
     },
     checkValidation(name) {
-      this.$refs.verification.fields.forEach((f) => {
-        if (f.prop == name) {
-          f.onFieldBlur();
-        }
-      });
+      this.$refs[name].onFieldBlur();
     },
     saveVerificationInfo() {
       this.$emit('turnOnBtnLoader');
