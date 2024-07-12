@@ -17,7 +17,7 @@
             <a-select
                 placeholder="Role"
                 class="fs-14 mb-2"
-                v-model="invitationObject.role"
+                v-model:value="invitationObject.role"
                 :disabled="invitationObject.add_as_a == 'Candidate'"
             >
               <a-select-option value="Admin"> Admin </a-select-option>
@@ -33,7 +33,7 @@
             <a-select
                 placeholder="Add as a"
                 class="fs-14 mb-2"
-                v-model="invitationObject.add_as_a"
+                v-model:value="invitationObject.add_as_a"
                 @change="changedAddAs()"
             >
               <a-select-option value="Candidate" :disabled="ifHasCandidate()"> Candidate </a-select-option>
@@ -49,7 +49,7 @@
             <a-select
                 placeholder="Relationship"
                 class="fs-14"
-                v-model="invitationObject.relationship"
+                v-model:value="invitationObject.relationship"
                 v-if="invitationObject.add_as_a != 'Candidate'"
             >
               <a-select-option v-for="(relation, index) in relationships" :key="index" :value="relation"> {{ relation }} </a-select-option>
@@ -66,7 +66,7 @@
         <div class="mt-1" v-if="showUserBox">
           <label for="" style="color:#fff; margin: 0px 2px;">Email:</label>
 
-          <a-input ref="userNameInput" class="mt-1" placeholder="Search email or user ID" v-model="user_email" @input="searchMember()" medium>
+          <a-input ref="userNameInput" class="mt-1" placeholder="Search email or user ID" v-model:value="user_email" @input="searchMember()" medium>
             <a-icon slot="suffix" type="loading" style="color: rgba(0,0,0,.45)" v-if="requestSent != 0" />
             <a-icon slot="suffix" type="close" style="color: rgba(0,0,0,.45); cursor:pointer;" @click="showUserBox=false; removeAttachedUser();" v-if="requestSent == 0" />
           </a-input>
@@ -85,7 +85,7 @@
             </div>
             <button class="btn btn-sent position-absolute text-white cursor-default" v-if="userObj.invitation_status == 2">Joined</button>
             <button class="btn btn-sent btn-outline-secondary position-absolute text-white cursor-default" v-if="userObj.invitation_status == 1">Sent</button>
-            <a-checkbox class="position-absolute btn-sent" @change="attachUser" v-model="attached" v-if="userObj.invitation_status == 0"></a-checkbox>
+            <a-checkbox class="position-absolute btn-sent" @change="attachUser" v-model:value="attached" v-if="userObj.invitation_status == 0"></a-checkbox>
           </div>
 
         </div>
