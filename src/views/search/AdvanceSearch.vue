@@ -43,7 +43,7 @@
 									:block="true"
 									:responsive="false"
 									title="Search"
-									:icon="require('@/assets/icon/search-love-primary.svg')"
+									:icon="SearchLovePrimary"
 									customEvent="handleSearch"
 									@onClickButton="clickBtn"
                   ref="btnsearch"
@@ -101,7 +101,8 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/atom/ButtonComponent.vue'
+import { defineAsyncComponent } from 'vue';
+import ButtonComponent from '@/components/atom/ButtonComponent.vue';
 import Sidebar from "@/components/dashboard/layout/Sidebar.vue";
 import Observer from "@/components/atom/Observer.vue"
 import Loader from "@/plugins/loader/loader.vue";
@@ -116,16 +117,25 @@ import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.
 import ApiService from '../../services/api.service';
 import Notification from "@/common/notification.js";
 
+import SearchLovePrimary from "@/assets/icon/search-love-primary.svg";
+
 export default {
   name: "AdvanceSearch",
   mixins: [createModalMixin("manageTeamRedirect")],
   components: {
     TeamOffRedirection,
-    ProfileDetail: () => import("@/components/search/CandidateProfileDetails.vue"),
-    RightSideCandidateDetail: () =>
-      import("@/components/search/RightSideCandidateDetail.vue"),
-    RightSidebar: () => import("@/components/search/ProfileDetailRight.vue"),
-    SimpleSearch: () => import("@/components/search/SimpleSearch.vue"),
+    // ProfileDetail: () => import("@/components/search/CandidateProfileDetails.vue"),
+    ProfileDetail: defineAsyncComponent(() => import("@/components/search/CandidateProfileDetails.vue")),
+
+    // RightSideCandidateDetail: () => import("@/components/search/RightSideCandidateDetail.vue"),
+    RightSideCandidateDetail: defineAsyncComponent(() => import("@/components/search/RightSideCandidateDetail.vue")),
+
+    // RightSidebar: () => import("@/components/search/ProfileDetailRight.vue"),
+    RightSidegar: defineAsyncComponent(() => import("@/components/search/ProfileDetailRight.vue")),
+
+    // SimpleSearch: () => import("@/components/search/SimpleSearch.vue"),
+    SimpleSearch: defineAsyncComponent(() => import("@/components/search/SimpleSearch.vue")),
+
     Sidebar,
     // ModalContainer,
     // ManageTeamRedirect,
@@ -136,6 +146,7 @@ export default {
     AddComponent,
     Observer,
     ButtonComponent,
+    SearchLovePrimary
   },
  
   data() {
@@ -420,7 +431,7 @@ export default {
       console.log('successfully clicked advacesearch')
     },
     closeSearchSidebar() {
-      if(getWindowWidth() <= 575){
+      if(this.getWindowWidth() <= 575){
         this.isSearchBtnClicked = false;
         this.collapsed = true;
         console.log('successfully closed searchsidebar')
