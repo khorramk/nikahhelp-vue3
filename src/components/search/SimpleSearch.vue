@@ -44,7 +44,7 @@
 						<label for="" class="search-label">Religion:</label>
 						<a-select
 							id="religion"
-							v-model="religion"
+							v-model:value="religion"
 							show-search
 							size="large"
 							:placeholder="'Select Religion'"
@@ -72,7 +72,7 @@
 						<label for="" class="search-label">Country:</label>
 						<a-select
 							id="country"
-							v-model="country"
+							v-model:value="country"
 							show-search
 							size="large"
 							:placeholder="'Select country'"
@@ -100,7 +100,7 @@
 						<label for="" class="search-label">Ethnicity:</label>
 						<a-select
 							id="ethnicity"
-							v-model="ethnicity"
+							v-model:value="ethnicity"
 							show-search
 							size="large"
 							:placeholder="'Select Ethnicity'"
@@ -128,7 +128,7 @@
 						<label for="" class="search-label">Marital status:</label>
 						<a-select
 							id="ethnicity"
-							v-model="maritalStatus"
+							v-model:value="maritalStatus"
 							show-search
 							size="large"
 							:placeholder="'Select Marital Status'"
@@ -156,7 +156,7 @@
 						<label for="" class="search-label">Employment status:</label>
 						<a-select
 							id="ethnicity"
-							v-model="employmentStatus"
+							v-model:value="employmentStatus"
 							show-search
 							size="large"
 							:placeholder="'Select Employment Status'"
@@ -185,7 +185,7 @@
 						<label for="" class="search-label">Nationality:</label>
 						<a-select
 							id="country"
-							v-model="nationality"
+							v-model:value="nationality"
 							show-search
 							size="large"
 							:placeholder="'Select nationality'"

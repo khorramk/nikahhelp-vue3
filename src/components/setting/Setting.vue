@@ -57,7 +57,7 @@
             :isSmall="true"
             title="EDIT"
             :responsive="false"
-            :icon="require('@/assets/icon/edit_icon.svg')"
+            :icon="EditIcon"
             @onClickButton="openDialog"
           />
           <!-- <v-tooltip bottom color="warning">
@@ -325,7 +325,7 @@
         />
       </div>
     </div>
-    <EditContactModal :dialog="dialog" />
+    <EditContactModal />
   </div>
 </template>
 
@@ -337,6 +337,7 @@ import VerificationCandidate from "@/components/setting/Verification-Candidate.v
 import EditContactModal from "@/components/setting/EditContactModal.vue";
 import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 import jwtService from "@/services/jwt.service";
+import EditIcon from "@/assets/icon/edit_icon.svg";
 export default {
   name: "Setting",
   components: {

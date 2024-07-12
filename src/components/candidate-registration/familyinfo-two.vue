@@ -58,7 +58,7 @@
                   class="style-chooser"
                   :maxLength="20"
                   placeholder="write your father's profession"
-                  v-model="familyInformation.father_profession"
+                  v-model:value="familyInformation.father_profession"
                 />
               </a-form-item>
             </div>
@@ -113,7 +113,7 @@
                   class="style-chooser"
                   :maxLength="20"
                   placeholder="write your mother's profession"
-                  v-model="familyInformation.mother_profession"
+                  v-model:value="familyInformation.mother_profession"
                 />
                 <!-- <v-select
                   :clearable="false"
@@ -179,7 +179,7 @@
 2 brothers, unmarried"
                   :rows="3"
                   :maxLength="200"
-                  v-model="familyInformation.siblings_desc"
+                  v-model:value="familyInformation.siblings_desc"
                 ></a-textarea>
               </a-form-item>
               <span style="display: flex; justify-content: flex-end"
@@ -241,7 +241,7 @@
                   placeholder="e.g. elder brother is a teacher etc. or We are a traditional family. "
                   :rows="3"
                   :maxLength="200"
-                  v-model="familyInformation.family_info"
+                  v-model:value="familyInformation.family_info"
                 ></a-textarea>
               </a-form-item>
               <span style="display: flex; justify-content: flex-end"
@@ -304,7 +304,7 @@
                   append-to-body
                   :clearable="false"
                   class="style-chooser"
-                  @input="onValueChange($event, 'country_of_origin')"
+                  @option:selected="onValueChange($event, 'country_of_origin')"
                   id="country_of_origin"
                   :reduce="(option) => option.name"
                   placeholder="please select "
@@ -314,8 +314,9 @@
                     { name: 'Yes', value: 'Yes' },
                     { name: 'No', value: 'No' },
                   ]"
-                  ><template #open-indicator> <a-icon type="down" /> </template
-                ></v-select>
+                >
+                  <template #open-indicator> <a-icon type="down" /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
@@ -446,7 +447,7 @@ export default {
       this.activeKey = key;
     },
     handleSubmitForm() {
-      this.$refs.familyInformationForm.validate((valid) => {
+      this.$refs.familyInformationForm.validate().then((valid) => {
         if (valid) {
           this.activeKey = null;
         } else {
@@ -465,11 +466,12 @@ export default {
         .startsWith(input.toLowerCase());
     },
     onValueChange(e, name) {
-      this.$refs.familyInformationForm.fields.forEach((f) => {
-        if (f.prop == name) {
-          f.onFieldBlur();
-        }
-      });
+      // this.$refs.familyInformationForm.fields.forEach((f) => {
+      //   if (f.prop == name) {
+      //     f.onFieldBlur();
+      //   }
+      // });
+      this.$refs[name].onFieldBlur();
       this.checkDisabled();
       this.saveFamilyInfo();
     },

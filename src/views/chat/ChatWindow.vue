@@ -108,6 +108,11 @@
                           class="w-full pr-3 cursor-pointer"
                           :key="item.id"
                       />
+                      <!-- {{ item }}
+                      {{ online_users }}
+                      {{ teamMembers }}
+                      {{ activeTeam }}
+                      {{ notify }} -->
                     </div>
                   </div>
 <!--                  <div v-if="chatTab == 'Private'" class="tab-pane fade" :class="{'show active': chatTab == 'Private'}">-->
@@ -239,7 +244,7 @@
                             <!-- <button class="btn-emoji px-2" title="Coming soon">&#128578;</button> -->
                             <div class="wrapper">
 
-                              <emoji-picker @emoji="append" :search="search">
+                              <!-- <emoji-picker @emoji="append" :search="search">
                                 <button
                                   class="emoji-invoker"
                                   slot="emoji-invoker"
@@ -271,7 +276,14 @@
                                     </div>
                                   </div>
                                 </div>
-                              </emoji-picker>
+                              </emoji-picker> -->
+                              <!-- <emoji-picker :native="true" @select="append" /> -->
+                              <emoji-picker
+                                :text="text"
+                                picker-type="text-area"
+                                @select="append"
+                                @update:text="onChangeText"
+                              />
                             </div>
                           </a-tooltip>
                           <textarea class="regular-input" name="message" id=""  rows="4" placeholder="Type message..."
@@ -340,66 +352,68 @@ import ConnectedTeamChat from "../../components/chat/ConnectedTeamChat.vue";
 import PrivateRequestChat from "../../components/chat/PrivateRequestChat.vue";
 import Notification from "@/common/notification.js";
 import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
-import EmojiPicker from 'vue-emoji-picker'
+import 'vue3-emoji-picker/css';
+import EmojiPicker from 'vue3-emoji-picker'
 
 const messageKeys = ['id', 'user_id', 'chat_id', 'team_id', 'from_team_id', 'to_team_id', 'private_receiver_id', 'private_team_chat_id', 'body', 'seen', 'created_at'];
 
 export default {
   name: 'ChatWindow',
 
-  sockets: {
-    connect() {
-    },
+  // vue socket is not working in vue 3 so we have commented out the sokcets
+  // sockets: {
+  //   connect() {
+  //   },
 
-    ping(data) {
-    },
+  //   ping(data) {
+  //   },
 
-    receive_message(data) {
-      console.log(data, 'data from socket receive_message');
-      const recieveMessage = {
-        sender: data.senderInfo,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
-        body: data.body,
-      };
-      if(data.label == 'Connected') {
-        this.notify = data;
-      }
-      if (this.chatTab === 'Connected') {
-        if(!data.team_id) {
-          recieveMessage.team_connection_id = data.team_connection_id;
-          recieveMessage.id = data.msg_id;
-          recieveMessage.team_chat_id = data.team_chat_id;
-          if(this.connectedTeam) {
-            this.connectedTeam = this.connectedTeam.map(item => {
-              if(item.id == data.team_connection_id) {
-                item.message.id = data.msg_id;
-                item.message.body = data.body;
-                item.message.team_chat_id = data.team_chat_id;
-              }
-              return item;
-            });
-          }
-          this.connectedTeamChats = [...this.connectedTeamChats, recieveMessage];
-          this.notify = data;
-        }
-      } else {
-        if(data.team_id) {
-          recieveMessage.id = data.msg_id;
-          if(this.teamChat) {
-            this.teamChat = this.teamChat.map(item => {
-              item.message.id = data.msg_id;
-              item.message.body = data.body;
-              item.message.team_id = data.team_id;
-              return item;
-            });
-          }
-          this.chats = [...this.chats, recieveMessage];
-          this.newMessage = true;
-        }
-      }
-    },
-  },
+  //   receive_message(data) {
+  //     console.log(data, 'data from socket receive_message');
+  //     const recieveMessage = {
+  //       sender: data.senderInfo,
+  //       created_at: data.created_at,
+  //       updated_at: data.updated_at,
+  //       body: data.body,
+  //     };
+  //     if(data.label == 'Connected') {
+  //       this.notify = data;
+  //     }
+  //     if (this.chatTab === 'Connected') {
+  //       if(!data.team_id) {
+  //         recieveMessage.team_connection_id = data.team_connection_id;
+  //         recieveMessage.id = data.msg_id;
+  //         recieveMessage.team_chat_id = data.team_chat_id;
+  //         if(this.connectedTeam) {
+  //           this.connectedTeam = this.connectedTeam.map(item => {
+  //             if(item.id == data.team_connection_id) {
+  //               item.message.id = data.msg_id;
+  //               item.message.body = data.body;
+  //               item.message.team_chat_id = data.team_chat_id;
+  //             }
+  //             return item;
+  //           });
+  //         }
+  //         this.connectedTeamChats = [...this.connectedTeamChats, recieveMessage];
+  //         this.notify = data;
+  //       }
+  //     } else {
+  //       if(data.team_id) {
+  //         recieveMessage.id = data.msg_id;
+  //         if(this.teamChat) {
+  //           this.teamChat = this.teamChat.map(item => {
+  //             item.message.id = data.msg_id;
+  //             item.message.body = data.body;
+  //             item.message.team_id = data.team_id;
+  //             return item;
+  //           });
+  //         }
+  //         this.chats = [...this.chats, recieveMessage];
+  //         this.newMessage = true;
+  //       }
+  //     }
+  //   },
+  // },
 
   data() {
     return {
@@ -638,13 +652,13 @@ export default {
     if (loggedUser) {
       this.$socket.emit('ping', {user_id: loggedUser.id});
 
-      this.$socket.on('ping_success', function (res) {
+      this.$socket.on('ping_success', (res) => {
         if (res && res.online_users) {
           this.online_users = res.online_users;
         }
       });
 
-      this.$socket.on('receive_notification', function (res) {
+      this.$socket.on('receive_notification', (res) => {
         if (res && res.type) {
           this.loadPageData();
         }
@@ -652,7 +666,7 @@ export default {
 
 
 
-      this.$socket.on('lis_typing', function (res) {
+      this.$socket.on('lis_typing', (res) => {
         if(res.team_id) {
           if(this.chatHistory.length > 0) {
             this.chatHistory[0].typing_status = res.status;
@@ -683,6 +697,52 @@ export default {
               recentChat.typing_status = res.status;
               recentChat.typing_text = res.text;
             }
+          }
+        }
+      });
+
+      this.$socket.on('receive_message', (data) => {
+        console.log(data, 'data from socket receive_message');
+        const recieveMessage = {
+          sender: data.senderInfo,
+          created_at: data.created_at,
+          updated_at: data.updated_at,
+          body: data.body,
+        };
+        if(data.label == 'Connected') {
+          this.notify = data;
+        }
+        if (this.chatTab === 'Connected') {
+          if(!data.team_id) {
+            recieveMessage.team_connection_id = data.team_connection_id;
+            recieveMessage.id = data.msg_id;
+            recieveMessage.team_chat_id = data.team_chat_id;
+            if(this.connectedTeam) {
+              this.connectedTeam = this.connectedTeam.map(item => {
+                if(item.id == data.team_connection_id) {
+                  item.message.id = data.msg_id;
+                  item.message.body = data.body;
+                  item.message.team_chat_id = data.team_chat_id;
+                }
+                return item;
+              });
+            }
+            this.connectedTeamChats = [...this.connectedTeamChats, recieveMessage];
+            this.notify = data;
+          }
+        } else {
+          if(data.team_id) {
+            recieveMessage.id = data.msg_id;
+            if(this.teamChat) {
+              this.teamChat = this.teamChat.map(item => {
+                item.message.id = data.msg_id;
+                item.message.body = data.body;
+                item.message.team_id = data.team_id;
+                return item;
+              });
+            }
+            this.chats = [...this.chats, recieveMessage];
+            this.newMessage = true;
           }
         }
       });
@@ -1645,8 +1705,21 @@ export default {
         }, 1000)
     },
     append(emoji) {
-      this.msg_text += emoji
+      this.msg_text += emoji.i
     },
+    onSelectEmoji(emoji) {
+      console.log(emoji)
+      /*
+        // result
+        { 
+            i: "😚", 
+            n: ["kissing face"], 
+            r: "1f61a", // with skin tone
+            t: "neutral", // skin tone
+            u: "1f61a" // without tone
+        }
+        */
+    }
   }
 };
 

@@ -56,10 +56,10 @@ export default {
       required: false
     },
     activeTeam: {
-
+      type: Number,
     },
 	  online: {
-			type: Boolean | Object,
+			type: [Boolean, Object],
 	  }
   },
   data () {

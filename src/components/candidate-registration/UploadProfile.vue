@@ -96,16 +96,16 @@
                     <div class="d-flex flex-wrap">
                       <div class="" v-for="image in images" :key="image.pathShort">
                         <img 
-                          :ref="image.pathShort.substring(2, image.pathShort.length-4)" 
+                          :ref="image.pathShort.substring(20, image.pathShort.length-4)" 
                           class="circle contain" 
-                          :src="require(`@/assets/avatar/${image.pathShort.substring(2, image.pathShort.length)}`)"
-                          @click="avatarNo = image.pathShort.substring(2, image.pathShort.length-4); setAvatar(avatarNo)"
+                          :src="`${image.pathShort.substring(2, image.pathShort.length)}`"
+                          @click="avatarNo = image.pathShort.substring(20, image.pathShort.length-4); setAvatar(avatarNo)"
                         >
                       </div>
                       
                     </div>
 
-                    <template slot="footer">
+                    <template v-slot:footer>
                       <a-button key="back" shape="round" @click="showAvatarSelectionMenu=false">
                       Cancel
                       </a-button>
@@ -241,7 +241,7 @@
             </h3>
             <div class="d-flex align-items-baseline">
               <a-switch
-                v-model="anybody_can_see"
+                v-model:checked="anybody_can_see"
                 @change="onConfirmationSwitchChnaged1"
               >
                 <a-icon slot="checkedChildren" type="check" />
@@ -267,7 +267,7 @@
             <div class="d-flex align-items-baseline mt-4">
               <a-switch
                 @change="onConfirmationSwitchChnaged3"
-                v-model="team_connection_can_see"
+                v-model:checked="team_connection_can_see"
               >
                 <a-icon slot="checkedChildren" type="check" />
                 <a-icon slot="unCheckedChildren" type="close" />
@@ -321,20 +321,31 @@ export default {
       team_connection_can_see: false,
       loading: false,
       token: "",
+      imageApiLocation: ""
     };
   },
 
   created() {
     this.getImageSharingSettings();
-    this.importAll(require.context('../../assets/avatar/', true, /\.png$/));
+    this.imageApiLocation = import.meta.env.VITE_IMAGE;
     this.getToken();
   },
+
+  mounted() {
+    this.importAll();
+  },
+
   methods: {
     getToken() {
       this.token = JSON.parse(localStorage.getItem("token"));
     },
-    importAll(r) {
-      r.keys().forEach(key => (this.images.push({ pathShort: key })));
+    importAll() {
+      const images = import.meta.glob('./../../assets/avatar/*.png', { eager: true });
+      for (const path in images) {
+        this.images.push({ pathShort: path });
+        console.log(path.substring(20, path.length-4), 'path');
+      }
+      // sort this.images
       this.images.sort((a, b) => {
         let aNum = parseInt(a.pathShort.substring(2, a.pathShort.length-4));
         let bNum = parseInt(b.pathShort.substring(2, b.pathShort.length-4));
@@ -413,7 +424,7 @@ export default {
       await axios.post('v1/avatar/image-upload', formData).then(async response => {
         console.log(response.data);
         let payload = {
-          per_avatar_url: process.env.VUE_APP_IMAGE.slice(0, -3) + response.data
+          per_avatar_url: this.imageApiLocation.slice(0, -3) + response.data
         }
         await axios.post('v1/candidate/image-upload', payload).then(response => {
           console.log(response);
@@ -459,7 +470,8 @@ export default {
       if(this.avatarNo == 0) {
         return;
       }
-      let avatarImage = require(`@/assets/avatar/${this.avatarNo}.png`); 
+      let avatarImage = await (import(`./../../assets/avatar/${this.avatarNo}.png`));
+      avatarImage = avatarImage.default; 
       let avatarImgFile;
       await this.urltoFile(avatarImage, `avatar${this.avatarNo}.png`)
           .then(function(file){
@@ -563,15 +575,15 @@ export default {
         let payload = {};
         if(folder === '_per_main_image_url') {
           payload = {
-            per_main_image_url: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            per_main_image_url: this.imageApiLocation + '/' + Object.values(data)[0]
           };
         } else if(folder === '_per_avatar_url') {
           payload = {
-            per_avatar_url: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            per_avatar_url: this.imageApiLocation + '/' + Object.values(data)[0]
           }
         } else if(folder === '_additional_image') {
           payload = {
-            other_images: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            other_images: this.imageApiLocation + '/' + Object.values(data)[0]
           }
         }
         if(Object.keys(payload).length > 0) {
@@ -585,18 +597,18 @@ export default {
 
           let user = JSON.parse(localStorage.getItem("user"));
           if (user) {
-            user.per_main_image_url = folder === '_per_main_image_url' ? process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0] : user.per_main_image_url;
+            user.per_main_image_url = folder === '_per_main_image_url' ? this.imageApiLocation + '/' + Object.values(data)[0] : user.per_main_image_url;
             localStorage.removeItem("user");
             localStorage.setItem("user", JSON.stringify(user));
           }
 
           this.$emit("valueChange", {
             value: {
-              avatar_image_url: folder === '_per_avatar_url' ? process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0] : this.imageModel.avatar_image_url,
-              main_image_url: folder === '_per_main_image_url' ? process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0] : this.imageModel.main_image_url,
+              avatar_image_url: folder === '_per_avatar_url' ? this.imageApiLocation + '/' + Object.values(data)[0] : this.imageModel.avatar_image_url,
+              main_image_url: folder === '_per_main_image_url' ? this.imageApiLocation + '/' + Object.values(data)[0] : this.imageModel.main_image_url,
               additionalImageSrc:
                 folder === '_additional_image' 
-                  ? process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+                  ? this.imageApiLocation + '/' + Object.values(data)[0]
                   : this.imageModel.additionalImageSrc,
             },
             current: 3,

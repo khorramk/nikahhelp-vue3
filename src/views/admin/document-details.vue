@@ -324,7 +324,7 @@
         </div>
       </div>
     </div>
-    <NoteModal @save="save" @cancel="cancel" :dialog="dialog" />
+    <NoteModal @save="save" @cancel="cancel" />
   </div>
 </template>
 

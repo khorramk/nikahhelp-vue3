@@ -581,7 +581,9 @@ body {
 }
 .ant-input-password {
     border-radius: 25px;
-   border:none;
+    border:none;
+    border: 1px solid rgba(128, 128, 128, 0.3411764706);
+    background: #fafafa;
 }
 .ant-input{
     border-radius: 25px;

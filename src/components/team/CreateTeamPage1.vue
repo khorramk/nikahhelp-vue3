@@ -17,7 +17,7 @@
         <a-row class="mt-2 px-4">
           <a-col :span="24" class="my-2">
             <a-input
-                v-model="team.name"
+                v-model:value="team.name"
                 size="large"
                 class="team-name-input"
                 placeholder="Team name"
@@ -31,7 +31,7 @@
                 class="team-description team-name-input resize-none fs-16"
                 placeholder="Team description"
                 :auto-size="{ minRows: 1, maxRows: 1 }"
-                v-model="team.description"
+                v-model:value="team.description"
                 @input="in_progress = true"
                 :maxLength="80"
             />
@@ -180,6 +180,7 @@ export default {
     }
   },
 	created() {
+    this.imageApiLocation = import.meta.env.VITE_IMAGE;
     // let loggedUser = JSON.parse(localStorage.getItem('user'));
     // if(loggedUser && loggedUser.id) {
     //   if(loggedUser.account_type == 1) {
@@ -360,7 +361,7 @@ export default {
           // console.log(data, 'image response afer saving image');
 
           let  payload = {
-            logo: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            logo: this.imageApiLocation + '/' + Object.values(data)[0]
           };
           
           await ApiService.post(`v1/team-update/${this.team.id}`, payload).then(res => {

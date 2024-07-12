@@ -33,7 +33,7 @@
               <a-input
                 type="email"
                 id="email"
-                v-model="signinModel.email"
+                v-model:value="signinModel.email"
                 placeholder="Enter email"
                 class="fs-16"
               />
@@ -46,7 +46,7 @@
                 type="password"
                 class="form-control fs-16"
                 id="password"
-                v-model="signinModel.password"
+                v-model:value="signinModel.password"
                 placeholder="Password"
                 @keyup.enter="entered()"
               />
@@ -141,7 +141,8 @@ export default {
       }
     },
     async handleSubmit() {
-      this.$refs.signinForm.validate((valid) => {
+      this.$refs.signinForm.validate()
+      .then((valid) => {
         if (valid) {
           try {
             this.isLoading = true;

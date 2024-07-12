@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="600">
+    <v-dialog v-model="dialogFlag" width="600">
       <v-card v-if="!showConfirmation">
         <v-card-title class="text-h5"> Review and publish </v-card-title>
 
@@ -65,7 +65,9 @@ export default {
   },
   props: ["dialog"],
   data() {
-    return { showConfirmation: false };
+    return { 
+      showConfirmation: false,
+    };
   },
   computed: {
     dialogFlag: function () {

@@ -18,9 +18,11 @@
 <script>
 export default {
   components: {},
-  props: ["dialog"],
+  // props: ["dialog"],
   data() {
-    return {};
+    return {
+      dialog: false,
+    };
   },
   computed: {
     dialogFlag: function () {

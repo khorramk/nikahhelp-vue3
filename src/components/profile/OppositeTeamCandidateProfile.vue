@@ -42,7 +42,7 @@
 								customEvent="openGallery"
 								:responsive="false"
 								:isBlock="true"
-								:icon="require('@/assets/icon/gallery.svg')"
+								:icon="GallerySvg"
 								@onClickButton="onClickButton"
 							/>
 							<ButtonComponent
@@ -158,7 +158,7 @@
 										<v-container fluid class="pt-0 px-5 info-div">
 											<v-row dense>
 												<v-col class="pt-1" cols="12">
-													<PersonalInformationTable :data="candidateInfo"/>
+													<PersonalInformationTable :data="candidateData"/>
 												</v-col>
 												<v-col ref="family-information" class="pt-1" cols="12">
 													<MoreAbout 
@@ -422,7 +422,9 @@ import Notification from "@/common/notification.js";
 
 import OutlinedButton from '@/components/atom/OutlinedButton.vue'
 import ComingSoonModal from "@/components/search/ComingSoonModal.vue"
-import {mapActions} from 'vuex'
+import {mapActions} from 'vuex';
+
+import GallerySvg from '@/assets/icon/gallery.svg';
 
 export default {
 	name: "CandidateProfile",
@@ -439,7 +441,10 @@ export default {
 		Scroller,
 		ButtonComponent,
 		OutlinedButton,
-		ComingSoonModal
+		ComingSoonModal,
+
+		//icons
+		GallerySvg
 	},
 	sockets: {
 		connect: function () {

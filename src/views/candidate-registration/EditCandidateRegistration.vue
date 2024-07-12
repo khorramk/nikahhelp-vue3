@@ -8,13 +8,13 @@
         <p>To get the best results please complete the questions fully</p>
       </div>
 
-      <VueFixedHeader
+      <!-- <VueFixedHeader
         @change="updateFixedStatus"
         :threshold="propsData.threshold"
         :headerClass="propsData.headerClass"
         :fixedClass="propsData.fixedClass"
         :hideScrollUp="propsData.hideScrollUp"
-      >
+      > -->
         <div class="step-bar">
           <a-steps
             class="desktop-block"
@@ -55,7 +55,7 @@
             </div>
           </div>
         </div>
-      </VueFixedHeader>
+      <!-- </VueFixedHeader> -->
       <div class="steps-content" v-if="current == 0">
         <PreferenceTwo
           :candidateDetails="candidateDetails"
@@ -168,12 +168,12 @@
   </div>
 </template>
 <script>
-const createData = () => ({
-  threshold: 0,
-  headerClass: "vue-fixed-header",
-  fixedClass: "vue-fixed-header--isFixed",
-  hideScrollUp: false,
-});
+// const createData = () => ({
+//   threshold: 0,
+//   headerClass: "vue-fixed-header",
+//   fixedClass: "vue-fixed-header--isFixed",
+//   hideScrollUp: false,
+// });
 
 import PreferenceTwo from "@/components/candidate-registration/preference-two.vue";
 import EditVerification from "@/components/candidate-registration/edit-verification.vue";
@@ -188,7 +188,7 @@ import hobbies from "@/common/hobbies.js";
 import foods from "@/common/foods.js";
 import thankfulThings from "@/common/thankfulThings.js";
 import improveMyselfThings from "@/common/improveMyselfThings.js";
-import VueFixedHeader from "vue-fixed-header";
+// import VueFixedHeader from "vue-fixed-header";
 import jwtService from "../../services/jwt.service";
 import Header from "../../components/header/header.vue";
 export default {
@@ -199,7 +199,7 @@ export default {
     UploadProfile,
     Review,
     EditVerification,
-    VueFixedHeader,
+    // VueFixedHeader,
     Header,
   },
   mounted() {
@@ -210,7 +210,7 @@ export default {
       fixedStatus: {
         headerIsFixed: false,
       },
-      propsData: { ...createData() },
+      // propsData: { ...createData() },
       current: 0,
       enabledNextBtn: false,
       isLoading: false,

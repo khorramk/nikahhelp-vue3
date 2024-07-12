@@ -17,7 +17,7 @@
 						placeholder="Paste link here"
             class="ant-input-box color-primary"
 						size="large"
-            v-model="invitationLink"
+            v-model:value="invitationLink"
             @keydown.enter="getTheTeamInvitationInfo"
 					>
             <a-icon slot="prefix" type="snippets" class="input-prefix" @click="pastePassword" />

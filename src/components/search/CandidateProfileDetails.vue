@@ -56,7 +56,7 @@
                 title="Gallery"
                 customEvent="openGallery"
                 :responsive="false"
-                :icon="require('@/assets/icon/gallery.svg')"
+                :icon="GallerySvg"
                 @onClickButton="onClickButton"
             />
             <ButtonComponent
@@ -119,6 +119,7 @@ import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 import ProfileBanner from '@/components/atom/ProfileBanner.vue'
 import {mapMutations, mapActions, mapGetters} from 'vuex'
 import JwtService from "@/services/jwt.service";
+import GallerySvg from '@/assets/icon/gallery.svg';
 
 export default {
     name: 'CandidateProfileDetails1',
@@ -137,7 +138,8 @@ export default {
     components: {
         ProfileBanner,
         ButtonComponent,
-        PersonalInformation
+        PersonalInformation,
+        GallerySvg
     },
     created() {
         this.token = JSON.parse(localStorage.getItem("token"));

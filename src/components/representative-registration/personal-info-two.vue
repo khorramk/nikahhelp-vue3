@@ -31,22 +31,21 @@
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
               <a-form-item ref="per_gender" name="per_gender">
-                <v-select
-                :disabled="activeRouteName !== 'RepresentativeRegistration'"
-                  :clearable="false"
+                <a-select
+                  :disabled="activeRouteName !== 'RepresentativeRegistration'"
                   class="style-chooser"
-                  @input="onValueChange($event, 'per_gender', 'essential')"
+                  popupClassName="style-chooser"
+                  @change="onValueChange($event, 'per_gender', 'essential')"
                   id="per_gender"
                   placeholder="please select"
                   :reduce="(option) => option.value"
-                  v-model="personalInformation.essential.per_gender"
-                  label="name"
+                  v-model:value="personalInformation.essential.per_gender"
                   :options="[
-                    { name: 'Male', value: 1 },
-                    { name: 'Female', value: 2 },
+                    { label: 'Male', value: 1 },
+                    { label: 'Female', value: 2 }
                   ]"
                   ><template #open-indicator> <a-icon type="down" /> </template>
-                </v-select>
+                </a-select>
               </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
@@ -89,7 +88,7 @@
                 />What is your date of birth?
               </div>
             </div>
-            <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
+            <!-- <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
               <a-form-item ref="dob" name="dob">
                 <DropdownDatePicker
                   id="dob"
@@ -102,6 +101,33 @@
                   :maxYear="new Date().getFullYear() - 18"
                   :minYear="1940"
                 ></DropdownDatePicker>
+              </a-form-item>
+            </div> -->
+            <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'RepresentativeRegistration'}">
+              <a-form-item ref="dob" name="dob">
+                <!-- <DropdownDatePicker
+                  id="dob"
+                  displayFormat="dmy"
+                  dropdownClass="custom-select"
+                  :key="default_date"
+                  :default-date="personalInformation.essential.dob"
+                  v-model="personalInformation.essential.dob"
+                  :on-change="onChangeDD"
+                  :maxYear="new Date().getFullYear() - 18"
+                  :minYear="1940"
+                ></DropdownDatePicker> -->
+                <VueDatePicker
+                  id="dob" 
+                  v-model="personalInformation.essential.dob"
+                  @blur="onChangeDD"
+                  :flow="['year', 'month', 'day']"
+                  :max-date="new Date(new Date().setFullYear(new Date().getFullYear() - 18))"
+                  :min-date="'1940'"
+                  :enable-time-picker="false"
+                  style="z-index: 9999;"
+                >
+
+                </VueDatePicker>
               </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
@@ -143,19 +169,17 @@
             </div>
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item ref="per_occupation" name="per_occupation">
-                <v-select
+                <a-select
                   :clearable="false"
-                  :open="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'per_occupation', 'essential')"
+                  @change="onValueChange($event, 'per_occupation', 'essential')"
                   id="per_occupation"
                   placeholder="please select"
-                  :reduce="(option) => option.name"
-                  v-model="personalInformation.essential.per_occupation"
+                  v-model:value="personalInformation.essential.per_occupation"
                   label="name"
-                  :options="representativeDetails.occupations"
+                  :options="representativeDetails.occupations.map(item => ({ value: item.name, label: item.name}))"
                   ><template #open-indicator> <a-icon type="down" /> </template>
-                </v-select>
+                </a-select>
               </a-form-item>
 
               <!-- <a-input
@@ -195,16 +219,26 @@
               </div>
             </div>
           </div>
-
-          <a-button
-            shape="round"
-            type="primary"
-            style="float: right; margin-bottom: 0.5rem; margin-right: -15px"
-            class="mt-5"
-            @click="handleSubmitFormOne"
-          >
-            Save & Continue
-          </a-button>
+          <div class="row pt-3 pb-0 p-3 justify-content-end">
+            <a-button
+              shape="round"
+              type="primary"
+              style=""
+              class="mt-5"
+              @click="handleSubmitFormOne"
+            >
+              Save & Continue
+            </a-button>
+            <!-- <div class="col-12 none-padding  p-2">
+              <div class="mb-2 font-weight-bold">
+                <a-icon
+                  v-if="personalInformation.essential.per_education"
+                  class="color-success mr-2 fs-18 fw-500"
+                  type="check"
+                />What is your highest level of education?
+              </div>
+            </div> -->
+          </div>
         </a-form>
       </a-collapse-panel>
       <a-collapse-panel
@@ -326,7 +360,7 @@
                 <a-input
                   @blur="onValueChange($event, 'address_1', 'contact')"
                   :maxLength="46"
-                  v-model="personalInformation.personal.address_1"
+                  v-model:value="personalInformation.personal.address_1"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
               </a-form-item>
@@ -373,7 +407,7 @@
                 <a-input
                   @blur="onValueChange($event, 'address_2', 'contact')"
                   :maxLength="46"
-                  v-model="personalInformation.personal.address_2"
+                  v-model:value="personalInformation.personal.address_2"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
               </a-form-item>
@@ -422,7 +456,7 @@
               >
                 <a-input
                   @blur="onValueChange($event, 'per_permanent_city', 'contact')"
-                  v-model="personalInformation.personal.per_permanent_city"
+                  v-model:value="personalInformation.personal.per_permanent_city"
                   placeholder="city"
                   maxLength="30"
                 />
@@ -472,11 +506,11 @@
               >
                 <a-input
                   @blur="
-                    onValueChange($event, 'contact', 'per_permanent_post_code')
+                    onValueChange($event, 'per_permanent_post_code', 'contact')
                   "
                   :maxLength="10"
                   placeholder="Post code, e.g. ME1 1BA"
-                  v-model="personalInformation.personal.per_permanent_post_code"
+                  v-model:value="personalInformation.personal.per_permanent_post_code"
                 />
               </a-form-item>
             </div>
@@ -522,19 +556,19 @@
                 ref="per_permanent_country"
                 name="per_permanent_country"
               >
-                <v-select
+                <a-select
                   :clearable="false"
                   class="style-chooser"
-                  @input="
+                  @change="
                     onCountryChange($event, 'per_permanent_country', 'contact')
                   "
                   placeholder="Select Country"
-                  v-model="personalInformation.personal.per_permanent_country"
+                  v-model:value="personalInformation.personal.per_permanent_country"
                   :reduce="(option) => option.name"
                   label="name"
-                  :options="representativeDetails.countries"
+                  :options="representativeDetails.countries.map(item => ({ value: item.name, label: item.name}))"
                   ><template #open-indicator> <a-icon type="down" /> </template>
-                </v-select>
+                </a-select>
               </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
@@ -576,15 +610,27 @@
             </div>
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item ref="mobile_number" name="mobile_number">
-                <vue-tel-input
+                <!-- <vue-tel-input
                   v-model="personalInformation.personal.mobile_number"
-                  @onInput="onNumberChange($event)"
+                  @blur="onNumberChange($event)"
                   :inputOptions="{showDialCode: true}"
                   :validCharactersOnly="true"
                   class="style-chooser"
                   placeholder="Mobile Number"
                   style="background-color: #fff;"
-                ></vue-tel-input>
+                ></vue-tel-input> -->
+                <vue-tel-input 
+                  v-model="personalInformation.personal.mobile_number"
+                  :autoFormat="false"
+                  :inputOptions="{showDialCode: true}"
+                  :dropdownOptions="{
+                    showDialCodeInSelection: true,
+                    showDialCodeInList: true,
+                    showFlags: true
+                  }"
+                  @validate="onNumberChange($event)"
+                >
+                </vue-tel-input>
                 <span class="error-number" v-if="!isValidNumber"
                   >Please write a valid mobile number</span
                 >
@@ -673,7 +719,9 @@
   </div>
 </template>
 <script>
-import DropdownDatePicker from "vue-dropdown-datepicker";
+// import DropdownDatePicker from "vue-dropdown-datepicker";
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 import vSelect from "vue-select";
 import { RULES, RULES_PERSONAL } from "./models/representative";
 export default {
@@ -687,7 +735,8 @@ export default {
   },
   name: "personInfoRefTwo",
   components: {
-    DropdownDatePicker,
+    // DropdownDatePicker,
+    VueDatePicker,
     vSelect,
   },
   data() {
@@ -729,6 +778,8 @@ export default {
   async mounted() {},
   methods: {
     checkValidation(name, action) {
+      this.$refs[name].onFieldBlur();
+      return;
       switch (action) {
         case "essential":
           this.$refs.repPersonalInfoFormOne.fields.forEach((f) => {
@@ -747,30 +798,34 @@ export default {
       }
     },
     handleSubmitFormOne() {
-      this.$refs.repPersonalInfoFormOne.validate((valid) => {
-        if (valid) {
-          this.activeKey = ["2"];
-        } else {
-          setTimeout(() => {
-            const el = document.querySelector(".has-error:first-of-type");
-            el.scrollIntoView();
-          }, 100);
-          return false;
-        }
-      });
+      this.$refs.repPersonalInfoFormOne
+        .validate()
+        .then((valid) => {
+          if (valid) {
+            this.activeKey = ["2"];
+          } else {
+            setTimeout(() => {
+              const el = document.querySelector(".has-error:first-of-type");
+              el.scrollIntoView();
+            }, 100);
+            return false;
+          }
+        });
     },
     handleSubmitFormTwo() {
-      this.$refs.repPersonalInfoFormTwo.validate((valid) => {
-        if (valid) {
-          this.activeKey = null;
-        } else {
-          setTimeout(() => {
-            const el = document.querySelector(".has-error:first-of-type");
-            el.scrollIntoView();
-          }, 100);
-          return false;
-        }
-      });
+      this.$refs.repPersonalInfoFormTwo
+        .validate()
+        .then((valid) => {
+          if (valid) {
+            this.activeKey = null;
+          } else {
+            setTimeout(() => {
+              const el = document.querySelector(".has-error:first-of-type");
+              el.scrollIntoView();
+            }, 100);
+            return false;
+          }
+        });
     },
     onValueChange(e, name, action) {
       this.checkValidation(name, action);
@@ -804,8 +859,11 @@ export default {
         .catch(() => {});
     },
     onNumberChange(e) {
-      this.isValidNumber = e.isValid;
-      if (e.isValid) {
+      this.isValidNumber = e.valid === undefined ? true : e.valid;
+
+      console.log(e, e.valid, 'we ==================================')
+      if (e.valid) {
+        console.log(this.isValidNumber, 'we vali helj')
         // this.personalInformation.personal.mobile_number = `${e.country.dialCode} ${this.personalInformation.personal.mobile_number}`;
         this.save("contact");
       }
@@ -839,6 +897,7 @@ export default {
       });
     },
     onChangeDD() {
+      console.log("hello os")
       this.save("essential");
     },
     onChangePanel(e) {

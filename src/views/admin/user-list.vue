@@ -4,8 +4,8 @@
       <div class="top-header">
         <div class="top-left">
           <v-tabs
-            @change="onSelectedTab"
-            v-model="selectedTab"
+            @update:modelValue="onSelectedTab"
+            :model-value="selectedTab"
             style="height: 46px"
           >
             <v-tab value="0"
@@ -57,7 +57,7 @@
       <!-- <div class="bottom-header"></div> -->
     </div>
     <div class="panel-content">
-      <v-data-table
+      <v-data-table-server
         v-model="selectedTasks"
         show-select
         :items="items"
@@ -67,6 +67,7 @@
         item-key="name"
         class="elevation-1 dt-table"
         :server-items-length="totalNumberOfItems"
+        :items-length="totalNumberOfItems"
         :options="options"
         @update:options="paginate"
         :loading="loading"
@@ -75,9 +76,9 @@
           'items-per-page-text': 'Show',
         }"
       >
-        <template slot="headers" slot-scope="props">
+        <template #headers="props">
           <tr>
-            <th v-for="header in props.headers" :key="header.value">
+            <th v-for="header in props.headers[0]" :key="header.value">
               <span v-if="header.text !== 'actions'"> {{ header.text }}</span>
               <span v-if="header.text == 'actions'">
                 <v-menu offset-y>
@@ -111,7 +112,7 @@
             </td>
             <td class="id">{{ item["id"] }}</td>
             <td class="created_at">
-              {{ $filter.formatDate(item["created_at"]) }}
+              {{ $filters.formatDate(item["created_at"]) }}
             </td>
             <td class="full_name">{{ item["full_name"] }}</td>
             <td class="account_type">
@@ -225,7 +226,7 @@
             </td>
           </tr>
         </template>
-      </v-data-table>
+      </v-data-table-server>
     </div>
   </div>
 </template>
