@@ -1,11 +1,11 @@
 <template>
-  <VueFixedHeader
+  <!-- <VueFixedHeader
     @change="updateFixedStatus"
     :threshold="propsData.threshold"
     :headerClass="propsData.headerClass"
     :fixedClass="propsData.fixedClass"
     :hideScrollUp="propsData.hideScrollUp"
-  >
+  > -->
     <nav
       id="landing-top-menu"
       class="landing-top-menu navbar justify-content-between"
@@ -42,23 +42,23 @@
         </form>
       </div>
     </nav>
-  </VueFixedHeader>
+  <!-- </VueFixedHeader> -->
 </template>
 
 <script>
-import VueFixedHeader from "vue-fixed-header";
-const createData = () => ({
-  threshold: 0,
-  headerClass: "vue-fixed-header",
-  fixedClass: "vue-fixed-header--isFixed",
-  hideScrollUp: false,
-});
+// import VueFixedHeader from "vue-fixed-header";
+// const createData = () => ({
+//   threshold: 0,
+//   headerClass: "vue-fixed-header",
+//   fixedClass: "vue-fixed-header--isFixed",
+//   hideScrollUp: false,
+// });
 export default {
   name: "Header",
-  components: { VueFixedHeader },
+  // components: { VueFixedHeader },
   data() {
     return {
-      propsData: { ...createData() },
+      // propsData: { ...createData() },
       isLoading: true,
       user: {},
       is_verified: 1,
