@@ -20,7 +20,7 @@
     <a-select
       :style="{ maxWidth: width + 'px', width: width + 'px' }"
       :id="uniqueNames[0]"
-      v-model="values[0]"
+      v-model:value="values[0]"
       @select="onSelectMin"
       :show-search="true"
       :size="size"
@@ -51,7 +51,7 @@
       @select="onSelect"
     ></v-select> -->
     <a-select
-      v-model="values[1]"
+      v-model:value="values[1]"
       :style="{ maxWidth: width + 'px', width: width + 'px' }"
       @select="onSelectMax"
       :size="size"
