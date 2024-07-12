@@ -75,7 +75,7 @@
                 <div class="row">
                   <div class="col-12 col-md-12">
                     <a-form-item ref="ver_country" name="ver_country">
-                      <v-select :clearable="false" class="style-chooser" @input="onChangeCountry($event, 'ver_country')"
+                      <v-select :clearable="false" class="style-chooser" @option:selected="onChangeCountry($event, 'ver_country')"
                         id="ver_country" placeholder="please select" v-model="verification.ver_country" label="name"
                         :reduce="(option) => option.name" :options="candidateDetails.countries"><template #open-indicator>
                           <a-icon type="down" /> </template></v-select>
@@ -173,7 +173,7 @@
               <div class="col-12 col-md-6 mobile-margin">
                 <a-form-item ref="ver_document_type" name="ver_document_type">
                   <v-select :clearable="false" class="style-chooser" id="ver_document_type" placeholder="Document type"
-                    @input="onValueChange($event, 'ver_document_type')" :reduce="(option) => option.value"
+                    @option:selected="onValueChange($event, 'ver_document_type')" :reduce="(option) => option.value"
                     v-model="verification.ver_document_type" label="name" :options="[
                       { name: 'Passport', value: 'Passport' },
                       { name: 'National ID', value: 'National ID' },
@@ -446,9 +446,11 @@ export default {
       activeKey: 1,
       loading: false,
       token: "",
+      imageApiLocation: "", 
     };
   },
   created() {
+    this.imageApiLocation = import.meta.env.VITE_IMAGE;
     this.userData = JSON.parse(localStorage.getItem("user"));
     this.token = JSON.parse(localStorage.getItem('token'));
   },
@@ -516,11 +518,12 @@ export default {
       this.saveVerificationInfo();
     },
     checkValidation(name) {
-      this.$refs.verification.fields.forEach((f) => {
-        if (f.prop == name) {
-          f.onFieldBlur();
-        }
-      });
+      // this.$refs.verification.fields.forEach((f) => {
+      //   if (f.prop == name) {
+      //     f.onFieldBlur();
+      //   }
+      // });
+      this.$refs[name].onFieldBlur();
     },
     saveVerificationInfo() {
       const { ver_country, ver_document_type } = this.verification;
@@ -564,11 +567,11 @@ export default {
         let payload = {};
         if(folder === '_ver_image_front') {
           payload = {
-            ver_image_front: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            ver_image_front: this.imageApiLocation + '/' + Object.values(data)[0]
           };
         } else if(folder === '_ver_image_back') {
           payload = {
-            ver_image_back: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            ver_image_back: this.imageApiLocation + '/' + Object.values(data)[0]
           }
         }
         if(Object.keys(payload).length > 0) {

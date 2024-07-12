@@ -46,7 +46,7 @@
                   :disabled="activeRouteName !== 'CandidateRegistration'"
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'essential', 'per_gender')"
+                  @option:selected="onValueChange($event, 'essential', 'per_gender')"
                   id="per_gender"
                   :reduce="(option) => option.value"
                   placeholder="please select"
@@ -103,8 +103,8 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin" :class="{ 'disabled' : activeRouteName !== 'CandidateRegistration'}">
-              <!-- <a-form-item ref="dob" name="dob" class="dob-select">
-                <DropdownDatePicker
+              <a-form-item ref="dob" name="dob" class="dob-select">
+                <!-- <DropdownDatePicker
                   id="dob"
                   displayFormat="dmy"
                   dropdownClass="custom-select"
@@ -116,8 +116,18 @@
                   v-bind:on-year-change="onYearChange"
                   :maxYear="new Date().getFullYear() - 18"
                   :minYear="1940"
-                ></DropdownDatePicker>
-              </a-form-item> -->
+                ></DropdownDatePicker> -->
+                <VueDatePicker
+                  id="dob" 
+                  v-model="personalInformation.essential.dob"
+                  @blur="onChangeDD"
+                  :flow="['year', 'month', 'day']"
+                  :max-date="new Date(new Date().setFullYear(new Date().getFullYear() - 18))"
+                  :min-date="'1940'"
+                  :enable-time-picker="false"
+                  style="z-index: 9999;"
+                ></VueDatePicker>
+              </a-form-item>
             </div>
             <div class="col-12 none-padding mobile-margin mobile-help">
               <p>
@@ -165,7 +175,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'essential', 'per_height')"
+                  @option:selected="onValueChange($event, 'essential', 'per_height')"
                   id="per_height"
                   :reduce="(option) => option.value"
                   placeholder="please select"
@@ -225,7 +235,7 @@
                   append-to-body
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'essential', 'per_religion_id')"
+                  @option:selected="onValueChange($event, 'essential', 'per_religion_id')"
                   id="per_religion_id"
                   :reduce="(option) => option.id"
                   placeholder="please select"
@@ -285,7 +295,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="
+                  @option:selected="
                     onValueChange($event, 'essential', 'per_education_level_id')
                   "
                   id="per_education_level_id"
@@ -348,7 +358,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="
+                  @option:selected="
                     onValueChange($event, 'essential', 'per_employment_status')
                   "
                   id="per_employment_status"
@@ -410,7 +420,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'essential', 'per_occupation')"
+                  @option:selected="onValueChange($event, 'essential', 'per_occupation')"
                   id="per_occupation"
                   placeholder="please select"
                   :reduce="(option) => option.name"
@@ -498,7 +508,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'general', 'per_ethnicity')"
+                  @option:selected="onValueChange($event, 'general', 'per_ethnicity')"
                   id="per_ethnicity"
                   placeholder="please select"
                   v-model="personalInformation.general.per_ethnicity"
@@ -583,7 +593,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'general', 'per_mother_tongue')"
+                  @option:selected="onValueChange($event, 'general', 'per_mother_tongue')"
                   id="per_mother_tongue"
                   placeholder="please select"
                   v-model="personalInformation.general.per_mother_tongue"
@@ -640,7 +650,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'general', 'per_nationality')"
+                  @option:selected="onValueChange($event, 'general', 'per_nationality')"
                   id="per_nationality"
                   placeholder="please select"
                   :reduce="(option) => option.id"
@@ -701,7 +711,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="
+                  @option:selected="
                     onValueChange($event, 'general', 'per_country_of_birth')
                   "
                   id="per_country_of_birth"
@@ -770,7 +780,7 @@
                   placeholder="Your may wish to use a  description like fair, good, very good, or excellent."
                   :rows="3"
                   :maxLength="200"
-                  v-model="personalInformation.general.per_health_condition"
+                  v-model:value="personalInformation.general.per_health_condition"
                 ></a-textarea>
               </a-form-item>
               <span style="display: flex; justify-content: flex-end"
@@ -1015,7 +1025,7 @@
                   @blur="onValueChange($event, 'contact', 'address_1')"
                   id="address_1"
                   :maxLength="46"
-                  v-model="personalInformation.contact.address_1"
+                  v-model:value="personalInformation.contact.address_1"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
               </a-form-item>
@@ -1069,7 +1079,7 @@
                   id="address_2"
                   :rows="3"
                   :maxLength="46"
-                  v-model="personalInformation.contact.address_2"
+                  v-model:value="personalInformation.contact.address_2"
                   placeholder="e.g. 267 West George St, Glasgow,Scotland,United Kingdom G2 1BP"
                 />
               </a-form-item>
@@ -1126,7 +1136,7 @@
                   id="per_permanent_city"
                   type="text"
                   :maxLength="30"
-                  v-model="personalInformation.contact.per_permanent_city"
+                  v-model:value="personalInformation.contact.per_permanent_city"
                   placeholder="City"
                 />
               </a-form-item>
@@ -1195,7 +1205,7 @@
                   id="per_permanent_post_code"
                   :maxLength="10"
                   placeholder="Post Code"
-                  v-model="personalInformation.contact.per_permanent_post_code"
+                  v-model:value="personalInformation.contact.per_permanent_post_code"
                 />
               </a-form-item>
             </div>
@@ -1249,7 +1259,7 @@
                     <v-select
                       :clearable="true"
                       class="style-chooser"
-                      @input="onCountryChange($event, 'contact', 'permanant')"
+                      @option:selected="onCountryChange($event, 'contact', 'permanant')"
                       id="per_permanent_country"
                       placeholder="Select Country"
                       v-model="
@@ -1312,7 +1322,7 @@
                 ref="mobile_number"
                 name="mobile_number"
               >
-              <vue-tel-input
+              <!-- <vue-tel-input
                 @onInput="onNumberChange($event)"
                 :inputOptions="{showDialCode: true}"
                 id="mobile_number"
@@ -1321,7 +1331,26 @@
                 placeholder="Mobile Number"
                 class="style-chooser"
                 style="background: #fff;"
-              ></vue-tel-input>
+              ></vue-tel-input> -->
+
+              <vue-tel-input 
+                @validate="onNumberChange($event)"
+                :inputOptions="{showDialCode: true}"
+                id="mobile_number"
+                :validCharactersOnly="true"
+                v-model="personalInformation.contact.mobile_number"
+                placeholder="Mobile Number"
+                class="style-chooser"
+                style="background: #fff;"
+                :autoFormat="false"
+                :defaultCountry="personalInformation.contact.mobile_country_code"
+                :dropdownOptions="{
+                  showDialCodeInSelection: true,
+                  showDialCodeInList: true,
+                  showFlags: true
+                }"
+              >
+              </vue-tel-input>
               
               <span class="error-number" v-if="!isValidNumber"
                 >Please write a valid mobile number</span
@@ -1456,7 +1485,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="
+                  @option:selected="
                     onValueChange($event, 'more_about', 'per_marital_status')
                   "
                   id="per_marital_status"
@@ -1539,7 +1568,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="
+                  @option:selected="
                     onValueChange(
                       $event,
                       'more_about',
@@ -1626,7 +1655,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="
+                  @option:selected="
                     onValueChange(
                       $event,
                       'more_about',
@@ -1702,7 +1731,7 @@
                 <v-select
                   :clearable="true"
                   class="style-chooser"
-                  @input="onValueChange($event, 'more_about', 'per_smoker')"
+                  @option:selected="onValueChange($event, 'more_about', 'per_smoker')"
                   id="per_smoker"
                   placeholder="Please select"
                   v-model="personalInformation.more_about.per_smoker"
@@ -1776,7 +1805,7 @@
                   :clearable="true"
                   :multiple="true"
                   class="nationality-select"
-                  @input="
+                  @option:selected="
                     onMultiValueChange(
                       $event,
                       'per_language_speak',
@@ -1846,7 +1875,7 @@
                   :clearable="true"
                   :multiple="true"
                   class="nationality-select"
-                  @input="
+                  @option:selected="
                     onMultiValueChange(
                       $event,
                       'per_hobbies_interests',
@@ -1913,7 +1942,7 @@
                   :clearable="true"
                   :multiple="true"
                   class="nationality-select"
-                  @input="
+                  @option:selected="
                     onMultiValueChange($event, 'per_things_enjoy', 'more_about')
                   "
                   placeholder="you may select up to three"
@@ -1980,7 +2009,7 @@
                   :clearable="true"
                   :multiple="true"
                   class="nationality-select"
-                  @input="
+                  @option:selected="
                     onMultiValueChange(
                       $event,
                       'per_food_cuisine_like',
@@ -2053,7 +2082,7 @@
                     $v.personalInformation.more_about.per_thankfull_for.$touch()
                   "
                   class="nationality-select"
-                  @input="
+                  @option:selected="
                     onMultiValueChange(
                       $event,
                       'per_thankfull_for',
@@ -2129,7 +2158,7 @@
                   :clearable="true"
                   :multiple="true"
                   class="nationality-select"
-                  @input="
+                  @option:selected="
                     onMultiValueChange(
                       $event,
                       'per_improve_myself',
@@ -2201,7 +2230,7 @@
                   placeholder="maximum 2000 characters"
                   :rows="3"
                   :maxLength="2000"
-                  v-model="personalInformation.more_about.per_about"
+                  v-model:value="personalInformation.more_about.per_about"
                 />
               </a-form-item>
               <span style="display: flex; justify-content: flex-end"
@@ -2272,7 +2301,7 @@
                   placeholder="Additional Information maximum 2000 characters"
                   :maxLength="2000"
                   :rows="3"
-                  v-model="
+                  v-model:value="
                     personalInformation.more_about.per_additional_info_text
                   "
                 />
@@ -2364,7 +2393,9 @@
   </div>
 </template>
 <script>
-import DropdownDatePicker from "vue-dropdown-datepicker";
+// import DropdownDatePicker from "vue-dropdown-datepicker";
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 import NeedHelp from "@/components/candidate-registration/NeedHelp.vue";
 import ethnicities from "@/common/ethnicities.js";
 import languages from "@/common/languages.js";
@@ -2379,7 +2410,8 @@ import { createPopper } from "@popperjs/core";
 export default {
   name: "PersonalInfoTwo",
   components: {
-    DropdownDatePicker,
+    // DropdownDatePicker,
+    VueDatePicker,
     NeedHelp,
     vSelect,
   },
@@ -2586,7 +2618,7 @@ export default {
     },
 
     handleSubmitFormOne() {
-      this.$refs.personalInfoFormOne.validate((valid) => {
+      this.$refs.personalInfoFormOne.validate().then((valid) => {
         if (valid) {
           window.scrollTo(0, 0);
           this.activeKey = ["2"];
@@ -2600,7 +2632,7 @@ export default {
       });
     },
     handleSubmitFormTwo() {
-      this.$refs.personalInfoFormTwo.validate((valid) => {
+      this.$refs.personalInfoFormTwo.validate().then((valid) => {
         if (valid) {
           window.scrollTo(0, 0);
           this.activeKey = ["3"];
@@ -2614,7 +2646,7 @@ export default {
       });
     },
     handleSubmitFormThree() {
-      this.$refs.personalInfoFormThree.validate((valid) => {
+      this.$refs.personalInfoFormThree.validate().then((valid) => {
         if (valid) {
           window.scrollTo(0, 0);
           this.activeKey = ["4"];
@@ -2628,7 +2660,7 @@ export default {
       });
     },
     handleSubmitFormFour() {
-      this.$refs.personalInfoFormFour.validate((valid) => {
+      this.$refs.personalInfoFormFour.validate().then((valid) => {
         if (valid) {
           this.activeKey = null;
         } else {
@@ -2653,49 +2685,51 @@ export default {
       this.onChangeDD();
     },
     onChangeDD() {
-      if (
-        Object.values(this.dateOfbirth).every(
-          (x) => x !== undefined && x !== null && x !== ""
-        )
-      ) {
-        this.personalInformation.essential.dob = `${this.dateOfbirth.year}/${this.dateOfbirth.month}/${this.dateOfbirth.day}`;
-        this.saveEssentialInfo();
-      } else {
-        this.personalInformation.essential.dob = null;
-        this.saveEssentialInfo();
-      }
+      // if (
+      //   Object.values(this.dateOfbirth).every(
+      //     (x) => x !== undefined && x !== null && x !== ""
+      //   )
+      // ) {
+      //   this.personalInformation.essential.dob = `${this.dateOfbirth.year}/${this.dateOfbirth.month}/${this.dateOfbirth.day}`;
+      //   this.saveEssentialInfo();
+      // } else {
+      //   this.personalInformation.essential.dob = null;
+      //   this.saveEssentialInfo();
+      // }
+      this.saveEssentialInfo();
     },
     checkValidation(name, action) {
-      switch (action) {
-        case "essential":
-          this.$refs.personalInfoFormOne.fields.forEach((f) => {
-            if (f.prop == name) {
-              f.onFieldBlur();
-            }
-          });
-          break;
-        case "general":
-          this.$refs.personalInfoFormTwo.fields.forEach((f) => {
-            if (f.prop == name) {
-              f.onFieldBlur();
-            }
-          });
-          break;
-        case "contact":
-          this.$refs.personalInfoFormThree.fields.forEach((f) => {
-            if (f.prop == name) {
-              f.onFieldBlur();
-            }
-          });
-          break;
-        case "more_about":
-          this.$refs.personalInfoFormFour.fields.forEach((f) => {
-            if (f.prop == name) {
-              f.onFieldBlur();
-            }
-          });
-          break;
-      }
+      this.$refs[name].onFieldBlur();
+      // switch (action) {
+      //   case "essential":
+      //     this.$refs.personalInfoFormOne.fields.forEach((f) => {
+      //       if (f.prop == name) {
+      //         f.onFieldBlur();
+      //       }
+      //     });
+      //     break;
+      //   case "general":
+      //     this.$refs.personalInfoFormTwo.fields.forEach((f) => {
+      //       if (f.prop == name) {
+      //         f.onFieldBlur();
+      //       }
+      //     });
+      //     break;
+      //   case "contact":
+      //     this.$refs.personalInfoFormThree.fields.forEach((f) => {
+      //       if (f.prop == name) {
+      //         f.onFieldBlur();
+      //       }
+      //     });
+      //     break;
+      //   case "more_about":
+      //     this.$refs.personalInfoFormFour.fields.forEach((f) => {
+      //       if (f.prop == name) {
+      //         f.onFieldBlur();
+      //       }
+      //     });
+      //     break;
+      // }
     },
 
     onMultiValueChange(e, name, action) {
@@ -2736,9 +2770,14 @@ export default {
     },
 
     onNumberChange(e) {
-      this.isValidNumber = e.isValid;
-      if (e.isValid) {
-        // this.personalInformation.contact.mobile_number = `${e.country.dialCode} ${this.personalInformation.contact.mobile_number}`;
+      this.isValidNumber = e.valid === undefined ? true : e.valid;
+
+      console.log(e, e.valid, 'we ==================================')
+      if (e.valid) {
+        console.log(this.isValidNumber, 'we vali helj');
+        // this.personalInformation.contact.mobile_number = e.number;
+        this.personalInformation.contact.mobile_country_code = e.countryCallingCode;
+        this.personalInformation.contact.mobile_number = `${e.countryCallingCode} ${this.personalInformation.contact.mobile_number}`;
         this.save("contact");
       }
     },

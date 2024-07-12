@@ -162,10 +162,10 @@
                   @change="
                     onRateChange($event, 'pre_has_country_allow_preference')
                   "
-                  v-model.lazy="preferenceData.pre_has_country_allow_preference"
+                  v-model:checked="preferenceData.pre_has_country_allow_preference"
                 >
-                  <a-icon slot="checkedChildren" type="check" />
-                  <a-icon slot="unCheckedChildren" type="close" />
+                  <!-- <a-icon slot="checkedChildren" type="check" />
+                  <a-icon slot="unCheckedChildren" type="close" /> -->
                 </a-switch>
                 <span class="ml-1">Yes</span>
               </div>
@@ -177,16 +177,38 @@
                       :clearable="false"
                       id="preferred_countries0"
                       class="style-chooser select-ma w-100"
-                      v-model.lazy="preferenceData.preferred_countries[0]"
+                      v-model="preferenceData.preferred_countries[0]"
                       label="name"
                       placeholder="Select Country"
                       :options="candidateDetails.countries"
-                      @input="onChangeCountry($event, 'listOne', 'allowed')"
+                      @option:selected="onChangeCountry($event, 'listOne', 'allowed')"
                     >
                       <span slot="no-options">Select Country</span>
                       <template #open-indicator>
                         <a-icon type="down" /> </template>
                     </v-select>
+                    <!-- <a-select
+                      v-if="preferenceData.preferred_countries[0]"
+                      :clearable="false"
+                      id="preferred_countries0"
+                      class="style-chooser  select-ma w-100"
+                      v-model:value="preferenceData.preferred_countries[0].name"
+                      @change="onChangeCountry($event, 'listOne', 'allowed')"
+                      placeholder="Select Country"
+                      :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
+                      ><template #open-indicator> <a-icon type="down" /> </template>
+                    </a-select>
+                    <a-select
+                      v-else
+                      :clearable="false"
+                      id="preferred_countries0"
+                      class="style-chooser  select-ma w-100"
+                      v-model:value="preferenceData.preferred_countries[0]"
+                      @change="onChangeCountry($event, 'listOne', 'allowed')"
+                      placeholder="Select Country"
+                      :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
+                      ><template #open-indicator> <a-icon type="down" /> </template>
+                    </a-select> -->
                   </div>
 <!--                  <div class="col-md-6 mobile-margin">-->
 <!--                    <v-select-->
@@ -362,12 +384,8 @@
                   @change="
                     onRateChange($event, 'pre_has_country_disallow_preference')
                   "
-                  v-model.lazy="
-                    preferenceData.pre_has_country_disallow_preference
-                  "
+                  v-model:checked="preferenceData.pre_has_country_disallow_preference"
                 >
-                  <a-icon slot="checkedChildren" type="check" />
-                  <a-icon slot="unCheckedChildren" type="close" />
                 </a-switch>
                 <span class="ml-1">Yes</span>
               </div>
@@ -378,14 +396,36 @@
                       :clearable="false"
                       id="bloked_countries0"
                       class="style-chooser"
-                      v-model.lazy="preferenceData.bloked_countries[0]"
+                      v-model="preferenceData.bloked_countries[0]"
                       label="name"
                       placeholder="Select Country"
                       :options="candidateDetails.countries"
-                      @input="onChangeCountry($event, 'listOne', 'disAllowed')"
+                      @option:selected="onChangeCountry($event, 'listOne', 'disAllowed')"
                       ><template #open-indicator>
                         <a-icon type="down" /> </template>
                       </v-select>
+                      <!-- <a-select
+                        v-if="preferenceData.bloked_countries[0]"
+                        :clearable="false"
+                        id="bloked_countries0"
+                        class="style-chooser select-ma w-100"
+                        v-model:value="preferenceData.bloked_countries[0].name"
+                        @change="onChangeCountry($event, 'listOne', 'disllowed')"
+                        placeholder="Select Country"
+                        :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
+                        ><template #open-indicator> <a-icon type="down" /> </template>
+                      </a-select>
+                      <a-select
+                        v-else
+                        :clearable="false"
+                        id="bloked_countries0"
+                        class="style-chooser select-ma w-100"
+                        v-model:value="preferenceData.bloked_countries[0]"
+                        @change="onChangeCountry($event, 'listOne', 'disllowed')"
+                        placeholder="Select Country"
+                        :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
+                        ><template #open-indicator> <a-icon type="down" /> </template>
+                      </a-select> -->
                   </div>
                 </div>
               </div>
@@ -434,7 +474,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="pre_partner_religion_id"
-                prop="pre_partner_religion_id"
+                name="pre_partner_religion_id"
               >
                 <v-select
                   :clearable="false"
@@ -442,8 +482,8 @@
                   :reduce="(option) => option.name"
                   class="style-chooser"
                   placeholder="please select"
-                  @input="onValueChange($event, 'pre_partner_religion_id')"
-                  v-model.lazy="preferenceData.pre_partner_religion_id"
+                  @option:selected="onValueChange($event, 'pre_partner_religion_id')"
+                  v-model="preferenceData.pre_partner_religion_id"
                   label="name"
                   :options="[
                     { id: -1, name: `Don't Mind` },
@@ -454,6 +494,19 @@
                     <a-icon type="down" />
                   </template>
                 </v-select>
+                <!-- <a-select
+                  :clearable="false"
+                  id="pre_partner_religion_id"
+                  class="style-chooser  select-ma w-100"
+                  v-model:value="preferenceData.pre_partner_religion_id"
+                  @change="onValueChange($event, 'pre_partner_religion_id')"
+                  placeholder="Select Religion"
+                  :options="[
+                    { value: -1, label: `Don't Mind` },
+                    ...candidateDetails.religions.map(item => ({ label: item.name, value: item.id })),
+                    ]"
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </a-select> -->
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -497,20 +550,35 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="pre_ethnicities" prop="pre_ethnicities">
+              <a-form-item ref="pre_ethnicities" name="pre_ethnicities">
                 <v-select
                   :clearable="false"
                   :multiple="true"
                   id="pre_ethnicities"
                   class="nationality-select form-right-content w-full"
                   placeholder="you may select up to three"
-                  @input="onMultiNameChange($event, 'pre_ethnicities')"
-                  v-model.lazy="preferenceData.pre_ethnicities"
+                  @option:selected="onMultiNameChange($event, 'pre_ethnicities')"
+                  v-model="preferenceData.pre_ethnicities"
                   label="name"
                   :options="[`Don't Mind`, ...ethnicityList]"
                 >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
+                <!-- <a-select
+                  :clearable="false"
+                  mode="multiple"
+                  id="pre_ethnicities"
+                  class="nationality-select select-ma w-100 form-right-content w-full"
+                  v-model:value="preferenceData.pre_ethnicities"
+                  @change="onMultiNameChange($event, 'pre_ethnicities')"
+                  placeholder="You may select upto three"
+                  label="name"
+                  :options="[
+                    { value: `Don't Mind`, label: `Don't Mind` },
+                    ...ethnicityList.map(item => ({ value: item, label: item}))
+                  ]"
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </a-select> -->
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -559,14 +627,14 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="preferred_nationality"
-                prop="preferred_nationality"
+                name="preferred_nationality"
               >
                 <v-select
                   id="preferred_nationality"
                   :clearable="false"
                   :multiple="true"
                   class="nationality-select w-full form-right-content"
-                  @input="
+                  @option:selected="
                     onNationalityValueChange($event, 'preferred_nationality')
                   "
                   v-model.lazy="preferenceData.preferred_nationality"
@@ -579,6 +647,21 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
+                <!-- <a-select
+                  :clearable="false"
+                  mode="multiple"
+                  id="preferred_nationality"
+                  class="nationality-select select-ma w-100 form-right-content w-full"
+                  v-model:value="preferenceData.preferred_nationality"
+                  @change="onNationalityValueChange($event, 'preferred_nationality')"
+                  placeholder="You may select upto three"
+                  label="name"
+                  :options="[
+                    { value: -1, label: `Don't Mind` },
+                    ...candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))
+                  ]"
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </a-select> -->
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -625,12 +708,12 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="pre_study_level_id"
-                prop="pre_study_level_id"
+                name="pre_study_level_id"
               >
                 <v-select
                   :clearable="false"
                   class="style-chooser w-full form-right-content"
-                  @input="onValueChange($event, 'pre_study_level_id')"
+                  @option:selected="onValueChange($event, 'pre_study_level_id')"
                   :reduce="(option) => option.id"
                   placeholder="please select"
                   v-model.lazy="preferenceData.pre_study_level_id"
@@ -639,6 +722,15 @@
                 >
                   <template #open-indicator> <a-icon type="down" /> </template>
                 </v-select>
+                <!-- <a-select
+                  :clearable="false"
+                  class="style-chooser w-full form-right-content"
+                  v-model:value="preferenceData.pre_study_level_id"
+                  @change="onValueChange($event, 'pre_study_level_id')"
+                  placeholder="Please Select"
+                  :options="candidateDetails.studylevels.map(item => ({ value: item.id, label: item.name}))"
+                  ><template #open-indicator> <a-icon type="down" /> </template>
+                </a-select> -->
               </a-form-item>
             </div>
             <div class="col-12 mobile-margin mobile-help none-padding">
@@ -684,16 +776,16 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="pre_employment_status"
-                prop="pre_employment_status"
+                name="pre_employment_status"
               >
                 <v-select
                   id="pre_employment_status"
                   :clearable="false"
                   class="style-chooser w-full form-right-content"
                   :reduce="(option) => option.value"
-                  @input="onValueChange($event, 'pre_employment_status')"
+                  @option:selected="onValueChange($event, 'pre_employment_status')"
                   placeholder="please select"
-                  v-model.lazy="preferenceData.pre_employment_status"
+                  v-model="preferenceData.pre_employment_status"
                   label="name"
                   :options="[
                     { value: 'Don\'t Mind', name: `Don't Mind` },
@@ -748,12 +840,12 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="pre_occupation" prop="pre_occupation">
+              <a-form-item ref="pre_occupation" name="pre_occupation">
                 <v-select
                   :clearable="false"
                   :multiple="true"
                   id="pre_occupation"
-                  @input="onMultiNameChange($event, 'pre_occupation')"
+                  @option:selected="onMultiNameChange($event, 'pre_occupation')"
                   :reduce="(option) => option.name"
                   class="nationality-select form-right-content w-full"
                   v-model.lazy="preferenceData.pre_occupation"
@@ -812,7 +904,7 @@
                 <span class="mr-1">No</span>
                 <a-switch
                   @change="onRateChange($event, 'pre_preferred_divorcee')"
-                  v-model="preferenceData.pre_preferred_divorcee"
+                  v-model:checked="preferenceData.pre_preferred_divorcee"
                 >
                   <a-icon slot="checkedChildren" type="check" />
                   <a-icon slot="unCheckedChildren" type="close" />
@@ -829,9 +921,9 @@
                 <span class="mr-1">No</span>
                 <a-switch
                   @change="
-                    onValueChange($event, 'pre_preferred_divorcee_child')
+                    onRateChange($event, 'pre_preferred_divorcee_child')
                   "
-                  v-model="preferenceData.pre_preferred_divorcee_child"
+                  v-model:checked="preferenceData.pre_preferred_divorcee_child"
                 >
                   <a-icon slot="checkedChildren" type="check" />
                   <a-icon slot="unCheckedChildren" type="close" />
@@ -883,7 +975,7 @@
             <div class="col-12 col-md-6 mobile-margin">
               <a-form-item
                 ref="pre_other_preference"
-                prop="pre_other_preference"
+                name="pre_other_preference"
               >
                 <a-textarea
                   @blur="onValueChange($event, 'pre_other_preference')"
@@ -895,7 +987,7 @@
                   autocapitalize="off"
                   spellcheck="false"
                   id="pre_other_preference"
-                  v-model.lazy.lazy="preferenceData.pre_other_preference"
+                  v-model:value="preferenceData.pre_other_preference"
                   placeholder="maximum 1800 characters"
                   class="w-full form-right-content"
                 />
@@ -950,7 +1042,7 @@
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
-              <a-form-item ref="pre_description" prop="pre_description">
+              <a-form-item ref="pre_description" name="pre_description">
                 <a-textarea
                   @blur="onValueChange($event, 'pre_description')"
                   :rows="3"
@@ -960,7 +1052,7 @@
                   autocapitalize="off"
                   spellcheck="false"
                   id="pre_description"
-                  v-model.lazy.lazy="preferenceData.pre_description"
+                  v-model:value="preferenceData.pre_description"
                   placeholder="maximum 2000 charaters"
                   class="w-full form-right-input"
                 />
@@ -1044,7 +1136,7 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_strength_of_character_rate"
-                prop="pre_strength_of_character_rate"
+                name="pre_strength_of_character_rate"
                 class="text-center"
               >
                 <a-rate
@@ -1105,12 +1197,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_look_and_appearance_rate"
-                prop="pre_look_and_appearance_rate"
+                name="pre_look_and_appearance_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_look_and_appearance_rate"
-                  v-model.lazy="preferenceData.pre_look_and_appearance_rate"
+                  v-model:value="preferenceData.pre_look_and_appearance_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1163,12 +1255,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_religiosity_or_faith_rate"
-                prop="pre_religiosity_or_faith_rate"
+                name="pre_religiosity_or_faith_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_religiosity_or_faith_rate"
-                  v-model.lazy="preferenceData.pre_religiosity_or_faith_rate"
+                  v-model:value="preferenceData.pre_religiosity_or_faith_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1220,14 +1312,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_manners_socialskill_ethics_rate"
-                prop="pre_manners_socialskill_ethics_rate"
+                name="pre_manners_socialskill_ethics_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_manners_socialskill_ethics_rate"
-                  v-model.lazy="
-                    preferenceData.pre_manners_socialskill_ethics_rate
-                  "
+                  v-model:value="preferenceData.pre_manners_socialskill_ethics_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1279,12 +1369,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_emotional_maturity_rate"
-                prop="pre_emotional_maturity_rate"
+                name="pre_emotional_maturity_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_emotional_maturity_rate"
-                  v-model.lazy="preferenceData.pre_emotional_maturity_rate"
+                  v-model:value="preferenceData.pre_emotional_maturity_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1336,12 +1426,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_good_listener_rate"
-                prop="pre_good_listener_rate"
+                name="pre_good_listener_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_good_listener_rate"
-                  v-model.lazy="preferenceData.pre_good_listener_rate"
+                  v-model:value="preferenceData.pre_good_listener_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1393,12 +1483,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_good_talker_rate"
-                prop="pre_good_talker_rate"
+                name="pre_good_talker_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_good_talker_rate"
-                  v-model.lazy="preferenceData.pre_good_talker_rate"
+                  v-model:value="preferenceData.pre_good_talker_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1450,12 +1540,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_wiling_to_learn_rate"
-                prop="pre_wiling_to_learn_rate"
+                name="pre_wiling_to_learn_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_wiling_to_learn_rate"
-                  v-model.lazy="preferenceData.pre_wiling_to_learn_rate"
+                  v-model:value="preferenceData.pre_wiling_to_learn_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1507,11 +1597,11 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_family_social_status_rate"
-                prop="pre_family_social_status_rate"
+                name="pre_family_social_status_rate"
                 class="text-center"
               >
                 <a-rate
-                  v-model.lazy="preferenceData.pre_family_social_status_rate"
+                  v-model:value="preferenceData.pre_family_social_status_rate"
                   id="pre_family_social_status_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
@@ -1564,12 +1654,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_employment_wealth_rate"
-                prop="pre_employment_wealth_rate"
+                name="pre_employment_wealth_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_employment_wealth_rate"
-                  v-model.lazy="preferenceData.pre_employment_wealth_rate"
+                  v-model:value="preferenceData.pre_employment_wealth_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1621,12 +1711,12 @@
             <div class="col-12 col-md-6">
               <a-form-item
                 ref="pre_education_rate"
-                prop="pre_education_rate"
+                name="pre_education_rate"
                 class="text-center"
               >
                 <a-rate
                   id="pre_education_rate"
-                  v-model.lazy="preferenceData.pre_education_rate"
+                  v-model:value="preferenceData.pre_education_rate"
                   @change="onChangeRate"
                   :tooltips="desc"
                   class="form-right-content"
@@ -1757,7 +1847,7 @@ export default {
     },
 
     handleSubmitFormOne() {
-      this.$refs.preferenceFormOne.validate((valid) => {
+      this.$refs.preferenceFormOne.validate().then((valid) => {
         if (valid) {
           window.scrollTo(0, 0);
           this.activeKey = ["2"];
@@ -1771,7 +1861,7 @@ export default {
       });
     },
     handleSubmitFormTwo() {
-      this.$refs.preferenceFormTwo.validate((valid) => {
+      this.$refs.preferenceFormTwo.validate().then((valid) => {
         if (valid) {
           this.activeKey = null;
         } else {
@@ -1839,11 +1929,13 @@ export default {
       this.savePreference();
     },
     checkValidation(name) {
-      this.$refs.preferenceFormOne.fields.forEach((f) => {
-        if (f.prop == name) {
-          f.onFieldBlur();
-        }
-      });
+      console.log(this.$refs, 'lsjdfldjfldjs flkdjsldfs');
+      this.$refs[name].onFieldBlur();
+      // this.$refs.preferenceFormOne.fields.forEach((f) => {
+      //   if (f.prop == name) {
+      //     f.onFieldBlur();
+      //   }
+      // });
     },
     onValueChange(e, name) {
       this.checkValidation(name);
@@ -1992,6 +2084,67 @@ export default {
 
       this.savePreference();
     },
+    // async onChangeCountry(id, name, action) {
+    //   console.log(id, name, action, "e, name, action")
+    //   if (action === "allowed") {
+    //     this.loading = true;
+    //   } else {
+    //     this.loadingDisallowed = true;
+    //   }
+
+    //   const res = await ApiService.get(`v1/utilities/cities/${id}`);
+
+    //   if (res.status === 200) {
+    //     this.loadingDisallowed = false;
+    //     this.loading = false;
+    //     switch (name) {
+    //       case "listOne":
+    //         action == "allowed"
+    //           ? (this.preferenceData.allowedCity.listOne = [])
+    //           : (this.preferenceData.disAllowedCity.listOne = []);
+    //         action == "allowed"
+    //           ? this.preferenceData.allowedCity.listOne.push(...res.data.data)
+    //           : this.preferenceData.disAllowedCity.listOne.push(
+    //               ...res.data.data
+    //             );
+              
+    //         if(action == "allowed") {
+    //           // set preferred countries - from id to object
+    //           this.preferenceData.preferred_countries = [];
+    //           this.candidateDetails.countries.forEach((c) => {
+    //             if (c.id == id) {
+    //               this.preferenceData.preferred_countries.push(c);
+    //             }
+    //           });
+    //         } else {
+    //           // set disallowed countries - from id to object
+    //           this.preferenceData.bloked_countries = [];
+    //           this.candidateDetails.countries.forEach((c) => {
+    //             if (c.id == id) {
+    //               this.preferenceData.bloked_countries.push(c);
+    //             }
+    //           });
+    //         }
+    //         break;
+    //       case "listTwo":
+    //         action == "allowed"
+    //           ? this.preferenceData.allowedCity.listTwo.push(...res.data.data)
+    //           : this.preferenceData.disAllowedCity.listTwo.push(
+    //               ...res.data.data
+    //             );
+    //         break;
+    //       case "listThree":
+    //         action == "allowed"
+    //           ? this.preferenceData.allowedCity.listThree.push(...res.data.data)
+    //           : this.preferenceData.disAllowedCity.listThree.push(
+    //               ...res.data.data
+    //             );
+    //         break;
+    //     }
+    //   }
+
+    //   this.savePreference();
+    // },
   },
 
   watch: {},
