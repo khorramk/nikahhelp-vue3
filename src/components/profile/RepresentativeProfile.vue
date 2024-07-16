@@ -16,7 +16,7 @@
 							iconHeight="14px"
 							:isSmall="true"
 							title="EditProfile"
-							:icon="require('@/assets/icon/edit_icon.svg')"
+							:icon="EditIcon"
 							customEvent="editProfile"
 							:isBlock="false"
 							@onClickButton="onClickButton"
@@ -25,7 +25,7 @@
 							iconHeight="14px"
 							:isSmall="true"
 							title="Gallery"
-							:icon="require('@/assets/icon/gallery.svg')"
+							:icon="GalleryIcon"
 							customEvent="openGallery"
 							:isBlock="true"
 							:responsive="false"
@@ -209,6 +209,9 @@ import ProfileBanner from "@/components/atom/ProfileBanner.vue";
 import TableRow from '@/components/atom/TableRow.vue'
 import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 
+import EditIcon from "@/assets/icon/edit_icon.svg";
+import GalleryIcon from "@/assets/icon/gallery.svg";
+
 export default {
 	name: "RepresentativeProfile",
 
@@ -226,7 +229,9 @@ export default {
 			candidateData: null,
 			isLoading: false,
 			viewerImages: [],
-			token: ""
+			token: "",
+			EditIcon,
+			GalleryIcon
 		};
 	},
 	computed : {

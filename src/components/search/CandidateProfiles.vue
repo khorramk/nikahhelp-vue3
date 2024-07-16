@@ -11,7 +11,7 @@
 					:isSmall="true"
 					:responsive="false"
 					title=""
-					:icon="require('@/assets/icon/search-love-secondary.svg')"
+					icon="/assets/icon/search-love-secondary.svg"
 					@onClickButton="handleSerachClicked"
 				/>
 			</div>

@@ -213,7 +213,7 @@
 								iconHeight="14px"
 								:isSmall="true"
 								title="Gallery"
-								:icon="require('@/assets/icon/gallery.svg')"
+								icon="/assets/icon/gallery.svg"
 								customEvent="openGallery"
 								:isBlock="true"
 								:responsive="false"
