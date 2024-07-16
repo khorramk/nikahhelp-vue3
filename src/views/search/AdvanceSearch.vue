@@ -16,7 +16,7 @@
             overflowX: 'hidden',
           }"
           class="bg-white shadow-border sidebar-trigger"
-          v-model="collapsed"
+          v-model:collapsed="collapsed"
           :trigger="null"
           collapsible
           :collapsedWidth="28"

@@ -50,10 +50,12 @@
 
 <script>
 import ButtonComponent from '../../components/atom/ButtonComponent.vue';
+import Footer from '@/components/auth/Footer.vue';
 export default {
   name: "VerifyEmail",
   components: {
-    ButtonComponent
+    ButtonComponent,
+    Footer,
   },
   mounted() {
     this.verifyEmail();

@@ -208,21 +208,16 @@
         you must not establish a link in such a way as to suggest any form of
         association, approval or endorsement on our part where none exists.
       </p>
-      <P
-        >You must not establish a link to the home page of our site from any
-        website that is not owned by you.</P
-      >
-      <P
-        >Our site must not be framed on any other site, nor may you create a
+      <p>You must not establish a link to the home page of our site from any
+        website that is not owned by you.</p>
+      <p>Our site must not be framed on any other site, nor may you create a
         link to any part of our site other than the home page. We reserve the
         right to withdraw linking permission without notice. The website from
         which you are linking must comply in all respects with the standards set
-        out in these Terms of Use.</P
-      >
-      <P
-        >If you wish to make any use of material on our site other than that set
+        out in these Terms of Use.</p>
+      <p>If you wish to make any use of material on our site other than that set
         out above, please address your request via the help centre page.
-      </P>
+      </p>
       <h5>11. Links from our site</h5>
       <p>
         Where our site contains links to other sites and resources provided by
