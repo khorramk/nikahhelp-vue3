@@ -5,7 +5,7 @@
     </a-button> -->
     <!-- <a-modal
       title="Title"
-      :visible="visible"
+      :open="visible"
       :confirm-loading="confirmLoading"
       @ok="handleOk"
       @cancel="handleCancel"
@@ -14,7 +14,7 @@
     </a-modal> -->
 
     <a-modal
-      :visible="showModalProp"
+      :open="showModalProp"
       :confirm-loading="confirmLoading"
       @ok="handleOk"
       @cancel="handleCancel"

@@ -78,7 +78,7 @@
 
     <!-- submit reply modal -->
     <a-modal 
-        :visible="showReplyForm" 
+        :open="showReplyForm" 
         :centered="true"
         :closable="true"
         @ok="showReplyForm = false"

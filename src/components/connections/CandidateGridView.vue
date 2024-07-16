@@ -130,7 +130,7 @@
               </li>
             </ul>
             <a-modal 
-              :visible="showTeamInfo" 
+              :open="showTeamInfo" 
               :closable="true"
               title="Team Info" 
               @ok="showTeamInfo = false" 
@@ -188,7 +188,7 @@
                 @onClickButton="showProfileConnectionOverview = true"
               />
               <a-modal 
-                :visible="showProfileConnectionOverview" 
+                :oepn="showProfileConnectionOverview" 
                 :closable="true"
                 title="This Profile Connection Overview" 
                 @ok="showProfileConnectionOverview = false" 

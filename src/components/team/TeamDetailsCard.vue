@@ -146,7 +146,7 @@
 					</button>
 				</div>
 				<div class="info-content" style="cursor: pointer;" @click="showTeamInfo = true">
-					<a-modal :visible="showTeamInfo" :closable="true" title="Team Info" @ok="showTeamInfo = false"
+					<a-modal :open="showTeamInfo" :closable="true" title="Team Info" @ok="showTeamInfo = false"
 						@cancel="showTeamInfo = false" :ok-button-props="{ disabled: true }"
 						:cancel-button-props="{ disabled: true }">
 						<span class="fw-600">Team</span> <br> {{ teamData.name }} <br><br>

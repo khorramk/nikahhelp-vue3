@@ -284,7 +284,7 @@
         </fieldset>
         <!-- team info modal-->
         <a-modal 
-            :visible="showTeamInfo" 
+            :open="showTeamInfo" 
             :closable="true"
             title="Team Info" 
             @ok="showTeamInfo = false" 

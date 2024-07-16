@@ -2,7 +2,7 @@
   <div v-if="userData" class="panel-container">
     <a-modal
       title="Change Password"
-      :visible="visible"
+      :open="visible"
       :confirm-loading="confirmLoading"
       width="400px"
       @ok="handleOk"
@@ -34,7 +34,7 @@
     </a-modal>
     <a-modal
       title="Confirm your Password"
-      :visible="isDeletionModalVisible"
+      :open="isDeletionModalVisible"
       :confirm-loading="confirmLoading"
       width="400px"
       @ok="handleDeleteAccount"
