@@ -7,7 +7,7 @@
 
       <h5>Who are we?</h5>
       
-      <P>MatrimonyAssist (hereinafter "matrimonyassist.com" or "us" or "we" as the context requires) is operated by HMS Global Business Limited, a private limited company, registered in the UK (Reg No 07212488). We are a leading online service company. </P>
+      <p>MatrimonyAssist (hereinafter "matrimonyassist.com" or "us" or "we" as the context requires) is operated by HMS Global Business Limited, a private limited company, registered in the UK (Reg No 07212488). We are a leading online service company. </p>
     <h5>This Policy</h5>
     <p>This Privacy and Cookie Policy governs your access to and use of any matrimonyassist.com website, applications, widgets, tools or other materials operated or otherwise provided by matrimonyassist.com (the " matrimonyassist.com Services"). The matrimonyassist.com  is committed to protecting and respecting your privacy and we make it our highest priority to safeguard the confidentiality of any and all personal details you provide to us. As a visitor to or user of the matrimonyassist.com services you have the right to know and understand our information privacy practices prior to providing us with any of your personal details.</p>
     <p>This document explains our Privacy and Cookie Policy. This policy (together with our Terms and Condition of Services and any other applicable terms and conditions or documents referred to therein) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us.</p>
@@ -15,7 +15,7 @@
     <h5>Consent</h5>
     <p>By using the matrimonyassist.com services, you consent to (i) the collection and use of your IP Details (as defined below), Personal Information (as defined below) and location data; and (ii) the use of Cookies, in accordance with this policy. If we change our privacy and cookie policy at any time, these changes will be reflected in this policy.</p>
     <h5>Cookies</h5>
-    <P>Just like other websites, our sites use cookies and similar technologies such as web beacons, pixel tags, google tag manager and flash objects. These allow our websites to work correctly, and helps us understand web traffic and how our sites are used so we can improve visitors experience, personalise services and tailor ads.</P>
+    <p>Just like other websites, our sites use cookies and similar technologies such as web beacons, pixel tags, google tag manager and flash objects. These allow our websites to work correctly, and helps us understand web traffic and how our sites are used so we can improve visitors experience, personalise services and tailor ads.</p>
     <h5>What is a cookie?</h5>
     <p>A cookie is a small text file that may be placed on your device when you visit our sites. When you next visit our websites, the cookie allows us to distinguish your device from other users’ devices.</p>
     <h5>Why do we use cookies?</h5>
