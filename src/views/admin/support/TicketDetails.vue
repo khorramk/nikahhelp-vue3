@@ -10,7 +10,7 @@
         :isSmall="true"
         title="Back"
         :responsive="false"
-        :icon="require('@/assets/icon/gallery.svg')"
+        icon="/assets/icon/gallery.svg"
         @onClickButton="goBackToTickets"
       />
     </div>
@@ -60,7 +60,7 @@
         title="Issue resolved"
         :responsive="false"
         :backgroundColor="'#3ab549'"
-        :icon="require('@/assets/support_page_icons/tick.svg')"
+        :icon="TickIcon"
         @onClickButton="resolve();"
       />
       <ButtonComponent
@@ -71,7 +71,7 @@
         :isSmall="true"
         title="Reply"
         :responsive="false"
-        :icon="require('@/assets/support_page_icons/reply.svg')"
+        :icon="ReplyIcon"
         @onClickButton="showReplyForm = true"
       />
     </div>
@@ -89,7 +89,7 @@
       <div>
           <div class="d-flex justify-content-center">
             <span class="font-weight-bold support-text">
-              <img src="@/assets/support_page_icons/reply.svg" alt="" class="src" height="10">
+              <img :src="ReplyIcon" alt="" class="src" height="10">
               Support
             </span>
             &nbsp;|&nbsp;
@@ -130,6 +130,9 @@ import Loader from "../../../plugins/loader/loader.vue";
 import ApiService from '../../../services/api.service';
 import Notification from "@/common/notification.js";
 
+import ReplyIcon from "@/assets/support_page_icons/reply.svg";
+import TickIcon from "@/assets/support_page_icons/tick.svg";
+
 export default {
 	name: "TicketDetails",
   components: {
@@ -142,7 +145,10 @@ export default {
       showReplyForm: false,
       showSubmissionSuccess: false,
       showSubmissionFailed: false,
-      isLoading: false
+      isLoading: false,
+
+      ReplyIcon,
+      TickIcon
     }
   },
 	computed: {

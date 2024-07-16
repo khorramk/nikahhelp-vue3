@@ -10,7 +10,7 @@
                     :isSmall="true"
                     title="Add a new ticket"
                     :responsive="false"
-                    :icon="require('@/assets/support_page_icons/ticket.svg')"
+                    :icon="TicketIcon"
                     @onClickButton="showTicketSubmissionForm = true"
                 />
             </div>
@@ -174,7 +174,7 @@
                     title="Issue resolved"
                     :responsive="false"
                     :backgroundColor="'#3ab549'"
-                    :icon="require('@/assets/support_page_icons/tick.svg')"
+                    :icon="TickIcon"
                     @onClickButton="resolve();"
                 />
                 <span v-if="currentTicketDetails.resolve == 1" class="text-success font-weight-bold">Ticket resolved</span>
@@ -186,7 +186,7 @@
                     :isSmall="true"
                     title="Reply"
                     :responsive="false"
-                    :icon="require('@/assets/support_page_icons/reply.svg')"
+                    :icon="ReplyIcon"
                     @onClickButton="showReplyForm = true"
                 />
             </div>
@@ -248,14 +248,14 @@
         >
             <div>
                 <div class="image-div w-100 d-flex justify-content-center mt-5" v-if="pageNo==2">
-                    <img :src="require('@/assets/Verification_Icons/Icon/SVG/Verified.svg')" alt="" class="m-auto" height="150" widht="150">
+                    <img :src="VerifiedIcon" alt="" class="m-auto" height="150" widht="150">
                 </div>
 
                 <span class="text-black-50 text-center w-100 mt-5 mb-3" style="font-size: 1.5rem;" v-if="pageNo==1">Your ticket submission is successful</span>
                 <span class="text-black-50 text-center w-100 mt-5 mb-3" style="font-size: 1.5rem;" v-else>Your reply submission is successful</span>
 
                 <div class="image-div w-100 d-flex justify-content-center" v-if="pageNo==1">
-                    <img :src="require('@/assets/Verification_Icons/Icon/SVG/Verified.svg')" alt="" class="m-auto" height="150" widht="150">
+                    <img :src="VerifiedIcon" alt="" class="m-auto" height="150" widht="150">
                 </div>
 
                 <span class="text-center font-weight-bold w-100 mt-4" style="font-size: 1.5rem; color: rgba(0, 0, 0, .2)" v-if="pageNo==1">Ticket id: #{{ lastSubmittedTicketId }}</span>
@@ -280,7 +280,7 @@
         >
             <div>
                 <div class="image-div w-100 d-flex justify-content-center mt-5">
-                    <img :src="require('@/assets/Verification_Icons/Icon/SVG/Rejected.svg')" alt="" class="m-auto" height="150" widht="150">
+                    <img :src="RejectedIcon" alt="" class="m-auto" height="150" widht="150">
                 </div>
 
                 <span class="text-black-50 text-center w-100 mt-5 mb-3" style="font-size: 1.5rem;" v-if="pageNo==1">Your ticket submission is unsuccessful</span>
@@ -304,6 +304,14 @@ import {mapActions, mapGetters} from "vuex";
 import ButtonComponent from "../../components/atom/ButtonComponent.vue";
 import ApiService from '../../services/api.service';
 import Loader from "../../plugins/loader/loader.vue";
+
+import RejectedIcon from "@/assets/Verification_Icons/Icon/SVG/Rejected.svg";
+import VerifiedIcon from "@/assets/Verification_Icons/Icon/SVG/Verified.svg";
+import TicketIcon from "@/assets/support_page_icons/ticket.svg";
+import TickIcon from "@/assets/support_page_icons/tick.svg";
+import ReplyIcon from "@/assets/support_page_icons/reply.svg";
+
+
 export default {
     name: "Support",
 	components: {
@@ -325,6 +333,12 @@ export default {
             pageNo: 1,
             lastSubmittedTicketId: null,
             currentTicketDetails: null,
+
+            RejectedIcon,
+            VerifiedIcon,
+            TicketIcon,
+            TickIcon,
+            ReplyIcon
         }
     },
 
