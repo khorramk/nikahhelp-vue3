@@ -9,7 +9,7 @@
     >
       <a-layout-sider
         class="bg-white shadow-default"
-        v-model="collapsed"
+        v-model:collapsed="collapsed"
         :trigger="null"
         collapsible
         :collapsedWidth="28"
