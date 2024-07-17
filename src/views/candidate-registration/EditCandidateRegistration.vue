@@ -141,7 +141,7 @@
       </div>
 
       <a-modal 
-        :visible="showEditWarning" 
+        :open="showEditWarning" 
         :closable="true"
         title="Alert!!" 
         @ok="showEditWarning = false" 
@@ -154,7 +154,7 @@
           Editing some fields may change you verfication status.
         </div>
 
-        <template slot="footer">
+        <template #footer>
           <a-button key="back" shape="round" @click="showEditWarning=false">
             Ok
           </a-button>

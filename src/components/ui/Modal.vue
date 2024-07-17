@@ -1,7 +1,7 @@
 <template>
   <a-modal
         :dialog-style="{ top: '60px' }"
-        :visible="localModel"
+        :open="localModel"
         :width="width"
         :footer="null"
         :bodyStyle="{padding: '15px', boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px 7px'}"

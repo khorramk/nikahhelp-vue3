@@ -3,7 +3,7 @@
 		<a-modal
 			title="Select Team"
 			:dialog-style="{ top: '100px' }"
-			:visible="selectTeamModal"
+			:open="selectTeamModal"
 			:width="600"
 			@ok="handleOk"
 			@cancel="handleCancel"

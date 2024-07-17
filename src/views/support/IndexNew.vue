@@ -37,7 +37,7 @@
     
             <!-- submit ticket modal -->
             <a-modal 
-                :visible="showTicketSubmissionForm" 
+                :open="showTicketSubmissionForm" 
                 :centered="true"
                 :closable="true"
                 title="Submit a ticket"
@@ -193,7 +193,7 @@
 
             <!-- submit reply modal -->
             <a-modal 
-                :visible="showReplyForm" 
+                :open="showReplyForm" 
                 :centered="true"
                 :closable="true"
                 @ok="showReplyForm = false"
@@ -238,7 +238,7 @@
 
         <!-- submit ticket or reply success -->
         <a-modal 
-            :visible="showSubmissionSuccess" 
+            :open="showSubmissionSuccess" 
             :centered="true"
             :closable="true"
             @ok="showSubmissionSuccess = false"
@@ -270,7 +270,7 @@
 
         <!-- submit ticket or reply failed -->
         <a-modal 
-            :visible="showSubmissionFailed" 
+            :open="showSubmissionFailed" 
             :centered="true"
             :closable="true"
             @ok="showSubmissionFailed = false"

@@ -407,7 +407,7 @@
             </div>
           </v-container>
           <a-modal 
-						:visible="showTeamInfo" 
+						:open="showTeamInfo" 
 						:closable="true"
 						title="Team Info" 
 						@ok="showTeamInfo = false" 

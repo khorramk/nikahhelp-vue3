@@ -2,7 +2,7 @@
   <div>
     <a-modal
       destroyOnClose
-      :visible="showModalProp"
+      :open="showModalProp"
       :confirm-loading="confirmLoading"
       @ok="handleOk"
       @cancel="handleCancel"

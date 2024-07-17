@@ -125,7 +125,7 @@
                     v-for="(info, iIndex) in getInstruction"
                     :key="iIndex"
                   >
-                    <a-icon type="check" class="text-success" /> {{ info }}
+                    <CheckOutlined class="fs-14 text-success" /> {{ info }}
                   </p>
                 </a-card>
               </a-col>
@@ -146,7 +146,7 @@
                     v-for="(info, iIndex) in instructions[0].data"
                     :key="iIndex"
                   >
-                    <a-icon type="check" class="text-success" /> {{ info }}
+                  <CheckOutlined class="fs-14 text-success" /> {{ info }}
                   </p>
                 </a-card>
               </a-col>
@@ -164,7 +164,7 @@
                     v-for="(info, iIndex) in instructions[1].data"
                     :key="iIndex"
                   >
-                    <a-icon type="check" class="text-success" /> {{ info }}
+                    <CheckOutlined class="fs-14 text-success" /> {{ info }}
                   </p>
                 </a-card>
               </a-col>
@@ -180,7 +180,7 @@
                     v-for="(info, iIndex) in instructions[2].data"
                     :key="iIndex"
                   >
-                    <a-icon type="check" class="text-success" /> {{ info }}
+                    <CheckOutlined class="fs-14 text-success" /> {{ info }}
                   </p>
                 </a-card>
               </a-col>
@@ -471,7 +471,7 @@
               @click="handleSubmitSignUp"
               class="btn submit w-100 h-32 mt-2"
             >
-              <a-icon type="loading" class="text-white" v-if="isLoading" />
+              <LoadingOutlined class="fs-20 text-white" v-if="isLoading" />
               Agree & Join
             </button>
             <!--            <div class="loading-dock position-relative mt-1 h-32 pt-1">-->
@@ -580,13 +580,22 @@ import InputPassword from "@/components/ui/InputPassword.vue";
 import { CapitalizeFirstLetter } from "../../models/utilities";
 import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 
+import {
+  CheckOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "Signup",
   components: {
     Footer,
     Spinner,
     InputPassword,
-    ButtonComponent
+    ButtonComponent,
+
+    // icons
+    CheckOutlined,
+    LoadingOutlined,
   },
   data() {
     let validatePass = async (_rule, value) => {

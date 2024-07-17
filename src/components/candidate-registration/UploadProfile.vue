@@ -85,7 +85,7 @@
                     Change
                   </a-button>
                   <a-modal 
-                    :visible="showAvatarSelectionMenu" 
+                    :open="showAvatarSelectionMenu" 
                     :closable="true"
                     title="Select Avatar" 
                     @ok="showAvatarSelectionMenu = false" 

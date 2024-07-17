@@ -3,7 +3,7 @@
     <a-modal
         title="Advanced Search"
         :dialog-style="{ top: '60px' }"
-        :visible="searchModalVisible"
+        :open="searchModalVisible"
         :width="800"
         :footer="null"
         @ok="handleOk"
