@@ -26,10 +26,10 @@
         </td>
         <div class="d-block d-sm-none">
             <v-list-item class="pl-0" two-line>
-                <v-list-item-content>
+                <v-list-item>
                     <v-list-item-subtitle>{{title}}</v-list-item-subtitle>
                     <v-list-item-title>{{value}}</v-list-item-title>
-                </v-list-item-content>
+                </v-list-item>
             </v-list-item>
         </div>
     </tr>
