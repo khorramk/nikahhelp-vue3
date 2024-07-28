@@ -16,7 +16,7 @@
 			</a-row>
 
 			<a-row>
-				<div class="space-align-container">
+				<div class="space-align-container w-full">
 					
 					<div class="space-align-block">
 						<a-space align="center">
