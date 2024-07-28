@@ -368,7 +368,8 @@ export default {
       userData: null,
       switch1: true,
       showIdentity: true,
-      rejectedNote: ""
+      rejectedNote: "",
+      EditIcon,
     };
   },
 
