@@ -37,11 +37,9 @@
 						<div v-else>
 							<!-- {{ result }} -->
 							<div v-if="result.length == 0" class="text-center mt-5">
-								<span
-									><a-icon
-										type="warning"
-										:style="{ fontSize: '50px', color: 'red',}"
-								/></span>
+								<span>
+									<WarningOutlined :style="{ fontSize: '50px', color: 'red',}" />
+								</span>
 								<span class="fs-28 px-5"
 									>Sorry! There are no matching candidates matching your search
 									criteria. ???</span
@@ -271,6 +269,8 @@ import SelectTeamForTeamlist from "@/components/team/Modals/SelectTeamForTeamlis
 import ApiService from "../../services/api.service";
 import JwtService from "../../services/jwt.service.js";
 
+import { WarningOutlined } from "@ant-design/icons-vue";
+
 export default {
 	name: "Search",
 	components: {
@@ -282,6 +282,8 @@ export default {
 		SearchModal,
 		SelectTeamModal,
 		SelectTeamForTeamlist,
+
+		WarningOutlined,
 	},
 	data() {
 		return {

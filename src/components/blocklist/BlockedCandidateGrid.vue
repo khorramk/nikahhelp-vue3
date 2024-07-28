@@ -111,7 +111,7 @@
           @click="viewProfile"
       >
         <div class="flex justify-center align-center">
-          <a-icon type="user" class="mr-2" />
+          <UserOutlined class="mr-2" />
           View Profile
         </div>
       </v-btn>
@@ -123,9 +123,15 @@
 import ApiService from '@/services/api.service';
 import Notification from "@/common/notification.js";
 import JwtService from "@/services/jwt.service";
+
+import { UserOutlined } from '@ant-design/icons-vue';
+
 export default {
   name: "BlockedCandidateGrid",
   props: ['item', 'candidateBlockIds', 'teamBlockedIds'],
+  component: {
+    UserOutlined
+  },
   data() {
     return {
       avatarSrc: "https://www.w3schools.com/w3images/avatar2.png",

@@ -14,7 +14,7 @@
       style="background-color: #f6f5fb;"
     >
       <template #expandIcon="props">
-        <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
+        <CaretDownOutlined class="fs-14" :rotate="props.isActive ? 180 : 0" />
       </template>
       <a-collapse-panel
         key="1"
@@ -31,13 +31,12 @@
           <div class="row mt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="
                     preferenceData.pre_partner_age_min > 0 &&
                     preferenceData.pre_partner_age_max > 0
                   "
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Preferred age range
               </div>
             </div>
@@ -88,13 +87,12 @@
           <div class="row pt-3 pb-3 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="
                     preferenceData.pre_height_min > 0 &&
                     preferenceData.pre_height_max > 0
                   "
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Preferred height range
               </div>
             </div>
@@ -145,13 +143,12 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="
-                    !preferenceData.pre_has_country_allow_preference ||
+                    preferenceData.pre_has_country_allow_preference &&
                     preferenceData.preferred_countries[0]
                   "
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Any preference where your companion comes from?
               </div>
             </div>
@@ -185,7 +182,7 @@
                     >
                       <span slot="no-options">Select Country</span>
                       <template #open-indicator>
-                        <a-icon type="down" /> </template>
+                        <DownOutlined /> </template>
                     </v-select>
                     <!-- <a-select
                       v-if="preferenceData.preferred_countries[0]"
@@ -196,7 +193,7 @@
                       @change="onChangeCountry($event, 'listOne', 'allowed')"
                       placeholder="Select Country"
                       :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
-                      ><template #open-indicator> <a-icon type="down" /> </template>
+                      ><template #open-indicator> <DownOutlined /> </template>
                     </a-select>
                     <a-select
                       v-else
@@ -207,7 +204,7 @@
                       @change="onChangeCountry($event, 'listOne', 'allowed')"
                       placeholder="Select Country"
                       :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
-                      ><template #open-indicator> <a-icon type="down" /> </template>
+                      ><template #open-indicator> <DownOutlined /> </template>
                     </a-select> -->
                   </div>
 <!--                  <div class="col-md-6 mobile-margin">-->
@@ -222,7 +219,7 @@
 <!--                      :options="preferenceData.allowedCity.listOne"-->
 <!--                      @input="onValueChange($event, 'preferred_cities')"-->
 <!--                      ><template #open-indicator>-->
-<!--                        <a-icon type="down" />-->
+<!--                        <DownOutlined />-->
 <!--                      </template>-->
 <!--                    </v-select>-->
 <!--                  </div>-->
@@ -367,13 +364,12 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="
                     !preferenceData.pre_has_country_disallow_preference ||
                     preferenceData.bloked_countries[0]
                   "
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Any country & city you do not wish to be contacted from?
               </div>
             </div>
@@ -402,7 +398,7 @@
                       :options="candidateDetails.countries"
                       @option:selected="onChangeCountry($event, 'listOne', 'disAllowed')"
                       ><template #open-indicator>
-                        <a-icon type="down" /> </template>
+                        <DownOutlined /> </template>
                       </v-select>
                       <!-- <a-select
                         v-if="preferenceData.bloked_countries[0]"
@@ -413,7 +409,7 @@
                         @change="onChangeCountry($event, 'listOne', 'disllowed')"
                         placeholder="Select Country"
                         :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
-                        ><template #open-indicator> <a-icon type="down" /> </template>
+                        ><template #open-indicator> <DownOutlined /> </template>
                       </a-select>
                       <a-select
                         v-else
@@ -424,7 +420,7 @@
                         @change="onChangeCountry($event, 'listOne', 'disllowed')"
                         placeholder="Select Country"
                         :options="candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))"
-                        ><template #open-indicator> <a-icon type="down" /> </template>
+                        ><template #open-indicator> <DownOutlined /> </template>
                       </a-select> -->
                   </div>
                 </div>
@@ -464,10 +460,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_partner_religion_id"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Preferred religion of your prospective companion?
               </div>
             </div>
@@ -491,7 +486,7 @@
                   ]"
                 >
                   <template #open-indicator>
-                    <a-icon type="down" />
+                    <DownOutlined />
                   </template>
                 </v-select>
                 <!-- <a-select
@@ -505,7 +500,7 @@
                     { value: -1, label: `Don't Mind` },
                     ...candidateDetails.religions.map(item => ({ label: item.name, value: item.id })),
                     ]"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select> -->
               </a-form-item>
             </div>
@@ -542,11 +537,10 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_ethnicities"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />Preferred ethnic background(s) of your prospective companion?
+                />Preffered ethnic background(s) of your prospective companion?
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
@@ -562,7 +556,7 @@
                   label="name"
                   :options="[`Don't Mind`, ...ethnicityList]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template>
+                  <template #open-indicator> <DownOutlined /> </template>
                 </v-select>
                 <!-- <a-select
                   :clearable="false"
@@ -577,7 +571,7 @@
                     { value: `Don't Mind`, label: `Don't Mind` },
                     ...ethnicityList.map(item => ({ value: item, label: item}))
                   ]"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select> -->
               </a-form-item>
             </div>
@@ -613,14 +607,13 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="
                     preferenceData &&
                     preferenceData.preferred_nationality &&
                     preferenceData.preferred_nationality.length > 0
                   "
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Preferred nationality of your prospective companion?
               </div>
             </div>
@@ -645,7 +638,7 @@
                     ...candidateDetails.countries,
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template>
+                  <template #open-indicator> <DownOutlined /> </template>
                 </v-select>
                 <!-- <a-select
                   :clearable="false"
@@ -660,7 +653,7 @@
                     { value: -1, label: `Don't Mind` },
                     ...candidateDetails.countries.map(item => ({ value: item.id, label: item.name}))
                   ]"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select> -->
               </a-form-item>
             </div>
@@ -697,12 +690,10 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_study_level_id"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />Minimum expected level of education of your prospective
-                companion?
+                />Minimum expected level of education of your prospective companion?
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
@@ -720,7 +711,7 @@
                   label="name"
                   :options="[...candidateDetails.studylevels]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template>
+                  <template #open-indicator> <DownOutlined /> </template>
                 </v-select>
                 <!-- <a-select
                   :clearable="false"
@@ -729,7 +720,7 @@
                   @change="onValueChange($event, 'pre_study_level_id')"
                   placeholder="Please Select"
                   :options="candidateDetails.studylevels.map(item => ({ value: item.id, label: item.name}))"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select> -->
               </a-form-item>
             </div>
@@ -766,10 +757,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_employment_status"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Preferred employment status of your prospective companion?
               </div>
             </div>
@@ -792,7 +782,7 @@
                     ...employment_Statuses,
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template>
+                  <template #open-indicator> <DownOutlined /> </template>
                 </v-select>
               </a-form-item>
             </div>
@@ -829,13 +819,12 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="
                     preferenceData.pre_occupation &&
                     preferenceData.pre_occupation.length > 0
                   "
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Preferred occupation(s) of your prospective companion?
               </div>
             </div>
@@ -856,7 +845,7 @@
                     ...candidateDetails.occupations,
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template>
+                  <template #open-indicator> <DownOutlined /> </template>
                 </v-select>
               </a-form-item>
             </div>
@@ -893,9 +882,8 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Are you willing to accept a divorcee?
               </div>
             </div>
@@ -906,8 +894,8 @@
                   @change="onRateChange($event, 'pre_preferred_divorcee')"
                   v-model:checked="preferenceData.pre_preferred_divorcee"
                 >
-                  <a-icon slot="checkedChildren" type="check" />
-                  <a-icon slot="unCheckedChildren" type="close" />
+                  <CheckOutlined />
+                  <CloseOutlined />
                 </a-switch>
                 <span class="ml-1">Yes</span>
               </div>
@@ -925,8 +913,8 @@
                   "
                   v-model:checked="preferenceData.pre_preferred_divorcee_child"
                 >
-                  <a-icon slot="checkedChildren" type="check" />
-                  <a-icon slot="unCheckedChildren" type="close" />
+                  <CheckOutlined  />
+                  <CloseOutlined />
                 </a-switch>
                 <span class="ml-1">Yes</span>
               </div>
@@ -965,10 +953,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_other_preference"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Do you have any other requirements?
               </div>
             </div>
@@ -1033,12 +1020,10 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_description"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />Here you can describe the type of companion you are looking
-                for?
+                />Here you can describe the type of companion you are looking for?
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
@@ -1186,12 +1171,10 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_look_and_appearance_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />
-                Looks, appearance & attractiveness
+                />Looks, appearance & attractiveness
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -1244,12 +1227,10 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_religiosity_or_faith_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />Religiosity/faith compatibility in practice, or commitment to
-                improve
+                />Religiosity/faith compatibility in practice, or commitment to improve
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -1302,10 +1283,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_manners_socialskill_ethics_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Manners, social skills, etiquettes & consideration for others
               </div>
             </div>
@@ -1359,10 +1339,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_emotional_maturity_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Emotional maturity and general intelligence
               </div>
             </div>
@@ -1416,10 +1395,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_good_listener_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Good Listener
               </div>
             </div>
@@ -1473,10 +1451,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_good_talker_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Good communicator & great to have two way converstations with
               </div>
             </div>
@@ -1530,10 +1507,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_wiling_to_learn_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Willing to learn from feedback and constructive criticism
               </div>
             </div>
@@ -1587,10 +1563,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_family_social_status_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Family, social status, respectability
               </div>
             </div>
@@ -1644,10 +1619,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_employment_wealth_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Employment and financial stability
               </div>
             </div>
@@ -1701,10 +1675,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="preferenceData.pre_education_rate"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Education and academic accomplishments
               </div>
             </div>
@@ -1779,9 +1752,26 @@ import { ARR, RULES, RULES_RATE } from "./models/candidate";
 import SelectGroup from "@/components/ui/selects/SelectGroup.vue";
 import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 import ApiService from "@/services/api.service";
+
+import {
+  CaretDownOutlined,
+  CheckOutlined,
+  DownOutlined,
+  CloseOutlined
+} from "@ant-design/icons-vue";
+
 export default {
   name: "PreferenceTwo",
-  components: { vSelect, NeedHelp, SelectGroup },
+  components: { 
+    vSelect, 
+    NeedHelp, 
+    SelectGroup,
+
+    CaretDownOutlined,
+    CheckOutlined,
+    CloseOutlined,
+    DownOutlined,
+  },
   props: {
     candidateDetails: {
       type: Object,

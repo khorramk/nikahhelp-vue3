@@ -637,24 +637,21 @@
               <div class="card-custom shadow-default">
                 <h4>Image setting</h4>
                 <div class="d-flex">
-                  <a-icon v-if="candidateData.personal.anybody_can_see == 0" class="color-danger mt-2 mr-2 fs-16 fw-500"
-                    type="stop" />
-                  <a-icon v-else class="color-success mt-2 mr-2 fs-16 fw-500" type="check" />
+                  <StopOutlined v-if="candidateData.personal.anybody_can_see == 0" class="color-danger mt-2 mr-2 fs-16 fw-500" />
+                  <CheckOutlined v-else class="color-success mt-2 mr-2 fs-16 fw-500" />
                   <span class="fs-16">
                     Share my images with anyone who searches on
                     MatrimonyAssist</span>
                 </div>
                 <div class="d-flex">
-                  <a-icon v-if="candidateData.personal.only_team_can_see == 0"
-                    class="color-danger mt-2 mr-2 fs-16 fw-500" type="stop" />
-                  <a-icon v-else class="color-success mt-2 mr-2 fs-16 fw-500" type="check" />
+                  <StopOutlined v-if="candidateData.personal.only_team_can_see == 0" class="color-danger mt-2 mr-2 fs-16 fw-500" />
+                  <CheckOutlined v-else class="color-success mt-2 mr-2 fs-16 fw-500" />
                   <span class="fs-16">
                     Do not share my images with anyone at the moment</span>
                 </div>
                 <div class="d-flex">
-                  <a-icon v-if="candidateData.personal.team_connection_can_see == 0"
-                    class="color-danger mt-2 mr-2 fs-16 fw-500" type="stop" />
-                  <a-icon v-else class="color-success mt-2 mr-2 fs-16 fw-500" type="check" />
+                  <StopOutlined v-if="candidateData.personal.team_connection_can_see == 0" class="color-danger mt-2 mr-2 fs-16 fw-500" />
+                  <CheckOutlined v-else class="color-success mt-2 mr-2 fs-16 fw-500" />
                   <span class="fs-16">
                     Share my images with the connected teams (only if I or they
                     accept connect request)
@@ -704,6 +701,11 @@ import FieldsetCard from "@/components/atom/FieldsetCard.vue";
 import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 import Notification from "@/common/notification.js";
 
+import {
+  StopOutlined,
+  CheckOutlined
+} from "@ant-design/icons-vue";
+
 export default {
   name: "ReviewCandidate",
   components: {
@@ -711,6 +713,9 @@ export default {
     TableRow,
     FieldsetCard,
     NoteModal,
+
+    StopOutlined,
+    CheckOutlined
   },
   computed: {
     userStatus() {

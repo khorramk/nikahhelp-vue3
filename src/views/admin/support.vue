@@ -40,7 +40,7 @@
           <div class="right">
             <a-dropdown>
               <a class="ant-dropdown-link py-2" @click="e => e.preventDefault()">
-                <a-icon type="more" class="fs-30 font-weight-bolder rotate-90 br-50 bg-c9 color-primary"/>
+                <MoreOutlined class="fs-30 font-weight-bolder rotate-90 br-50 bg-c9 color-primary"/>
               </a>
               <a-menu slot="overlay" class="text-center px-2">
                 <a-menu-item class="border-bottom">
@@ -114,7 +114,9 @@
                           <template slot="title">
                             Coming soon
                           </template>
-                          <button><a-icon type="file-image" class="color-primary" /></button>
+                          <button>
+                            <FileImageOutlined class="color-primary"/>
+                          </button>
                         </a-tooltip>
                       </div>
                     </div>
@@ -150,6 +152,9 @@
 import ChatListItem from "../../components/support/ChatListItem.vue";
 import ApiService from '@/services/api.service';
 import {format} from "timeago.js";
+
+import {MoreOutlined, FileImageOutlined} from '@ant-design/icons-vue';
+
 export default {
   name: 'Support',
   sockets: {
@@ -189,7 +194,9 @@ export default {
     },
   },
   components: {
-    ChatListItem
+    ChatListItem,
+    MoreOutlined,
+    FileImageOutlined
   },
   created() {
     this.loadLists();

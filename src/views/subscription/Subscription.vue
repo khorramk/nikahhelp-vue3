@@ -352,7 +352,7 @@
                   "
                 >
                   Continue to payment
-                  <a-icon type="arrow-right" class="ml-2 mt-1" />
+                  <ArrowRightOutlined class="ml-2 mt-1" />
                 </button>
               </div>
             </div>
@@ -678,7 +678,7 @@
                             bg-white
                             px-4
                             cursor-pointer
-                          "><h4 data-v-715648c5="" class="fs-14 pt-1">Last team's subscription details <a-icon type="down" /></h4>
+                          "><h4 data-v-715648c5="" class="fs-14 pt-1">Last team's subscription details <DownOutlined /> </h4>
                         </div>
                         </button>
                       </h2>
@@ -778,13 +778,18 @@ import ButtonComponent from '@/components/atom/ButtonComponent.vue'
 import ApiService from "../../services/api.service";
 import { format } from "timeago.js";
 
+import { ArrowRightOutlined, DownOutlined } from "@ant-design/icons-vue";
+
 export default {
   name: "Subscription",
   components: {
     Header,
     Sidebar,
     Footer,
-    ButtonComponent
+    ButtonComponent,
+
+    ArrowRightOutlined,
+    DownOutlined,
   },
   data() {
     return {

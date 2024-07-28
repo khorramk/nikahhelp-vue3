@@ -82,11 +82,9 @@
 						style="margin-bottom: 100px"
 				>
 					<div v-if="updatedResult.length == 0 && !isLoading" class="text-center mt-150"  >
-						<span
-						><a-icon
-							type="warning"
-							:style="{ fontSize: '50px', color: 'red'}"
-						/></span>
+						<span>
+							<WarningOutlined :style="{ fontSize: '50px', color: 'red',}" />
+						</span>
 						<span class="fs-28 px-5" >Sorry! We did not seem to find matches according to your search criteria. </span>
 						<span class="fs-28 px-5" >You may wish to modify your search criteria and try again.</span>
 
@@ -194,6 +192,8 @@ import Observer from "@/components/atom/Observer.vue";
 import Modal from '@/components/ui/Modal.vue';
 import ButtonComponent from '../../components/atom/ButtonComponent.vue';
 
+import { WarningOutlined } from '@ant-design/icons-vue';
+
 
 export default {
 	name: "UnAuthSearch",
@@ -205,7 +205,9 @@ export default {
 		// UnAuthSearchModal,
 		Observer,
 		Modal,
-		ButtonComponent
+		ButtonComponent,
+
+		WarningOutlined
 	},
 
 	data() {

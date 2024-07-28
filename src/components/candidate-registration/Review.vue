@@ -940,15 +940,13 @@
               <div class="card-custom shadow-border">
                 <h4>Image setting</h4>
                 <div class="d-flex align-items-baseline">
-                  <a-icon
+                  <StopOutlined
                     v-if="candidateData.personal.anybody_can_see == 0"
                     class="color-danger mt-2 mr-2 fs-16 fw-500"
-                    type="stop"
                   />
-                  <a-icon
+                  <CheckOutlined
                     v-else
                     class="color-success mt-2 mr-2 fs-14 fw-500"
-                    type="check"
                   />
                   <span class="fs-16">
                     Share my images with anyone who searches on
@@ -956,31 +954,24 @@
                   >
                 </div>
                 <!-- <div class="d-flex align-items-baseline">
-                  <a-icon
+                  <StopOutlined
                     v-if="candidateData.personal.only_team_can_see == 0"
-                    class="color-danger mt-2 mr-2 fs-14 fw-500"
-                    type="stop"
+                    class="color-danger mt-2 mr-2 fs-16 fw-500"
                   />
-                  <a-icon
+                  <CheckOutlined
                     v-else
                     class="color-success mt-2 mr-2 fs-14 fw-500"
-                    type="check"
                   />
                   <span class="fs-16">
                     Do not share my images with anyone at the moment</span
                   >
                 </div> -->
                 <div class="d-flex align-items-baseline">
-                  <a-icon
+                  <StopOutlined
                     v-if="candidateData.personal.team_connection_can_see == 0"
-                    class="color-danger mt-2 mr-2 fs-14 fw-500"
-                    type="stop"
+                    class="color-danger mt-2 mr-2 fs-16 fw-500"
                   />
-                  <a-icon
-                    v-else
-                    class="color-success mt-2 mr-2 fs-14 fw-500"
-                    type="check"
-                  />
+                  <CheckOutlined v-else class="color-success mt-2 mr-2 fs-14 fw-500" />
                   <span class="fs-16">
                     Share my images with the connected teams (only if I or they
                     accept connect request)
@@ -1003,13 +994,21 @@ import FieldsetCard from "@/components/atom/FieldsetCard.vue";
 import { AGES, HEIGHTS, Employment_Statuses } from "@/models/data";
 import Loader from '../../plugins/loader/loader.vue';
 
+import {
+  StopOutlined,
+  CheckOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "Review",
   components: {
     RatingComponent,
     TableRow,
     FieldsetCard,
-    Loader
+    Loader,
+    
+    CheckOutlined,
+    StopOutlined
   },
   props: {
     candidateDetails: {

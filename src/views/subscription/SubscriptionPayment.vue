@@ -109,7 +109,8 @@
                       class="btn bg-success d-flex justify-content-center text-white agree-button br-30 btn-block"
                       @click="subscribe"
                   >
-                    <a-icon type="loading" class="mr-2 line-height-icon" v-if="isLoading" /> <span>Agree and Subscribe</span>
+                    <LoadingOutlined class="mr-2 line-height-icon" v-if="isLoading" />
+                    <span>Agree and Subscribe</span>
                   </button>
                 </div>
               </div>
@@ -238,7 +239,8 @@
                     class="btn bg-success d-flex justify-content-center text-white agree-button br-30 btn-block"
                     @click="subscribe"
                   >
-                    <a-icon type="loading" class="mr-2 line-height-icon" v-if="isLoading" /> <span>Agree and Subscribe</span>
+                    <LoadingOutlined class="mr-2 line-height-icon" v-if="isLoading" />
+                    <span>Agree and Subscribe</span>
                   </button>
                 </div>
               </div>
@@ -265,6 +267,8 @@ import ButtonComponent from "@/components/atom/ButtonComponent.vue";
 import ApiService from "../../services/api.service";
 import Notification from "@/common/notification.js";
 
+import { LoadingOutlined } from "@ant-design/icons-vue";
+
 export default {
   name: "SubscriptionPayment",
   components: {
@@ -273,7 +277,9 @@ export default {
     Footer,
     CardInput,
     Spinner,
-    ButtonComponent
+    ButtonComponent,
+
+    LoadingOutlined,
   },
   data() {
     return {

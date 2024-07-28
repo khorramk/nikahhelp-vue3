@@ -15,7 +15,7 @@
 
       <a-dropdown v-if="item.is_friend == 0">
         <a class="ant-dropdown-link dropdown-box" @click="e => e.preventDefault()">
-          <a-icon type="more" class="fs-28 font-weight-bolder br-50 bg-c9 color-primary icon-30"/>
+          <MoreOutlined class="fs-28 font-weight-bolder br-50 bg-c9 color-primary icon-30"/>
         </a>
         <a-menu slot="overlay" class="text-center px-2">
           <a-menu-item class="border-bottom" @click="acceptRequest()">
@@ -37,6 +37,10 @@
 <script>
 import {format} from "timeago.js";
 import ApiService from '@/services/api.service';
+
+import {
+  MoreOutlined
+} from '@ant-design/icons-vue';
 
 export default {
   name: "PrivateRequestChat",
@@ -61,6 +65,9 @@ export default {
     activeTeam: {
 
     }
+  },
+  components: {
+    MoreOutlined
   },
   computed: {
     ifOnline() {

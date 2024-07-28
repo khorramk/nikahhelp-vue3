@@ -18,8 +18,8 @@
             title="Click here to activate or deactive the team"
         >
           <a-switch default-checked class="quick-switch" v-model="turnOn" @click="onChangeActivateTeam">
-            <a-icon slot="checkedChildren" type="check"/>
-            <a-icon slot="unCheckedChildren" type="close"/>
+            <CheckOutlined />
+            <CloseOutlined />
           </a-switch>
         </a-tooltip>
       </div>
@@ -35,6 +35,11 @@ import {format} from "timeago.js";
 import JwtService from "../../services/jwt.service";
 import ApiService from "../../services/api.service";
 
+import {
+  CheckOutlined,
+  CloseOutlined
+} from "@ant-design/icons-vue";
+
 export default {
   name: 'TeamListItem',
   props: {
@@ -44,6 +49,10 @@ export default {
     index: {
       type: Number
     }
+  },
+  components: {
+    CheckOutlined,
+    CloseOutlined
   },
   created() {
     this.team_id = JwtService.getTeamIDAppWide();

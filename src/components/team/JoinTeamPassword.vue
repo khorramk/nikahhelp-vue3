@@ -45,7 +45,7 @@
 
       <div class="d-flex flex-column align-items-center justify-content-center mt-5" v-if="success">
         <div class="success-box">
-          <a-icon type="check" class="fs-24 text-white d-flex align-items-center justify-content-center py-2" />
+		  <CheckOutlined class="fs-24 text-white d-flex align-items-center justify-content-center py-2" />
         </div>
         <h4 class="fs-20 mt-3">Done</h4>
         <p class="fs-14">You're joined successfully</p>
@@ -65,9 +65,12 @@
 </template>
 <script>
 import ApiService from "../../services/api.service";
+import { CheckOutlined } from "@ant-design/icons-vue";
 export default {
 	name: "ManageTeam",
-	components: {},
+	components: {
+		CheckOutlined,
+	},
   props: ['team'],
 	data() {
 		return {

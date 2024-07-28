@@ -178,10 +178,8 @@
         </div>
       </template>
       <div class="trigger" @click="$emit('collapseSideBar')" :class="{'hide-sidebar': collapsed}">
-        <a-icon
-          :type="collapsed ? 'caret-right' : 'caret-left'"
-          style="font-size: 20px"
-        />
+        <CaretRightOutlined v-if="collapsed" style="font-size: 20px;" />
+        <CaretLeftOutlined v-if="!collapsed" style="font-size: 20px;" />
       </div>
     </div>
   </div>
@@ -189,10 +187,18 @@
 
 <script>
 import SidebarHeader from "@/components/dashboard/layout/SidebarHeader.vue";
+
+import {
+  CaretLeftOutlined,
+  CaretRightOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "Sidebar",
   components: {
     SidebarHeader,
+    CaretLeftOutlined,
+    CaretRightOutlined,
   },
   data: () => ({
     showMenu: true,

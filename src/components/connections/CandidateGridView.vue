@@ -258,7 +258,7 @@
     </div>
 
     <div class="position-absolute icon-rotate-box cursor-pointer" @click="showProfileConnectionOverview = true">
-    <a-icon type="history" :style="{ fontSize: '16px' }"/>
+    <HistoryOutlined :style="{ fontSize: '16px' }"/>
     </div>
   </div>
 </template>
@@ -269,9 +269,13 @@ import JwtService from "@/services/jwt.service";
 import GridButtons from "./GridButtons.vue";
 import ButtonComponent from '@/components/atom/ButtonComponent.vue';
 
+import {
+  HistoryOutlined
+} from '@ant-design/icons-vue';
+
 export default {
   name: "CandidateGridView",
-  components: {GridButtons, ButtonComponent},
+  components: {GridButtons, ButtonComponent, HistoryOutlined},
   props: ["connection", "active_team_id"],
   created() {
     this.token = JSON.parse(localStorage.getItem("token"));

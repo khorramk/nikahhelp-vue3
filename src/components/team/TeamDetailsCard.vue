@@ -289,7 +289,7 @@
 							<a-col :span="6">
 								<a-input placeholder="Relationship" @change="handleChangeRelationship">
 									<a-tooltip slot="suffix" title="Relationship with Member">
-										<a-icon type="info-circle" style="color: rgba(0, 0, 0, 0.45)" />
+										<InfoCircleOutlined style="color: rgba(0, 0, 0, 0.45)" />
 									</a-tooltip>
 								</a-input>
 							</a-col>
@@ -498,10 +498,13 @@ import TDCModal from "./Modals/TeamDescriptionChange.vue";
 import InviteMember from "./InviteMember.vue";
 import TeamProfileCard from "./TeamProfileCard.vue";
 import Notification from "@/common/notification.js";
+
+import { InfoCircleOutlined } from "@ant-design/icons-vue";
+
 export default {
 	name: "TeamDetailsCard",
 	props: ["teamData", "index"],
-	components: { TeamProfileCard, InviteMember, DeletionModal, PreferenceModal, LTModal, TNCModal, TDCModal },
+	components: { TeamProfileCard, InviteMember, DeletionModal, PreferenceModal, LTModal, TNCModal, TDCModal, InfoCircleOutlined },
 	sockets: {
 		connect: function () {
 			console.log('socket connected')

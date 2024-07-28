@@ -37,7 +37,7 @@
         <div class="row mt-3 border-bottom">
           <div class="col-12 col-md-6 none-padding">
             <div class="mb-2 font-weight-bold">
-              <a-icon v-if="verification.ver_country" class="color-success mr-2 fs-18 fw-500" type="check" />Country
+               <CheckOutlined v-if="verification.ver_country" class="color-success mr-2 fs-18 fw-500" />Country
             </div>
           </div>
           <div class="col-12 col-md-6 mobile-margin">
@@ -47,7 +47,7 @@
                   <v-select :clearable="false" class="style-chooser" @input="onChangeCountry" id="ver_country"
                     placeholder="Country" v-model="verification.ver_country" label="name" :reduce="(option) => option.id"
                     :options="representativeDetails.countries"><template #open-indicator>
-                      <a-icon type="down" /> </template></v-select>
+                      <DownOutlined /> </template></v-select>
                 </a-form-item>
               </div>
               <div class="col-12 col-md-6">
@@ -55,7 +55,7 @@
                   <v-select :clearable="false" class="style-chooser" @input="onValueChange" id="ver_city"
                     placeholder="City" :reduce="(option) => option.name" v-model="verification.ver_city" label="name"
                     :options="verification.cities"><template #open-indicator>
-                      <a-icon type="down" /> </template></v-select>
+                      <DownOutlined /> </template></v-select>
                 </a-form-item>
               </div>
             </div>
@@ -83,8 +83,7 @@
         <div class="row pt-3 pb-2 border-bottom">
           <div class="col-12 col-md-6 none-padding">
             <div class="mb-2 font-weight-bold">
-              <a-icon v-if="verification.ver_document_type" class="color-success mr-2 fs-18 fw-500"
-                type="check" />Document type?
+              <CheckOutlined v-if="verification.ver_document_type" class="color-success mr-2 fs-18 fw-500" />Document type?
             </div>
           </div>
           <div class="col-12 col-md-6 mobile-margin">
@@ -93,7 +92,7 @@
               label="name" :options="[
                 { name: 'Passport', value: 'Passport' },
                 { name: 'Nation ID', value: 'Nation ID' },
-              ]"><template #open-indicator> <a-icon type="down" /> </template></v-select>
+              ]"><template #open-indicator> <DownOutlined /> </template></v-select>
           </div>
           <div class="col-12 none-padding mobile-margin mobile-help">
             <p>
@@ -118,8 +117,7 @@
         <div class="row pt-3 pb-2 border-bottom">
           <div class="col-12 col-md-6 none-padding">
             <div class="mb-2 font-weight-bold">
-              <a-icon v-if="verification.ver_document_frontside" class="color-success mr-2 fs-18 fw-500"
-                type="check" />Upload front side?
+              <CheckOutlined v-if="verification.ver_document_frontside" class="color-success mr-2 fs-18 fw-500" />Upload front side?
             </div>
           </div>
           <div class="col-12 col-md-6 mobile-margin">
@@ -133,7 +131,7 @@
                   " width="180" height="200" v-if="verification.ver_document_frontside" />
                 <div class="mt-3">Front Page</div>
                 <div class="mt-4" v-if="!verification.ver_document_frontside">
-                  <a-icon type="plus-circle" :style="{ fontSize: '80px', color: '#aaa' }" />
+                  <PlusCircleOutlined style="font-size: 80px; color: #aaa" />
                 </div>
               </div>
               <input type="file" class="input-image" name="avatar" @change="getFrontPage" />
@@ -162,8 +160,7 @@
         <div class="row pt-3 pb-2 border-bottom">
           <div class="col-12 col-md-6 none-padding">
             <div class="mb-2 font-weight-bold">
-              <a-icon v-if="verification.ver_document_backside" class="color-success mr-2 fs-18 fw-500"
-                type="check" />Upload back side?
+              <CheckOutlined v-if="verification.ver_document_backside" class="color-success mr-2 fs-18 fw-500" />Upload back side?
             </div>
           </div>
           <div class="col-12 col-md-6 mobile-margin">
@@ -178,7 +175,7 @@
 
                 <div class="mt-3">Back Page</div>
                 <div class="mt-4" v-if="!verification.ver_document_backside">
-                  <a-icon type="plus-circle" :style="{ fontSize: '80px', color: '#aaa' }" />
+                  <PlusCircleOutlined style="font-size: 80px; color: #aaa" />
                 </div>
               </div>
               <input type="file" class="input-image" name="avatar" @change="getBackPage" />
@@ -207,8 +204,7 @@
         <div class="row pt-3 pb-2">
           <div class="col-12 col-md-6 none-padding">
             <div class="mb-2 font-weight-bold">
-              <a-icon v-if="verification.ver_recommender_title" class="color-success mr-2 fs-18 fw-500"
-                type="check" />Person of community standing who know you?
+              <CheckOutlined v-if="verification.ver_recommender_title" class="color-success mr-2 fs-18 fw-500" />Person of community standing who know you?
             </div>
           </div>
           <div class="col-12 col-md-6 mobile-margin">
@@ -236,7 +232,7 @@
               <v-select :clearable="false" class="style-chooser" @input="onValueChange" id="ver_recommender_occupation"
                 placeholder="Occupation" v-model="verification.ver_recommender_occupation" label="name"
                 :reduce="(option) => option.name" :options="representativeDetails.occupations"><template #open-indicator>
-                  <a-icon type="down" /> </template></v-select>
+                  <DownOutlined /> </template></v-select>
             </a-form-item>
 
             <a-form-item class="mt-2" ref="ver_recommender_address" name="ver_recommender_address">
@@ -287,6 +283,13 @@ import FileUploadOne from "@/components/shared/FileUploadOne.vue";
 import ApiService from "@/services/api.service";
 import vSelect from "vue-select";
 import { VERIFICATION_RULES } from "../representative-registration/models/representative";
+
+import {
+  CheckOutlined,
+  DownOutlined,
+  PlusCircleOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "VerificationRef",
   props: {
@@ -300,6 +303,10 @@ export default {
   components: {
     FileUploadOne,
     vSelect,
+
+    CheckOutlined,
+    DownOutlined,
+    PlusCircleOutlined,
   },
 
   created() {

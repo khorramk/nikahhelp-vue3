@@ -33,7 +33,6 @@
             class="btn signin-btn h-32 w-100 mt-1"
             style="padding: 0px !important; line-height: 1.3 !important;"
           >
-            <!-- <a-icon type="loading" class="mr-2 fs-20"/> -->
             <LoadingOutlined class="mr-2 fs-20" v-if="isLoading" />
             Verify
           </button>
@@ -44,7 +43,6 @@
                 <div class="fs-14 mb-0 text-black-50">
                   If you didn't receive any verification code yet then please wait! Verification code may take up to 5 minutes to be sent to your email, you can request a 
                   <div class="ms-2 text-nowrap mt-1">
-                    <!-- <a-icon type="loading" class="mr-2 fs-20" v-if="isResendingCode" /> -->
                     <LoadingOutlined class="mr-2 fs-20" v-if="isResendingCode" />
 
                     <a v-if="timeLeft == 0" class="resend-code" @click="handleResend">
@@ -99,7 +97,6 @@
             class="btn signin-btn h-32 w-100 mt-1"
             style="padding: 0px !important; line-height: 1.3 !important;"
           >
-            <!-- <a-icon type="loading" class="mr-2 fs-20" v-if="isLoading" /> -->
             <LoadingOutlined class="mr-2 fs-20" v-if="isLoading" />
             Sign in
           </button>

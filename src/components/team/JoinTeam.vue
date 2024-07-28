@@ -20,7 +20,7 @@
             v-model:value="invitationLink"
             @keydown.enter="getTheTeamInvitationInfo"
 					>
-            <a-icon slot="prefix" type="snippets" class="input-prefix" @click="pastePassword" />
+            <SnippetsOutlined slot="prefix" class="input-prefix" @click="pastePassword" />
 <!--            <a-icon slot="suffix" type="caret-right" class="input-suffix"-->
 <!--                    @click="getTheTeamInvitationInfo"-->
 <!--                    :disabled="!invitationLink"-->
@@ -119,7 +119,7 @@
     
           <div class="d-flex flex-column align-items-center justify-content-center mt-5" v-if="success">
             <div class="success-box">
-              <a-icon type="check" class="fs-24 text-white d-flex align-items-center justify-content-center py-2" />
+              <CheckOutlined class="fs-24 text-white d-flex align-items-center justify-content-center py-2" />
             </div>
             <h4 class="fs-20 mt-3">Done</h4>
             <p class="fs-14">You've joined successfully</p>
@@ -152,9 +152,15 @@
 <script>
 import ApiService from "../../services/api.service";
 import LoadingSpinner from "../ui/LoadingSpinner.vue";
+
+import {
+  SnippetsOutlined,
+  CheckOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
 	name: "ManageTeam",
-	components: {LoadingSpinner},
+	components: {LoadingSpinner, SnippetsOutlined, CheckOutlined},
 
 
 	data() {

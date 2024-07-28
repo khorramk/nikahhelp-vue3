@@ -309,7 +309,8 @@
             <a-menu slot="overlay" style="min-width: 320px">
               <a-menu-item @click="$emit('toggleCollapse')">
                 <!-- <img width="22" src="@/assets/Icons/form.svg" alt="icon" /> -->
-                <a-icon style="color: #522e8e" :type="!collapsed ? 'caret-left' : 'caret-right'"></a-icon>
+                <CaretRightOutlined style="color: #522e8e" v-if="collapsed" />
+                <CaretLeftOutlined style="color: #522e8e" v-else />
                 <span class="ml-2"
                   >{{ collapsed ? "Open" : "Close" }} Menu</span
                 >
@@ -461,11 +462,16 @@ import NotificationPopup from "@/components/notification/NotificationPopup.vue";
 
 import ApiService from "@/services/api.service";
 import JwtService from "../../services/jwt.service";
+
+import { CaretRightOutlined, CaretLeftOutlined } from "@ant-design/icons-vue";
+
 export default {
   name: "Layout",
   props: ['collapsed'],
   components: {
     NotificationPopup,
+    CaretRightOutlined,
+    CaretLeftOutlined,
   },
   created() {
     this.loadNotifications();

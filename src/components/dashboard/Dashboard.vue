@@ -120,8 +120,8 @@
                    title="Click here to activate or deactive the team"
                >
                  <a-switch default-checked class="quick-switch" v-model="teamsStatus[teamIndex]" @click="onChangeActivateTeam($event, item, teamIndex)">
-                   <a-icon slot="checkedChildren" type="check"/>
-                   <a-icon slot="unCheckedChildren" type="close"/>
+                  <CheckOutlined />
+                  <CloseOutlined />
                  </a-switch>
                </a-tooltip>
              </div>
@@ -197,12 +197,18 @@ import { Carousel, Slide } from "vue3-carousel";
 import ApiService from "@/services/api.service";
 import JwtService from "../../services/jwt.service";
 import ButtonComponent from "../atom/ButtonComponent.vue";
+
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons-vue";
+
 export default {
   name: "Dashboard",
   components: {
     Carousel,
     Slide,
     ButtonComponent,
+
+    CheckOutlined,
+    CloseOutlined,
   },
   created() {
     this.getUserInfo();

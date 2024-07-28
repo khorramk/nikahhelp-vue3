@@ -106,18 +106,20 @@
       <li><a href="/privacy-policy">Privacy Policy & Cookie Policy</a></li>
     </ul> -->
     <div class="trigger" @click="$emit('collapseSideBar')">
-      <a-icon
-        :type="collapsed ? 'caret-right' : 'caret-left'"
-        style="font-size: 20px"
-      />
+      <CaretLeftOutlined v-if="!collapsed" style="font-size: 20px;" />
+      <CaretRightOutlined v-if="collapsed" style="font-size: 20px;" />
     </div>
   </div>
 </template>
 
 <script>
+import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons-vue';
 export default {
   name: "Sidebar",
-  components: {},
+  components: {
+    CaretLeftOutlined,
+    CaretRightOutlined,
+  },
   props: ["collapsed"],
   methods: {
     logout() {
