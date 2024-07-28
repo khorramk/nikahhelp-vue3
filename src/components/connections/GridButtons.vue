@@ -43,7 +43,7 @@
             @click="$emit('gotoChat')"
         >
           <div class="flex justify-center align-center">
-            <WeChatOutlined class="mr-2" /> Chat
+            <WechatOutlined class="mr-2" /> Chat
           </div>
         </v-btn>
 
@@ -291,7 +291,7 @@ import {
   DisconnectOutlined,
   StopOutlined,
   UserOutlined,
-  WeChatOutlined
+  WechatOutlined
 } from '@ant-design/icons-vue';
 
 
@@ -302,7 +302,7 @@ export default {
     DisconnectOutlined,
     StopOutlined,
     UserOutlined,
-    WeChatOutlined
+    WechatOutlined
   
   }
 }
