@@ -140,7 +140,7 @@
               <div class="header clearfix">
                 <div class="left">
                   <div class="top">
-                    <h4 class="cursor-pointer btn-mobile-back" @click="backToTabList()"><a-icon type="arrow-left" /></h4>
+                    <h4 class="cursor-pointer btn-mobile-back" @click="backToTabList()"><ArrowLeftOutlined /></h4>
                     <div class="item-img conv-head-logo">
                       <img :src="chatheadopen.logo ? chatheadopen.logo + `?token=${token}` : getImage()" alt="info image">
                     </div>
@@ -160,7 +160,7 @@
                 <div class="right">
                   <a-dropdown>
                     <a class="ant-dropdown-link py-2" @click="e => e.preventDefault()">
-                      <a-icon type="more" class="fs-30 font-weight-bolder rotate-90 br-50 bg-c9 color-primary"/>
+                      <MoreOutlined class="fs-30 font-weight-bolder rotate-90 br-50 bg-c9 color-primary"/>
                     </a>
                     <a-menu slot="overlay" class="text-center px-2">
                       <a-menu-item class="border-bottom">
@@ -355,6 +355,8 @@ import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.
 import 'vue3-emoji-picker/css';
 import EmojiPicker from 'vue3-emoji-picker'
 
+import {ArrowLeftOutlined, MoreOutlined} from '@ant-design/icons-vue';
+
 const messageKeys = ['id', 'user_id', 'chat_id', 'team_id', 'from_team_id', 'to_team_id', 'private_receiver_id', 'private_team_chat_id', 'body', 'seen', 'created_at'];
 
 export default {
@@ -459,7 +461,10 @@ export default {
     PrivateRequestChat,
     ConnectedTeamChat,
     ChatListItem,
-    EmojiPicker
+    EmojiPicker,
+
+    ArrowLeftOutlined,
+    MoreOutlined
   },
 
   watch: {

@@ -9,7 +9,7 @@
       style="background-color: #f6f5fb;"
     >
       <template #expandIcon="props">
-        <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
+         <CaretDownOutlined :rotate="props.isActive ? 180 : 0" />
       </template>
       <a-collapse-panel key="1" header="1. Essential Information">
         <a-form
@@ -22,10 +22,9 @@
           <div class="row mt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.essential.per_gender"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />What is your gender?
               </div>
             </div>
@@ -44,7 +43,7 @@
                     { label: 'Male', value: 1 },
                     { label: 'Female', value: 2 }
                   ]"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select>
               </a-form-item>
             </div>
@@ -81,10 +80,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.essential.dob"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />What is your date of birth?
               </div>
             </div>
@@ -160,10 +158,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.essential.per_occupation"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />What is your occupation?
               </div>
             </div>
@@ -178,7 +175,7 @@
                   v-model:value="personalInformation.essential.per_occupation"
                   label="name"
                   :options="representativeDetails.occupations.map(item => ({ value: item.name, label: item.name}))"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select>
               </a-form-item>
 
@@ -348,10 +345,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.personal.address_1"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Address Line 1
               </div>
             </div>
@@ -395,10 +391,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
-                  v-if="personalInformation.personal.per_permanent_address"
+                <CheckOutlined
+                  v-if="personalInformation.personal.address_2"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Address Line 2
               </div>
             </div>
@@ -442,10 +437,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.personal.per_permanent_city"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />City
               </div>
             </div>
@@ -492,10 +486,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.personal.per_permanent_post_code"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Post Code
               </div>
             </div>
@@ -544,10 +537,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.personal.per_permanent_country"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Country
               </div>
             </div>
@@ -567,7 +559,7 @@
                   :reduce="(option) => option.name"
                   label="name"
                   :options="representativeDetails.countries.map(item => ({ value: item.name, label: item.name}))"
-                  ><template #open-indicator> <a-icon type="down" /> </template>
+                  ><template #open-indicator> <DownOutlined /> </template>
                 </a-select>
               </a-form-item>
             </div>
@@ -601,10 +593,9 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="personalInformation.personal.mobile_number"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />What is your Phone number?
               </div>
             </div>
@@ -666,9 +657,8 @@
           <div class="row pt-3 pb-2 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />What is your Email address?
               </div>
             </div>
@@ -724,6 +714,13 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import vSelect from "vue-select";
 import { RULES, RULES_PERSONAL } from "./models/representative";
+
+import {
+  CaretDownOutlined,
+  CheckOutlined,
+  DownOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   props: {
     representativeDetails: {
@@ -738,6 +735,10 @@ export default {
     // DropdownDatePicker,
     VueDatePicker,
     vSelect,
+
+    CaretDownOutlined,
+    CheckOutlined,
+    DownOutlined,
   },
   data() {
     return {

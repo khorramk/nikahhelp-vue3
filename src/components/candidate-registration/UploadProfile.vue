@@ -13,7 +13,7 @@
       expand-icon-position="right"
     >
       <template #expandIcon="props">
-        <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
+         <CaretDownOutlined :rotate="props.isActive ? 180 : 0" />
       </template>
       <!-- 1. Required Information -->
       <a-collapse-panel key="1" header="4.1 Image Required">
@@ -244,8 +244,8 @@
                 v-model:checked="anybody_can_see"
                 @change="onConfirmationSwitchChnaged1"
               >
-                <a-icon slot="checkedChildren" type="check" />
-                <a-icon slot="unCheckedChildren" type="close" />
+                <CheckOutlined />
+                <CloseOutlined />
               </a-switch>
               <span class="ml-3 switch-text">
                 Share my images with anyone who searches on MatrimonyAssist
@@ -269,8 +269,8 @@
                 @change="onConfirmationSwitchChnaged3"
                 v-model:checked="team_connection_can_see"
               >
-                <a-icon slot="checkedChildren" type="check" />
-                <a-icon slot="unCheckedChildren" type="close" />
+                <CheckOutlined />
+                <CloseOutlined />
               </a-switch>
               <span class="ml-3 switch-text">
                 Share my images with the connected teams
@@ -292,10 +292,22 @@
 // import Vue from "vue";
 import Loader from "../../plugins/loader/loader.vue";
 import axios from "axios";
+
+import {
+  CaretDownOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "UploadProfile",
 
-  components: { Loader },
+  components: { 
+    Loader,
+    CaretDownOutlined,
+    CheckOutlined,
+    CloseOutlined,
+  },
 
   props: {
     imageModel: {

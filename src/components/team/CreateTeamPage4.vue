@@ -73,7 +73,7 @@
 						@change="handleChangeRelationship"
 					>
 						<a-tooltip slot="suffix" title="Relationship with Member">
-							<a-icon type="info-circle" style="color: rgba(0, 0, 0, 0.45)" />
+							<InfoCircleOutlined style="color: rgba(0, 0, 0, 0.45)" />
 						</a-tooltip>
 					</a-input>
 				</a-col>
@@ -84,7 +84,7 @@
 						readonly="true"
 						:value="invitationObject.invitation_link"
 					>
-						<a-icon slot="addonAfter" type="link" />
+						<LinkOutlined slot="addonAfter" />
 					</a-input>
 				</a-col>
 			</a-row>
@@ -128,9 +128,15 @@
 
 <script>
 import JwtService from "../../services/jwt.service";
+
+import { InfoCircleOutlined, LinkOutlined } from "@ant-design/icons-vue";
+
 export default {
 	name: "ManageTeam",
-	components: {},
+	components: {
+		InfoCircleOutlined,
+		LinkOutlined,
+	},
 	data() {
 		return {
 			isLoading: false,

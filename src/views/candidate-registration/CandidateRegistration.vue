@@ -13,18 +13,20 @@
           transition="dialog-bottom-transition"
           max-width="700"
           class="d-flex justify-center mb-4 mt-8"
+          v-model="vDialog"
+          activator="parent"
         >
-          <template v-slot:activator="{ on, attrs }">
-            <v-icon :size="getWindowWidth() <= 400 ? '25px' : '30px'"  v-bind="attrs" v-on="on" class="question-mark" color="#6159a7">
+          <template v-slot:activator="{ props: activatorProps }">
+            <v-icon :size="getWindowWidth() <= 400 ? '25px' : '30px'"  v-bind="activatorProps" class="question-mark" color="#6159a7">
               mdi-help-circle
             </v-icon>
           </template>
-          <template v-slot:default="dialog">
+          <template v-slot:default="vDialog">
             <v-card class="relative">
               <div class="w-100 flex justify-content-end">
                 <v-icon 
                   class="m-2"
-                  @click="dialog.value = false;"
+                  @click="vDialog.isActive.value = false;"
                 >
                   mdi-close
                 </v-icon>
@@ -44,7 +46,7 @@
                 </div>
                 <div v-if="!playTutorial" class="text-center my-2"><h5>{{ contentTitle }}</h5></div>
                 <div v-if="!playTutorial" class="text-center">{{ contentGuidance }}</div>
-                <iframe v-if="playTutorial && dialog.value" style="z-index:5;" width="560" height="315" src=" https://www.youtube-nocookie.com/embed/R1ZFSHX_1bQ?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe v-if="playTutorial && vDialog.isActive.value" style="z-index:5;" width="560" height="315" src=" https://www.youtube-nocookie.com/embed/R1ZFSHX_1bQ?rel=0 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div style="position: absolute; top: 40%;"><span v-if="playTutorial" class="ant-spin-loader"><a-spin /></span></div>
               </v-card-text>
               
@@ -60,11 +62,11 @@
                     @click="playTutorial = !playTutorial"
                   >
                     <span v-if="!playTutorial">
-                      <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon type="play-circle" /> </span> 
+                      <span class="px-2" v-if="getWindowWidth() <= 435"> <PlayCircleOutlined /> </span> 
                       <span v-else>Watch tutorial</span> 
                     </span>
                     <span v-else>
-                      <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon type="close" /> </span> 
+                      <span class="px-2" v-if="getWindowWidth() <= 435"> <CloseOutlined /> </span> 
                       <span v-else>Close tutorial</span>
                     </span>
                   </a-button>
@@ -80,7 +82,9 @@
                     color="#6159a7"
                     class="mr-2"
                   >
-                    <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon class="prev-icon-color" type="caret-left" /> </span> 
+                    <span class="px-2" v-if="getWindowWidth() <= 435"> 
+                      <CaretLeftOutlined class="prev-icon-color" /> 
+                    </span> 
                     <span v-else>Prev</span> 
                   </a-button>
                   <a-button
@@ -90,13 +94,15 @@
                     rounded="true"
                     color="#6159a7"
                   >
-                    <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon class="prev-icon-color" type="caret-right" /> </span> 
+                    <span class="px-2" v-if="getWindowWidth() <= 435"> 
+                      <CaretRightOutlined class="prev-icon-color" /> 
+                    </span> 
                     <span v-else>Next</span> 
                   </a-button>
     
                   <a-button
                     v-if="currentGuide === 5"
-                    @click="goToFirstGuide(); dialog.value=false;"
+                    @click="goToFirstGuide(); vDialog.isActive.value=false;"
                     type="primary"
                     rounded="true"
                     color="#3ab549"
@@ -266,7 +272,7 @@
           class="mt-3"
           @click="prev"
         >
-          <span v-if="getWindowWidth() <= 435"> <a-icon class="prev-icon-color" type="caret-left" /> </span> 
+          <span v-if="getWindowWidth() <= 435"> <CaretLeftOutlined class="prev-icon-color" /> </span> 
           <span v-else>Previous</span>
         </a-button>
 
@@ -322,6 +328,22 @@ import improveMyselfThings from "@/common/improveMyselfThings.js";
 import jwtService from "../../services/jwt.service";
 import Header from "../../components/header/header.vue";
 import blockRegistrationRouteAfter from "../../mixins/blockRegistrationRouteAfter.js";
+
+// icons
+import {
+  CaretLeftOutlined,
+  CaretRightOutlined,
+  CloseOutlined,
+  PlayCircleOutlined,
+} from '@ant-design/icons-vue';
+
+// images 
+import completeYourProfile from '@/assets/help_guide_pics/Complete_Your_Profile.svg';
+import uploadImages from '@/assets/help_guide_pics/Upload_Images.svg';
+import verifyYourID from '@/assets/help_guide_pics/Verify_your_ID.svg';
+import reviewAndSubmit from '@/assets/help_guide_pics/Review_and_Submit.svg';
+import shortlistAndConnect from '@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg';
+
 export default {
   components: {
     PreferenceTwo,
@@ -334,6 +356,11 @@ export default {
     Header,
     ReviewAndPublishModal,
     VerificationAgreement,
+
+    CaretLeftOutlined,
+    CaretRightOutlined,
+    CloseOutlined,
+    PlayCircleOutlined,
   },
 
   mixins: [blockRegistrationRouteAfter],
@@ -350,6 +377,7 @@ export default {
       imageSrc: "",
       isAgree: false,
       dialog: false,
+      vDialog: false,
       isLoading: false,
       showAgreement: false,
       playTutorial: false,
@@ -948,25 +976,25 @@ export default {
           this.currentGuide = 0;
           break;
         case 2:
-          this.imageSrc = require('@/assets/help_guide_pics/Complete_Your_Profile.svg');
+          this.imageSrc = completeYourProfile;
           this.contentTitle = 'Complete Your Profile';
           this.contentGuidance = 'More information you provide, higher the chance to appear on the search result.';
           this.currentGuide = 1;
           break;
         case 3:
-          this.imageSrc = require('@/assets/help_guide_pics/Upload_Images.svg');
+          this.imageSrc = uploadImages;
           this.contentTitle = 'Upload Images';
           this.contentGuidance = 'You need one avatar, one main and one additional image. Use Image Share Setting to give permission who can see your images.';
           this.currentGuide = 2;
           break;
         case 4:
-          this.imageSrc = require('@/assets/help_guide_pics/Verify_your_ID.svg');
+          this.imageSrc = verifyYourID;
           this.contentTitle = 'Verify your ID';
           this.contentGuidance = 'In MatrimonyAssist all candidates must be verified. You can upload your verification documents while completing your profile or you can do it later from user dashboard';
           this.currentGuide = 3;
           break; 
         case 5:
-          this.imageSrc = require('@/assets/help_guide_pics/Review_and_Submit.svg');
+          this.imageSrc = reviewAndSubmit;
           this.contentTitle = 'Review and Submit';
           this.contentGuidance = 'Please check all the information you provided on the form are correct. Once you are happy, only then press the submit button to complete your registration.';
           this.currentGuide = 4;
@@ -979,28 +1007,28 @@ export default {
 
       switch (this.currentGuide) {
         case 1:
-          this.imageSrc = require('@/assets/help_guide_pics/Complete_Your_Profile.svg');
+          this.imageSrc = completeYourProfile;
           this.contentTitle = 'Complete Your Profile';
           this.contentGuidance = 'More information you provide, higher the chance to appear on the search result.';
           break;
       
         case 2:
-          this.imageSrc = require('@/assets/help_guide_pics/Upload_Images.svg');
+          this.imageSrc = uploadImages;
           this.contentTitle = 'Upload Images';
           this.contentGuidance = 'You need one avatar, one main and one additional image. Use Image Share Setting to give permission who can see your images.';
           break; 
         case 3:
-          this.imageSrc = require('@/assets/help_guide_pics/Verify_your_ID.svg');
+          this.imageSrc = verifyYourID;
           this.contentTitle = 'Verify your ID';
           this.contentGuidance = 'In MatrimonyAssist all candidates must be verified. You can upload your verification documents while completing your profile or you can do it later from user dashboard';
           break;  
         case 4:
-          this.imageSrc = require('@/assets/help_guide_pics/Review_and_Submit.svg');
+          this.imageSrc = reviewAndSubmit;
           this.contentTitle = 'Review and Submit';
           this.contentGuidance = 'Please check all the information you provided on the form are correct. Once you are happy, only then press the submit button to complete your registration.';
           break;
         case 5:
-          this.imageSrc = require('@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg');
+          this.imageSrc = shortlistAndConnect;
           this.contentTitle = 'What happens next?';
           this.contentGuidance = '\u2713 Wait for the approval of your registration. \u2713 You’ll receive access to a user dashboard to create or join a team and pay subscription';
           break;
@@ -1184,8 +1212,8 @@ export default {
   z-index: 15;
 
   .question-mark {
-    right: 0.3em;
-    top: 1.8rem;
+    right: .5rem;
+    top: -.5rem;
     box-shadow: 0 0 4px 1.3px rgb(0 0 0 / 30%);
     border-radius: 50%;
   }

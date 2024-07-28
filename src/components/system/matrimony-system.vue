@@ -15,7 +15,7 @@
         activator="parent"
       >
         <template v-slot:activator="{ props: activatorProps }">
-          <v-icon :size="getWindowWidth() <= 400 ? '25px' : '30px'"   v-bind="activatorProps" class="question-mark" color="#6159a7">
+          <v-icon :size="getWindowWidth() <= 400 ? '25px' : '30px'" v-bind="activatorProps" class="question-mark" color="#6159a7">
             mdi-help-circle
           </v-icon>
         </template>
@@ -60,11 +60,11 @@
                   @click="playTutorial = !playTutorial"
                 >
                   <span v-if="!playTutorial">
-                    <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon type="play-circle" /> </span> 
+                    <span class="px-2" v-if="getWindowWidth() <= 435"> <PlayCircleOutlined /> </span> 
                     <span v-else>Watch tutorial</span> 
                   </span>
                   <span v-else>
-                    <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon type="close" /> </span> 
+                    <span class="px-2" v-if="getWindowWidth() <= 435"> <CloseOutlined /> </span> 
                     <span v-else>Close tutorial</span>
                   </span>
                 </a-button>
@@ -80,7 +80,7 @@
                     color="#6159a7"
                     class="mr-2"
                   >
-                    <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon class="prev-icon-color" type="caret-left" /> </span> 
+                    <span class="px-2" v-if="getWindowWidth() <= 435"> <CaretLeftOutlined class="prev-icon-color" /> </span> 
                     <span v-else>Prev</span> 
                   </a-button>
                   <a-button
@@ -90,7 +90,7 @@
                     rounded="true"
                     color="#6159a7"
                   >
-                    <span class="px-2" v-if="getWindowWidth() <= 435"> <a-icon class="prev-icon-color" type="caret-right" /> </span> 
+                    <span class="px-2" v-if="getWindowWidth() <= 435"> <CaretRightOutlined class="prev-icon-color" />  </span> 
                     <span v-else>Next</span> 
                   </a-button>
   
@@ -121,6 +121,14 @@ import Layout from "@/views/design/Layout.vue";
 import { mapActions } from 'vuex';
 import JwtService from "../../services/jwt.service";
 
+// icons
+import {
+  CaretLeftOutlined,
+  CaretRightOutlined,
+  CloseOutlined,
+  PlayCircleOutlined,
+} from '@ant-design/icons-vue';
+
 // images
 // import imageSrc from '@/assets/Icons/MA logo for start modal.svg';
 import maLogoForStartModal from '@/assets/Icons/MA logo for start modal.svg';
@@ -134,12 +142,17 @@ export default {
   components: {
     InstantNotification,
     // Layout: () => import("@/views/design/Layout.vue"),
-    Layout
+    Layout,
+
+    CaretLeftOutlined,
+    CaretRightOutlined,
+    CloseOutlined,
+    PlayCircleOutlined,
   },
 
   data() {
     return {
-      imageSrc: '@/assets/Icons/MA logo for start modal.svg',
+      imageSrc: maLogoForStartModal,
       contentTitle: 'Welcome to MatrimonyAssist',
       contentGuidance: "Here you can create team, invite family and friends, shortlist potential candidates and connect and chat with respective teams.",
       currentGuide: 0,
@@ -611,8 +624,8 @@ export default {
 
   .question-mark {
     position: absolute;
-    right: 0.5em;
-    top: -.5rem;
+    right: .5rem;
+    top: -2.5rem;
     box-shadow: 0 0 4px 1.3px rgb(0 0 0 / 30%);
     border-radius: 50%;
     @media (max-width: 575px) {

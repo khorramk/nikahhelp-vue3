@@ -5,7 +5,7 @@
 
       <a-collapse :default-active-key="1" :bordered="false" expand-icon-position="right">
         <template #expandIcon="props">
-          <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
+          <CaretDownOutlined :rotate="props.isActive ? 180 : 0" />
         </template>
         <a-collapse-panel key="1" header="1. Upload Images">
           <h5 class="text-left mt-2">Upload your Image</h5>
@@ -252,10 +252,13 @@
 <script>
 import Loader from '../../plugins/loader/loader.vue';
 import axios from "axios";
+
+import { CaretDownOutlined } from "@ant-design/icons-vue";
+
 export default {
   name: "ImageUpload",
 
-  components: { Loader },
+  components: { Loader, CaretDownOutlined },
 
   props: {
     imageModel: {

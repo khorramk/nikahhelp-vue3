@@ -1,6 +1,6 @@
 <template>
   <div class="flex py-2 px-2 position-relative">
-    <a-icon type="bell" theme="filled" color="primary" class="color-primary fs-24" size="large" />
+    <BellFilled class="color-primary fs-24" size="large"/>
     <div class="flex flex-column ml-2">
       <h4 class="border-bottom pb-2 fs-14 pr-2"><strong class="fs-16">{{ notification.team_temp_name }}</strong> has new notification</h4>
       <h4 class="pb-2 fs-14"><b>{{ notification && notification.sender && notification.team_id && notification.sender.full_name ? notification.sender.full_name : '' }}</b> {{ notification.title }}</h4>
@@ -15,9 +15,14 @@
 </template>
 
 <script>
+import { BellFilled } from '@ant-design/icons-vue';
+
 export default {
   name: "InstantNotificationItem",
   props: ['notification', 'index'],
+  components: {
+    BellFilled
+  },
   data() {
     return {
       instantNotification: false,

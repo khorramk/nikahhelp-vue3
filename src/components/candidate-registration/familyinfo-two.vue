@@ -13,7 +13,7 @@
       style="background-color: #f6f5fb;"
       >
       <template #expandIcon="props">
-        <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
+        <CaretDownOutlined :rotate="props.isActive ? 180 : 0" />
       </template>
       <!-- 1. Family Details  -->
       <a-collapse-panel key="1" header="3.1 Family Details">
@@ -28,11 +28,10 @@
           <div class="row py-3 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="familyInformation.father_profession"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />What is your father's profession?
+                /> What is your father's profession?
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
@@ -50,7 +49,7 @@
                   v-model="familyInformation.father_profession"
                   label="name"
                   :options="candidateDetails.occupations"
-                  ><template #open-indicator> <a-icon type="down" /> </template
+                  ><template #open-indicator> <DownOutlined /> </template
                 ></v-select> -->
                 <a-input
                   @blur="onValueChange($event, 'father_profession')"
@@ -96,11 +95,10 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="familyInformation.mother_profession"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />What is your mother's profession?
+                /> What is your mother's profession?
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
@@ -125,7 +123,7 @@
                   label="name"
                   :reduce="(option) => option.name"
                   :options="candidateDetails.occupations"
-                  ><template #open-indicator> <a-icon type="down" /> </template
+                  ><template #open-indicator> <DownOutlined /> </template
                 ></v-select> -->
               </a-form-item>
             </div>
@@ -163,10 +161,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="familyInformation.siblings_desc"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Please give details about your siblings.
               </div>
             </div>
@@ -225,12 +222,10 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="familyInformation.family_info"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
-                />You may use this space to share more information about your
-                family.
+                />You may use this space to share more information about your family.
               </div>
             </div>
             <div class="col-12 col-md-6 mobile-margin">
@@ -287,10 +282,9 @@
           <div class="row pt-3 border-bottom">
             <div class="col-12 col-md-6 none-padding">
               <div class="mb-2 font-weight-bold">
-                <a-icon
+                <CheckOutlined
                   v-if="familyInformation.country_of_origin"
                   class="color-success mr-2 fs-18 fw-500"
-                  type="check"
                 />Is your ancestral home same as your country of birth?
               </div>
             </div>
@@ -315,7 +309,7 @@
                     { name: 'No', value: 'No' },
                   ]"
                 >
-                  <template #open-indicator> <a-icon type="down" /> </template>
+                  <template #open-indicator> <DownOutlined /> </template>
                 </v-select>
               </a-form-item>
             </div>
@@ -372,9 +366,23 @@ import {
   _PROFESSIONS,
   RULES_FAMILY_INFO,
 } from "./models/candidate";
+
+import {
+  CaretDownOutlined,
+  CheckOutlined,
+  DownOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "familyInfoTwo",
-  components: { NeedHelp, vSelect },
+  components: { 
+    NeedHelp, 
+    vSelect,
+
+    CheckOutlined,
+    CaretDownOutlined,
+    DownOutlined,
+  },
   props: {
     candidateDetails: {
       type: Object,

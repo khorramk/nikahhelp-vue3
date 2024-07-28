@@ -12,8 +12,7 @@
             @click="$emit('disconnectTeam')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="disconnect" class="mr-2" />
-            Disconnect
+            <DisconnectOutlined class="mr-2" /> Disconnect
           </div>
         </v-btn>
 
@@ -28,8 +27,7 @@
             @click="$emit('block')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="stop" class="mr-2" />
-            Block
+            <StopOutlined class="mr-2" /> Block
           </div>
         </v-btn>
       </div>
@@ -45,8 +43,7 @@
             @click="$emit('gotoChat')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="wechat" class="mr-2" />
-            Chat
+            <WeChatOutlined class="mr-2" /> Chat
           </div>
         </v-btn>
 
@@ -61,8 +58,7 @@
             @click="$emit('viewProfile')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="user" class="mr-2" />
-            View Profile
+            <UserOutlined class="mr-2" /> View Profile
           </div>
         </v-btn>
       </div>
@@ -80,8 +76,7 @@
             @click="$emit('acceptRequest')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="check" class="mr-2" />
-            Accept
+            <CheckOutlined class="mr-2" /> Accept
           </div>
         </v-btn>
 
@@ -96,8 +91,7 @@
             @click="$emit('declineRequest')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="disconnect" class="mr-2" />
-            Decline
+            <DisconnectOutlined class="mr-2" /> Decline
           </div>
         </v-btn>
       </div>
@@ -113,7 +107,7 @@
             @click="$emit('block')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="stop" class="mr-2" />
+             <StopOutlined class="mr-2" />
             Block
           </div>
         </v-btn>
@@ -129,8 +123,7 @@
             @click="$emit('viewProfile')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="user" class="mr-2" />
-            View Profile
+            <UserOutlined class="mr-2" /> View Profile
           </div>
         </v-btn>
       </div>
@@ -148,8 +141,7 @@
             @click="$emit('declineRequest')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="close" class="mr-2" />
-            Cancel
+            <CloseOutlined class="mr-2" /> Cancel
           </div>
         </v-btn>
 
@@ -164,8 +156,7 @@
             @click="$emit('block')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="stop" class="mr-2" />
-            Block
+            <StopOutlined class="mr-2" />
           </div>
         </v-btn>
       </div>
@@ -182,8 +173,7 @@
             @click="$emit('viewProfile')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="user" class="mr-2" />
-            View Profile
+            <UserOutlined class="mr-2" />
           </div>
         </v-btn>
       </div>
@@ -219,8 +209,7 @@
             @click="$emit('block')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="stop" class="mr-2" />
-            Block
+            <StopOutlined class="mr-2" />
           </div>
         </v-btn>
       </div>
@@ -237,8 +226,7 @@
             @click="$emit('viewProfile')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="user" class="mr-2" />
-            View Profile
+            <UserOutlined class="mr-2" />
           </div>
         </v-btn>
       </div>
@@ -273,8 +261,7 @@
             @click="$emit('block')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="stop" class="mr-2" />
-            Block
+            <StopOutlined class="mr-2" />
           </div>
         </v-btn>
       </div>
@@ -291,8 +278,7 @@
             @click="$emit('viewProfile')"
         >
           <div class="flex justify-center align-center">
-            <a-icon type="user" class="mr-2" />
-            View Profile
+            <UserOutlined class="mr-2" />
           </div>
         </v-btn>
       </div>
@@ -301,9 +287,24 @@
 </template>
 
 <script>
+import {
+  DisconnectOutlined,
+  StopOutlined,
+  UserOutlined,
+  WeChatOutlined
+} from '@ant-design/icons-vue';
+
+
 export default {
   name: "GridButtons",
   props: ['type'],
+  components: {
+    DisconnectOutlined,
+    StopOutlined,
+    UserOutlined,
+    WeChatOutlined
+  
+  }
 }
 </script>
 

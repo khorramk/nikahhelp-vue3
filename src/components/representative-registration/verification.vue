@@ -10,7 +10,7 @@
         style="background-color: #f6f5fb;"
       >
         <template #expandIcon="props">
-          <a-icon type="caret-down" :rotate="props.isActive ? 180 : 0" />
+          <CaretDownOutlined :rotate="props.isActive ? 180 : 0" />
         </template>
         <a-collapse-panel key="1" header="1. Referee Information">
           <a-form
@@ -387,7 +387,7 @@
             <div class="row pt-3 pb-2">
               <div class="col-12 col-md-6 none-padding">
                 <div style="display: flex">
-                  <a-icon
+                  <CheckOutlined
                     class="color-success mr-2 fs-18 fw-500"
                     v-if="
                       verification.ver_recommender_title &&
@@ -398,7 +398,6 @@
                       verification.ver_recommender_mobile_no &&
                       verification.ver_recommender_email
                     "
-                    type="check"
                   />
                   <div style="display: flex; flex-direction: column">
                     <span class="mr-2 fs-16 fw-700">Personal reference</span>
@@ -473,7 +472,7 @@
                     v-model:value="verification.ver_recommender_occupation"
                     label="name"
                     :options="representativeDetails.occupations.map(item => ({ value: item.name, label: item.name}))"
-                    ><template #open-indicator> <a-icon type="down" /> </template>
+                    ><template #open-indicator> <DownOutlined /> </template>
                   </a-select>
                 </a-form-item>
 
@@ -661,6 +660,13 @@ import FileUploadOne from "@/components/shared/FileUploadOne.vue";
 import ApiService from "@/services/api.service";
 import vSelect from "vue-select";
 import { VERIFICATION_RULES } from "./models/representative";
+
+import {
+  CaretDownOutlined,
+  CheckOutlined,
+  DownOutlined,
+} from "@ant-design/icons-vue";
+
 export default {
   name: "VerificationRef",
   props: {
@@ -674,6 +680,10 @@ export default {
   components: {
     FileUploadOne,
     vSelect,
+
+    CaretDownOutlined,
+    CheckOutlined,
+    DownOutlined,
   },
 
   created() {

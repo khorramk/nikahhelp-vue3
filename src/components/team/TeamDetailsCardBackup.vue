@@ -326,10 +326,7 @@
                     @change="handleChangeRelationship"
                 >
                   <a-tooltip slot="suffix" title="Relationship with Member">
-                    <a-icon
-                        type="info-circle"
-                        style="color: rgba(0, 0, 0, 0.45)"
-                    />
+                    <InfoCircleOutlined style="color: rgba(0, 0, 0, 0.45)" />
                   </a-tooltip>
                 </a-input>
               </a-col>
@@ -717,10 +714,11 @@ import LTModal from "./Modals/LTModal.vue";
 import TNCModal from "./Modals/TeamNameChangeModal.vue";
 import TDCModal from "./Modals/TeamDescriptionChange.vue";
 // import { Modal } from 'ant-design-vue';
+import { InfoCircleOutlined } from "@ant-design/icons-vue";
 export default {
   name: "TeamDetailsCard",
   props: ["teamData", "index"],
-  components: { DeletionModal, PreferenceModal, LTModal, TNCModal, TDCModal },
+  components: { DeletionModal, PreferenceModal, LTModal, TNCModal, TDCModal, InfoCircleOutlined },
   data() {
     return {
       invitation_link: [],

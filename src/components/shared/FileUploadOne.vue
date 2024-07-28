@@ -6,13 +6,19 @@
     :headers="headers"
     @change="handleChange"
   >
-    <a-button shape="round"> <a-icon type="upload" /> Click to Upload </a-button>
+    <a-button shape="round"> <UploadOutlined /> Click to Upload </a-button>
   </a-upload>
 </template>
 <script>
+
+import { UploadOutlined } from '@ant-design/icons-vue';
+
   export default {
     name: 'FileUploadOne',
     props: ['handleChangeFromProp', 'nameFromVerification'],
+    components: {
+      UploadOutlined,
+    },
 
     created() {
       // console.log(this.handleChangeFromProp);

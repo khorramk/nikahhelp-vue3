@@ -57,7 +57,7 @@
             @click="handleSubmit"
             class="btn signin-btn h-32 w-100 pt-1 mt-1"
           >
-            <a-icon type="loading" class="mr-2 fs-20" v-if="isLoading" />
+            <LoadingOutlined class="fs-20 mr-2" v-if="isLoading" />
             Sign in
           </button>
 
@@ -99,12 +99,17 @@
 import Footer from "@/components/auth/Footer.vue";
 import Spinner from "@/components/ui/Spinner.vue";
 import InputPassword from "@/components/ui/InputPassword.vue";
+
+import { LoadingOutlined } from "@ant-design/icons-vue";
+
 export default {
   name: "AdminLogin",
   components: {
     Footer,
     Spinner,
     InputPassword,
+
+    LoadingOutlined,
   },
   data() {
     return {

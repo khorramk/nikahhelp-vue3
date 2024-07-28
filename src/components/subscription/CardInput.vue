@@ -59,7 +59,7 @@
 			<div ref="card" class="form-control rounded-pill px-4 cspt-9 fs-14"></div>
 			<div class="mt-5 mb-3 text-right mobile-margin">
 				<button class="check-card-btn" @click.prevent="submitPayment">
-          			<a-icon type="loading" class="mr-2" v-if="loading" /> Check Card Validity
+					<LoadingOutlined class="mr-2" v-if="loading" /> Check Card Validity
 				</button>
 			</div>
 		</div>
@@ -73,6 +73,8 @@
 </template>
 
 <script>
+import { LoadingOutlined } from "@ant-design/icons-vue";
+
 let stripe = Stripe(`${import.meta.env.VITE_STRIPE_PUBLIC_KEY}`);
 let elements = stripe.elements();
 
@@ -89,6 +91,9 @@ const style = {
 
 export default {
 	props: ["clientSecret"],
+	components: {
+		LoadingOutlined,
+	},
 	data() {
 		return {
 			card: "",

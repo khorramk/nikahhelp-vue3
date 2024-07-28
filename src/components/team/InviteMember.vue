@@ -56,7 +56,9 @@
             </a-select>
           </a-tooltip>
           
-          <button class="btn invitation-link-btn btn-block btn-sm py-2 mb-2 mt-4" @click="generateLink" v-if="!showUserBox" :disabled="isLoading || isSuccess"><a-icon class="mr-2" type="loading" v-if="isLoading" /> Generate Invitation Link</button>
+          <button class="btn invitation-link-btn btn-block btn-sm py-2 mb-2 mt-4" @click="generateLink" v-if="!showUserBox" :disabled="isLoading || isSuccess">
+            <LoadingOutlined class="mr-2" v-if="isLoading" /> Generate Invitation Link
+          </button>
 
           <p class="text-center text-white m-0" v-if="!showUserBox">or</p>
 
@@ -67,8 +69,8 @@
           <label for="" style="color:#fff; margin: 0px 2px;">Email:</label>
 
           <a-input ref="userNameInput" class="mt-1" placeholder="Search email or user ID" v-model:value="user_email" @input="searchMember()" medium>
-            <a-icon slot="suffix" type="loading" style="color: rgba(0,0,0,.45)" v-if="requestSent != 0" />
-            <a-icon slot="suffix" type="close" style="color: rgba(0,0,0,.45); cursor:pointer;" @click="showUserBox=false; removeAttachedUser();" v-if="requestSent == 0" />
+            <LoadingOutlined slot="suffix" style="color: rgba(0,0,0,.45)" v-if="requestSent != 0" />
+            <CloseOutlined slot="suffix" style="color: rgba(0,0,0,.45); cursor:pointer;" @click="showUserBox=false; removeAttachedUser();" v-if="requestSent == 0" />
           </a-input>
           
         </div>
@@ -90,7 +92,9 @@
 
         </div>
         
-        <button class="btn invitation-link-btn btn-block btn-sm py-2" @click="generateLink" v-if="showUserBox" :disabled="isLoading || isSuccess || !attached"><a-icon class="mr-2" type="loading" v-if="isLoading" /> Generate Invitation Link</button>
+        <button class="btn invitation-link-btn btn-block btn-sm py-2" @click="generateLink" v-if="showUserBox" :disabled="isLoading || isSuccess || !attached">
+          <LoadingOutlined class="mr-2" v-if="isLoading" /> Generate Invitation Link
+        </button>
       </div>
       <div class="link-box px-4 position-absolute w-full" :class="{'link-box-empty': !showUserBox}">
         <div class="w-full mt-2">
@@ -106,6 +110,12 @@
 <script>
 import ApiService from '@/services/api.service';
 import Notification from "@/common/notification.js";
+
+import {
+  LoadingOutlined,
+  CloseOutlined
+} from '@ant-design/icons-vue';
+
 export default {
   name: "InviteMember",
   sockets: {
@@ -117,6 +127,10 @@ export default {
     }
   },
   props: ['team', 'from'],
+  components: {
+    LoadingOutlined,
+    CloseOutlined
+  },
   data() {
     return {
       relationships: ['Father', 'Mother', 'Brother', 'Sister', 'Grand Father', 'Grand Mother', 'Brother-in-law', 'Sister-in-paw'],
