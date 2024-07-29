@@ -1320,7 +1320,6 @@
                 class="style-chooser"
                 style="background: #fff;"
                 :autoFormat="false"
-                :defaultCountry="personalInformation.contact.mobile_country_code"
                 :dropdownOptions="{
                   showDialCodeInSelection: true,
                   showDialCodeInList: true,
@@ -2736,7 +2735,7 @@ export default {
         console.log(this.isValidNumber, 'we vali helj');
         // this.personalInformation.contact.mobile_number = e.number;
         this.personalInformation.contact.mobile_country_code = e.countryCallingCode;
-        this.personalInformation.contact.mobile_number = `${e.countryCallingCode} ${this.personalInformation.contact.mobile_number}`;
+        // this.personalInformation.contact.mobile_number = `${e.countryCallingCode} ${this.personalInformation.contact.mobile_number}`;
         this.save("contact");
       }
     },

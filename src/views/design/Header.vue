@@ -144,32 +144,34 @@
                 alt=""
               />
             </a>
-            <a-menu slot="overlay" class="none-mobile-block">
-              <a-menu-item>
-                <router-link to="/support">
-                  <img
-                    width="22"
-                    src="@/assets/icon/support-secondary.svg"
-                    alt="icon"
-                  />
-                  <span class="ml-2">Support</span>
-                </router-link>
-              </a-menu-item>
-              <a-menu-item>
-                <router-link to="/settings">
-                  <img
-                    width="22"
-                    src="@/assets/icon/gear-fill-secondary.svg"
-                    alt="icon"
-                  />
-                  <span class="ml-2">Setting</span>
-                </router-link>
-              </a-menu-item>
-              <a-menu-item @click="logout">
-                <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
-                <span class="ml-2">Logout</span>
-              </a-menu-item>
-            </a-menu>
+            <template #overlay>
+              <a-menu class="none-mobile-block">
+                <a-menu-item>
+                  <router-link to="/support">
+                    <img
+                      width="22"
+                      src="@/assets/icon/support-secondary.svg"
+                      alt="icon"
+                    />
+                    <span class="ml-2">Support</span>
+                  </router-link>
+                </a-menu-item>
+                <a-menu-item>
+                  <router-link to="/settings">
+                    <img
+                      width="22"
+                      src="@/assets/icon/gear-fill-secondary.svg"
+                      alt="icon"
+                    />
+                    <span class="ml-2">Setting</span>
+                  </router-link>
+                </a-menu-item>
+                <a-menu-item @click="logout">
+                  <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
+                  <span class="ml-2">Logout</span>
+                </a-menu-item>
+              </a-menu>
+            </template>
           </a-dropdown>
 
           <div style="align-self: center">
@@ -186,32 +188,34 @@
                     </h6>
                   </router-link>
                 </a>
-                <a-menu slot="overlay" class="none-mobile-block">
-                  <a-menu-item>
-                    <router-link to="/support">
-                      <img
-                        width="22"
-                        src="@/assets/icon/support-secondary.svg"
-                        alt="icon"
-                      />
-                      <span class="ml-2">Support</span>
-                    </router-link>
-                  </a-menu-item>
-                  <a-menu-item>
-                    <router-link to="/settings">
-                      <img
-                        width="22"
-                        src="@/assets/icon/gear-fill-secondary.svg"
-                        alt="icon"
-                      />
-                      <span class="ml-2">Setting</span>
-                    </router-link>
-                  </a-menu-item>
-                  <a-menu-item @click="logout">
-                    <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
-                    <span class="ml-2">Logout</span>
-                  </a-menu-item>
-                </a-menu>
+                <template #overlay>
+                  <a-menu class="none-mobile-block">
+                    <a-menu-item>
+                      <router-link to="/support">
+                        <img
+                          width="22"
+                          src="@/assets/icon/support-secondary.svg"
+                          alt="icon"
+                        />
+                        <span class="ml-2">Support</span>
+                      </router-link>
+                    </a-menu-item>
+                    <a-menu-item>
+                      <router-link to="/settings">
+                        <img
+                          width="22"
+                          src="@/assets/icon/gear-fill-secondary.svg"
+                          alt="icon"
+                        />
+                        <span class="ml-2">Setting</span>
+                      </router-link>
+                    </a-menu-item>
+                    <a-menu-item @click="logout">
+                      <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
+                      <span class="ml-2">Logout</span>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
               </a-dropdown>
               <div
                 class="d-flex align-items-center mt-1"
@@ -306,150 +310,152 @@
               />
             </svg>
 
-            <a-menu slot="overlay" style="min-width: 320px">
-              <a-menu-item @click="$emit('toggleCollapse')">
-                <!-- <img width="22" src="@/assets/Icons/form.svg" alt="icon" /> -->
-                <CaretRightOutlined style="color: #522e8e" v-if="collapsed" />
-                <CaretLeftOutlined style="color: #522e8e" v-else />
-                <span class="ml-2"
-                  >{{ collapsed ? "Open" : "Close" }} Menu</span
-                >
-              </a-menu-item>
-              <a-divider class="m-0" />
+            <template #overlay>
+              <a-menu style="min-width: 320px">
+                <a-menu-item @click="$emit('toggleCollapse')">
+                  <!-- <img width="22" src="@/assets/Icons/form.svg" alt="icon" /> -->
+                  <CaretRightOutlined style="color: #522e8e" v-if="collapsed" />
+                  <CaretLeftOutlined style="color: #522e8e" v-else />
+                  <span class="ml-2"
+                    >{{ collapsed ? "Open" : "Close" }} Menu</span
+                  >
+                </a-menu-item>
+                <a-divider class="m-0" />
 
-              <a-menu-item>
-                <router-link to="/dashboard">
-                  <img
-                    width="22"
-                    src="@/assets/icon/house-door-fill-primary.svg"
-                    alt="icon"
-                  />
-                  <span class="ml-2">Dashboard</span>
-                </router-link>
-              </a-menu-item>
+                <a-menu-item>
+                  <router-link to="/dashboard">
+                    <img
+                      width="22"
+                      src="@/assets/icon/house-door-fill-primary.svg"
+                      alt="icon"
+                    />
+                    <span class="ml-2">Dashboard</span>
+                  </router-link>
+                </a-menu-item>
 
-              <a-menu-item>
-                <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
-                  <a
-                      class="nav-link"
-                      aria-current="page"
-                      @click.self="(e) => e.preventDefault()"
-                  >
-                    <img
-                        width="22"
-                        src="@/assets/icon/group-fill-secondary.svg"
-                        alt="icon"
-                    />
-                    <span class="ml-2 mr-2">Manage Team </span>
-<!--                    <a-badge :count="unreadNotification" />-->
-                  </a>
-                  <template v-slot:overlay>
-                    <NotificationPopup
-                        :count="29"
-                        :items="teamsForHeader"
-                        :use-for="'team'"
-                    />
-                  </template>
-                </a-dropdown>
-              </a-menu-item>
+                <a-menu-item>
+                  <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
+                    <a
+                        class="nav-link"
+                        aria-current="page"
+                        @click.self="(e) => e.preventDefault()"
+                    >
+                      <img
+                          width="22"
+                          src="@/assets/icon/group-fill-secondary.svg"
+                          alt="icon"
+                      />
+                      <span class="ml-2 mr-2">Manage Team </span>
+  <!--                    <a-badge :count="unreadNotification" />-->
+                    </a>
+                    <template v-slot:overlay>
+                      <NotificationPopup
+                          :count="29"
+                          :items="teamsForHeader"
+                          :use-for="'team'"
+                      />
+                    </template>
+                  </a-dropdown>
+                </a-menu-item>
 
-              <a-menu-item>
-                <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
-                  <a
-                      class="nav-link"
-                      aria-current="page"
-                      @click.self="(e) => e.preventDefault()"
-                  >
+                <a-menu-item>
+                  <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
+                    <a
+                        class="nav-link"
+                        aria-current="page"
+                        @click.self="(e) => e.preventDefault()"
+                    >
+                      <img
+                          width="22"
+                          src="@/assets/icon/star-fill-secondary.svg"
+                          alt="icon"
+                      />
+                      <span class="ml-2 mr-2">Shortlist </span>
+                      <a-badge count="0" />
+                    </a>
+                    <template v-slot:overlay>
+                      <NotificationPopup
+                          count="29"
+                          :items="shortlisetdCandidates"
+                          :use-for="'shortlist'"
+                      />
+                    </template>
+                  </a-dropdown>
+                </a-menu-item>
+                <a-menu-item>
+                  <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
+                    <a
+                        class="nav-link"
+                        aria-current="page"
+                        @click.self="(e) => e.preventDefault()"
+                    >
+                      <img
+                          width="22"
+                          src="@/assets/icon/bell-fill-secondary.svg"
+                          alt="icon"
+                      />
+                      <span class="ml-2 mr-2">Notification </span>
+                      <a-badge :count="unreadNotification.length" />
+                    </a>
+                    <template v-slot:overlay>
+                      <NotificationPopup
+                          count="29"
+                          :items="reducedNotifications"
+                          :use-for="'notification'"
+                      />
+                    </template>
+                  </a-dropdown>
+                </a-menu-item>
+                <a-menu-item>
+                  <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
+                    <a
+                        class="nav-link"
+                        aria-current="page"
+                        @click.self="(e) => e.preventDefault()"
+                    >
+                      <img
+                          width="22"
+                          src="@/assets/icon/chat-dots-fill-secondary.svg"
+                          alt="icon"
+                      />
+                      <span class="ml-2 mr-2">Chat </span>
+                      <a-badge :count="unseenChat" />
+                    </a>
+                    <template v-slot:overlay>
+                      <NotificationPopup
+                          :count="29"
+                          :items="chats"
+                          :use-for="'chat'"
+                      />
+                    </template>
+                  </a-dropdown>
+                </a-menu-item>
+                <a-menu-item>
+                  <router-link to="/support">
                     <img
-                        width="22"
-                        src="@/assets/icon/star-fill-secondary.svg"
-                        alt="icon"
+                      width="22"
+                      src="@/assets/icon/support-secondary.svg"
+                      alt="icon"
                     />
-                    <span class="ml-2 mr-2">Shortlist </span>
-                    <a-badge count="0" />
-                  </a>
-                  <template v-slot:overlay>
-                    <NotificationPopup
-                        count="29"
-                        :items="shortlisetdCandidates"
-                        :use-for="'shortlist'"
-                    />
-                  </template>
-                </a-dropdown>
-              </a-menu-item>
-              <a-menu-item>
-                <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
-                  <a
-                      class="nav-link"
-                      aria-current="page"
-                      @click.self="(e) => e.preventDefault()"
-                  >
+                    <span class="ml-2">Support</span>
+                  </router-link>
+                </a-menu-item>
+                <a-menu-item>
+                  <router-link to="/settings">
                     <img
-                        width="22"
-                        src="@/assets/icon/bell-fill-secondary.svg"
-                        alt="icon"
+                      width="22"
+                      src="@/assets/icon/gear-fill-secondary.svg"
+                      alt="icon"
                     />
-                    <span class="ml-2 mr-2">Notification </span>
-                    <a-badge :count="unreadNotification.length" />
-                  </a>
-                  <template v-slot:overlay>
-                    <NotificationPopup
-                        count="29"
-                        :items="reducedNotifications"
-                        :use-for="'notification'"
-                    />
-                  </template>
-                </a-dropdown>
-              </a-menu-item>
-              <a-menu-item>
-                <a-dropdown :trigger="['click']" placement="bottomLeft" :getPopupContainer="popupDiv()">
-                  <a
-                      class="nav-link"
-                      aria-current="page"
-                      @click.self="(e) => e.preventDefault()"
-                  >
-                    <img
-                        width="22"
-                        src="@/assets/icon/chat-dots-fill-secondary.svg"
-                        alt="icon"
-                    />
-                    <span class="ml-2 mr-2">Chat </span>
-                    <a-badge :count="unseenChat" />
-                  </a>
-                  <template v-slot:overlay>
-                    <NotificationPopup
-                        :count="29"
-                        :items="chats"
-                        :use-for="'chat'"
-                    />
-                  </template>
-                </a-dropdown>
-              </a-menu-item>
-              <a-menu-item>
-                <router-link to="/support">
-                  <img
-                    width="22"
-                    src="@/assets/icon/support-secondary.svg"
-                    alt="icon"
-                  />
-                  <span class="ml-2">Support</span>
-                </router-link>
-              </a-menu-item>
-              <a-menu-item>
-                <router-link to="/settings">
-                  <img
-                    width="22"
-                    src="@/assets/icon/gear-fill-secondary.svg"
-                    alt="icon"
-                  />
-                  <span class="ml-2">Setting</span>
-                </router-link>
-              </a-menu-item>
-              <a-menu-item @click="logout">
-                <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
-                <span class="ml-2">Logout</span>
-              </a-menu-item>
-            </a-menu>
+                    <span class="ml-2">Setting</span>
+                  </router-link>
+                </a-menu-item>
+                <a-menu-item @click="logout">
+                  <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
+                  <span class="ml-2">Logout</span>
+                </a-menu-item>
+              </a-menu>
+            </template>
           </a-dropdown>
         </div>
       </div>
@@ -664,6 +670,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/base/_variables.scss";
+@import "@/styles/base/_utilities.scss";
 .main-container {
   overflow: hidden;
   display: flex;

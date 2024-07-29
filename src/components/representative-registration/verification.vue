@@ -504,6 +504,7 @@
                   ></vue-tel-input> -->
                   <vue-tel-input 
                     v-model="verification.ver_recommender_mobile_no"
+                    :validCharactersOnly="true"
                     :autoFormat="false"
                     :inputOptions="{showDialCode: true}"
                     :dropdownOptions="{
@@ -736,6 +737,7 @@ export default {
       console.log(e, 'inside nubmer changte');
       this.isValidNumber = e.valid === undefined ? true : e.valid;
       if (e.valid) {
+        
         //this.verification.ver_recommender_mobile_no = `${e.country.dialCode} ${this.verification.ver_recommender_mobile_no}`;
         this.saveVerificationInfo();
       }

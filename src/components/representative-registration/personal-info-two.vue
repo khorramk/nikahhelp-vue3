@@ -614,6 +614,7 @@
                   v-model="personalInformation.personal.mobile_number"
                   :autoFormat="false"
                   :inputOptions="{showDialCode: true}"
+                  :validCharactersOnly="true"
                   :dropdownOptions="{
                     showDialCodeInSelection: true,
                     showDialCodeInList: true,
@@ -865,6 +866,7 @@ export default {
       console.log(e, e.valid, 'we ==================================')
       if (e.valid) {
         console.log(this.isValidNumber, 'we vali helj')
+        this.personalInformation.personal.mobile_country_code = e.countryCallingCode;
         // this.personalInformation.personal.mobile_number = `${e.country.dialCode} ${this.personalInformation.personal.mobile_number}`;
         this.save("contact");
       }
