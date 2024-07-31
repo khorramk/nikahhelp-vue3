@@ -1,10 +1,20 @@
 <template>
   <div class="overlay-container">
-    <v-overlay :opacity="1" :value="isLoading">
+    <v-overlay class="loader-overlay" :opacity="1" :isLoading="isLoading" v-model="isOpen">
       <v-progress-circular :size="100" :width="7" color="#522e8e" indeterminate>
         {{ text }}
       </v-progress-circular>
     </v-overlay>
+    <!-- <v-progress-circular
+      color="blue-lighten-3"
+      model-value="20"
+      :size="89"
+      :width="7"
+      indeterminate
+    >
+      loading
+    </v-progress-circular>
+      hello -->
   </div>
 </template>
 
@@ -20,20 +30,28 @@ export default {
       default: "Loading",
     },
   },
+  computed: {
+    isOpen() {
+      return this.isLoading;
+    },
+  },
 };
 </script>
-<style lang="scss">
-.overlay-container {
-  .v-overlay {
-    // z-index: 0 !important;
-    .v-overlay__scrim {
-      background: none !important;
-    }
+<style lang="scss" scoped>
+.loader-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:deep() {
+  .v-overlay__scrim {
+    background: none;
   }
   .v-overlay__content {
-    background: #fff !important;
-    padding: 10px !important;
-    border-radius: 10px !important;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
   }
 }
 </style>
