@@ -129,7 +129,7 @@ import { UserOutlined } from '@ant-design/icons-vue';
 export default {
   name: "BlockedCandidateGrid",
   props: ['item', 'candidateBlockIds', 'teamBlockedIds'],
-  component: {
+  components: {
     UserOutlined
   },
   data() {
