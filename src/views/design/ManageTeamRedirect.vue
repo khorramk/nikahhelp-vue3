@@ -1,8 +1,8 @@
 <template>
   <Modal :id="'manageteam-item'">
-    <template slot="header"></template>
+    <template #header></template>
 
-    <template slot="body">
+    <template #body>
       <div class="dt-modal-content">
         <div class="container-fluid">
           <div class="flex mobile-column">
@@ -53,7 +53,7 @@
       </div>
     </template>
 
-    <template slot="options"> </template>
+    <template #options> </template>
   </Modal>
 </template>
 

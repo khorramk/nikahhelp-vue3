@@ -88,7 +88,7 @@
           name in other messagelist and message team members sent.</span
         >
       </div> -->
-      <template slot="footer">
+      <template #footer>
         <a-button key="back" shape="round" @click="handleCancel">
           Cancel
         </a-button>

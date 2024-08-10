@@ -760,7 +760,7 @@
     <a-modal v-model="freeModal" title="Dou you have any cupon?">
       <a-input v-model="cupon" placeholder="Coupon" />
 
-      <template slot="footer">
+      <template #footer>
         <a-button key="back" @click="nextWithoutCupon"> Skip </a-button>
         <a-button key="submit" type="primary" @click="handleOkFreeModal">
           Submit

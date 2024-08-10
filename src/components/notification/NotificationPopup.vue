@@ -20,7 +20,7 @@
           :data-source="[{title: 'user one'}]"
           style="border-bottom: 1px solid rgb(235, 235, 235);"
       >
-        <a-list-item slot="renderItem" slot-scope="item" class="notification-item" :class="{'notification-seen' : itemObj.seen, 'notification-unseen' : !itemObj.seen}">
+        <a-list-item v-slot="item" class="notification-item" :class="{'notification-seen' : itemObj.seen, 'notification-unseen' : !itemObj.seen}">
           <slot name="item" :item="item">
             <component :is="componentName" :item="itemObj" :index="index"></component>
           </slot>
@@ -38,7 +38,7 @@
           style="border-bottom: 1px solid rgb(235, 235, 235);"
           @click="openChatWindow(itemObj.label == 'Connected Team' ? 'connected' : 'group')"
       >
-        <a-list-item slot="renderItem" slot-scope="item">
+        <a-list-item v-slot="item">
           <slot name="item" :item="item">
 <!--            <component :is="componentName" :item="itemObj" :index="index"></component>-->
             <ConnectedTeamChat

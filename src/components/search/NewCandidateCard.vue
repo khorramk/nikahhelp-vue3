@@ -4,7 +4,7 @@
     :loading="loading"
     class="mx-auto"
   >
-    <template slot="progress">
+    <template #progress>
       <v-progress-linear
         color="deep-purple"
         height="10"

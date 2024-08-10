@@ -311,7 +311,7 @@
                 </div>
             </div>
 
-            <template slot="footer">
+            <template #footer>
                 <a-button key="submit" type="primary" shape="round" @click="showTeamInfo = false">
                     Ok
                 </a-button>

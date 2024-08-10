@@ -4,7 +4,7 @@
   >
     <Loader v-if="isLoading" :isLoading="isLoading" />
 
-    <template slot="progress">
+    <template #progress>
       <v-progress-linear
           color="deep-purple"
           height="10"
