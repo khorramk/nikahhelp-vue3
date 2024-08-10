@@ -71,7 +71,7 @@
         <v-card
             class="mx-auto shadow-default shortlist-card position-relative"
         >
-          <template slot="progress">
+          <template #progress>
             <v-progress-linear
                 color="deep-purple"
                 height="10"
@@ -156,7 +156,7 @@
                 </div>
               </div>
         
-              <template slot="footer">
+              <template #footer>
                 <a-button key="submit" type="primary" shape="round" @click="showTeamInfo = false">
                 Ok
                 </a-button>
@@ -201,7 +201,7 @@
                 <span class="fw-600">Connection Requested By</span><br> {{ connection.requested_by.full_name }} <br><br>
                 <span class="fw-600">Request Date</span><br> {{ dateFromDateTime(connection.requested_at) }}
 
-                <template slot="footer">
+                <template #footer>
                   <a-button key="submit" type="primary" shape="round" @click="showProfileConnectionOverview = false">
                     Ok
                   </a-button>
@@ -258,7 +258,7 @@
     </div>
 
     <div class="position-absolute icon-rotate-box cursor-pointer" @click="showProfileConnectionOverview = true">
-    <HistoryOutlined :style="{ fontSize: '16px' }"/>
+      <HistoryOutlined :style="{ fontSize: '16px' }"/>
     </div>
   </div>
 </template>

@@ -53,7 +53,7 @@
                             style="width: 100%; margin-bottom: 0.5rem;"
                             class="text-black-50"
                             required
-                            v-model="selectedIssue"
+                            v-model:value="selectedIssue"
                         >
                             <a-select-option value="manageteam">
                                 Manage Team
@@ -97,7 +97,7 @@
                     </a-form-item>
                 </div>
     
-                <template slot="footer">
+                <template #footer>
                     <a-button key="back" shape="round" @click="showTicketSubmissionForm=false">
                         Cancel
                     </a-button>
@@ -225,7 +225,7 @@
                     </a-form-item>
                 </div>
     
-                <template slot="footer">
+                <template #footer>
                     <a-button key="back" shape="round" @click="showReplyForm=false">
                         Cancel
                     </a-button>
@@ -261,7 +261,7 @@
                 <span class="text-center font-weight-bold w-100 mt-4" style="font-size: 1.5rem; color: rgba(0, 0, 0, .2)" v-if="pageNo==1">Ticket id: #{{ lastSubmittedTicketId }}</span>
             </div>
 
-            <template slot="footer">
+            <template #footer>
                 <a-button key="submit" type="primary" shape="round" @click="showSubmissionSuccess = false">
                     ok
                 </a-button>
@@ -288,7 +288,7 @@
 
             </div>
 
-            <template slot="footer">
+            <template #footer>
                 <a-button key="submit" type="primary" shape="round" @click="showSubmissionFailed = false">
                     ok
                 </a-button>

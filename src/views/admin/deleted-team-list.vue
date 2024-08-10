@@ -53,9 +53,9 @@
           'items-per-page-text': 'Show',
         }"
       >
-        <template slot="headers" slot-scope="props">
+        <template #headers="props">
           <tr>
-            <th v-for="header in props.headers" :key="header.value">
+            <th v-for="header in props.headers[0]" :key="header.value">
               <span v-if="header.text !== 'actions'"> {{ header.text }}</span>
               <span v-if="header.text == 'actions'">
                 <v-menu offset-y>

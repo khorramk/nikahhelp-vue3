@@ -145,8 +145,7 @@ export default {
     CandidateProfiles,
     AddComponent,
     Observer,
-    ButtonComponent,
-    SearchLovePrimary
+    ButtonComponent
   },
  
   data() {
@@ -161,6 +160,7 @@ export default {
       componentName: "CandidateProfiles",
       redirection: false,
       isSearchBtnClicked: false,
+      SearchLovePrimary,
     };
   },
 

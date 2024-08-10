@@ -62,7 +62,7 @@
 							<!-- Change Name and Description section -->
 							<div class="col-8">
 								<a-tooltip>
-									<template slot="title">
+									<template #title>
 										Maximum 20 Characters allowed
 									</template>
 									<label class="mt-2">Team Name: </label>
@@ -71,7 +71,7 @@
 									:maxLength="20" />
 
 								<a-tooltip>
-									<template slot="title">
+									<template #title>
 										Maximum 80 Characters allowed
 									</template>
 									<label class="mt-2">Team Description: </label>
@@ -81,7 +81,7 @@
 							</div>
 						</div>
 
-						<template slot="footer">
+						<template #footer>
 							<a-button key="back2" type="danger" shape="round" @click="edit_button_flag = false">
 								Cancel
 							</a-button>
@@ -153,7 +153,7 @@
 						<span class="fw-600">Description</span> <br> {{ teamData.description }} <br><br>
 
 
-						<template slot="footer">
+						<template #footer>
 							<a-button key="submit" type="primary" shape="round" @click="showTeamInfo = false">
 								Ok
 							</a-button>

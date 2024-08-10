@@ -110,7 +110,7 @@
           </a-form-item>
       </div>
 
-      <template slot="footer">
+      <template #footer>
         <a-button key="back" shape="round" @click="showReplyForm=false">
             Cancel
         </a-button>

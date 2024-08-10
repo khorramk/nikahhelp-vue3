@@ -1,6 +1,6 @@
 <template>
 	<a-tooltip placement="bottom">
-		<template slot="title"> {{ title }}</template>
+		<template #title> {{ title }}</template>
 		<span class="color-blue fw-700">Need help?</span>
 	</a-tooltip>
 </template>

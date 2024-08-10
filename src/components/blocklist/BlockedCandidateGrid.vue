@@ -2,7 +2,7 @@
   <v-card
       class="mx-auto shadow-default blocked-card"
   >
-    <template slot="progress">
+    <template #progress>
       <v-progress-linear
           color="deep-purple"
           height="10"
@@ -129,7 +129,7 @@ import { UserOutlined } from '@ant-design/icons-vue';
 export default {
   name: "BlockedCandidateGrid",
   props: ['item', 'candidateBlockIds', 'teamBlockedIds'],
-  component: {
+  components: {
     UserOutlined
   },
   data() {

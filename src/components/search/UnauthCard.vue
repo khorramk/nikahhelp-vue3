@@ -5,7 +5,7 @@
       class="mx-auto unauth-card"
       max-width="374"
   >
-    <template slot="progress">
+    <template #progress>
       <v-progress-linear
           color="deep-purple"
           height="10"

@@ -288,6 +288,8 @@
 
 <script>
 import {
+  CheckOutlined,
+  CloseOutlined,
   DisconnectOutlined,
   StopOutlined,
   UserOutlined,
@@ -302,8 +304,9 @@ export default {
     DisconnectOutlined,
     StopOutlined,
     UserOutlined,
-    WechatOutlined
-  
+    WechatOutlined,
+    CheckOutlined,
+    CloseOutlined
   }
 }
 </script>

@@ -291,13 +291,13 @@
                           <div class="position-absolute msgbox-right">
                             <div class="flex">
                               <a-tooltip>
-                                <template slot="title">
+                                <template #title>
                                   Coming soon
                                 </template>
                                 <button v-if="false"><img src="../../assets/icon/microphone.png" alt="icon" class="mr-2 microphone" /></button>
                               </a-tooltip>
                               <!-- <a-tooltip>
-                                <template slot="title">
+                                <template #title>
                                   Coming soon
                                 </template>
                                 <button><a-icon type="file-image" class="color-primary" /></button>
