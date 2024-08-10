@@ -375,7 +375,7 @@
                     </a>
                     <template v-slot:overlay>
                       <NotificationPopup
-                          count="29"
+                          :count="29"
                           :items="shortlisetdCandidates"
                           :use-for="'shortlist'"
                       />
@@ -399,7 +399,7 @@
                     </a>
                     <template v-slot:overlay>
                       <NotificationPopup
-                          count="29"
+                          :count="29"
                           :items="reducedNotifications"
                           :use-for="'notification'"
                       />
