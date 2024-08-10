@@ -48,7 +48,7 @@ export default {
         let loggedUser = JSON.parse(localStorage.getItem('user'));
         if (loggedUser) {
             this.$socket.emit('ping', {user_id: 0});
-            this.sockets.subscribe('ping_success', function (res) {
+            this.$socket.on('ping_success', (res) => {
                 if (res && res.online_users) {
                     this.online_users = res.online_users;
                 }
