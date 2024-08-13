@@ -28,7 +28,7 @@
                 <a-input
                     type="email"
                     id="email"
-                    v-model="email"
+                    v-model:value="email"
                     placeholder="Enter email"
                     class="fs-16"
                 />
@@ -38,7 +38,7 @@
                 <a-input-password
                     type="password"
                     id="password"
-                    v-model="password"
+                    v-model:value="password"
                     placeholder="New password"
                     class="fs-16"
                 />
@@ -48,7 +48,7 @@
                 <a-input-password
                     type="password"
                     id="passwordConfirm"
-                    v-model="passwordConfirm"
+                    v-model:value="passwordConfirm"
                     placeholder="Confirm password"
                     class="fs-16"
                 />

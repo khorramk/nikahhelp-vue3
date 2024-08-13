@@ -119,7 +119,7 @@
                    placement="top"
                    title="Click here to activate or deactive the team"
                >
-                 <a-switch default-checked class="quick-switch" v-model="teamsStatus[teamIndex]" @click="onChangeActivateTeam($event, item, teamIndex)">
+                 <a-switch default-checked class="quick-switch" v-model:checked="teamsStatus[teamIndex]" @click="onChangeActivateTeam($event, item, teamIndex)">
                   <CheckOutlined />
                   <CloseOutlined />
                  </a-switch>

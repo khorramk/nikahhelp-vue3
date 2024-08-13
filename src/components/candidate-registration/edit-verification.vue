@@ -150,10 +150,10 @@
                 <p>
                   <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_country_id" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
-                    <span v-if="arr[3].first" @click="toggle(3)">
+                    <span v-show="arr[3].first" @click="toggle(3)">
                       Need Help?
                     </span>
-                    <span v-else @click="toggle(3)"> Hide Help? </span>
+                    <span v-show="!arr[3].first" @click="toggle(3)"> Hide Help? </span>
                   </a>
                 </p>
                 <div data-parent="#accordion" class="collapse" id="Needver_country_id">
@@ -187,10 +187,10 @@
                 <p>
                   <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_document_type" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
-                    <span v-if="arr[2].first" @click="toggle(2)">
+                    <span v-show="arr[2].first" @click="toggle(2)">
                       Need Help?
                     </span>
-                    <span v-else @click="toggle(2)"> Hide Help? </span>
+                    <span v-show="!arr[2].first" @click="toggle(2)"> Hide Help? </span>
                   </a>
                 </p>
                 <div data-parent="#accordion" class="collapse" id="Needver_document_type">
@@ -242,10 +242,10 @@
                 <p>
                   <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_image_front" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
-                    <span v-if="arr[1].first" @click="toggle(1)">
+                    <span v-show="arr[1].first" @click="toggle(1)">
                       Need Help?
                     </span>
-                    <span v-else @click="toggle(1)"> Hide Help? </span>
+                    <span v-show="!arr[1].first" @click="toggle(1)"> Hide Help? </span>
                   </a>
                 </p>
                 <div data-parent="#accordion" class="collapse" id="Needver_image_front">
@@ -295,10 +295,10 @@
                 <p>
                   <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_image_back" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
-                    <span v-if="arr[0].first" @click="toggle(0)">
+                    <span v-show="arr[0].first" @click="toggle(0)">
                       Need Help?
                     </span>
-                    <span v-else @click="toggle(0)"> Hide Help? </span>
+                    <span v-show="!arr[0].first" @click="toggle(0)"> Hide Help? </span>
                   </a>
                 </p>
                 <div data-parent="#accordion" class="collapse" id="Needver_image_back">

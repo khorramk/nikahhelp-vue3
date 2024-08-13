@@ -64,10 +64,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[23].first" @click="toggle(23)">
+                  <span v-show="arr[23].first" @click="toggle(23)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(23)"> Hide Help? </span>
+                  <span v-show="!arr[23].first" @click="toggle(23)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -120,10 +120,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[22].first" @click="toggle(22)">
+                  <span v-show="arr[22].first" @click="toggle(22)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(22)"> Hide Help? </span>
+                  <span v-show="!arr[22].first" @click="toggle(22)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -344,10 +344,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[21].first" @click="toggle(21)">
+                  <span v-show="arr[21].first" @click="toggle(21)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(21)"> Hide Help? </span>
+                  <span v-show="!arr[21].first" @click="toggle(21)"> Hide Help? </span>
                 </a>
               </p>
               <div data-parent="#accordion" class="collapse" id="countryCity">
@@ -436,10 +436,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[20].first" @click="toggle(20)">
+                  <span v-show="arr[20].first" @click="toggle(20)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(20)"> Hide Help? </span>
+                  <span v-show="!arr[20].first" @click="toggle(20)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -514,10 +514,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[19].first" @click="toggle(19)">
+                  <span v-show="arr[19].first" @click="toggle(19)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(19)"> Hide Help? </span>
+                  <span v-show="!arr[19].first" @click="toggle(19)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -585,10 +585,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[18].first" @click="toggle(18)">
+                  <span v-show="arr[18].first" @click="toggle(18)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(18)"> Hide Help? </span>
+                  <span v-show="!arr[18].first" @click="toggle(18)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -667,10 +667,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[17].first" @click="toggle(17)">
+                  <span v-show="arr[17].first" @click="toggle(17)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(17)"> Hide Help? </span>
+                  <span v-show="!arr[17].first" @click="toggle(17)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -734,10 +734,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[16].first" @click="toggle(16)">
+                  <span v-show="arr[16].first" @click="toggle(16)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(16)"> Hide Help? </span>
+                  <span v-show="!arr[16].first" @click="toggle(16)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -796,10 +796,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[15].first" @click="toggle(15)">
+                  <span v-show="arr[15].first" @click="toggle(15)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(15)"> Hide Help? </span>
+                  <span v-show="!arr[15].first" @click="toggle(15)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -859,10 +859,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[14].first" @click="toggle(14)">
+                  <span v-show="arr[14].first" @click="toggle(14)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(14)"> Hide Help? </span>
+                  <span v-show="!arr[14].first" @click="toggle(14)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -929,10 +929,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[13].first" @click="toggle(13)">
+                  <span v-show="arr[13].first" @click="toggle(13)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(13)"> Hide Help? </span>
+                  <span v-show="!arr[13].first" @click="toggle(13)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -997,10 +997,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[12].first" @click="toggle(12)">
+                  <span v-show="arr[12].first" @click="toggle(12)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(12)"> Hide Help? </span>
+                  <span v-show="!arr[12].first" @click="toggle(12)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1060,10 +1060,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[11].first" @click="toggle(11)">
+                  <span v-show="arr[11].first" @click="toggle(11)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(11)"> Hide Help? </span>
+                  <span v-show="!arr[11].first" @click="toggle(11)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1202,10 +1202,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[10].first" @click="toggle(10)">
+                  <span v-show="arr[10].first" @click="toggle(10)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(10)"> Hide Help? </span>
+                  <span v-show="!arr[10].first" @click="toggle(10)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1258,10 +1258,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[9].first" @click="toggle(9)">
+                  <span v-show="arr[9].first" @click="toggle(9)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(9)"> Hide Help? </span>
+                  <span v-show="!arr[9].first" @click="toggle(9)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1314,10 +1314,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[8].first" @click="toggle(8)">
+                  <span v-show="arr[8].first" @click="toggle(8)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(8)"> Hide Help? </span>
+                  <span v-show="!arr[8].first" @click="toggle(8)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1370,10 +1370,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[7].first" @click="toggle(7)">
+                  <span v-show="arr[7].first" @click="toggle(7)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(7)"> Hide Help? </span>
+                  <span v-show="!arr[7].first" @click="toggle(7)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1426,10 +1426,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[6].first" @click="toggle(6)">
+                  <span v-show="arr[6].first" @click="toggle(6)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(6)"> Hide Help? </span>
+                  <span v-show="!arr[6].first" @click="toggle(6)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1482,10 +1482,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[5].first" @click="toggle(5)">
+                  <span v-show="arr[5].first" @click="toggle(5)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(5)"> Hide Help? </span>
+                  <span v-show="!arr[5].first" @click="toggle(5)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1538,10 +1538,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[4].first" @click="toggle(4)">
+                  <span v-show="arr[4].first" @click="toggle(4)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(4)"> Hide Help? </span>
+                  <span v-show="!arr[4].first" @click="toggle(4)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1594,10 +1594,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[3].first" @click="toggle(3)">
+                  <span v-show="arr[3].first" @click="toggle(3)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(3)"> Hide Help? </span>
+                  <span v-show="!arr[3].first" @click="toggle(3)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1650,10 +1650,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[2].first" @click="toggle(2)">
+                  <span v-show="arr[2].first" @click="toggle(2)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(2)"> Hide Help? </span>
+                  <span v-show="!arr[2].first" @click="toggle(2)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -1706,10 +1706,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[1].first" @click="toggle(1)">
+                  <span v-show="arr[1].first" @click="toggle(1)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(1)"> Hide Help? </span>
+                  <span v-show="!arr[1].first" @click="toggle(1)"> Hide Help? </span>
                 </a>
               </p>
               <div

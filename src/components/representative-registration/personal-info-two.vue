@@ -57,10 +57,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[0].first" @click="toggle(0)">
+                  <span v-show="arr[0].first" @click="toggle(0)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(0)"> Hide Help? </span>
+                  <span v-show="!arr[0].first" @click="toggle(0)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -138,10 +138,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[1].first" @click="toggle(1)">
+                  <span v-show="arr[1].first" @click="toggle(1)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(1)"> Hide Help? </span>
+                  <span v-show="!arr[1].first" @click="toggle(1)"> Hide Help? </span>
                 </a>
               </p>
               <div data-parent="#accordion" class="collapse" id="Needdob">
@@ -196,10 +196,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[2].first" @click="toggle(2)">
+                  <span v-show="arr[2].first" @click="toggle(2)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(2)"> Hide Help? </span>
+                  <span v-show="!arr[2].first" @click="toggle(2)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -371,10 +371,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[4].first" @click="toggle(4)">
+                  <span v-show="arr[4].first" @click="toggle(4)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(4)"> Hide Help? </span>
+                  <span v-show="!arr[4].first" @click="toggle(4)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -417,10 +417,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[5].first" @click="toggle(5)">
+                  <span v-show="arr[5].first" @click="toggle(5)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(5)"> Hide Help? </span>
+                  <span v-show="!arr[5].first" @click="toggle(5)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -466,10 +466,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[6].first" @click="toggle(6)">
+                  <span v-show="arr[6].first" @click="toggle(6)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(6)"> Hide Help? </span>
+                  <span v-show="!arr[6].first" @click="toggle(6)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -517,10 +517,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[7].first" @click="toggle(7)">
+                  <span v-show="arr[7].first" @click="toggle(7)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(7)"> Hide Help? </span>
+                  <span v-show="!arr[7].first" @click="toggle(7)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -573,10 +573,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[8].first" @click="toggle(8)">
+                  <span v-show="arr[8].first" @click="toggle(8)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(8)"> Hide Help? </span>
+                  <span v-show="!arr[8].first" @click="toggle(8)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -638,10 +638,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[9].first" @click="toggle(9)">
+                  <span v-shwo="arr[9].first" @click="toggle(9)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(9)"> Hide Help? </span>
+                  <span v-show="!arr[9].first" @click="toggle(9)"> Hide Help? </span>
                 </a>
               </p>
               <div
@@ -682,10 +682,10 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-if="arr[10].first" @click="toggle(10)">
+                  <span v-show="arr[10].first" @click="toggle(10)">
                     Need Help?
                   </span>
-                  <span v-else @click="toggle(10)"> Hide Help? </span>
+                  <span v-show="!arr[10].first" @click="toggle(10)"> Hide Help? </span>
                 </a>
               </p>
               <div data-parent="#accordion" class="collapse" id="Needemail">
@@ -777,7 +777,6 @@ export default {
     },
   },
 
-  async mounted() {},
   methods: {
     checkValidation(name, action) {
       this.$refs[name].onFieldBlur();
@@ -968,12 +967,14 @@ export default {
 }
 
 .style-chooser {
-  .vti__dropdown {
-    background-color: transparent !important;
-  }
-  .vti__input {
-    font-size: 1rem;
-    border-radius: 0px 30px 30px 0px !important;
+  :deep() {
+    .vti__dropdown {
+      background-color: transparent !important;
+    }
+    .vti__input {
+      font-size: 1rem;
+      border-radius: 0px 30px 30px 0px !important;
+    }
   }
 }
 </style>

@@ -17,7 +17,7 @@
             placement="top"
             title="Click here to activate or deactive the team"
         >
-          <a-switch default-checked class="quick-switch" v-model="turnOn" @click="onChangeActivateTeam">
+          <a-switch default-checked class="quick-switch" v-model:checked="turnOn" @click="onChangeActivateTeam">
             <CheckOutlined />
             <CloseOutlined />
           </a-switch>

@@ -58,7 +58,7 @@
 										/> -->
 								<div class="text-center mr-3 mb-1">
 									<span class="fs-16 mr-2">cm</span>
-									<a-switch v-model="heightUnit" />
+									<a-switch v-model:checked="heightUnit" />
 									<span class="fs-16 ml-2">ft</span>
 								</div>
 
