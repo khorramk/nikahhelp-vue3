@@ -64,10 +64,10 @@
             <p>
               <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_country" role="button"
                 aria-expanded="false" aria-controls="collapseExample">
-                <span v-if="arr[0].first" @click="arr[0].first = !arr[0].first">
+                <span v-show="arr[0].first" @click="arr[0].first = !arr[0].first">
                   Need Help?
                 </span>
-                <span v-else @click="arr[0].first = !arr[0].first">
+                <span v-show="!arr[0].first" @click="arr[0].first = !arr[0].first">
                   Hide Help?
                 </span>
               </a>
@@ -98,10 +98,10 @@
             <p>
               <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_document_type" role="button"
                 aria-expanded="false" aria-controls="collapseExample">
-                <span v-if="arr[1].first" @click="arr[1].first = !arr[1].first">
+                <span v-show="arr[1].first" @click="arr[1].first = !arr[1].first">
                   Need Help?
                 </span>
-                <span v-else @click="arr[1].first = !arr[1].first">
+                <span v-show="!arr[1].first" @click="arr[1].first = !arr[1].first">
                   Hide Help?
                 </span>
               </a>
@@ -141,10 +141,10 @@
             <p>
               <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_document_frontside" role="button"
                 aria-expanded="false" aria-controls="collapseExample">
-                <span v-if="arr[2].first" @click="arr[2].first = !arr[2].first">
+                <span v-show="arr[2].first" @click="arr[2].first = !arr[2].first">
                   Need Help?
                 </span>
-                <span v-else @click="arr[2].first = !arr[2].first">
+                <span v-show="!arr[2].first" @click="arr[2].first = !arr[2].first">
                   Hide Help?
                 </span>
               </a>
@@ -185,10 +185,10 @@
             <p>
               <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_document_backside" role="button"
                 aria-expanded="false" aria-controls="collapseExample">
-                <span v-if="arr[3].first" @click="arr[3].first = !arr[3].first">
+                <span v-show="arr[3].first" @click="arr[3].first = !arr[3].first">
                   Need Help?
                 </span>
-                <span v-else @click="arr[3].first = !arr[3].first">
+                <span v-show="!arr[3].first" @click="arr[3].first = !arr[3].first">
                   Hide Help?
                 </span>
               </a>
@@ -249,10 +249,10 @@
             <p>
               <a class="color-blue fw-700 fs-14" data-toggle="collapse" href="#Needver_recommender_title" role="button"
                 aria-expanded="false" aria-controls="collapseExample">
-                <span v-if="arr[4].first" @click="arr[4].first = !arr[4].first">
+                <span v-show="arr[4].first" @click="arr[4].first = !arr[4].first">
                   Need Help?
                 </span>
-                <span v-else @click="arr[4].first = !arr[4].first">
+                <span v-show="!arr[4].first" @click="arr[4].first = !arr[4].first">
                   Hide Help?
                 </span>
               </a>
