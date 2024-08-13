@@ -40,11 +40,10 @@
             </a-form-item>
           </div>
 
-          <div class="">
+          <div class="mt-2">
             <a-form-item ref="password" name="password">
               <a-input-password
-                type="password"
-                class="form-control fs-16"
+                class="fs-16"
                 id="password"
                 v-model:value="signinModel.password"
                 placeholder="Password"
@@ -56,6 +55,7 @@
             type="button"
             @click="handleSubmit"
             class="btn signin-btn h-32 w-100 pt-1 mt-1"
+            style="padding: 0px !important; line-height: 1.3 !important;"
           >
             <LoadingOutlined class="fs-20 mr-2" v-if="isLoading" />
             Sign in
@@ -300,6 +300,15 @@ export default {
 
 .ant-form-item {
   margin-bottom: 0px;
+  
+  .ant-input {
+    height: auto !important;
+  }
+
+  input {
+    border: 1px solid #80808057;
+    background: #fafafa;
+  }
 }
 .forgot-password {
   color: #ec1fab;
