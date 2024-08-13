@@ -64,7 +64,7 @@
                     type="email"
                     class="form-control rounded-input fs-16"
                     id="email"
-                    v-model="forgetPassword.email"
+                    v-model:value="forgetPassword.email"
                     placeholder="Enter email"
                   />
                 </a-form-item>
@@ -189,7 +189,7 @@ export default {
     },
     async handleSubmit() {
       try {
-        this.$refs.forgetPasswordForm.validate((valid) => {
+        this.$refs.forgetPasswordForm.validate().then((valid) => {
           if (valid) {
             this.disabled = true;
             this.isLoading = true;
