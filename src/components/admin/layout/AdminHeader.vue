@@ -34,12 +34,14 @@
                 alt=""
               />
             </a>
-            <a-menu slot="overlay" class="none-mobile-block">
-              <a-menu-item @click="logout">
-                <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
-                <span class="ml-2">Logout</span>
-              </a-menu-item>
-            </a-menu>
+            <template #overlay>
+              <a-menu class="none-mobile-block">
+                <a-menu-item @click="logout">
+                  <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
+                  <span class="ml-2">Logout</span>
+                </a-menu-item>
+              </a-menu>
+            </template>
           </a-dropdown>
 
           <div style="align-self: center">
@@ -56,13 +58,15 @@
                     </h6>
                   </router-link>
                 </a>
-                <a-menu slot="overlay" class="none-mobile-block">
-          
-                  <a-menu-item @click="logout">
-                    <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
-                    <span class="ml-2">Logout</span>
-                  </a-menu-item>
-                </a-menu>
+                <template #overlay>
+                  <a-menu class="none-mobile-block">
+            
+                    <a-menu-item @click="logout">
+                      <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
+                      <span class="ml-2">Logout</span>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
               </a-dropdown>
               
             </div>
@@ -85,20 +89,21 @@
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-
-            <a-menu slot="overlay" style="min-width: 320px">
-              <a-menu-item @click="$emit('toggleCollapse')">
-                <img width="22" src="@/assets/Icons/form.svg" alt="icon" />
-                <span class="ml-2"
-                  >{{ collapsed ? "Open" : "Close" }} left sidebar</span
-                >
-              </a-menu-item>
-              <a-divider class="m-0" />
-              <a-menu-item @click="logout">
-                <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
-                <span class="ml-2">Logout</span>
-              </a-menu-item>
-            </a-menu>
+            <template #overlay>
+              <a-menu style="min-width: 320px">
+                <a-menu-item @click="$emit('toggleCollapse')">
+                  <img width="22" src="@/assets/Icons/form.svg" alt="icon" />
+                  <span class="ml-2"
+                    >{{ collapsed ? "Open" : "Close" }} left sidebar</span
+                  >
+                </a-menu-item>
+                <a-divider class="m-0" />
+                <a-menu-item @click="logout">
+                  <img width="22" src="@/assets/icon/logout.svg" alt="icon" />
+                  <span class="ml-2">Logout</span>
+                </a-menu-item>
+              </a-menu>
+            </template>
           </a-dropdown>
         </div>
       </div>
