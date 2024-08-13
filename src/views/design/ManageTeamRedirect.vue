@@ -44,7 +44,7 @@
               <img src="@/assets/team_off.png" alt="img" class="team-img-pos" v-if="!turnOn" />
               <img src="@/assets/team_on.png" alt="img" class="team-img-pos" v-if="turnOn" />
               <div class="switch-box">
-                <a-switch class="position-absolute switch-icon" v-model="turnOn" disabled />
+                <a-switch class="position-absolute switch-icon" v-model:checked="turnOn" disabled />
               </div>
             </div>
             <div class="dt-div1 color-primary ml-1 mb-4 d-dk-none"><span>Opps. This menu feature are inactive</span></div>

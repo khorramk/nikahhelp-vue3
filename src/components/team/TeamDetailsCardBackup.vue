@@ -137,7 +137,7 @@
                   placement="top"
                   title="Click here to activate this team"
               >
-                <a-switch v-model="turnOn" @click="onChangeActivateTeam" />
+                <a-switch v-model:checked="turnOn" @click="onChangeActivateTeam" />
               </a-tooltip>
             </div>
           </div>
