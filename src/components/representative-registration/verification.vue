@@ -544,10 +544,10 @@
                     aria-expanded="false"
                     aria-controls="collapseExample"
                   >
-                    <span v-if="arr[4].first" @click="toggle(4)">
+                    <span v-show="arr[4].first" @click="toggle(4)">
                       Need Help?
                     </span>
-                    <span v-else @click="toggle(4)"> Hide Help? </span>
+                    <span v-show="!arr[4].first" @click="toggle(4)"> Hide Help? </span>
                   </a>
                 </p>
                 <div
@@ -1061,12 +1061,14 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .style-chooser {
-  .vti__dropdown {
-    background-color: transparent !important;
-  }
-  .vti__input {
-    font-size: 1rem;
-    border-radius: 0px 30px 30px 0px !important;
+  :deep() {
+    .vti__dropdown {
+      background-color: transparent !important;
+    }
+    .vti__input {
+      font-size: 1rem;
+      border-radius: 0px 30px 30px 0px !important;
+    }
   }
 }
 </style>
