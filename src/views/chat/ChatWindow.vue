@@ -241,7 +241,7 @@
                             <!-- <template slot="title">
                               Coming soon
                             </template> -->
-                            <!-- <button class="btn-emoji px-2" title="Coming soon">&#128578;</button> -->
+                            <button class="btn-emoji px-2" title="Coming soon" @click="openEmoji=!openEmoji">&#128578;</button>
                             <div class="wrapper">
 
                               <!-- <emoji-picker @emoji="append" :search="search">
@@ -279,15 +279,14 @@
                               </emoji-picker> -->
                               <!-- <emoji-picker :native="true" @select="append" /> -->
                               <emoji-picker
-                                :text="text"
+                                v-show="openEmoji"
                                 picker-type="text-area"
                                 @select="append"
-                                @update:text="onChangeText"
                               />
                             </div>
                           </a-tooltip>
                           <textarea class="regular-input" name="message" id=""  rows="4" placeholder="Type message..."
-                                    v-model="msg_text" @keydown.enter.exact.prevent="sendMsg($event)" @keyup="notifyKeyboardStatus"></textarea>
+                                    v-model="msg_text" @keydown.enter.exact.prevent="sendMsg($event)" @keyup="notifyKeyboardStatus" @click="openEmoji=false"></textarea>
                           <div class="position-absolute msgbox-right">
                             <div class="flex">
                               <a-tooltip>
@@ -453,6 +452,7 @@ export default {
       token: "",
       search: '',
       isLoading: false,
+      openEmoji: false
     }
   },
 
@@ -802,6 +802,7 @@ export default {
       this.chatTab = type;
     },
     async sendMsg(e) {
+      this.openEmoji = false;
       console.log(e);
       if (this.msg_text && this.msg_text.length > 0) {
         if (this.chatheadopen.label == 'Connected Team') {
@@ -2788,7 +2789,7 @@ export default {
               .btn-emoji {
                 right: auto;
                 left: -8px;
-                top: 3px;
+                top: 8px;
               }
 
               .btn-multimedia {
