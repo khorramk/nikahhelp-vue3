@@ -188,7 +188,7 @@
                 @onClickButton="showProfileConnectionOverview = true"
               />
               <a-modal 
-                :oepn="showProfileConnectionOverview" 
+                :open="showProfileConnectionOverview" 
                 :closable="true"
                 title="This Profile Connection Overview" 
                 @ok="showProfileConnectionOverview = false" 

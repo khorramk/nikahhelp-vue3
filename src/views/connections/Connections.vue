@@ -116,8 +116,8 @@
                 </v-tabs>
               </transition>
 
-              <v-tabs-items v-model="tab" class="tab-items mt-4">
-                <v-tab-item value="tab-1">
+              <v-tabs-window v-model="tab" class="tab-items mt-4">
+                <v-tabs-window-item value="tab-1">
                   <div class="row px-3 tab-margin-top">
                     <div
                         class="col-12 col-md-6 col-xl-3"
@@ -142,9 +142,9 @@
                       />
                     </div>
                   </div>
-                </v-tab-item>
+                </v-tabs-window-item>
 
-                <v-tab-item value="tab-2">
+                <v-tabs-window-item value="tab-2">
                   <div class="row px-3 tab-margin-top">
                     <div
                         class="col-12 col-md-6 col-xl-3"
@@ -168,9 +168,9 @@
                       />
                     </div>
                   </div>
-                </v-tab-item>
+                </v-tabs-window-item>
 
-                <v-tab-item value="tab-3">
+                <v-tabs-window-item value="tab-3">
                   <div class="row px-3 tab-margin-top">
                     <div
                         class="col-12 col-md-6 col-xl-3"
@@ -194,9 +194,9 @@
                       />
                     </div>
                   </div>
-                </v-tab-item>
+                </v-tabs-window-item>
 
-                <v-tab-item value="tab-4">
+                <v-tabs-window-item value="tab-4">
                   <div class="row px-3 tab-margin-top">
                     <div
                         class="col-12 col-md-6 col-xl-3"
@@ -220,9 +220,9 @@
                       />
                     </div>
                   </div>
-                </v-tab-item>
+                </v-tabs-window-item>
 
-                <v-tab-item value="tab-5">
+                <v-tabs-window-item value="tab-5">
                   <div class="row px-3 tab-margin-top">
                     <div
                         class="col-12 col-md-6 col-xl-3"
@@ -246,9 +246,9 @@
                       />
                     </div>
                   </div>
-                </v-tab-item>
+                </v-tabs-window-item>
 
-                <v-tab-item value="tab-6">
+                <v-tabs-window-item value="tab-6">
                   <div class="row px-3 tab-margin-top">
                     <div
                         class="col-12 col-md-6 col-xl-3"
@@ -272,8 +272,8 @@
                       />
                     </div>
                   </div>
-                </v-tab-item>
-              </v-tabs-items>
+                </v-tabs-window-item>
+              </v-tabs-window>
 
               <div
                 v-if="connectionReports"
@@ -362,7 +362,7 @@
 <!--              </div>-->
 
 
-              <ng-container
+              <template
                 v-if="
                   displayMode === 'list' &&
                   connectionReports &&
@@ -381,7 +381,7 @@
                   @connect-request="connectRequest"
                   @block-candidate="blockCandidate"
                 ></candidate>
-              </ng-container>
+              </template>
             </div>
           </div>
           <div class="col-12 col-xl-3 d-none">

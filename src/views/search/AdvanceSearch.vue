@@ -7,13 +7,11 @@
       <a-layout
         id="layout"
         style="background-color: #fff"
-        :style="{ height: 'calc(100vh - 80px) !important', overflow: 'hidden' }"
+        :style="{ height: 'calc(100vh - 80px) !important' }"
       >
         <a-layout-sider
           :style="{
             height: 'calc(100vh - 80px)',
-            overflowY: 'auto',
-            overflowX: 'hidden',
           }"
           class="bg-white shadow-border sidebar-trigger"
           v-model:collapsed="collapsed"
