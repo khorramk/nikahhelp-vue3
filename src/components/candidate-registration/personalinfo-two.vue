@@ -119,6 +119,7 @@
                   id="dob" 
                   v-model="personalInformation.essential.dob"
                   @blur="onChangeDD"
+                  model-type="yyyy-MM-dd"
                   :flow="['year', 'month', 'day']"
                   :max-date="new Date(new Date().setFullYear(new Date().getFullYear() - 18))"
                   :min-date="'1940'"
