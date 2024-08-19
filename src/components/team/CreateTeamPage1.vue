@@ -979,6 +979,7 @@ export default {
   //width: 100px;
   width: 40px;
   border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
   
 }
 .add-team-image {
