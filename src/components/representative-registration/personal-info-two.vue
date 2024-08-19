@@ -549,19 +549,22 @@
                 ref="per_permanent_country"
                 name="per_permanent_country"
               >
-                <a-select
-                  :clearable="false"
+                <v-select
+                  :clearable="true"
                   class="style-chooser"
-                  @change="
-                    onCountryChange($event, 'per_permanent_country', 'contact')
-                  "
+                  @option:selected="onCountryChange($event, 'per_permanent_country', 'contact')"
+                  id="per_permanent_country"
                   placeholder="Select Country"
-                  v-model:value="personalInformation.personal.per_permanent_country"
-                  :reduce="(option) => option.name"
+                  v-model="
+                    personalInformation.personal.per_permanent_country
+                  "
+                  :reduce="(option) => option.id"
                   label="name"
-                  :options="representativeDetails.countries.map(item => ({ value: item.name, label: item.name}))"
-                  ><template #open-indicator> <DownOutlined /> </template>
-                </a-select>
+                  :options="representativeDetails.countries"
+                  >
+                  <template #open-indicator>
+                    <DownOutlined /> </template>
+                </v-select>
               </a-form-item>
             </div>
             <div class="col-12 col-md-6 none-padding mobile-margin mobile-help">
@@ -639,7 +642,7 @@
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <span v-shwo="arr[9].first" @click="toggle(9)">
+                  <span v-show="arr[9].first" @click="toggle(9)">
                     Need Help?
                   </span>
                   <span v-show="!arr[9].first" @click="toggle(9)"> Hide Help? </span>
