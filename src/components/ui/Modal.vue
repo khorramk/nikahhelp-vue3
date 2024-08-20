@@ -1,14 +1,14 @@
 <template>
   <a-modal
-        :dialog-style="{ top: '60px' }"
-        :open="localModel"
-        :width="width"
-        :footer="null"
-        :bodyStyle="{padding: '15px', boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px 7px'}"
-        @ok="$emit('ok')"
-        @cancel="onCancel"
-        centered
-	>
+    wrapClassName="custom-modal-wrapper"
+    :dialog-style="{ top: '60px' }"
+    v-model:open="localModel"
+    :width="width"
+    :footer="null"
+    :bodyStyle="{padding: '15px', boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 20px 7px'}"
+    @cancel="onCancel"
+    centered
+>   
 		<template v-slot:closeIcon>
 			<img class="modal-close-icon" width="25" src="@/assets/icon/edit-close.svg" alt="">
 		</template>
@@ -41,16 +41,21 @@ export default {
     methods: {
         onCancel() {
             this.localModel = false;
-            this.$emit('cancel');
+            this.$emit('close');
         }
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.modal-close-icon {
 		position: absolute;
 		top: 0px;
 		right: 0px;
 	}
+
+    .custom-modal-wrapper .ant-modal-content{
+        padding: 0px !important;
+    }
+
 </style>

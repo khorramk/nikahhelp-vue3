@@ -141,12 +141,11 @@
     </div>
 
     <Modal
-        v-model="modalVisibility"
-        @ok="handleOk"
-        @onCancel="onCancel"
+        :value="modalVisibility"
+        @close="onCancel"
         :width="400"
     >
-      <div class="details-modal p-3">
+      <div class="details-modal">
         <h3 class="fs-18 text-header-black">We have found several matches for you</h3>
         <p class="fs-14">
           Register for free and start in no time by exploring MatrimonyAssist with a candidate and rep profile.
@@ -363,9 +362,6 @@ export default {
     modalVisible() {
       this.modalVisibility = true;
     },
-    handleOk() {
-      //
-    },
     onCancel() {
       this.modalVisibility = false;
     }
@@ -429,5 +425,8 @@ export default {
       filter: none !important;
     }
   }
+}
+.details-modal {
+  padding: 1rem;
 }
 </style>
