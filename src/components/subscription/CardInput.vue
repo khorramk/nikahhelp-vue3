@@ -108,41 +108,52 @@ export default {
       		loading: false
 		};
 	},
-  created() {
-    // setTimeout(() => {
-    //   let cardElement = elements.getElement('card');
-    //   if(cardElement) {
-    //     self.card = "";
-    //     self.card = elements.getElement('card');
-    //     self.card.mount(self.$refs.card);
-    //   } else {
-    //     self.card = elements.create("card", style);
-    //     self.card.mount(self.$refs.card);
-    //   }
-    // }, 500);
-  },
-  mounted() {
-	this.card = elements.create("card", style);
+    created() {
+		// setTimeout(() => {
+		//   let cardElement = elements.getElement('card');
+		//   if(cardElement) {
+		//     self.card = "";
+		//     self.card = elements.getElement('card');
+		//     self.card.mount(self.$refs.card);
+		//   } else {
+		//     self.card = elements.create("card", style);
+		//     self.card.mount(self.$refs.card);
+		//   }
+		// }, 500);
+	},
+	mounted() {
+		this.card = elements.create("card", style);
 		this.card.mount(this.$refs.card);
-	//location.reload();
-    // this.card = elements?.create("card", style);
-    // this.card.mount(this.$refs.card);
+		//location.reload();
+		// this.card = elements?.create("card", style);
+		// this.card.mount(this.$refs.card);
+	},
+	unmounted() {
+		try{
+			this.card.destroy(this.$refs.card);
+		} catch(e) {
+			console.log(e);
+		}
 	},
 	beforeDestroy() {
-		this.card.destroy(this.$refs.card);
+		try {
+			this.card.destroy(this.$refs.card);
+		} catch (e) {
+			console.log(e);
+		}
 	},
 	methods: {
-    setValidationFalse() {
-      this.payment_method = false;
-      const self = this;
-      setTimeout(() => {
-        self.card = "";
-        self.card = elements.getElement('card');
-        self.card.mount(self.$refs.card);
-      }, 1000);
-    },
+		setValidationFalse() {
+			this.payment_method = false;
+			const self = this;
+			setTimeout(() => {
+				self.card = "";
+				self.card = elements.getElement('card');
+				self.card.mount(self.$refs.card);
+			}, 1000);
+		},
 		submitPayment() {
-      this.loading = true;
+			this.loading = true;
 			stripe
 				.confirmCardSetup(this.clientSecret, {
 					payment_method: {
@@ -157,29 +168,31 @@ export default {
 						},
 					},
 				})
-				.then(
-					function (result) {
-            this.loading = false;
-						if (result.error) {
-							console.log(result.error);
-							//alert(result.error.message);
-							this.$error({
-								title: "Card Validation Error",
-								content: result.error.message,
-								centered: true,
-							});
-						} else {
-							console.log(result);
-							console.log(result.setupIntent.payment_method);
-							this.payment_method = result.setupIntent.payment_method;
-							console.log(this.payment_method);
-							this.$emit("get-payment-method", this.payment_method);
-							this.$store.state.user.payment_method = this.payment_method;
-							this.card.clear();
-              // this.card.destroy(this.$refs.card);
+				.then(function (result) {
+					this.loading = false;
+					if (result.error) {
+						console.log(result.error);
+						//alert(result.error.message);
+						this.$error({
+							title: "Card Validation Error",
+							content: result.error.message,
+							centered: true,
+						});
+					} else {
+						console.log(result);
+						console.log(result.setupIntent.payment_method);
+						this.payment_method = result.setupIntent.payment_method;
+						console.log(this.payment_method);
+						this.$emit("get-payment-method", this.payment_method);
+						this.$store.state.user.payment_method = this.payment_method;
+						this.card.clear();
+						try {
+							this.card.destroy(this.$refs.card);
+						} catch (e) {
+							console.log(e);
 						}
-					}.bind(this)
-				);
+					}
+				}.bind(this));
 		},
 	},
 };
