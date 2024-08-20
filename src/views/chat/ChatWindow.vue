@@ -356,6 +356,8 @@ import EmojiPicker from 'vue3-emoji-picker'
 
 import {ArrowLeftOutlined, MoreOutlined} from '@ant-design/icons-vue';
 
+import InfoImg from '@/assets/info-img.png';
+
 const messageKeys = ['id', 'user_id', 'chat_id', 'team_id', 'from_team_id', 'to_team_id', 'private_receiver_id', 'private_team_chat_id', 'body', 'seen', 'created_at'];
 
 export default {
@@ -452,7 +454,8 @@ export default {
       token: "",
       search: '',
       isLoading: false,
-      openEmoji: false
+      openEmoji: false,
+      InfoImg
     }
   },
 
@@ -882,7 +885,7 @@ export default {
           user_id: item.user_id,
           state: 'seen',
           name: item.user?.full_name || 'user name',
-          logo: item.user && item.user.candidate_info && item.user.candidate_info.per_main_image_url ? item.user.candidate_info.per_main_image_url + `?token=${this.token}` : require('../../assets/info-img.png'),
+          logo: item.user && item.user.candidate_info && item.user.candidate_info.per_main_image_url ? item.user.candidate_info.per_main_image_url + `?token=${this.token}` : this.InfoImg,
           other_mate_id: item.user_id,
           typing_status: 0,
           typing_text: '',
@@ -926,7 +929,7 @@ export default {
       if(opositeUser && opositeUser.candidate_info && opositeUser.candidate_info.per_main_image_url) {
         return opositeUser.candidate_info.per_main_image_url + `?token=${this.token}`;
       }
-      return require('../../assets/info-img.png');
+      return this.InfoImg;
     },
     async loadTeamChat() {
       try {
@@ -1692,7 +1695,7 @@ export default {
       }
     },
     getImage() {
-      return require('../../assets/info-img.png');
+      return this.InfoImg;
     },
     getConversationUserImage(id) {
       let imageObj = this.chatListedImage.find(item => item.user_id == id);
