@@ -2,27 +2,29 @@
   <div>
     <div class="agreementDetail">
       <a-modal
-        v-model="modal2Visible"
+        :open="modal2Visible"
         title="Agreement Detail"
         width="900px"
         centered
         @ok="() => (modal2Visible = false)"
+        @cancel="() => (modal2Visible = false)"
       >
-        <div style="overflow-y:scroll; height: 500px; overflow-x:hidden">
+        <div style="height: 500px; overflow-x: hidden;">
 
           <CookiesAgreement />
         </div>
       </a-modal>
 
       <a-modal
-        v-model="preferenceModalVisible"
+        :open="preferenceModalVisible"
         title="Cookies Preference"
         width="575px"
         centered
         @ok="preferenceModalVisible = false; handleOk()"
+        @cancel="preferenceModalVisible = false"
         :ok-text="'Accept'"
       >
-			<div style="overflow-y:scroll; height: 500px; overflow-x:hidden">
+			<div style="height: 500px; overflow-x: hidden;">
 
         <CookiesPreference @allowAllCookies="allowAllCookies" />
 			</div>
