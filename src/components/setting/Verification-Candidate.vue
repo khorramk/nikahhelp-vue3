@@ -430,7 +430,7 @@ export default {
       this.activeKey = key;
     },
     handleSubmitFormOne() {
-      this.$refs.verification.validate((valid) => {
+      this.$refs.verification.validate().then((valid) => {
         if (valid) {
           this.activeKey = null;
           const {
