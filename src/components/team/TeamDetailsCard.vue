@@ -41,7 +41,7 @@
 							<img src="../../assets/icon/edit.svg" alt="team edit" @click="editTeam" />
 						</button>
 					</a-tooltip>
-					<a-modal v-model="edit_button_flag" title="Change Team Info">
+					<a-modal :open="edit_button_flag" title="Change Team Info">
 						<div class="row">
 							<!-- Change Team Logo -->
 							<div class="col-4 mt-3">
@@ -263,7 +263,7 @@
 					<!--						<span>Remove member</span>-->
 					<!--					</button>-->
 
-					<a-modal :width="900" v-model="memberInvitation" title="Create Join Invitation"
+					<a-modal :width="900" :open="memberInvitation" title="Create Join Invitation"
 						@ok="sendInvitationLink">
 						<a-row>
 							<!-- Add As a (Representative / Match Maker) -->
@@ -417,7 +417,7 @@
 			<!-- Invitations History -->
 			<div class="team-invitations mr-3" :class="{ 'disabled-team': !turnOn && !tempActive }">
 				<!-- Team Invitation History Modal -->
-				<a-modal :width="700" v-model="showTeamInvitation" title="Invitations History">
+				<a-modal :width="700" :open="showTeamInvitation" title="Invitations History">
 					<table class="table table-striped table-hover table-center">
 						<thead>
 							<tr>
@@ -574,7 +574,8 @@ export default {
 			profileActive: null,
 			clickedInviteNow: false,
 			tempActive: false,
-			teamUpdating: false
+			teamUpdating: false,
+			imageApiLocation: import.meta.env.VITE_IMAGE
 		};
 	},
 	created() {
@@ -777,7 +778,7 @@ export default {
 							// console.log(data, 'image response afer saving image');
 
 								let  payload = {
-									logo: process.env.VUE_APP_IMAGE + '/' + Object.values(respond)[0]
+									logo: this.imageApiLocation + '/' + Object.values(respond)[0]
 								};
 								
 								await ApiService.post(`v1/team-update/${this.teamData.id}`, payload).then(res => {

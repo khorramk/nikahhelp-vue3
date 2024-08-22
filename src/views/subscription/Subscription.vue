@@ -757,8 +757,8 @@
       </div>
     </div>
 
-    <a-modal v-model="freeModal" title="Dou you have any cupon?">
-      <a-input v-model="cupon" placeholder="Coupon" />
+    <a-modal :open="freeModal" title="Dou you have any cupon?">
+      <a-input v-model:value="cupon" placeholder="Coupon" />
 
       <template #footer>
         <a-button key="back" @click="nextWithoutCupon"> Skip </a-button>
