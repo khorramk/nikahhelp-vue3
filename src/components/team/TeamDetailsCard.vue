@@ -41,7 +41,7 @@
 							<img src="../../assets/icon/edit.svg" alt="team edit" @click="editTeam" />
 						</button>
 					</a-tooltip>
-					<a-modal v-model="edit_button_flag" title="Change Team Info">
+					<a-modal :open="edit_button_flag" title="Change Team Info">
 						<div class="row">
 							<!-- Change Team Logo -->
 							<div class="col-4 mt-3">
@@ -574,7 +574,8 @@ export default {
 			profileActive: null,
 			clickedInviteNow: false,
 			tempActive: false,
-			teamUpdating: false
+			teamUpdating: false,
+			imageApiLocation: import.meta.env.VITE_IMAGE
 		};
 	},
 	created() {
@@ -777,7 +778,7 @@ export default {
 							// console.log(data, 'image response afer saving image');
 
 								let  payload = {
-									logo: process.env.VUE_APP_IMAGE + '/' + Object.values(respond)[0]
+									logo: this.imageApiLocation + '/' + Object.values(respond)[0]
 								};
 								
 								await ApiService.post(`v1/team-update/${this.teamData.id}`, payload).then(res => {

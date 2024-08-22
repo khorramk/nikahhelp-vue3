@@ -167,6 +167,7 @@ export default {
       selfRole: {
         relationship: undefined,
       },
+      imageApiLocation: import.meta.env.VITE_IMAGE;
 		};
 	},
   computed: {
@@ -180,7 +181,6 @@ export default {
     }
   },
 	created() {
-    this.imageApiLocation = import.meta.env.VITE_IMAGE;
     // let loggedUser = JSON.parse(localStorage.getItem('user'));
     // if(loggedUser && loggedUser.id) {
     //   if(loggedUser.account_type == 1) {
