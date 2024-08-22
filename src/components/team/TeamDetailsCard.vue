@@ -263,7 +263,7 @@
 					<!--						<span>Remove member</span>-->
 					<!--					</button>-->
 
-					<a-modal :width="900" v-model="memberInvitation" title="Create Join Invitation"
+					<a-modal :width="900" :open="memberInvitation" title="Create Join Invitation"
 						@ok="sendInvitationLink">
 						<a-row>
 							<!-- Add As a (Representative / Match Maker) -->
@@ -417,7 +417,7 @@
 			<!-- Invitations History -->
 			<div class="team-invitations mr-3" :class="{ 'disabled-team': !turnOn && !tempActive }">
 				<!-- Team Invitation History Modal -->
-				<a-modal :width="700" v-model="showTeamInvitation" title="Invitations History">
+				<a-modal :width="700" :open="showTeamInvitation" title="Invitations History">
 					<table class="table table-striped table-hover table-center">
 						<thead>
 							<tr>

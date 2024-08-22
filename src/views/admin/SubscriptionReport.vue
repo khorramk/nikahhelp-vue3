@@ -92,7 +92,7 @@
 				</table>
 
 				<a-modal
-					v-model="visible"
+					:open="visible"
 					:width="800"
 					title="Subscription History"
 					@ok="handleOk">
