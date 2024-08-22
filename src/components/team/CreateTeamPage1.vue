@@ -167,7 +167,7 @@ export default {
       selfRole: {
         relationship: undefined,
       },
-      imageApiLocation: import.meta.env.VITE_IMAGE;
+      imageApiLocation: import.meta.env.VITE_IMAGE
 		};
 	},
   computed: {
