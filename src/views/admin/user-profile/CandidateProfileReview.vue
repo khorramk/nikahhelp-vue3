@@ -689,7 +689,7 @@
         </div>
       </div>
     </fieldset>
-    <NoteModal @save="save" @cancel="cancel" />
+    <NoteModal @save="save" @cancel="cancel" :dialog="dialog" />
   </div>
 </template>
 <script>
