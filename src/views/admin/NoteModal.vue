@@ -1,6 +1,6 @@
 <template>
   <div class="dialog-container">
-    <v-dialog persistent :value="dialogFlag" :width="500">
+    <v-dialog persistent v-model="dialogFlag" :width="500">
       <v-card>
         <div class="p-5">
           <v-form ref="form">
@@ -26,11 +26,11 @@ export default {
   components: {
     ButtonComponent,
   },
+  props: ["dialog"],
   data() {
     return { 
       note: null,
-      dialog: false
-    };
+    };  
   },
   computed: {
     dialogFlag: function () {
@@ -42,7 +42,6 @@ export default {
       this.$emit("save", this.note);
     },
     cancel() {
-      this.dialog = false;
       this.$emit("cancel", false);
     },
   },
