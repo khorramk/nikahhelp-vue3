@@ -99,7 +99,7 @@
                 size="large"
                 placeholder="Relationship with candidate"
                 class="fs-16 member-add"
-                v-model="selfRole.relationship"
+                v-model:value="selfRole.relationship"
                 :disabled="addAs == 'Candidate'"
                 style="width: 100%"
             >
