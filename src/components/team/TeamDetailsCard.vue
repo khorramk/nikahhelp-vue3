@@ -41,7 +41,7 @@
 							<img src="../../assets/icon/edit.svg" alt="team edit" @click="editTeam" />
 						</button>
 					</a-tooltip>
-					<a-modal :open="edit_button_flag" title="Change Team Info">
+					<a-modal :open="edit_button_flag" title="Change Team Info" @cancel="edit_button_flag=false">
 						<div class="row">
 							<!-- Change Team Logo -->
 							<div class="col-4 mt-3">
@@ -1934,7 +1934,7 @@ export default {
 						width: 12px;
 						height: 20px;
 						margin-top: 7px;
-						background: url("~@/assets/three-dots.png") no-repeat right center;
+						background: url("@/assets/three-dots.png") no-repeat right center;
 					}
 
 					&:hover {
