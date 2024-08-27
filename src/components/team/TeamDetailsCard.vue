@@ -6,7 +6,7 @@
 
 		<!-- preferences modal -->
 		<PreferenceModal :showModalProp="showModalPreference" :teamData="teamData" :teamVisibility="true"
-			@handleCancel="showModalPreference = false" @handleOk="handleOkPreference" />
+			@handleCancel="showModalPreference = false" @handleOk="handleOkPreference" @resetPin="resetPin" />
 
 		<!-- leave team modal -->
 		<LTModal :showModalProp="showModalLT" :teamData="teamData" :isOwnerAdmin="isOwnerAdmin"
@@ -125,7 +125,7 @@
 							<!-- <a class="dropdown-item" href="#">Close</a> -->
 							<!--							<a class="dropdown-item" @click="changeRole">Change Roles</a>-->
 							<a class="dropdown-item" @click="preferencesModal"
-								:class="{ 'disabled-team': !turnOn }">Preferences</a>
+								>Preferences</a>
 							<a class="dropdown-item" @click="deleteTeam">Delete</a>
 							<a class="dropdown-item red-hover" @click="leaveTeam" :class="{ 'disabled-team': !turnOn }">Leave
 								Team</a>
@@ -1726,7 +1726,19 @@ export default {
 				return true;
 			}
 			return false;
-		}
+		},
+		async resetPin() {
+			await ApiService.post('v1/reset-team-pin', { id: this.teamData.id }).then(res => {
+				if (res.data.status_code == 200) {
+					this.$message.success('Pin reset successfully');
+				} else {
+					this.$message.error('Something went wrong');
+				}
+			}).catch(err => {
+				this.$message.error('Something went wrong');
+			});
+			this.showModalPreference = false;
+		},
 	},
 };
 </script>

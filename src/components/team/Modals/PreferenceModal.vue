@@ -22,8 +22,8 @@
     >
       <h6 slot="title">Team Preferences</h6>
       <span style="font-size: 14px; font-weight: bold">
-        Change team pin?
-      </span>
+        Change team pin? 
+      </span> <span class="reset-btn" @click="showResetPinModal = true; handleCancel()">Reset pin</span>
       <br />
       <br />
 
@@ -33,7 +33,7 @@
           <div class="input-w">
             <a-input-password
               placeholder="Enter current pin"
-              v-model="old_password"
+              v-model:value="old_password"
             />
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div class="input-w">
             <a-input-password
               placeholder="Enter new pin"
-              v-model="new_password"
+              v-model:value="new_password"
             />
           </div>
         </div>
@@ -56,7 +56,7 @@
           <div class="input-w">
             <a-input-password
               placeholder="Confirm new pin"
-              v-model="re_password"
+              v-model:value="re_password"
             />
           </div>
         </div>
@@ -97,6 +97,28 @@
         </a-button>
       </template>
     </a-modal>
+
+    <!-- reset pin modal -->
+    <a-modal
+      :open="showResetPinModal"
+      @cancel="showResetPinModal = false"
+    >
+      <h6 slot="title">Reset Team Pin</h6>
+      <span style="font-size: 14px;">
+        Your team pin will be set to default pin <span class="font-weight-bold">(1234)</span>. Are you sure you want to reset team pin?
+      </span>
+      <br />
+      <br />
+
+      <template #footer>
+        <a-button key="back" shape="round" @click="showResetPinModal = false;">
+          Cancel
+        </a-button>
+        <a-button key="submit" type="primary" shape="round" @click="resetPin">
+          Reset
+        </a-button>
+      </template>
+    </a-modal>
   </div>
 </template>
 
@@ -115,6 +137,7 @@
         re_password: '',
 
         computed_teamVisibility: this.teamVisibility,
+        showResetPinModal: false,
       };
     },
     methods: {
@@ -154,6 +177,10 @@
         console.log('Clicked cancel button');
         this.$emit('handleCancel');
       },
+      resetPin() {
+        this.showResetPinModal = false;
+        this.$emit('resetPin');
+      },
     },
   };
 </script>
@@ -187,5 +214,11 @@
   @media (min-width: 768px) {
     width: 200px;
   }
+}
+
+.reset-btn {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>
