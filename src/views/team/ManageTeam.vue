@@ -60,7 +60,7 @@
             <JoinTeam
               v-if="joinTeamShow"
               style="padding: 8px 8px;"
-
+              :joinedAsCandidate="joinedAsCandidate"
               @loadTeams="loadTeams"
               @cancel_button="joinCreateTeamShow = true; joinTeamShow = false; cancelJoinButton()"
               @socketNotification="socketNotification"

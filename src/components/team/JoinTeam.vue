@@ -35,74 +35,82 @@
         <div v-if="team" class="mt-4 px-4 invite-info-box">
           <div v-if="!notValidLink">
             <div v-if="!isJoined">
-              <div class="p-3" style="border-radius: 14px; background: #3ab549;">
-                <h4 class="invited-respresent fs-16 text-center text-white">Congratulations you're joining as a </h4>
-                <span class="font-weight-bold text-uppercase text-center w-100 fs-18 text-white">{{ team.user_type }}</span>
+              <div v-if="!userAlreadyCandidate">
+                <div class="p-3" style="border-radius: 14px; background: #3ab549;">
+                  <h4 class="invited-respresent fs-16 text-center text-white">Congratulations you're joining as a </h4>
+                  <span class="font-weight-bold text-uppercase text-center w-100 fs-18 text-white">{{ team.user_type }}</span>
+                </div>
+  
+                <div class="invite-info py-4">
+                  <div class="d-flex">
+                    <div class="d-flex justify-content-between align-items-center col-50">
+                      <h6 class="fs-14 text--disabled">Invited by</h6>
+                      <span style="margin-top: -6px">:</span>
+                    </div>
+                    <h6 class="ml-2 fs-14 text-break text--secondary">{{ team && team.team && team.team.created_by ? team.team.created_by.full_name : '' }}</h6>
+                  </div>
+                  <div class="d-flex">
+                    <div class="d-flex justify-content-between align-items-center col-50">
+                      <h6 class="fs-14 text--disabled">Team name</h6>
+                      <span style="margin-top: -6px">:</span>
+                    </div>
+                    <h6 class="ml-2 fs-14 text--secondary">{{ team && team.team ? team.team.name : '' }}</h6>
+                  </div>
+                  <div class="d-flex">
+                    <div class="d-flex justify-content-between align-items-center col-50">
+                      <h6 class="fs-14 text--disabled">Total team member</h6>
+                      <span style="margin-top: -9px">:</span>
+                    </div>
+                    <h6 class="ml-2 fs-14 text--secondary">{{ team && team.team ? team.team.member_count : '' }}</h6>
+                  </div>
+                  <div class="d-flex">
+                    <div class="d-flex justify-content-between align-items-center col-50">
+                      <h6 class="fs-14 text--disabled">Role</h6>
+                      <span style="margin-top: -6px">:</span>
+                    </div>
+                    <h6 class="ml-2 fs-14 text--secondary">{{ team.role }}</h6>
+                  </div>
+                  <div class="d-flex">
+                    <div class="d-flex justify-content-between align-items-center col-50">
+                      <h6 class="fs-14 text--disabled">Relationship</h6>
+                      <span style="margin-top: -6px">:</span>
+                    </div>
+                    <h6 class="ml-2 fs-14 text--secondary">{{ team.relationship }}</h6>
+                  </div>
+                  <div class="d-flex">
+                    <div class="d-flex justify-content-between align-items-center col-50">
+                      <h6 class="fs-14 text--disabled">Team create date</h6>
+                      <span style="margin-top: -6px">:</span>
+                    </div>
+                    <h6 class="ml-2 fs-14 text--secondary">{{ team && team.team ? formateDate(team.team.created_at) : '' }}</h6>
+                  </div>
+                </div>
+                <div class="mt-5 px-4" v-if="!success">
+                  <h4 class="fs-18 color-primary">Team Password</h4>
+                  <a-row class="mt-1">
+                    <a-col :span="24" class="mt-4">
+                      <div class="d-flex justify-content-around">
+                        <input v-for="i in 4" ref="teamPassword" :key="i" type="password" class="password-input-box text-center" maxlength="1" @keydown.prevent="handlePasswordInput($event, i, 'teamPassword')">
+                        <div 
+                          class="password-input-box d-flex justify-content-center align-items-center" 
+                          style="cursor: pointer; background-color: #6159a7;"
+                          @click="showPassword =! showPassword; handleShowPassword('teamPassword');"
+                        >
+                          <v-icon color="#fff" v-if="!showPassword" small>mdi-eye-outline</v-icon>
+                          <v-icon color="#fff" v-else small>mdi-eye-off-outline</v-icon>
+                        </div>
+                      </div>
+                      <span class="fs-12 text-danger ml-2 fs-12" v-if="showPasswordError">Password must be a number</span>
+                    </a-col>
+                  </a-row>
+                </div>
+              </div>
+              <div v-else class="flex justify-content-center align-items-center">
+                <div class="p-3" style="border-radius: 14px; background: #dc3545;">
+                  <h4 class="invited-respresent fs-18 text-center text-white">You are already a candidate of another team. A user can be a candidate in only one team.</h4>
+                </div>
               </div>
 
-              <div class="invite-info py-4">
-                <div class="d-flex">
-                  <div class="d-flex justify-content-between align-items-center col-50">
-                    <h6 class="fs-14 text--disabled">Invited by</h6>
-                    <span style="margin-top: -6px">:</span>
-                  </div>
-                  <h6 class="ml-2 fs-14 text-break text--secondary">{{ team && team.team && team.team.created_by ? team.team.created_by.full_name : '' }}</h6>
-                </div>
-                <div class="d-flex">
-                  <div class="d-flex justify-content-between align-items-center col-50">
-                    <h6 class="fs-14 text--disabled">Team name</h6>
-                    <span style="margin-top: -6px">:</span>
-                  </div>
-                  <h6 class="ml-2 fs-14 text--secondary">{{ team && team.team ? team.team.name : '' }}</h6>
-                </div>
-                <div class="d-flex">
-                  <div class="d-flex justify-content-between align-items-center col-50">
-                    <h6 class="fs-14 text--disabled">Total team member</h6>
-                    <span style="margin-top: -9px">:</span>
-                  </div>
-                  <h6 class="ml-2 fs-14 text--secondary">{{ team && team.team ? team.team.member_count : '' }}</h6>
-                </div>
-                <div class="d-flex">
-                  <div class="d-flex justify-content-between align-items-center col-50">
-                    <h6 class="fs-14 text--disabled">Role</h6>
-                    <span style="margin-top: -6px">:</span>
-                  </div>
-                  <h6 class="ml-2 fs-14 text--secondary">{{ team.role }}</h6>
-                </div>
-                <div class="d-flex">
-                  <div class="d-flex justify-content-between align-items-center col-50">
-                    <h6 class="fs-14 text--disabled">Relationship</h6>
-                    <span style="margin-top: -6px">:</span>
-                  </div>
-                  <h6 class="ml-2 fs-14 text--secondary">{{ team.relationship }}</h6>
-                </div>
-                <div class="d-flex">
-                  <div class="d-flex justify-content-between align-items-center col-50">
-                    <h6 class="fs-14 text--disabled">Team create date</h6>
-                    <span style="margin-top: -6px">:</span>
-                  </div>
-                  <h6 class="ml-2 fs-14 text--secondary">{{ team && team.team ? formateDate(team.team.created_at) : '' }}</h6>
-                </div>
-              </div>
-              <div class="mt-5 px-4" v-if="!success">
-                <h4 class="fs-18 color-primary">Team Password</h4>
-                <a-row class="mt-1">
-                  <a-col :span="24" class="mt-4">
-                    <div class="d-flex justify-content-around">
-                      <input v-for="i in 4" ref="teamPassword" :key="i" type="password" class="password-input-box text-center" maxlength="1" @keydown.prevent="handlePasswordInput($event, i, 'teamPassword')">
-                      <div 
-                        class="password-input-box d-flex justify-content-center align-items-center" 
-                        style="cursor: pointer; background-color: #6159a7;"
-                        @click="showPassword =! showPassword; handleShowPassword('teamPassword');"
-                      >
-                        <v-icon color="#fff" v-if="!showPassword" small>mdi-eye-outline</v-icon>
-                        <v-icon color="#fff" v-else small>mdi-eye-off-outline</v-icon>
-                      </div>
-                    </div>
-                    <span class="fs-12 text-danger ml-2 fs-12" v-if="showPasswordError">Password must be a number</span>
-                  </a-col>
-                </a-row>
-              </div>
             </div>
             <div v-else class="flex justify-content-center align-items-center">
               <div class="p-3" style="border-radius: 14px; background: #dc3545;">
@@ -161,7 +169,7 @@ import {
 export default {
 	name: "ManageTeam",
 	components: {LoadingSpinner, SnippetsOutlined, CheckOutlined},
-
+  props: ['joinedAsCandidate'],
 
 	data() {
 		return {
@@ -189,6 +197,9 @@ export default {
 	computed: {
 		console: () => console,
 		window: () => window,
+    userAlreadyCandidate() {
+      return this.team.user_type=="Candidate" && this.joinedAsCandidate;
+    }
 	},
 	methods: {
     onSearch() {
