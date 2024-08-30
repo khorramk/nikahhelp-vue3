@@ -51,6 +51,9 @@
 							option-filter-prop="children"
 							style="width: 100%"
 							notFoundContent="Religion not found"
+							:options="$store.state.candidateInfo.religion_options"
+							:fieldNames="{label: 'name', value: 'id'}"
+							:filterOption="filterOption"
 						>
 							<a-select-option :value="undefined">
 								Select Religion
@@ -79,6 +82,9 @@
 							option-filter-prop="children"
 							style="width: 100%"
 							notFoundContent="Country not found"
+							:options="$store.state.candidateInfo.countries"
+							:fieldNames="{label: 'name', value: 'id'}"
+							:filterOption="filterOption"
 						>
 							<a-select-option :value="undefined">
 								Select Country
@@ -107,16 +113,19 @@
 							option-filter-prop="children"
 							style="width: 100%"
 							notFoundContent="ethnicity not found"
+							:options="ethnicities"
+							:fieldNames="{label: 'name', value: 'value'}"
+							:filterOption="filterOption"
 						>
 							<a-select-option :value="undefined">
 								Select Ethnicity
 							</a-select-option>
 							<a-select-option
 								v-for="e in ethnicities"
-								:value="e"
-								:key="e"
+								:value="e.value"
+								:key="e.value"
 							>
-								{{ e }}
+								{{ e.name }}
 							</a-select-option>
 							<template #suffixIcon>
 								<img src="@/assets/select-arrow-big.png" alt="icon" />
@@ -135,18 +144,22 @@
 							option-filter-prop="children"
 							style="width: 100%"
 							notFoundContent="Marital Status not found"
+							:options="maritalStatusOptions"
+							:fieldNames="{label: 'name', value: 'value'}"
+							:filterOption="filterOption"
 						>
 							<a-select-option :value="undefined">Select Marital Status</a-select-option>
 							<!-- <a-select-option value="single">Single</a-select-option>
 							<a-select-option value="married">Married</a-select-option>
 							<a-select-option value="divorced">Divorced</a-select-option> -->
-							<a-select-option value="single never married">Single, never married</a-select-option>
-							<a-select-option value="widow">Widow</a-select-option>
-							<a-select-option value="widow with children">Widow with children</a-select-option>
-							<a-select-option value="widower">Widower</a-select-option>
-							<a-select-option value="widower with children">Widower with children</a-select-option>
-							<a-select-option value="divorcee">Divorcee</a-select-option>
-							<a-select-option value="divorcee with children">Divorcee with children</a-select-option>
+							<a-select-option
+								v-for="m in maritalStatusOptions"
+								:value="m.value"
+								:key="m.value"
+							>
+								{{ m.name }}
+							</a-select-option>
+							
 							<template #suffixIcon>
 								<img src="@/assets/select-arrow-big.png" alt="icon" />
 							</template>
@@ -163,19 +176,19 @@
 							option-filter-prop="children"
 							style="width: 100%"
 							notFoundContent="Employment Status not found"
+							:options="employmentStatusOptions"
+							:fieldNames="{label: 'name', value: 'value'}"
+							:filterOption="filterOption"
 						>
 							<a-select-option :value="undefined">Select Employment Status</a-select-option>
-							<a-select-option value="Don't Mind">Don't Mind</a-select-option>
-							<a-select-option value="Unemployed">Employed full-time</a-select-option>
-							<a-select-option value="Employed part-time">Employed part-time</a-select-option>
-							<a-select-option value="Self-employed">Self-employed</a-select-option>
-							<a-select-option value="Homemaker">Homemaker</a-select-option>
-							<a-select-option value="Student">Student</a-select-option>
-							<a-select-option value="Retired">Retired</a-select-option>
-							<a-select-option value="On professional training">On professional training</a-select-option>
-							<a-select-option value="On apprenticeship training">On apprenticeship training</a-select-option>
-							<a-select-option value="Own a business">Own a business</a-select-option>
-							<a-select-option value="Other">Other</a-select-option>
+							<a-select-option
+								v-for="e in employmentStatusOptions"
+								:value="e.value"
+								:key="e.value"
+							>
+								{{ e.name }}
+							</a-select-option>
+							
 							<template #suffixIcon>
 								<img src="@/assets/select-arrow-big.png" alt="icon" />
 							</template>
@@ -191,7 +204,10 @@
 							:placeholder="'Select nationality'"
 							option-filter-prop="children"
 							style="width: 100%"
+							:options="$store.state.candidateInfo.countries"
+							:fieldNames="{label: 'name', value: 'id'}"
 							notFoundContent="Nationality not found"
+							:filterOption="filterOption"
 						>
 							<a-select-option :value="undefined">
 								Select Nationality
@@ -451,7 +467,83 @@ export default {
 			activeTeamId: null,
 			heithtTV : HEIGHTS,
 			currentPage: 1,
-			gender: ''
+			gender: '',
+			maritalStatusOptions: [
+				{
+					name: "Single, never married",
+					value: "single never married"
+				},
+				{
+					name: "Widow",
+					value: "widow"
+				},
+				{
+					name: "Widow with children",
+					value: "widow with children"
+				},
+				{
+					name: "Widower",
+					value: "widower"
+				},
+				{
+					name: "Widower with children",
+					value: "widower with children"
+				},
+				{
+					name: "Divorcee",
+					value: "divorcee"
+				},
+				{
+					name: "Divorcee with children",
+					value: "divorcee with children"
+				}
+			],
+			employmentStatusOptions: [
+				{
+					name: "Don't Mind",
+					value: "Don't Mind"
+				},
+				{
+					name: "Employed full-time",
+					value: "Employed full-time"
+				},
+				{
+					name: "Employed part-time",
+					value: "Employed part-time"
+				},
+				{
+					name: "Self-employed",
+					value: "Self-employed"
+				},
+				{
+					name: "Homemaker",
+					value: "Homemaker"
+				},
+				{
+					name: "Student",
+					value: "Student"
+				},
+				{
+					name: "Retired",
+					value: "Retired"
+				},
+				{
+					name: "On professional training",
+					value: "On professional training"
+				},
+				{
+					name: "On apprenticeship training",
+					value: "On apprenticeship training"
+				},
+				{
+					name: "Own a business",
+					value: "Own a business"
+				},
+				{
+					name: "Other",
+					value: "Other"
+				}
+			],
 		};
 	},
 	computed: {
@@ -465,6 +557,7 @@ export default {
 		this.$store.dispatch("getStudyLevelOptions");
 		this.$store.dispatch("getReligionOptions");
 		this.$store.dispatch("getOccupations");
+		this.objectify_ethnicities();
 		// const user = JSON.stringify(localStorage.getItem('user'));
 		// const age = {
 		// 	max: user?.candidate_information?.preference?.pre_partner_age_max,
@@ -498,6 +591,16 @@ export default {
 			onDropdownChange({ name, value }) {
 			console.log({ name, value });
 			this[name] = value;
+		},
+		objectify_ethnicities() {
+			let obj = [];
+			this.ethnicities.forEach((element) => {
+				obj.push( {
+					name: element,
+					value: element,
+				});
+			});
+			this.ethnicities =  obj;
 		},
 		async getOccupations() {
 			await ApiService.get("v1/occupations")
@@ -689,6 +792,9 @@ export default {
 			this.occupations = null
 			this.occupation = undefined
 			this.nationality = undefined
+		},
+		filterOption(input, option) {
+			return option.name.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 		}
 	}
 };
