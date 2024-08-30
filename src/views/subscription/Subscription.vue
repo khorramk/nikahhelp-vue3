@@ -933,6 +933,24 @@ export default {
         });
         return;
       }
+      if(this.teamSelected) {
+        let subscription_expire_at = this.teamSelected.subscription_expire_at;
+        if(subscription_expire_at) {
+          let expireDate = new Date(subscription_expire_at);
+          let currentDate = new Date();
+          let diffTime = Math.abs(expireDate - currentDate);
+          let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+          if(expireDate > currentDate && diffDays > 45) {
+            this.$error({
+              title: "This team is already subscribed!",
+              content: `You still have ${diffDays} days left in your subscription`,
+              centered: true,
+            });
+            return;
+          }
+        }
+      }
 
       if (this.choosedPlan && this.choosedPlan.id) {
         if (
