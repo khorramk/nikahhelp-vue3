@@ -2,7 +2,7 @@
   <v-dialog
       transition="dialog-bottom-transition"
       persistent
-      :value="dialog"
+      v-model="dialog"
       max-width="1200"
   >
     <div class="manageteam-item font-poppins">

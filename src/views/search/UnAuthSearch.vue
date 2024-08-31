@@ -145,8 +145,8 @@
 		></un-auth-search-modal> -->
 		<Modal
 			class="search-modal"
-			v-model="searchModalVisible"
-			@onCancel="onCancel"
+			:value="searchModalVisible"
+			@close="onCancel"
 			:width="400"
 		>
 			<div class="details-modal p-3">

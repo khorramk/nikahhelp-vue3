@@ -37,7 +37,7 @@
 
 <script>
 import {format} from "timeago.js";
-
+import InfoImg from '@/assets/info-img.png';
 import {
   MoreOutlined
 } from '@ant-design/icons-vue';
@@ -78,6 +78,7 @@ export default {
   data() {
     return {
       token: "",
+      InfoImg
     }
   },
   created() {
@@ -149,7 +150,7 @@ export default {
     },
 
     getImage() {
-      return require('../../assets/info-img.png');
+      return InfoImg;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-    <body>
+    <body style="overflow-y: auto">
       <div class="cookieContainer" v-if="!cookieDetailsVisible">
         <div class="highlighted">  
           <h6>Cookie Preference set up</h6>

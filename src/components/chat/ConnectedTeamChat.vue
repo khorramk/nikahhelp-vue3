@@ -34,6 +34,7 @@
 <script>
 import {format} from "timeago.js";
 import ApiService from '@/services/api.service';
+import InfoImg from '@/assets/info-img.png';
 
 export default {
   name: "ConnectedTeamChat",
@@ -66,6 +67,7 @@ export default {
     return {
       token: "",
       lastMsg: null,
+      InfoImg
     }
   },
   created(){
@@ -104,9 +106,9 @@ export default {
     },
     getTeamImage() {
       if(this.item.from_team_id == this.activeTeam) {
-        return this.item.to_team && this.item.to_team.logo ? this.item.to_team.logo + `?token=${this.token}` : require('../../assets/info-img.png');
+        return this.item.to_team && this.item.to_team.logo ? this.item.to_team.logo + `?token=${this.token}` : InfoImg;
       } else {
-        return this.item.from_team && this.item.from_team.logo ? this.item.from_team.logo + `?token=${this.token}` : require('../../assets/info-img.png');
+        return this.item.from_team && this.item.from_team.logo ? this.item.from_team.logo + `?token=${this.token}` : InfoImg;
       }
     },
     computedLastMsg() {

@@ -6,7 +6,7 @@
 
 		<!-- preferences modal -->
 		<PreferenceModal :showModalProp="showModalPreference" :teamData="teamData" :teamVisibility="true"
-			@handleCancel="showModalPreference = false" @handleOk="handleOkPreference" />
+			@handleCancel="showModalPreference = false" @handleOk="handleOkPreference" @resetPin="resetPin" />
 
 		<!-- leave team modal -->
 		<LTModal :showModalProp="showModalLT" :teamData="teamData" :isOwnerAdmin="isOwnerAdmin"
@@ -41,7 +41,7 @@
 							<img src="../../assets/icon/edit.svg" alt="team edit" @click="editTeam" />
 						</button>
 					</a-tooltip>
-					<a-modal v-model="edit_button_flag" title="Change Team Info">
+					<a-modal :open="edit_button_flag" title="Change Team Info" @cancel="edit_button_flag=false">
 						<div class="row">
 							<!-- Change Team Logo -->
 							<div class="col-4 mt-3">
@@ -125,7 +125,7 @@
 							<!-- <a class="dropdown-item" href="#">Close</a> -->
 							<!--							<a class="dropdown-item" @click="changeRole">Change Roles</a>-->
 							<a class="dropdown-item" @click="preferencesModal"
-								:class="{ 'disabled-team': !turnOn }">Preferences</a>
+								>Preferences</a>
 							<a class="dropdown-item" @click="deleteTeam">Delete</a>
 							<a class="dropdown-item red-hover" @click="leaveTeam" :class="{ 'disabled-team': !turnOn }">Leave
 								Team</a>
@@ -263,7 +263,7 @@
 					<!--						<span>Remove member</span>-->
 					<!--					</button>-->
 
-					<a-modal :width="900" v-model="memberInvitation" title="Create Join Invitation"
+					<a-modal :width="900" :open="memberInvitation" title="Create Join Invitation"
 						@ok="sendInvitationLink">
 						<a-row>
 							<!-- Add As a (Representative / Match Maker) -->
@@ -417,7 +417,7 @@
 			<!-- Invitations History -->
 			<div class="team-invitations mr-3" :class="{ 'disabled-team': !turnOn && !tempActive }">
 				<!-- Team Invitation History Modal -->
-				<a-modal :width="700" v-model="showTeamInvitation" title="Invitations History">
+				<a-modal :width="700" :open="showTeamInvitation" title="Invitations History">
 					<table class="table table-striped table-hover table-center">
 						<thead>
 							<tr>
@@ -574,7 +574,8 @@ export default {
 			profileActive: null,
 			clickedInviteNow: false,
 			tempActive: false,
-			teamUpdating: false
+			teamUpdating: false,
+			imageApiLocation: import.meta.env.VITE_IMAGE
 		};
 	},
 	created() {
@@ -777,7 +778,7 @@ export default {
 							// console.log(data, 'image response afer saving image');
 
 								let  payload = {
-									logo: process.env.VUE_APP_IMAGE + '/' + Object.values(respond)[0]
+									logo: this.imageApiLocation + '/' + Object.values(respond)[0]
 								};
 								
 								await ApiService.post(`v1/team-update/${this.teamData.id}`, payload).then(res => {
@@ -1725,7 +1726,19 @@ export default {
 				return true;
 			}
 			return false;
-		}
+		},
+		async resetPin() {
+			await ApiService.post('v1/reset-team-pin', { id: this.teamData.id }).then(res => {
+				if (res.data.status_code == 200) {
+					this.$message.success('Pin reset successfully');
+				} else {
+					this.$message.error('Something went wrong');
+				}
+			}).catch(err => {
+				this.$message.error('Something went wrong');
+			});
+			this.showModalPreference = false;
+		},
 	},
 };
 </script>
@@ -1933,7 +1946,7 @@ export default {
 						width: 12px;
 						height: 20px;
 						margin-top: 7px;
-						background: url("~@/assets/three-dots.png") no-repeat right center;
+						background: url("@/assets/three-dots.png") no-repeat right center;
 					}
 
 					&:hover {

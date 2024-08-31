@@ -87,7 +87,7 @@
             </div>
             <button class="btn btn-sent position-absolute text-white cursor-default" v-if="userObj.invitation_status == 2">Joined</button>
             <button class="btn btn-sent btn-outline-secondary position-absolute text-white cursor-default" v-if="userObj.invitation_status == 1">Sent</button>
-            <a-checkbox class="position-absolute btn-sent" @change="attachUser" v-model:value="attached" v-if="userObj.invitation_status == 0"></a-checkbox>
+            <a-checkbox class="position-absolute btn-sent" @change="attachUser" v-model:checked="attached" v-if="userObj.invitation_status == 0"></a-checkbox>
           </div>
 
         </div>

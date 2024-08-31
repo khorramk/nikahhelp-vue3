@@ -663,7 +663,7 @@
         </div>
       </div>
 
-      <div v-if="documentInfo.candidate_info.ver_image_front">
+      <div v-if="documentInfo.candidate_info.ver_image_front && userStatus != '3'">
         <div class="mt-5">
           <div>
             <h4>Document Preview</h4>
@@ -689,7 +689,7 @@
         </div>
       </div>
     </fieldset>
-    <NoteModal @save="save" @cancel="cancel" />
+    <NoteModal @save="save" @cancel="cancel" :dialog="dialog" />
   </div>
 </template>
 <script>

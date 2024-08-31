@@ -42,8 +42,8 @@
             </v-tabs>
           </transition>
 
-          <v-tabs-items v-model="tab">
-            <v-tab-item value="tab-1">
+          <v-tabs-window v-model="tab">
+            <v-tabs-window-item value="tab-1">
               <div class="row mt-2 mb-4 pl-sm-2">
                 <div class="col-12 col-md-6 col-lg-3 px-sm-2" v-for="(shortlist, findex) in fullData" :key="findex">
                   <candidate-grid :item="shortlist"
@@ -53,8 +53,8 @@
                                   @socketNotification="socketNotification" />
                 </div>
               </div>
-            </v-tab-item>
-            <v-tab-item value="tab-2">
+            </v-tabs-window-item>
+            <v-tabs-window-item value="tab-2">
               <div class="row mt-2 mb-4">
                 <div class="col-12 col-md-6 col-lg-3 px-2" v-for="(shortlist, sindex) in shortlistedData" :key="sindex">
                   <candidate-grid :item="shortlist"
@@ -64,8 +64,8 @@
                                   @socketNotification="socketNotification" />
                 </div>
               </div>
-            </v-tab-item>
-            <v-tab-item value="tab-3">
+            </v-tabs-window-item>
+            <v-tabs-window-item value="tab-3">
               <div class="row mt-2 mb-4">
                 <div class="col-12 col-md-6 col-lg-3 px-2" v-for="(shortlist, tindex) in teamlistedData" :key="tindex">
                   <candidate-grid :item="shortlist"
@@ -75,8 +75,8 @@
                                   @socketNotification="socketNotification" />
                 </div>
               </div>
-            </v-tab-item>
-          </v-tabs-items>
+            </v-tabs-window-item>
+          </v-tabs-window>
 
           <!-- Shortlisted Section Header -->
           <div class="d-none">

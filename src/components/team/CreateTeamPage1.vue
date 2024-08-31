@@ -99,7 +99,7 @@
                 size="large"
                 placeholder="Relationship with candidate"
                 class="fs-16 member-add"
-                v-model="selfRole.relationship"
+                v-model:value="selfRole.relationship"
                 :disabled="addAs == 'Candidate'"
                 style="width: 100%"
             >
@@ -167,6 +167,7 @@ export default {
       selfRole: {
         relationship: undefined,
       },
+      imageApiLocation: import.meta.env.VITE_IMAGE
 		};
 	},
   computed: {
@@ -180,7 +181,6 @@ export default {
     }
   },
 	created() {
-    this.imageApiLocation = import.meta.env.VITE_IMAGE;
     // let loggedUser = JSON.parse(localStorage.getItem('user'));
     // if(loggedUser && loggedUser.id) {
     //   if(loggedUser.account_type == 1) {
@@ -979,6 +979,7 @@ export default {
   //width: 100px;
   width: 40px;
   border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
   
 }
 .add-team-image {

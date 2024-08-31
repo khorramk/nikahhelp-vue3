@@ -442,9 +442,6 @@ export default {
 		ButtonComponent,
 		OutlinedButton,
 		ComingSoonModal,
-
-		//icons
-		GallerySvg
 	},
 	sockets: {
 		connect: function () {
@@ -470,6 +467,7 @@ export default {
 			connectionStatus: null,
 			token: "",
 			loggedUser: null,
+			GallerySvg
 		};
 	},
 	created() {

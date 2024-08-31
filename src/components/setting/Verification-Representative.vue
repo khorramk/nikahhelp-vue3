@@ -340,6 +340,7 @@ export default {
       imageFont: null,
       rules: VERIFICATION_RULES,
       activeKey: 1,
+      imageApiLocation: import.meta.env.VITE_IMAGE
     };
   },
 
@@ -443,11 +444,11 @@ export default {
         let payload = {};
         if (folder === '_ver_image_front') {
           payload = {
-            ver_image_front: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            ver_image_front: this.imageApiLocation + '/' + Object.values(data)[0]
           };
         } else if (folder === '_ver_image_back') {
           payload = {
-            ver_image_back: process.env.VUE_APP_IMAGE + '/' + Object.values(data)[0]
+            ver_image_back: this.imageApiLocation + '/' + Object.values(data)[0]
           }
         }
         if (Object.keys(payload).length > 0) {

@@ -757,8 +757,8 @@
       </div>
     </div>
 
-    <a-modal v-model="freeModal" title="Dou you have any cupon?">
-      <a-input v-model="cupon" placeholder="Coupon" />
+    <a-modal :open="freeModal" title="Dou you have any cupon?">
+      <a-input v-model:value="cupon" placeholder="Coupon" />
 
       <template #footer>
         <a-button key="back" @click="nextWithoutCupon"> Skip </a-button>
@@ -932,6 +932,24 @@ export default {
           centered: true,
         });
         return;
+      }
+      if(this.teamSelected) {
+        let subscription_expire_at = this.teamSelected.subscription_expire_at;
+        if(subscription_expire_at) {
+          let expireDate = new Date(subscription_expire_at);
+          let currentDate = new Date();
+          let diffTime = Math.abs(expireDate - currentDate);
+          let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+          if(expireDate > currentDate && diffDays > 45) {
+            this.$error({
+              title: "This team is already subscribed!",
+              content: `You still have ${diffDays} days left in your subscription`,
+              centered: true,
+            });
+            return;
+          }
+        }
       }
 
       if (this.choosedPlan && this.choosedPlan.id) {

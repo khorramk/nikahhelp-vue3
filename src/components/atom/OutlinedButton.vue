@@ -52,7 +52,7 @@ export default {
     border-radius: 5px;
     transition: none;
     &:hover .navigate-name {
-        color: white;
+        color: #6158a7;
     }
     &:hover {
         box-shadow: 0px 1px 3px #B2aaaa;
@@ -60,7 +60,7 @@ export default {
         background: #6158a7;
     }
     .navigate-name{
-        color: #6158a7;
+        color: white;
     }
     img {
         height: 13px;

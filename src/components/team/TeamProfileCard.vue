@@ -85,6 +85,7 @@
 
 <script>
 import ApiService from "../../services/api.service";
+import NoImageAvailable from '@/assets/no-image-available.jpg';
 export default {
   name: "TeamProfileCard",
   props: ['teamData', 'profileActive'],
@@ -93,7 +94,8 @@ export default {
       roleChangeBox: false,
       copyBtnText: 'Copy',
       invitationLink: window.location.host + '/manageteam?invitation=' + this.profileActive.link,
-      token: ""
+      token: "",
+      NoImageAvailable
     }
   },
   created() {
@@ -122,7 +124,7 @@ export default {
       } else if(this.profileActive.user !== undefined && this.profileActive.user.account_type == 2) {
         return this.profileActive.user.representative_info.per_main_image_url + `?token=${this.token}`;
       } else {
-        return require('@/assets/no-image-available.jpg');
+        return NoImageAvailable;
       }
     }
   },
