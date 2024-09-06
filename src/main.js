@@ -60,7 +60,7 @@ Vue.component('AdminLayout', AdminLayout);
 
 // import VueSocketIO from 'vue-socket.io'
 import SocketIO from 'socket.io-client';
-const socketConnection = SocketIO('http://13.60.167.159:4008');
+const socketConnection = SocketIO('ws://13.60.167.159:4008');
 // const socketConnection = SocketIO('http://localhost:4009');
 
 // Vue.use(new VueSocketIO({
