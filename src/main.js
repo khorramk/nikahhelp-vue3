@@ -60,7 +60,7 @@ Vue.component('AdminLayout', AdminLayout);
 
 // import VueSocketIO from 'vue-socket.io'
 import SocketIO from 'socket.io-client';
-const socketConnection = SocketIO(`https://ip-172-31-42-179.eu-north-1.compute.internal:4008`);
+const socketConnection = SocketIO(`https://matchat.matrimonyassist.com:4008`);
 // const socketConnection = SocketIO('http://localhost:4009');
 
 // Vue.use(new VueSocketIO({
