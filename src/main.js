@@ -60,7 +60,7 @@ Vue.component('AdminLayout', AdminLayout);
 
 // import VueSocketIO from 'vue-socket.io'
 
-import WebSocket from 'ws';
+//import WebSocket from 'ws';
 const socketConnection = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
 
 // const socketConnection = SocketIO('http://localhost:4009');
