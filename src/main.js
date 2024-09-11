@@ -60,7 +60,7 @@ Vue.component('AdminLayout', AdminLayout);
 
 // import VueSocketIO from 'vue-socket.io'
 import SocketIO from 'socket.io-client';
-const socketConnection = SocketIO(`wss://13.51.23.104:4009`);
+const socketConnection = SocketIO(import.meta.env.VITE_CHAT_SERVER);
 // const socketConnection = SocketIO('http://localhost:4009');
 
 // Vue.use(new VueSocketIO({
