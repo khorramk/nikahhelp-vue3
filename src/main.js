@@ -59,8 +59,8 @@ Vue.component('AdminLayout', AdminLayout);
 // Vue.use(TextareaAutosize)
 
 // import VueSocketIO from 'vue-socket.io'
-import SocketIO from 'socket.io-client';
-const socketConnection = SocketIO('https://biya.nikahhelp.com:4008');
+import WebSocket from 'ws';
+const socketConnection = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
 // const socketConnection = SocketIO('http://localhost:4009');
 
 // Vue.use(new VueSocketIO({
