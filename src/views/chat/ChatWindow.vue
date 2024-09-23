@@ -461,7 +461,8 @@ export default {
       search: '',
       isLoading: false,
       openEmoji: false,
-      InfoImg
+      InfoImg,
+      ws: null,
     }
   },
 
@@ -664,105 +665,117 @@ export default {
   },
 
   mounted() {
-    this.$socket.connect();
+    // this.$socket.connect();
     let loggedUser = JSON.parse(localStorage.getItem('user'));
+    let self = this;
     if (loggedUser) {
-      this.$socket.emit('ping', {user_id: loggedUser.id});
+      this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
 
-      this.$socket.on('ping_success', (res) => {
-        if (res && res.online_users) {
-          this.online_users = res.online_users;
-        }
-      });
+      this.ws.onopen = function() {
+        self.ws.send(JSON.stringify({
+          action: 'ping',
+          user_id: loggedUser.id,
+          component: 'chat'
+        }));
+      }
 
-      this.$socket.on('receive_notification', (res) => {
-        if (res && res.type) {
-          this.loadPageData();
-        }
-      });
-
-
-
-      this.$socket.on('lis_typing', (res) => {
-        if(res.team_id) {
-          if(this.chatHistory.length > 0) {
-            this.chatHistory[0].typing_status = res.status;
-            this.chatHistory[0].typing_text = res.text;
-            this.chatHistory[0].typer_name = res.typer_name;
+      this.ws.onmessage = function (event) {
+        let res = JSON.parse(event.data);
+        if(res.event == 'ping_success') {
+          if (res && res.data.online_users) {
+            self.online_users = res.data.online_users;
+            self.$store.state.chat.online_users = res.data.online_users;
+            console.log('online users from chat socket', self.online_users);
           }
-          if(this.teamChat.length > 0) {
-            this.teamChat[0].typing_status = res.status;
-            this.teamChat[0].typing_text = res.text;
-            this.teamChat[0].typer_name = res.typer_name;
+        } 
+        
+        else if(res.event == 'receive_notification') {
+          if (res && res.data.type) {
+            self.loadPageData();
           }
-        } else {
-          if(res.type == 'Connected Team') {
-            let connectedTeamChat = this.connectedTeam.find(item => item.id == res.team_connection_id);
-            if(connectedTeamChat) {
-              connectedTeamChat.typing_status = res.status;
-              connectedTeamChat.typing_text = res.text;
-              connectedTeamChat.typer_name = res.typer_name;
+        }
+        
+        else if(res.event == 'lis_typing') {
+          if(res.data.team_id) {
+            if(self.chatHistory.length > 0) {
+              self.chatHistory[0].typing_status = res.data.status;
+              self.chatHistory[0].typing_text = res.data.text;
+              self.chatHistory[0].typer_name = res.data.typer_name;
+            }
+            if(self.teamChat.length > 0) {
+              self.teamChat[0].typing_status = res.data.status;
+              self.teamChat[0].typing_text = res.data.text;
+              self.teamChat[0].typer_name = res.data.typer_name;
             }
           } else {
-            let teamPersonalChat = this.teamChat.find(item => item.other_mate_id == res.typer_id);
-            if(teamPersonalChat) {
-              teamPersonalChat.typing_status = res.status;
-              teamPersonalChat.typing_text = res.text;
-            }
-            let recentChat = this.chatHistory.find(item => item.other_mate_id == res.typer_id);
-            if(recentChat) {
-              recentChat.typing_status = res.status;
-              recentChat.typing_text = res.text;
+            if(res.data.type == 'Connected Team') {
+              let connectedTeamChat = self.connectedTeam.find(item => item.id == res.data.team_connection_id);
+              if(connectedTeamChat) {
+                connectedTeamChat.typing_status = res.data.status;
+                connectedTeamChat.typing_text = res.data.text;
+                connectedTeamChat.typer_name = res.data.typer_name;
+              }
+            } else {
+              let teamPersonalChat = self.teamChat.find(item => item.other_mate_id == res.data.typer_id);
+              if(teamPersonalChat) {
+                teamPersonalChat.typing_status = res.data.status;
+                teamPersonalChat.typing_text = res.data.text;
+              }
+              let recentChat = self.chatHistory.find(item => item.other_mate_id == res.data.typer_id);
+              if(recentChat) {
+                recentChat.typing_status = res.data.status;
+                recentChat.typing_text = res.data.text;
+              }
             }
           }
         }
-      });
 
-      this.$socket.on('receive_message', (data) => {
-        console.log(data, 'data from socket receive_message');
-        const recieveMessage = {
-          sender: data.senderInfo,
-          created_at: data.created_at,
-          updated_at: data.updated_at,
-          body: data.body,
-        };
-        if(data.label == 'Connected') {
-          this.notify = data;
-        }
-        if (this.chatTab === 'Connected') {
-          if(!data.team_id) {
-            recieveMessage.team_connection_id = data.team_connection_id;
-            recieveMessage.id = data.msg_id;
-            recieveMessage.team_chat_id = data.team_chat_id;
-            if(this.connectedTeam) {
-              this.connectedTeam = this.connectedTeam.map(item => {
-                if(item.id == data.team_connection_id) {
-                  item.message.id = data.msg_id;
-                  item.message.body = data.body;
-                  item.message.team_chat_id = data.team_chat_id;
-                }
-                return item;
-              });
-            }
-            this.connectedTeamChats = [...this.connectedTeamChats, recieveMessage];
-            this.notify = data;
+        else if(res.event == 'receive_message') {
+          console.log(res, 'data from socket receive_message');
+          const recieveMessage = {
+            sender: res.data.senderInfo,
+            created_at: res.data.created_at,
+            updated_at: res.data.updated_at,
+            body: res.data.body,
+          };
+          if(res.data.label == 'Connected') {
+            self.notify = res;
           }
-        } else {
-          if(data.team_id) {
-            recieveMessage.id = data.msg_id;
-            if(this.teamChat) {
-              this.teamChat = this.teamChat.map(item => {
-                item.message.id = data.msg_id;
-                item.message.body = data.body;
-                item.message.team_id = data.team_id;
-                return item;
-              });
+          if (self.chatTab === 'Connected') {
+            if(!res.data.team_id) {
+              recieveMessage.team_connection_id = res.data.team_connection_id;
+              recieveMessage.id = res.data.msg_id;
+              recieveMessage.team_chat_id = res.data.team_chat_id;
+              if(self.connectedTeam) {
+                self.connectedTeam = self.connectedTeam.map(item => {
+                  if(item.id == res.data.team_connection_id) {
+                    item.message.id = res.data.msg_id;
+                    item.message.body = res.data.body;
+                    item.message.team_chat_id = res.data.team_chat_id;
+                  }
+                  return item;
+                });
+              }
+              self.connectedTeamChats = [...self.connectedTeamChats, recieveMessage];
+              self.notify = res;
             }
-            this.chats = [...this.chats, recieveMessage];
-            this.newMessage = true;
+          } else {
+            if(res.data.team_id) {
+              recieveMessage.id = res.data.msg_id;
+              if(self.teamChat) {
+                self.teamChat = self.teamChat.map(item => {
+                  item.message.id = res.data.msg_id;
+                  item.message.body = res.data.body;
+                  item.message.team_id = res.data.team_id;
+                  return item;
+                });
+              }
+              self.chats = [...self.chats, recieveMessage];
+              self.newMessage = true;
+            }
           }
         }
-      });
+      };
     }
   },
   directives: {
@@ -788,7 +801,11 @@ export default {
         payload.receivers = payload.receivers.map(item => {
           return item.toString();
         });
-        this.$socket.emit('notification', payload);
+
+        this.ws.send(JSON.stringify({
+          action: 'notification',
+          data: payload
+        }));
       }
       this.loadPageData();
     },
@@ -1376,7 +1393,12 @@ export default {
         payload.sender = loggedUser;
         payload.chat_id = this.chat_id;
         payload.to = this.one_to_one_user.toString();
-        this.$socket.emit('send_message', payload);
+
+        this.ws.send(JSON.stringify({
+          action: 'send_message',
+          data: payload,
+          component: 'chat'
+        }));
 
         this.chatheadopen.message.body = this.msg_text;
         this.chatheadopen.message.created_at = new Date();
@@ -1400,7 +1422,12 @@ export default {
         
         payload.msg_id = data.data.id;
         payload.team_id = this.activeTeam;
-        this.$socket.emit('send_message_in_group', payload);
+
+        this.ws.send(JSON.stringify({
+          action: 'send_message_in_group',
+          data: payload,
+          component: 'chat'
+        }));
 
         this.teamChat = this.teamChat.map(item => {
             item.last_seen_msg_id = data.data.id;
@@ -1499,7 +1526,12 @@ export default {
       payload.msg_id = data.id;
       payload.team_chat_id = data.team_chat_id;
 
-      this.$socket.emit('send_message_in_group', payload);
+      // this.$socket.emit('send_message_in_group', payload);
+      this.ws.send(JSON.stringify({
+          action: 'send_message_in_group',
+          data: payload,
+          component: 'chat'
+        }));
 
       this.chatheadopen.message = {
         body: payload.body,
@@ -1563,7 +1595,12 @@ export default {
       this.chatheadopen.message.created_at = new Date();
       this.chatheadopen.message.senderId = loggedUser.id.toString();
       this.chatheadopen.message.senderInfo = loggedUser;
-      this.$socket.emit('send_message', payload);
+
+      this.ws.send(JSON.stringify({
+        action: 'send_message',
+        data: payload,
+        component: 'chat'
+      }));
 
 
       payload.from_team_id = this.activeTeam;
@@ -1630,11 +1667,20 @@ export default {
         data.members.forEach(item => {
           if(item != loggedUser.id) {
             data.to = item.toString();
-            this.$socket.emit('typing', data);
+
+            this.ws.send(JSON.stringify({
+              action: 'typing',
+              data: data,
+              component: 'chat'
+            }));
           }
         });
       } else {
-        this.$socket.emit('typing', data);
+        this.ws.send(JSON.stringify({
+          action: 'typing',
+          data: data,
+          component: 'chat'
+        }));
       }
     },
     unique(array) {

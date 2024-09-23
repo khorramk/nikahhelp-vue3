@@ -105,6 +105,7 @@ export default {
       error: null,
       teamId: null,
       notiType: "all",
+      ws: null,
     };
   },
   computed: {
@@ -120,9 +121,27 @@ export default {
     },
   },
   mounted() {
-    this.$socket.on("receive_notification", function (res) {
-      this.notifications.unshift(res);
-    });
+    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
+    let loggedUser = JSON.parse(localStorage.getItem('user'));
+
+    let self = this;
+
+    this.ws.onopen = function() {
+      self.ws.send(JSON.stringify({
+        action: 'ping',
+        user_id: loggedUser.id,
+        component: 'notification_page'
+      }));
+    };
+
+    this.ws.onmessage = function($event) {
+      const res = JSON.parse($event.data);
+      if(res.event == 'receive_notification') {
+        // self.notifications.unshift(res.data);
+      } else if(res.event == 'ping_success') {
+        self.$store.state.chat.online_users = res.data.online_users;
+      }
+    };
   },
   created() {
     this.getActiveTeamId();
