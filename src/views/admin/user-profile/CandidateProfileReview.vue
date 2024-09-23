@@ -717,18 +717,6 @@ export default {
     StopOutlined,
     CheckOutlined
   },
-  computed: {
-    userStatus() {
-      return this.candidateData?.user?.status;
-    },
-    dataInputStatus() {
-      return this.candidateData?.data_input_status;
-    },
-
-    statusMessage() {
-      return this.userStatus === 3 ? "Verified" : "Approve";
-    },
-  },
   props: {
     candidateDetails: {
       type: Object,
@@ -761,6 +749,21 @@ export default {
       token: "",
     };
   },
+  computed: {
+    userStatus() {
+      return this.candidateData?.user?.status;
+    },
+    dataInputStatus() {
+      return this.candidateData?.data_input_status;
+    },
+
+    statusMessage() {
+      return this.userStatus === 3 ? "Verified" : "Approve";
+    },
+    isWebSocketReady() {
+      return this.$webSocket.readyState === 1;
+    }
+  },
   created() {
     this.token = JSON.parse(localStorage.getItem("token"));
   },
@@ -781,7 +784,13 @@ export default {
         payload.receivers = payload.receivers.map(item => {
           return item.toString();
         });
-        this.$socket.emit('notification', payload);
+
+        if(this.isWebSocketReady) {
+          this.$webSocket.send(JSON.stringify({
+            action: 'notification',
+            data: payload
+          }));
+        }
       }
     },
     getNationality() {

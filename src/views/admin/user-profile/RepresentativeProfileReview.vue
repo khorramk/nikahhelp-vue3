@@ -493,6 +493,34 @@ export default {
       token: "",
     };
   },
+  computed: {
+    getStatus() {
+      
+        const status = {
+        '0': "Deleted",
+        '1': "Pending",
+        '2': "Pending",
+        '3': "Verified",
+        '4': "Rejected",
+        '9': "Suspended",
+      };
+        return status[this.userStatus];
+      
+    },
+
+    user_id: function () {
+      return this.$route.params.user_id;
+    },
+    dataInputStatus() {
+      return this.representativeDetails?.data_input_status;
+    },
+    userStatus() {
+      return parseInt(this.representativeDetails?.user?.status);
+    },
+    isWebSocketReady() {
+      return this.$webSocket.readyState === 1;
+    }
+  },
   created() {
     this.token = JSON.parse(localStorage.getItem("token"));
   },
@@ -513,7 +541,13 @@ export default {
         payload.receivers = payload.receivers.map(item => {
           return item.toString();
         });
-        this.$socket.emit('notification', payload);
+
+        if(this.isWebSocketReady) {
+          this.$webSocket.send(JSON.stringify({
+            action: 'notification',
+            data: payload
+          }));
+        }
       }
     },
     getUserStatus(status) {
@@ -664,31 +698,7 @@ export default {
       this.$router.push({ name: "Users" });
     },
   },
-  computed: {
-    getStatus() {
-      
-        const status = {
-        '0': "Deleted",
-        '1': "Pending",
-        '2': "Pending",
-        '3': "Verified",
-        '4': "Rejected",
-        '9': "Suspended",
-      };
-        return status[this.userStatus];
-      
-    },
 
-    user_id: function () {
-      return this.$route.params.user_id;
-    },
-    dataInputStatus() {
-      return this.representativeDetails?.data_input_status;
-    },
-    userStatus() {
-      return parseInt(this.representativeDetails?.user?.status);
-    },
-  },
 };
 </script>
 
