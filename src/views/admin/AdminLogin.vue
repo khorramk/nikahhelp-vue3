@@ -54,7 +54,7 @@
           <button
             type="button"
             @click="handleSubmit"
-            class="btn signin-btn h-32 w-100 pt-1 mt-1"
+            class="btn signin-btn h-32 w-100 pt-1 mt-2"
             style="padding: 0px !important; line-height: 1.3 !important;"
           >
             <LoadingOutlined class="fs-20 mr-2" v-if="isLoading" />
@@ -308,6 +308,10 @@ export default {
   input {
     border: 1px solid #80808057;
     background: #fafafa;
+
+    &:hover {
+      border-color: #4096ff;
+    }
   }
 }
 .forgot-password {
@@ -388,7 +392,8 @@ export default {
 }
 .login-main-container {
   width: 100%;
-  height: 100%;
+  // height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
