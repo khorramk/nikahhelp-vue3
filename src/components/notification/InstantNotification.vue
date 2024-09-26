@@ -26,7 +26,8 @@ export default {
   },
   data() {
     return {
-      notifications: []
+      notifications: [],
+      ws: null
     }
   },
   methods: {
@@ -36,11 +37,28 @@ export default {
   },
   mounted() {
     const self = this;
-    self.$socket.on('receive_notification', function (res) {
-      self.notifications.push(res);
-      self.$store.state.notification.notifications.unshift(res);
-      self.$store.state.notification.instantNotifications.unshift(res);
-    });
+    let loggedUser = JSON.parse(localStorage.getItem('user'));
+    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
+
+    this.ws.onopen = function () {
+      self.ws.send(JSON.stringify({
+        action: 'ping',
+        user_id: loggedUser.id,
+        component: 'instant_notification'
+      }));
+    }
+
+    this.ws.onmessage = function (event) {
+      const res = JSON.parse(event.data);
+      
+      if(res.event == 'receive_notification') {
+        self.notifications.push(res.data);
+        self.$store.state.notification.notifications.unshift(res.data);
+        self.$store.state.notification.instantNotifications.unshift(res.data);
+      } else if(res.event == 'ping_success') {
+        self.$store.state.chat.online_users = res.data.online_users;
+      }
+    };
   }
 }
 </script>

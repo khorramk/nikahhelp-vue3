@@ -154,6 +154,7 @@ import ApiService from '@/services/api.service';
 import {format} from "timeago.js";
 
 import {MoreOutlined, FileImageOutlined} from '@ant-design/icons-vue';
+import { component } from "vue/types/umd";
 
 export default {
   name: 'Support',
@@ -174,7 +175,8 @@ export default {
       chatheadopen: null,
       avatarSrc: "https://www.w3schools.com/w3images/avatar2.png",
       message: '',
-      online_users: []
+      online_users: [],
+      ws: null
     };
   },
   computed: {
@@ -246,7 +248,13 @@ export default {
             chat_id: this.chatheadopen.chat_id,
           }
         };
-        this.$socket.emit('send_message', payload);
+        // this.$socket.emit('send_message', payload);
+        this.ws.send(JSON.stringify({
+          action: 'send_message',
+          data: payload,
+          component: 'support'
+        }));
+        
         this.chats.push(payload.last_message);
         this.message = '';
         await ApiService.post('/v1/support-send-message', payload).then(response => {
@@ -257,28 +265,44 @@ export default {
   },
   mounted() {
     let loggedUser = JSON.parse(localStorage.getItem('user'));
-    this.$socket.emit('ping', {user_id: loggedUser.id});
+    let self = this;
+    if(loggedUser) {
+      this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
 
-    this.sockets.subscribe('ping_success', function (res) {
-      if (res && res.online_users) {
-        this.online_users = res.online_users;
-      }
-    });
+      // this.$socket.emit('ping', {user_id: loggedUser.id});
 
-    this.sockets.subscribe('receive_message', function (res) {
-      if(res.support) {
-        this.loadLists();
-        let hasChat = this.histories.find(history => history && history.last_message && history.last_message.chat_id);
-        if(hasChat) {
-          let chatId = hasChat.last_message.chat_id;
-          hasChat.last_message = res.last_message;
-          hasChat.last_message.chat_id = chatId;
-          if(this.chatheadopen && this.chatheadopen.user.id == res.sender) {
-            this.chats.push(res.last_message);
+      this.ws.onopen = function() {
+        self.ws.send(JSON.stringify({
+          action: 'ping',
+          user_id: loggedUser.id,
+          component: 'support'
+        }));
+      };
+
+      this.ws.onmessage = function($event) {
+        let res = JSON.parse($event.data);
+
+        if(res.event == 'ping_success') {
+          if (res && res.data.online_users) {
+            self.online_users = res.data.online_users;
+            self.$store.state.chat.online_users = res.data.online_users;
+          }
+        } else if(res.event == 'receive_message') {
+          if(res.data.support) {
+            self.loadLists();
+            let hasChat = self.histories.find(history => history && history.last_message && history.last_message.chat_id);
+            if(hasChat) {
+              let chatId = hasChat.last_message.chat_id;
+              hasChat.last_message = res.data.last_message;
+              hasChat.last_message.chat_id = chatId;
+              if(self.chatheadopen && self.chatheadopen.user.id == res.data.sender) {
+                self.chats.push(res.data.last_message);
+              }
+            }
           }
         }
-      }
-    });
+      };
+    }
   },
   watch: {
     chats: function(val) {

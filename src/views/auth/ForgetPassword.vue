@@ -307,7 +307,7 @@ export default {
             margin-top: 12px;
           }
         }
-        .connect-button {
+        .connect-button :deep() {
           .v-custom {
             height: 33px;
             font-size: 14px;
@@ -319,7 +319,7 @@ export default {
             border: 1px solid $bg-success !important;
 
             img {
-            filter: none !important;
+              filter: none !important;
             }
           }
 	      }
