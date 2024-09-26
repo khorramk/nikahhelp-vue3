@@ -208,6 +208,9 @@ export default {
     },
     searchBtnClicked() {
       return this.isSearchBtnClicked;
+    },
+    isWebSocketReady() {
+      return this.$webSocket.readyState === 1;
     }
   },
   methods: {
@@ -243,7 +246,13 @@ export default {
         payload.receivers = payload.receivers.map(item => {
           return item.toString();
         });
-        this.$socket.emit('notification', payload);
+
+        if(this.isWebSocketReady) {
+          this.$webSocket.send(JSON.stringify({
+            action: 'notification',
+            data: payload
+          }));
+        }
       }
     },
     // onIntersect() {

@@ -219,14 +219,6 @@ import { format } from 'timeago.js'
 
 export default {
     name: 'ChatView',
-    sockets: {
-        connect: function () {
-            console.log('socket connected')
-        },
-        ping: function (data) {
-            console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
-        }
-    },
     data(){
         return {
             conversationTitle: '',
@@ -325,13 +317,7 @@ export default {
     this.loadChatHistory();
   },
   mounted() {
-     this.$socket.emit('ping', {user_id: 2});     
-     
-     this.$socket.on('ping_success', function (res) {
-          console.log(res)
-      });
 
-      console.log('log-----');
   },
   methods:{
     // Process team chat response

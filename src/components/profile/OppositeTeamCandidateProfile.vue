@@ -443,16 +443,6 @@ export default {
 		OutlinedButton,
 		ComingSoonModal,
 	},
-	sockets: {
-		connect: function () {
-			console.log("socket connected");
-		},
-		ping: function (data) {
-			console.log(
-				'this method was fired by the socket server. eg: io.emit("customEmit", data)'
-			);
-		},
-	},
 	data() {
 		return {
 			copyProfileText: 'Copy Profile URL',
@@ -554,6 +544,9 @@ export default {
 				}
 			}
 		},
+		isWebSocketReady() {
+			return this.$webSocket.readyState === 1;
+		}
 	},
 	methods: {
 		dateFromDateTime,
@@ -574,7 +567,13 @@ export default {
 				payload.receivers = payload.receivers.map(item => {
 				return item.toString();
 				});
-				this.$socket.emit('notification', payload);
+
+				if(this.isWebSocketReady) {
+					this.$webSocket.send(JSON.stringify({
+						action: 'notification',
+						data: payload
+					}));
+				}
 			}
 		},
 		prepareNotifyData() {

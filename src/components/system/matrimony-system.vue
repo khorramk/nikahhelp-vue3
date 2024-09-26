@@ -166,6 +166,12 @@ export default {
     };
   },
 
+  computed: {
+    isWebSocketReady() {
+      return this.$webSocket.readyState === 1;
+    }
+  },
+
   created() {
     ApiService.get('/v1/user').then((data) => {
       console.log(data);
@@ -191,70 +197,89 @@ export default {
   mounted() {
     let loggedUser = JSON.parse(localStorage.getItem('user'));
     if (loggedUser) {
-      this.$socket.emit('ping', {user_id: loggedUser.id});
-      this.$socket.on('ping_success', (res) => {
-        if (res && res.online_users) {
-          this.$store.state.chat.online_users = res.online_users;
-        }
-      });
+      let self = this;
 
-      this.$socket.on('receive_message', async (res) => {
-        if(res && !res.support) {
-          // this.$store.state.chat.chats.unshift(res);
-          // this.loadChatHistory();
-          // this.loadTeamChat();
-          console.log(res);
-          this.$store.state.chat.messages.push(res);
-          if(res.label == "Group Message") {
-            if(this.$store.state.chat.chats.length > 0) {
-              let index = this.$store.state.chat.chats.findIndex(item => item.label == 'Group chat');
-              if(index != -1) {
-                this.$store.state.chat.chats[index].message.body = res.message;
-                this.$store.state.chat.chats[index].message.id = res.msg_id;
-              }
-            } else {
-              this.$store.state.chat.chats.push({
-                label: 'Group chat',
-                state: 'Typing...',
-                name: res.conv_title,
-                logo: res.logo,
-                typing_status: 0,
-                typing_text: '',
-                message: {
-                  body: res.message,
-                  id: res.msg_id,
+      if(this.isWebSocketReady) {
+        console.log('socket connected');
+        this.$webSocket.send(JSON.stringify({
+          action: 'ping',
+          user_id: loggedUser.id,
+          component: 'matrimony-system'
+        }));
+      }
+
+      this.$webSocket.onmessage = async function($event) {
+        let res = JSON.parse($event.data);
+        console.log(res, 'response from ping');
+        if(res.event == 'ping_success') {
+          console.log('insdid ping success');
+          if (res && res.data.online_users) {
+            self.$store.state.chat.online_users = res.data.online_users;
+            console.log(self.$store.state.chat.online_users, 'online users');
+          }
+        } else if(res.event == 'receive_message') {
+          if(res && !res.data.support) {
+
+            console.log(res);
+            self.$store.state.chat.messages.push(res);
+            if(res.data.label == "Group Message") {
+              if(self.$store.state.chat.chats.length > 0) {
+                let index = self.$store.state.chat.chats.findIndex(item => item.label == 'Group chat');
+                if(index != -1) {
+                  self.$store.state.chat.chats[index].message.body = res.data.message;
+                  self.$store.state.chat.chats[index].message.id = res.data.msg_id;
                 }
-              });
-            }
-          } else {
-            if(this.$store.state.chat.chats.length > 0) {
-              let index = this.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.team_chat_id);
-              if(index != -1) {
-                this.$store.state.chat.chats[index].message.body = res.message;
-                this.$store.state.chat.chats[index].message.id = res.msg_id;
               } else {
-                await this.loadChatHistory();
-                index = this.$store.state.chat.chats.findIndex(item => item?.message.team_chat_id == res.team_chat_id);
-                if(index != -1) {
-                  this.$store.state.chat.chats[index].message.body = res.message;
-                  this.$store.state.chat.chats[index].message.id = res.msg_id;
-                }
+                self.$store.state.chat.chats.push({
+                  label: 'Group chat',
+                  state: 'Typing...',
+                  name: res.data.conv_title,
+                  logo: res.data.logo,
+                  typing_status: 0,
+                  typing_text: '',
+                  message: {
+                    body: res.data.message,
+                    id: res.data.msg_id,
+                  }
+                });
               }
             } else {
-                await this.loadChatHistory();
-                let index = this.$store.state.chat.chats.findIndex(item => item?.message.team_chat_id == res.team_chat_id);
+              if(self.$store.state.chat.chats.length > 0) {
+                let index = self.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
                 if(index != -1) {
-                  this.$store.state.chat.chats[index].message.body = res.message;
-                  this.$store.state.chat.chats[index].message.id = res.msg_id;
+                  self.$store.state.chat.chats[index].message.body = res.data.message;
+                  self.$store.state.chat.chats[index].message.id = res.data.msg_id;
+                } else {
+                  await self.loadChatHistory();
+                  index = self.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
+                  if(index != -1) {
+                    self.$store.state.chat.chats[index].message.body = res.data.message;
+                    self.$store.state.chat.chats[index].message.id = res.data.msg_id;
+                  }
+                }
+              } else {
+                await self.loadChatHistory();
+                let index = self.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
+                if(index != -1) {
+                  self.$store.state.chat.chats[index].message.body = res.data.message;
+                  self.$store.state.chat.chats[index].message.id = res.data.msg_id;
                 }
               }
+            }
           }
         }
-      });
+      };
     }
   },
 
- 
+  unmounted() {
+    this.$webSocket.close();
+  },
+
+  destroyed() {
+    this.$webSocket.close();
+  },
+
 
   methods: {
     ...mapActions([
