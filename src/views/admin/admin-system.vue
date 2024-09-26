@@ -21,7 +21,7 @@ export default {
   mounted() {
     let loggedUser = JSON.parse(localStorage.getItem('user'));
     let self = this;
-    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
+    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
 
     this.ws.onopen = function () {
       self.ws.send(JSON.stringify({

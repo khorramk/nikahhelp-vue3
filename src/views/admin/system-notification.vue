@@ -50,7 +50,7 @@ export default {
         if (loggedUser) {
             let self = this;
             // this.$socket.emit('ping', {user_id: 0});
-            this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
+            this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
 
             this.ws.onopen = function () {
                 self.ws.send(JSON.stringify({

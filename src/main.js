@@ -58,7 +58,7 @@ Vue.component('Loader', Loader);
 Vue.component('AdminLayout', AdminLayout);
 // Vue.use(TextareaAutosize)
 
-Vue.config.globalProperties.$webSocket = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
+Vue.config.globalProperties.$webSocket = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
 
 Vue.use(vuetify);
 Vue.use(router);
