@@ -707,7 +707,6 @@ export default {
         payload.receivers = payload.receivers.map(item => {
           return item.toString();
         });
-= 
         if(this.isWebSocketReady) {
           this.$webSocket.send(JSON.stringify({
             action: 'notification',
