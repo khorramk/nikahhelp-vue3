@@ -64,6 +64,7 @@
           size="large"
           :placeholder="'Select a country'"
           :options="countriesTV"
+          :dropdownMatchSelectWidth="false"
           :fieldNames="{ label: 'name', value: 'id' }"
           option-filter-prop="children"
           :filter-option="filterOption"

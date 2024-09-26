@@ -179,6 +179,9 @@ import ButtonComponent from '@/components/atom/ButtonComponent.vue'
         if(this.candidate.teamConnectStatus == 2) return 'Connect'
         if(this.candidate.teamConnectType == 2) return 'Accept'
         return 'Connect'
+      },
+      isWebSocketReady() {
+        return this.$webSocket.readyState === 1;
       }
     },
     methods: {
@@ -207,7 +210,13 @@ import ButtonComponent from '@/components/atom/ButtonComponent.vue'
           payload.receivers = payload.receivers.map(item => {
             return item.toString();
           });
-          this.$socket.emit('notification', payload);
+
+          if(this.isWebSocketReady) {
+            this.$webSocket.send(JSON.stringify({
+              action: 'notification',
+              data: payload
+            }));
+          }
         }
       },
       selfTeamNotifyData() {
