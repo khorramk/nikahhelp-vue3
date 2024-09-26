@@ -162,6 +162,9 @@ export default {
   computed: {
     flicker() {
       return this.invitationObject.visible_invitation_link != '';
+    },
+    isWebSocketReady() {
+      return this.$webSocket.readyState === 1;
     }
   },
   methods: {
@@ -176,7 +179,13 @@ export default {
         payload.receivers = payload.receivers.map(item => {
           return item.toString();
         });
-        this.$socket.emit('notification', payload);
+
+        if(this.isWebSocketReady) {
+          this.$webSocket.send(JSON.stringify({
+            action: 'notification',
+            data: payload
+          }));
+        }
       }
     },
     changedAddAs() {

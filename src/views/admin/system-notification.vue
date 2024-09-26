@@ -39,6 +39,7 @@ export default {
             notificationText: '',
             online_users: [],
             isLoading: false,
+            ws: null
         };
     },
     created() {
@@ -47,13 +48,17 @@ export default {
     mounted() {
         let loggedUser = JSON.parse(localStorage.getItem('user'));
         if (loggedUser) {
-            this.$socket.emit('ping', {user_id: 0});
-            this.$socket.on('ping_success', (res) => {
-                if (res && res.online_users) {
-                    this.online_users = res.online_users;
-                }
-                console.log('res', res);
-            });
+            let self = this;
+            // this.$socket.emit('ping', {user_id: 0});
+            this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
+
+            this.ws.onopen = function () {
+                self.ws.send(JSON.stringify({
+                    action: 'ping',
+                    user_id: loggedUser.id,
+                    component: 'system_notification'
+                }));
+            }
         }
     },
     
@@ -70,7 +75,11 @@ export default {
                 payload.receivers = payload.receivers.map(item => {
                     return item.toString();
                 });
-                this.$socket.emit('notification', payload);
+
+                this.ws.send(JSON.stringify({
+                    action: 'notification',
+                    data: payload
+                }));
             }
         },
         sendNotification() {
@@ -80,7 +89,7 @@ export default {
                 return;
             }
             this.isLoading = true;
-            let receivers = this.online_users;
+            let receivers = this.$store.state.chat.online_users
             console.log(receivers, "receivers")
             let payload = {
                 receivers: receivers,

@@ -1232,7 +1232,7 @@ h3 {
     font-weight: 100;
   }
 }
-.btn-join-now {
+.btn-join-now :deep() {
   width: 250px; 
   margin-top: 35px; 
   height: 100px;
