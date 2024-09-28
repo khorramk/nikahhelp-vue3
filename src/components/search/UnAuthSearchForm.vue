@@ -68,7 +68,7 @@
           :fieldNames="{ label: 'name', value: 'id' }"
           option-filter-prop="children"
           :filter-option="filterOption"
-          style="width: 100%"
+          class="custom-a-select"
           notFoundContent="Country not found"
         >
           <template #suffixIcon>
@@ -89,7 +89,7 @@
           :options="religionTV"
           :fieldNames="{ label: 'name', value: 'id' }"
           :filter-option="filterOption"
-          style="width: 100%"
+          class="custom-a-select"
           notFoundContent="Religion not found"
         >
           <a-select-option
@@ -374,9 +374,20 @@ export default {
   }
 }
 
-.age-group {
+.age-group :deep() {
   .customize-color {
     color: $bg-primary !important;
+  }
+  .ant-select-selector {
+    border-radius: 20px;
+  }
+}
+
+.custom-a-select :deep() {
+  width: 100% !important;
+  .ant-select-selector {
+    width: 100% !important;
+    border-radius: 20px;
   }
 }
 </style>
