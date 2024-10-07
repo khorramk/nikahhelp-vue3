@@ -154,7 +154,6 @@ import ApiService from '@/services/api.service';
 import {format} from "timeago.js";
 
 import {MoreOutlined, FileImageOutlined} from '@ant-design/icons-vue';
-import { component } from "vue/types/umd";
 
 export default {
   name: 'Support',

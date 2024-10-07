@@ -38,25 +38,21 @@ export default {
         return {
             notificationText: '',
             online_users: [],
-            isLoading: false,
-            ws: null
+            isLoading: false
         };
     },
-    created() {
-
+    computed: {
+        isWebSocketReady() {
+            return this.$webSocket.readyState === 1;
+        }
     },
     mounted() {
         let loggedUser = JSON.parse(localStorage.getItem('user'));
         if (loggedUser) {
-            let self = this;
-            // this.$socket.emit('ping', {user_id: 0});
-            this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
-
-            this.ws.onopen = function () {
-                self.ws.send(JSON.stringify({
+            if (this.isWebSocketReady) {
+                this.$webSocket.send(JSON.stringify({
                     action: 'ping',
-                    user_id: loggedUser.id,
-                    component: 'system_notification'
+                    user_id: loggedUser.id
                 }));
             }
         }
@@ -76,10 +72,12 @@ export default {
                     return item.toString();
                 });
 
-                this.ws.send(JSON.stringify({
-                    action: 'notification',
-                    data: payload
-                }));
+                if (this.isWebSocketReady) {
+                    this.$webSocket.send(JSON.stringify({
+                        action: 'notification',
+                        data: payload
+                    }));
+                }
             }
         },
         sendNotification() {
