@@ -89,7 +89,7 @@
               />
             </td>
             <td class="id">{{ item["id"] }}</td>
-            <td class="created_at">{{ $filter.formatDate(item["created_at"]) }}</td>
+            <td class="created_at">{{ $filters.formatDate(item["created_at"]) }}</td>
             <td class="name">{{ item["name"] }}</td>
             <td class="description">{{ item["description"] }}</td>
             <td class="publisher">
