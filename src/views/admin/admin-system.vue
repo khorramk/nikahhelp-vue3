@@ -10,42 +10,46 @@
 <script>
 import Footer from "@/components/admin/layout/Footer.vue";
 export default {
+  components: {Footer},
+  
   data() {
     return {
       user: {},
-      ws: null
     };
   },
-  components: {Footer},
-  created() {},
+
+  computed: {
+    isWebSocketReady() {
+      return this.$webSocket.readyState === 1;
+    }
+  },
+
   mounted() {
+    console.log('admin system mounted');
     let loggedUser = JSON.parse(localStorage.getItem('user'));
-    let self = this;
-    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}:${import.meta.env.VITE_CHAT_PORT}`);
 
-    this.ws.onopen = function () {
-      self.ws.send(JSON.stringify({
-        action: 'ping',
-        user_id: loggedUser.id,
-        component: 'admin'
-      }));
-    }
-
-    this.ws.onmessage = function (event) {
-      try {
-        const res = JSON.parse(event.data);
-        if(res.event == 'ping_success') {
-          self.$store.state.chat.online_users = res.data.online_users;
-        }
-      } catch (error) {
-        const res = event.data;
-        console.log('error', res);
-        return;
+    if(loggedUser) {
+      if(this.isWebSocketReady) {
+        this.$webSocket.send(JSON.stringify({
+          action: 'ping',
+          user_id: loggedUser.id
+        }));
       }
-    }
 
-    this.ws.onclose = function (event) {
-      console.log('ws closed', event);
+      this.$webSocket.onmessage = ($event) => {
+        let res = JSON.parse($event.data);
+  
+        if(res.event = 'ping_success') {
+          console.log('ping success', res);
+          if (res && res.data.online_users) {
+            this.$store.state.chat.online_users = res.data.online_users;
+          }
+        }
+      };
+
+      this.$webSocket.onclose = () => {
+        console.log('socket closed');
+      };
     }
     
   },

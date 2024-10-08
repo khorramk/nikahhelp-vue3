@@ -120,6 +120,7 @@ import InstantNotification from "../notification/InstantNotification.vue";
 import Layout from "@/views/design/Layout.vue";
 import { mapActions } from 'vuex';
 import JwtService from "../../services/jwt.service";
+import { chatEventBus } from '@/eventBuses/chatEventBus';
 
 // icons
 import {
@@ -138,6 +139,7 @@ import searchForSuitableProspect from '@/assets/help_guide_pics/Search_for_suita
 import shortlistAndConnectWithProspectsTeam from '@/assets/help_guide_pics/Shortlist_and_connect_with_prospect’s_team.svg';
 import chatAndExchangeInformationWithConnectedTeam from '@/assets/help_guide_pics/Chat_and_exchange_information_with_connected_team.svg';
 import evaluateInformationAndMakeDecision from '@/assets/help_guide_pics/Evaluate_information_and_make_decision.svg';
+
 export default {
   components: {
     InstantNotification,
@@ -199,38 +201,49 @@ export default {
     if (loggedUser) {
       let self = this;
 
-      if(this.isWebSocketReady) {
-        console.log('socket connected');
-        this.$webSocket.send(JSON.stringify({
-          action: 'ping',
-          user_id: loggedUser.id,
-          component: 'matrimony-system'
-        }));
+      this.$webSocket.onmessage = ($event) => {
+        console.log($event.data, 'response from onmessage in matrimony-system');
+        const res = JSON.parse($event.data);
+        this.handleSocketEvent(res);
       }
 
-      this.$webSocket.onmessage = async function($event) {
-        let res = JSON.parse($event.data);
-        console.log(res, 'response from ping');
-        if(res.event == 'ping_success') {
-          console.log('insdid ping success');
-          if (res && res.data.online_users) {
-            self.$store.state.chat.online_users = res.data.online_users;
-            console.log(self.$store.state.chat.online_users, 'online users');
-          }
-        } else if(res.event == 'receive_message') {
-          if(res && !res.data.support) {
+      this.$webSocket.onclose = function() {
+        console.log('socket closed');
+        alert('socket closed');
+      };
+    }
+  },
 
+  methods: {
+    ...mapActions([
+      'logout'
+    ]),
+
+    getWindowWidth() {
+      return window.innerWidth;
+    },
+    async handleSocketEvent(res) {
+      console.log(res, 'response from socket');
+
+      switch(res.event) {
+        case 'ping_success':
+          if (res && res.data.online_users) {
+            this.$store.state.chat.online_users = res.data.online_users;
+          }
+          break;
+        case 'receive_message':
+          if(res && !res.data.support) {
             console.log(res);
-            self.$store.state.chat.messages.push(res);
+            this.$store.state.chat.messages.push(res);
             if(res.data.label == "Group Message") {
-              if(self.$store.state.chat.chats.length > 0) {
-                let index = self.$store.state.chat.chats.findIndex(item => item.label == 'Group chat');
+              if(this.$store.state.chat.chats.length > 0) {
+                let index = this.$store.state.chat.chats.findIndex(item => item.label == 'Group chat');
                 if(index != -1) {
-                  self.$store.state.chat.chats[index].message.body = res.data.message;
-                  self.$store.state.chat.chats[index].message.id = res.data.msg_id;
+                  this.$store.state.chat.chats[index].message.body = res.data.message;
+                  this.$store.state.chat.chats[index].message.id = res.data.msg_id;
                 }
               } else {
-                self.$store.state.chat.chats.push({
+                this.$store.state.chat.chats.push({
                   label: 'Group chat',
                   state: 'Typing...',
                   name: res.data.conv_title,
@@ -244,52 +257,42 @@ export default {
                 });
               }
             } else {
-              if(self.$store.state.chat.chats.length > 0) {
-                let index = self.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
+              if(this.$store.state.chat.chats.length > 0) {
+                let index = this.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
                 if(index != -1) {
-                  self.$store.state.chat.chats[index].message.body = res.data.message;
-                  self.$store.state.chat.chats[index].message.id = res.data.msg_id;
+                  this.$store.state.chat.chats[index].message.body = res.data.message;
+                  this.$store.state.chat.chats[index].message.id = res.data.msg_id;
                 } else {
-                  await self.loadChatHistory();
-                  index = self.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
+                  await this.loadChatHistory();
+                  index = this.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
                   if(index != -1) {
-                    self.$store.state.chat.chats[index].message.body = res.data.message;
-                    self.$store.state.chat.chats[index].message.id = res.data.msg_id;
+                    this.$store.state.chat.chats[index].message.body = res.data.message;
+                    this.$store.state.chat.chats[index].message.id = res.data.msg_id;
                   }
                 }
               } else {
-                await self.loadChatHistory();
-                let index = self.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
+                await this.loadChatHistory();
+                let index = this.$store.state.chat.chats.findIndex(item => item?.message?.team_chat_id == res.data.team_chat_id);
                 if(index != -1) {
-                  self.$store.state.chat.chats[index].message.body = res.data.message;
-                  self.$store.state.chat.chats[index].message.id = res.data.msg_id;
+                  this.$store.state.chat.chats[index].message.body = res.data.message;
+                  this.$store.state.chat.chats[index].message.id = res.data.msg_id;
                 }
               }
             }
           }
-        }
-      };
-    }
-  },
-
-  unmounted() {
-    this.$webSocket.close();
-  },
-
-  destroyed() {
-    this.$webSocket.close();
-  },
-
-
-  methods: {
-    ...mapActions([
-      'logout'
-    ]),
-
-    getWindowWidth() {
-      return window.innerWidth;
+          chatEventBus.emit('receive_message', res);
+          break;
+        case 'receive_notification':
+          this.$store.state.notification.notifications.unshift(res.data);
+          this.$store.state.notification.instantNotifications.unshift(res.data);
+          chatEventBus.emit('receive_notification', res);
+          break;
+        case 'lis_typing':
+          chatEventBus.emit('lis_typing', res);
+          break;
+        
+      }
     },
-
     changeContentPrev() {
       this.currentGuide = this.currentGuide > 0 ? this.currentGuide - 1 : 0;
 

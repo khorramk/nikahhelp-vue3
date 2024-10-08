@@ -435,7 +435,7 @@ export default {
           console.log('recaptcha is ready');
           grecaptcha.ready(function () {
             grecaptcha.render("g-recaptcha", {
-              sitekey: "6LcXRP4nAAAAAAruOpZwIvuOiEFwdLrjA-MEmtxZ",
+              sitekey: `${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`,
               callback: "enableSubmitButton"
             });
           });
