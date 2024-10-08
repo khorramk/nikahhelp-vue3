@@ -26,8 +26,12 @@ export default {
   },
   data() {
     return {
-      notifications: [],
-      ws: null
+      // notifications: [],
+    }
+  },
+  computed: {
+    notifications() {
+      return this.$store.state.notification.instantNotifications;
     }
   },
   methods: {
@@ -35,31 +39,6 @@ export default {
       this.notifications.splice(index, 1);
     }
   },
-  mounted() {
-    const self = this;
-    let loggedUser = JSON.parse(localStorage.getItem('user'));
-    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
-
-    this.ws.onopen = function () {
-      self.ws.send(JSON.stringify({
-        action: 'ping',
-        user_id: loggedUser.id,
-        component: 'instant_notification'
-      }));
-    }
-
-    this.ws.onmessage = function (event) {
-      const res = JSON.parse(event.data);
-      
-      if(res.event == 'receive_notification') {
-        self.notifications.push(res.data);
-        self.$store.state.notification.notifications.unshift(res.data);
-        self.$store.state.notification.instantNotifications.unshift(res.data);
-      } else if(res.event == 'ping_success') {
-        self.$store.state.chat.online_users = res.data.online_users;
-      }
-    };
-  }
 }
 </script>
 

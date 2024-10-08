@@ -58,7 +58,21 @@ Vue.component('Loader', Loader);
 Vue.component('AdminLayout', AdminLayout);
 // Vue.use(TextareaAutosize)
 
+
 Vue.config.globalProperties.$webSocket = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
+
+Vue.config.globalProperties.$webSocket.onopen = function (event) {
+    console.log("WebSocket is open now.");
+    try {
+        const loggedUser = JSON.parse(localStorage.getItem('user'));
+        Vue.config.globalProperties.$webSocket.send(JSON.stringify({
+            action: 'ping',
+            user_id: loggedUser.id,
+        }));
+    } catch (e) {
+        console.log(e);
+    }
+};
 
 Vue.use(vuetify);
 Vue.use(router);

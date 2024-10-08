@@ -83,16 +83,6 @@ import ApiService from "@/services/api.service";
 import { openModalRoute } from "@/plugins/modal/modal.mixin";
 export default {
   name: "NotificationPage",
-  sockets: {
-    connect: function () {
-      console.log("socket connected");
-    },
-    ping: function (data) {
-      console.log(
-        'this method was fired by the socket server. eg: io.emit("customEmit", data)'
-      );
-    },
-  },
   components: {
     Notification,
   },
@@ -105,7 +95,6 @@ export default {
       error: null,
       teamId: null,
       notiType: "all",
-      ws: null,
     };
   },
   computed: {
@@ -119,29 +108,6 @@ export default {
     notifications() {
       return this.$store.state.notification.notifications;
     },
-  },
-  mounted() {
-    this.ws = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
-    let loggedUser = JSON.parse(localStorage.getItem('user'));
-
-    let self = this;
-
-    this.ws.onopen = function() {
-      self.ws.send(JSON.stringify({
-        action: 'ping',
-        user_id: loggedUser.id,
-        component: 'notification_page'
-      }));
-    };
-
-    this.ws.onmessage = function($event) {
-      const res = JSON.parse($event.data);
-      if(res.event == 'receive_notification') {
-        // self.notifications.unshift(res.data);
-      } else if(res.event == 'ping_success') {
-        self.$store.state.chat.online_users = res.data.online_users;
-      }
-    };
   },
   created() {
     this.getActiveTeamId();

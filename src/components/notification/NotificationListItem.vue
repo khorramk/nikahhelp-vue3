@@ -47,7 +47,7 @@ export default {
             this.$router.push({ name: 'Settings' });
         } else if(notificationTitle.includes('connect') && this.$router.currentRoute.name != 'Connections') {
             this.$router.push({ name: 'Connections' });
-        } else if(notificationTitle.include('teamlist') && this.$router.currentRoute.name != 'Shortlist') {
+        } else if(notificationTitle.includes('teamlist') && this.$router.currentRoute.name != 'Shortlist') {
             this.$router.push({ name: 'Shortlist' });
         }
       }
