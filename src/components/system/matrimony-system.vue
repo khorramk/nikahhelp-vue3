@@ -165,15 +165,48 @@ export default {
       // notifications: [],
       // chatHistory: [],
       // active_team_id: null
+      reconnectTimeInterval: null, // setTimeInterval for reconnecting the socket
+      webSocketReadyState: this.$webSocket.readyState,
+      pingInterval: null,
     };
   },
 
-  computed: {
-    isWebSocketReady() {
-      return this.$webSocket.readyState === 1;
-    }
+  watch: {
+    webSocketReadyState: {
+      handler(newVal, oldVal) {
+        console.log('WebSocket ready state changed:', newVal, oldVal);
+        if (newVal === 1) {
+          const loggedUser = JSON.parse(localStorage.getItem('user'));
+          if (loggedUser) {
+            this.$webSocket.send(JSON.stringify({
+              action: 'ping',
+              user_id: loggedUser.id,
+            }));
+          }
+        } else if (newVal === 0) {
+          console.log('WebSocket is connecting');
+        } else {
+          // WebSocket is not open; set up the reconnection interval
+          if (!this.reconnectTimeInterval) {
+            this.reconnectTimeInterval = setInterval(() => {
+              console.log('trying to reconnect the socket', Math.random(), this);
+              if(this.$webSocket.readyState != 1) {
+                console.log('socket is closed', this.$webSocket.readyState);
+                this.initializeWebSocket();
+              } else {
+                this.webSocketReadyState = this.$webSocket.readyState;
+                console.log('socket is already connected', this.$webSocket.readyState, this.reconnectTimeInterval);
+                clearInterval(this.reconnectTimeInterval);
+                console.log(typeof this.reconnectTimeInterval, this.reconnectTimeInterval);
+                this.reconnectTimeInterval = null;
+              }
+            }, 10000);
+          }
+        }
+      },
+      immediate: true,
+    },
   },
-
   created() {
     ApiService.get('/v1/user').then((data) => {
       console.log(data);
@@ -201,19 +234,36 @@ export default {
     if (loggedUser) {
       let self = this;
 
+      if(this.$webSocket.readyState != 1 && this.$webSocket.readyState != 0) {
+        this.initializeWebSocket();
+      }
+
       this.$webSocket.onmessage = ($event) => {
         console.log($event.data, 'response from onmessage in matrimony-system');
         const res = JSON.parse($event.data);
-        this.handleSocketEvent(res);
+        self.handleSocketEvent(res);
       }
 
       this.$webSocket.onclose = function() {
-        console.log('socket closed');
-        alert('socket closed');
+        self.handleSocketClose();
       };
+
+      this.handlePingPong();
     }
   },
 
+  beforeUnmount() {
+    console.log('before unmounting', this.$webSocket.readyState);
+    clearInterval(this.reconnectTimeInterval);
+    clearInterval(this.pingInterval);
+    this.$webSocket.close();
+  },
+  unmounted() {
+    console.log('unmounting', this.$webSocket.readyState);
+    clearInterval(this.reconnectTimeInterval);
+    clearInterval(this.pingInterval);
+    this.$webSocket.close();
+  },
   methods: {
     ...mapActions([
       'logout'
@@ -221,6 +271,34 @@ export default {
 
     getWindowWidth() {
       return window.innerWidth;
+    },
+    initializeWebSocket() {
+      let loggedUser = JSON.parse(localStorage.getItem('user'));
+      let self = this;
+      
+      if(this.$webSocket.readyState != 1 && this.$webSocket.readyState != 0) {
+        this.$webSocket = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
+  
+        this.$webSocket.onopen = function() {
+          console.log('socket connected');
+          self.$webSocket.send(JSON.stringify({
+            action: 'ping',
+            user_id: loggedUser.id,
+          }));
+        };
+  
+        this.$webSocket.onmessage = ($event) => {
+          console.log($event.data, 'response from onmessage in matrimony-system');
+          const res = JSON.parse($event.data);
+          self.handleSocketEvent(res);
+        }
+  
+        this.$webSocket.onclose = function() {
+          self.handleSocketClose();
+        };
+      } else {
+        console.log('socket is already connected', this.$webSocket.readyState);
+      }
     },
     async handleSocketEvent(res) {
       console.log(res, 'response from socket');
@@ -291,6 +369,36 @@ export default {
           chatEventBus.emit('lis_typing', res);
           break;
         
+      }
+    },
+    handleSocketClose() {
+      // try to reconnect the socket after 5 seconds if it is closed and keep trying until it is connected
+      console.log('socket closed', 'handling socket close', this.$webSocket.readyState);
+      this.webSocketReadyState = this.$webSocket.readyState;
+
+      // only set the ping interval if the socket is connected
+      clearInterval(this.pingInterval);
+      this.pingInterval = null;
+    },
+    handlePingPong() {
+      let loggedUser = JSON.parse(localStorage.getItem('user'));
+      if(!this.pingInterval) {
+        this.pingInterval = setInterval(() => {
+          console.log('pinging the server');
+          if(this.$webSocket.readyState == 1) {
+            this.$webSocket.send(JSON.stringify({
+              action: 'ping',
+              user_id: loggedUser.id,
+            }));
+          } else {
+            // clear the ping interval if the socket is not connected
+            console.log('socket is not connected');
+            clearInterval(this.pingInterval);
+            this.pingInterval = null;
+          }
+        }, 540000); // 9 minutes = 540000 milliseconds
+      } else {
+        console.log('ping interval is already set');
       }
     },
     changeContentPrev() {
