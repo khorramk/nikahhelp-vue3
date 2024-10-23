@@ -1531,7 +1531,7 @@ export default {
         type: this.chatheadopen.label,
         other_mate_id: this.chatheadopen.other_mate_id,
         typer_id: loggedUser.id,
-        typer: loggedUser,
+        // typer: loggedUser,
         team_connection_id: this.chatheadopen.id
       };
 
@@ -1559,6 +1559,7 @@ export default {
         data.members = members;
       } else {
         data.to = this.chatheadopen.other_mate_id.toString();
+        data.members = [this.chatheadopen.other_mate_id];
         data.typer_name = '';
       }
       if(this.msg_text && this.msg_text.length > 0) {
@@ -1572,18 +1573,12 @@ export default {
       }
 
       if(data.team_id || data.type == 'Connected Team') {
-        data.members.forEach(item => {
-          if(item != loggedUser.id) {
-            data.to = item.toString();
-
-            if(this.isWebSocketReady) {
-              this.$webSocket.send(JSON.stringify({
-                action: 'typing',
-                data: data
-              }));
-            }
-          }
-        });
+        if(this.isWebSocketReady) {
+          this.$webSocket.send(JSON.stringify({
+            action: 'typing',
+            data: data
+          }));
+        }
       } else {
         if(this.isWebSocketReady) {
           this.$webSocket.send(JSON.stringify({
