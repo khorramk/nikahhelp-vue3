@@ -643,6 +643,10 @@ export default {
         okType: "danger",
         cancelText: "No",
         async onOk() {
+          if(vm.$webSocket && vm.$webSocket.readyState === 1) {
+            console.log('closing socket connection on logout');
+            vm.$webSocket.close();
+          }
           await vm.$store.dispatch("logout");
           vm.$router.replace("/");
         },
