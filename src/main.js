@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, reactive } from 'vue'
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "vue-select/dist/vue-select.css";
@@ -59,7 +59,8 @@ Vue.component('AdminLayout', AdminLayout);
 // Vue.use(TextareaAutosize)
 
 
-Vue.config.globalProperties.$webSocket = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
+
+Vue.config.globalProperties.$webSocket = reactive(new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`));
 
 Vue.config.globalProperties.$webSocket.onopen = function (event) {
     console.log("WebSocket is open now.");
