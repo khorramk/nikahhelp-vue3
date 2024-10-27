@@ -912,7 +912,7 @@ ul {
   }
 }
 
-.buttons-div {
+.buttons-div :deep() {
   .v-btn:not(.v-btn--round).v-size--small {
     min-width: 155px;
   }
@@ -1004,8 +1004,8 @@ ul {
 		}
 	}
 }
-.info-div {
-  .v-list-item__subtitle {
+.info-div :deep() {
+  .v-list-item-subtitle {
       font-family: "Roboto", sans-serif !important;
       line-height: 1.7 !important;
       letter-spacing: 0.009375em;
@@ -1013,7 +1013,7 @@ ul {
       font-weight: 400 !important;
       color: rgba(0,0,0,.38) !important;
   }
-  .v-list-item__title {
+  .v-list-item-title {
       font-family: "Roboto", sans-serif !important;
       line-height: 1.7 !important;
       letter-spacing: 0.009375em;
@@ -1022,7 +1022,7 @@ ul {
       color: rgba(0,0,0,.6) !important;
   }
 }
-.v-sheet.v-card:not(.v-sheet--outlined) {
+.v-sheet.v-card:not(.v-sheet--outlined) :deep() {
   box-shadow: none !important;
   border: 2px solid #dddddd78;
 }
