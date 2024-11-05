@@ -392,7 +392,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.block-button {
+.block-button :deep() {
   .v-custom:hover {
     background: #fff !important;
     color: #d81b60 !important;
@@ -403,7 +403,7 @@ export default {
     }
   }
 }
-.unblock-button {
+.unblock-button :deep() {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-primary !important;
@@ -415,7 +415,7 @@ export default {
   }
 }
 
-.connect-button {
+.connect-button :deep() {
   .v-custom:hover {
     background: #fff !important;
     color: $bg-success !important;

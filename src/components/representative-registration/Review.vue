@@ -497,11 +497,11 @@ export default {
 .mobile-margin-top {
   margin-top: 54px;
 }
-.text--disabled text-subtitle-1 {
+.text--disabled .text-subtitle-1 {
   //font-size: 14px;
   font-weight: 600;
 }
-.flex-70 > .ml-3 text--secondary text-subtitle-1 {
+.flex-70 > .ml-3 .text--secondary .text-subtitle-1 {
   //font-size: 14px;
   font-weight: 900;
 }
@@ -536,20 +536,20 @@ export default {
     height: 390px
   }
 }
-.card-custom {
+.card-custom :deep() {
   .v-list-item__content {
     padding: 0 !important;
   }
-  .v-list-item__subtitle {
-    font-family: "Roboto", sans-serif !important;
+  .v-list-item-subtitle {
+    // font-family: "Roboto", sans-serif !important;
     line-height: 1.7 !important;
     letter-spacing: 0.009375em;
     font-size: 1rem !important;
     font-weight: 400 !important;
     color: rgba(0,0,0,.38) !important;
   }
-  .v-list-item__title {
-    font-family: "Roboto", sans-serif !important;
+  .v-list-item-title {
+    // font-family: "Roboto", sans-serif !important;
     line-height: 1.7 !important;
     letter-spacing: 0.009375em;
     font-size: 1rem !important;
