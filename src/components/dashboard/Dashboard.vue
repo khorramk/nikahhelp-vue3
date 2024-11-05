@@ -742,7 +742,7 @@ h4 {
         .profile-btn {
           border-radius: 20px;
         }
-        .ant-spin-loader {
+        .ant-spin-loader :deep() {
           .ant-spin-dot-item {
             background-color: $bg-primary;
           }
@@ -756,7 +756,7 @@ h4 {
     border-radius: 12px;
   }
   .team-short-info {
-    .ant-spin-loader {
+    .ant-spin-loader :deep() {
 
       .ant-spin-dot{
         font-size: 18px;

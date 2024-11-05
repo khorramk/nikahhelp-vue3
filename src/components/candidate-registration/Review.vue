@@ -1193,7 +1193,7 @@ export default {
 .mobile-margin-top {
   margin-top: 54px;
 }
-.text--disabled text-subtitle-1 {
+.text--disabled .text-subtitle-1 {
   //font-size: 14px;
   font-weight: 500;
 }
@@ -1239,8 +1239,8 @@ export default {
   line-height: 160%;
   padding-left: 0;
 }
-.card-custom {
-  .v-list-item__subtitle {
+.card-custom :deep() {
+  .v-list-item-subtitle {
     font-family: "Roboto", sans-serif !important;
     line-height: 1.7 !important;
     letter-spacing: 0.009375em;
@@ -1248,7 +1248,7 @@ export default {
     font-weight: 400 !important;
     color: rgba(0,0,0,.38) !important;
   }
-  .v-list-item__title {
+  .v-list-item-title {
     font-family: "Roboto", sans-serif !important;
     line-height: 1.7 !important;
     letter-spacing: 0.009375em;

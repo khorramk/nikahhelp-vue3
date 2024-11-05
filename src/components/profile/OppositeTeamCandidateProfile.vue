@@ -1155,7 +1155,7 @@ export default {
 	cursor: pointer;
 }
 
-.buttons-div {
+.buttons-div :deep() {
 	@media (max-width: 600px) {
 		flex-direction: column;
 
@@ -1174,6 +1174,7 @@ export default {
 		flex-direction: row !important;
 		flex-wrap: wrap !important;
 		align-items: center !important;
+		width: 100% !important;
 		.mobile-margin {
 			margin-bottom: 12px !important;
 		}
@@ -1457,8 +1458,8 @@ legend {
     background: white;
 }
 
-.info-div {
-	.v-list-item__subtitle {
+.info-div :deep() {
+	.v-list-item-subtitle {
 		font-family: "Roboto", sans-serif !important;
 		line-height: 1.7 !important;
 		letter-spacing: 0.009375em;
@@ -1466,7 +1467,7 @@ legend {
 		font-weight: 400 !important;
 		color: rgba(0,0,0,.38) !important;
 	}
-	.v-list-item__title {
+	.v-list-item-title {
 		font-family: "Roboto", sans-serif !important;
 		line-height: 1.7 !important;
 		letter-spacing: 0.009375em;
@@ -1475,7 +1476,7 @@ legend {
 		color: rgba(0,0,0,.6) !important;
 	}
 }
-.v-sheet.v-card:not(.v-sheet--outlined) {
+.v-sheet.v-card:not(.v-sheet--outlined) :deep() {
 	box-shadow: none !important;
 	border: 2px solid #dddddd78;
 }	

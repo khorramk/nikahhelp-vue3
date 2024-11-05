@@ -250,7 +250,7 @@ export default {
     }
   }
 }
-.v-sheet.v-card:not(.v-sheet--outlined) {
+.v-sheet.v-card:not(.v-sheet--outlined) :deep() {
   box-shadow: none !important;
   border: 2px solid #dddddd78;
 }
