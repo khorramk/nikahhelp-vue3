@@ -71,7 +71,7 @@
 					<div class="justify-content-center">
 						<div class="d-flex justify-content-center">
 							<div style="width: 250px; margin-top: 20px; margin-bottom: 20px">
-								<a-input-password placeholder="Type your team pin" v-model="password" />
+								<a-input-password placeholder="Type your team pin" v-model:value="password" />
 							</div>
 						</div>
 					</div>
