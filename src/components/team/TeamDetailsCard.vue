@@ -127,7 +127,7 @@
 							<a class="dropdown-item" @click="preferencesModal"
 								>Preferences</a>
 							<a class="dropdown-item" @click="deleteTeam">Delete</a>
-							<a class="dropdown-item red-hover" @click="leaveTeam" :class="{ 'disabled-team': !turnOn }">Leave
+							<a class="dropdown-item red-hover" @click="leaveTeam">Leave
 								Team</a>
 						</div>
 					</div>
@@ -948,7 +948,7 @@ export default {
 								let receivers = this.teamData.team_members.filter(item => item.user_id != loggedUser.id).map(opt => opt.user_id);
 								let payload = {
 									receivers: receivers,
-									title: `deleted ${this.teamData.name} team`,
+									title: `left ${this.teamData.name} team`,
 									team_temp_name: this.teamData.name,
 									team_id: this.teamData.id
 								};

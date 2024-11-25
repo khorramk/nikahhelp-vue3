@@ -453,6 +453,21 @@ export default {
           return;
         }
 
+        let isTeamVerified = true;
+        this.$store.state.team.team_list.forEach(team => {
+          if(team.team_id == myTeamId) {
+            if(!team.is_verified) {
+              this.showError("Your team is not verfied. Make sure atleast one candidate and one representative is verified in your team.");
+              isTeamVerified = false;
+              return;
+            }
+          }
+        });
+        
+        if(!isTeamVerified) {
+          return;
+        }
+
         this.isLoading = true;
         let payload = {
           from_team_id: myTeamId,
