@@ -613,6 +613,26 @@ export default {
       this.teamsForHeader = data;
       this.teamsOriginal = data;
       this.$store.state.team.team_list = this.teamsOriginal;
+
+      let teamList = this.teamsOriginal;
+      teamList.forEach((team, index) => {
+        let hasVerifiedRep = false;
+        let hasVerifiedCandidate = false;
+
+        team.team_members.forEach((member) => {
+          if(member.user_type == "Representative" && member.user.status == 3) {
+            hasVerifiedRep = true;
+          } else if(member.user_type == "Candidate" && member.user.status == 3) {
+            hasVerifiedCandidate = true;
+          }
+        });
+
+        if(hasVerifiedRep && hasVerifiedCandidate) {
+          this.$store.state.team.team_list[index].is_verified = true;
+        } else {
+          this.$store.state.team.team_list[index].is_verified = false;
+        }
+      });
       this.checkTurnedOnSwitch();
       // const self = this;
       // try {

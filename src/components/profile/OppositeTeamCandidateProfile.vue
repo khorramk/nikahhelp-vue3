@@ -754,6 +754,21 @@ export default {
                 this.showError("This candidate has no team")
                 return;
             }
+
+			let isTeamVerified = true;
+			this.$store.state.team.team_list.forEach(team => {
+				if(team.team_id == myTeamId) {
+					if(!team.is_verified) {
+						this.showError("Your team is not verfied. Make sure atleast one candidate and one representative is verified in your team.");
+						isTeamVerified = false;
+						return;
+					}
+				}
+			});
+			if(!isTeamVerified) {
+				return;
+			}
+
             let data = {
                 userId: this.profile.user_id,
                 url: 'v1/send-connection-request',
