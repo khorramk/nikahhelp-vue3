@@ -283,11 +283,11 @@
                                 </div>
                               </emoji-picker> -->
                               <!-- <emoji-picker :native="true" @select="append" /> -->
-                              <emoji-picker
+                              <!-- <emoji-picker
                                 v-show="openEmoji"
                                 picker-type="text-area"
                                 @select="append"
-                              />
+                              /> -->
                             </div>
                           </a-tooltip>
                           <textarea class="regular-input" name="message" id=""  rows="4" placeholder="Type message..."
