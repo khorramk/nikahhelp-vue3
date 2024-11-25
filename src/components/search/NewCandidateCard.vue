@@ -312,8 +312,24 @@ import ButtonComponent from '@/components/atom/ButtonComponent.vue'
         }
         if(!this.candidate.team_id) {
           this.showError("This candidate has no team")
-           return;
+          return;
         }
+
+        let isTeamVerified = true;
+        this.$store.state.team.team_list.forEach(team => {
+          if(team.team_id == myTeamId) {
+            if(!team.is_verified) {
+              this.showError("Your team is not verfied. Make sure atleast one candidate and one representative is verified in your team.");
+              isTeamVerified = false;
+              return;
+            }
+          }
+        });
+
+        if(!isTeamVerified) {
+          return;
+        }
+
         let data = {
           userId: this.candidate.user_id,
           url: 'v1/send-connection-request',
