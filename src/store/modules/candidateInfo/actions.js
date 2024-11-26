@@ -227,12 +227,11 @@ async saveCandidateUploadDoc(_, payload) {
   toggleFIUpdateApiStatus(context) {
     context.commit("toggleFIUpdateApiStatus");
   },
-  async getImages(context, _) {
-   
+  async getImages(_, __) {
     return new Promise((resolve, reject) => {
       ApiService.get("v1/candidate/image-upload")
         .then((data) => {
-          resolve(data);
+          resolve(() => data);
         })
         .catch((error) => {
           reject(error);
