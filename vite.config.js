@@ -20,4 +20,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  terserOptions: {
+      compress: {
+        warnings: false,
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log']
+      }
+    }
 })
