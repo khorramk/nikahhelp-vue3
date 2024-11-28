@@ -248,46 +248,7 @@
                             </template> -->
                             <button class="btn-emoji px-2" title="Coming soon" @click="openEmoji=!openEmoji">&#128578;</button>
                             <div class="wrapper">
-
-                              <!-- <emoji-picker @emoji="append" :search="search">
-                                <button
-                                  class="emoji-invoker"
-                                  slot="emoji-invoker"
-                                  slot-scope="{ events: { click: clickEvent } }"
-                                  @click.stop="clickEvent"
-                                >
-                                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current text-grey">
-                                      <path d="M0 0h24v24H0z" fill="none"/>
-                                      <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-                                  </svg>
-                                </button>
-                                <div slot="emoji-picker" slot-scope="{ emojis, insert }">
-                                  <div class="emoji-picker" :style="{ top: -310 + 'px', left: 32 + 'px' }">
-                                    <div class="emoji-picker__search">
-                                      <input class="p-3" type="text" v-model="search" v-focus>
-                                    </div>
-                                    <div>
-                                      <div v-for="(emojiGroup, category) in emojis" :key="category">
-                                        <h5>{{ category }}</h5>
-                                        <div class="emojis">
-                                          <span
-                                            v-for="(emoji, emojiName) in emojiGroup"
-                                            :key="emojiName"
-                                            @click="insert(emoji)"
-                                            :title="emojiName"
-                                          >{{ emoji }}</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </emoji-picker> -->
-                              <!-- <emoji-picker :native="true" @select="append" /> -->
-                              <!-- <emoji-picker
-                                v-show="openEmoji"
-                                picker-type="text-area"
-                                @select="append"
-                              /> -->
+                              <Picker v-show="openEmoji" :data="emojiIndex" set="facebook" @select="append" title="" emoji="smiley" />
                             </div>
                           </a-tooltip>
                           <textarea class="regular-input" name="message" id=""  rows="4" placeholder="Type message..."
@@ -356,8 +317,10 @@ import ConnectedTeamChat from "../../components/chat/ConnectedTeamChat.vue";
 // import PrivateRequestChat from "../../components/chat/PrivateRequestChat.vue";
 import Notification from "@/common/notification.js";
 import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
-import 'vue3-emoji-picker/css';
-import EmojiPicker from 'vue3-emoji-picker'
+import data from "emoji-mart-vue-fast/data/all.json";
+import "emoji-mart-vue-fast/css/emoji-mart.css";
+import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
+
 import { chatEventBus } from '@/eventBuses/chatEventBus';
 
 import {ArrowLeftOutlined, MoreOutlined} from '@ant-design/icons-vue';
@@ -366,6 +329,7 @@ import InfoImg from '@/assets/info-img.png';
 
 const messageKeys = ['id', 'user_id', 'chat_id', 'team_id', 'from_team_id', 'to_team_id', 'private_receiver_id', 'private_team_chat_id', 'body', 'seen', 'created_at'];
 
+let emojiIndex = new EmojiIndex(data);
 export default {
   name: 'ChatWindow',
 
@@ -461,6 +425,7 @@ export default {
       token: "",
       search: '',
       openEmoji: false,
+      emojiIndex: emojiIndex,
       InfoImg,
     }
   },
@@ -469,8 +434,9 @@ export default {
     TeamOffRedirection,
     // PrivateRequestChat,
     ConnectedTeamChat,
-    // ChatListItem,
-    EmojiPicker,
+    ChatListItem,
+    // EmojiPicker,
+    Picker,
 
     ArrowLeftOutlined,
     MoreOutlined
@@ -1675,7 +1641,7 @@ export default {
         }, 1000)
     },
     append(emoji) {
-      this.msg_text += emoji.i
+      this.msg_text += emoji.native;
     },
     onSelectEmoji(emoji) {
       console.log(emoji)
