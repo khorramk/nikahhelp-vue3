@@ -19,6 +19,7 @@
     "axios": "^1.7.7",
     "babel-preset-typescript-vue": "^1.1.1",
     "bootstrap": "^4.6.0",
+    "emoji-mart-vue-fast": "^15.0.3",
     "highcharts-vue": "^1.4.3",
     "mitt": "^3.0.1",
     "moment": "^2.30.1",
@@ -35,8 +36,6 @@
     "vue-tel-input": "^9.1.0",
     "vue-template-compiler": "^2.7.16",
     "vue3-carousel": "^0.3.1",
-    "vue3-emoji-picker": "^1.1.8",
-    "vuelidate": "^0.7.7",
     "vuetify": "^3.6.13",
     "vuex": "^4.1.0",
     "ws": "^8.18.0"
