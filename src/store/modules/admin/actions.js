@@ -28,7 +28,7 @@ export default {
     }).catch((e) => {
       console.log('message', e.message)
       context.commit("setErrorMessage", {
-        errorMessage: e,
+        errorMessage: "Invalid email or password",
       });
     });
   },
