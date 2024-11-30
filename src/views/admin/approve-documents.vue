@@ -268,7 +268,7 @@ export default {
   },
 
   created() {
-    console.log(this.type, '>>>>>>>>>')
+    console.log('%s >>>>>>>>>', this.type)
     if(this.type == 'verified') {
       this.getVerifiedUsers();
     }

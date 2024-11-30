@@ -167,7 +167,7 @@
                     <a class="ant-dropdown-link py-2" @click="e => e.preventDefault()">
                       <MoreOutlined class="fs-30 font-weight-bolder rotate-90 br-50 bg-c9 color-primary"/>
                     </a>
-                    <a-menu slot="overlay" class="text-center px-2">
+                    <a-menu onContent="overlay" class="text-center px-2">
                       <a-menu-item class="border-bottom">
                         <a-tooltip title="Coming soon">
                           <a class="fs-12 color-primary">Mute this chat</a>
@@ -307,14 +307,14 @@
 </template>
 
 <script>
-import ChatListItem from '@/components/notification/ChatListItem.vue';
+// import ChatListItem from '@/components/notification/ChatListItem.vue';
 import ApiService from '@/services/api.service';
 import {map, pick} from 'lodash';
 import {format} from 'timeago.js'
 import JwtService from "@/services/jwt.service";
-import {openModalRoute} from "@/plugins/modal/modal.mixin";
+// import {openModalRoute} from "@/plugins/modal/modal.mixin";
 import ConnectedTeamChat from "../../components/chat/ConnectedTeamChat.vue";
-import PrivateRequestChat from "../../components/chat/PrivateRequestChat.vue";
+// import PrivateRequestChat from "../../components/chat/PrivateRequestChat.vue";
 import Notification from "@/common/notification.js";
 import TeamOffRedirection from "../../components/redirection/TeamOffRedirection.vue";
 import data from "emoji-mart-vue-fast/data/all.json";
@@ -424,7 +424,6 @@ export default {
       newMessage: false,
       token: "",
       search: '',
-      isLoading: false,
       openEmoji: false,
       emojiIndex: emojiIndex,
       InfoImg,
@@ -433,7 +432,7 @@ export default {
 
   components: {
     TeamOffRedirection,
-    PrivateRequestChat,
+    // PrivateRequestChat,
     ConnectedTeamChat,
     ChatListItem,
     // EmojiPicker,
@@ -446,7 +445,7 @@ export default {
   watch: {
     chatFilter: 'scrollBottom',
 
-    chatTab(value) {
+    chatTab() {
       this.chatheadopen = null;
       this.loadPageData();
     }
@@ -493,6 +492,8 @@ export default {
 
         return onlineUsersNames.join(', ');
       }
+
+      return onlineUsersNames.join(',');
     },
     totalUnreadCount: function () {
       return this.$store.state.chat.unread_records.length;
@@ -521,7 +522,7 @@ export default {
     connectedConversations: function () {
       var connectedConversations = [];
       if (this.conv_search_key == null || this.conv_search_key == "") {
-        for (var i = 0; i < this.$store.state.chat.conversations.length; i++) {
+        for (let i = 0; i < this.$store.state.chat.conversations.length; i++) {
           if (this.$store.state.chat.conversations[i].type == 'connected') {
             connectedConversations.push(this.$store.state.chat.conversations[i]);
           }
@@ -529,7 +530,7 @@ export default {
         return connectedConversations;
       } else {
         var lKey = this.conv_search_key.toLowerCase();
-        for (var i = 0; i < this.$store.state.chat.conversations.length; i++) {
+        for (let i = 0; i < this.$store.state.chat.conversations.length; i++) {
           var lTitle = this.$store.state.chat.conversations[i].title.toLowerCase();
           if (this.$store.state.chat.conversations[i].type == 'connected') {
 
@@ -1186,11 +1187,11 @@ export default {
       // var member_3 = Math.floor(Math.random() * 8) + 1;
       // var member_4 = Math.floor(Math.random() * 9) + 1;
 
-      var members = [8, 9, 10, 11];
+      // var members = [8, 9, 10, 11];
       // members = this.unique(members);
 
       // var conv_title = 'Group:'+members[0].toString()+","+members[1].toString()+','+members[2].toString();
-      var conv_title = 'test conv';
+      // var conv_title = 'test conv';
 
       // var total = member_1+member_2+member_3;
       // var conv_type = '';
@@ -1201,14 +1202,14 @@ export default {
       //   conv_type = 'connected';
       // }
 
-      var conv_type = 'connected';
+      // var conv_type = 'connected';
 
-      var newConv = {
-        title: conv_title,
-        type: conv_type,
-        members: members,
-        last_msg: ''
-      }
+      // var newConv = {
+      //   title: conv_title,
+      //   type: conv_type,
+      //   members: members,
+      //   last_msg: ''
+      // }
     },
     selectConversation(conv_id) {
       // this.current_conversation = conv_id;
