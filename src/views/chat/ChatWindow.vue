@@ -434,7 +434,7 @@ export default {
     TeamOffRedirection,
     // PrivateRequestChat,
     ConnectedTeamChat,
-    ChatListItem,
+    // ChatListItem,
     // EmojiPicker,
     Picker,
 
