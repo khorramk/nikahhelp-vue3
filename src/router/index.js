@@ -590,6 +590,10 @@ const AppRouter = new createRouter({
             // component: UserAgreement,
             component: lazyLoadComponent('landing-page', 'user-agreement'),
         },
+        {
+            path: '/:catchAll(.*)*',
+            component: lazyLoadComponent('not-found', 'NotFoundComponent')
+        }
     ]
 });
 
