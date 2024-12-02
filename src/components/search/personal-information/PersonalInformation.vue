@@ -374,7 +374,8 @@ export default {
         dateFromDateTime,
         async loadUserProfile() {
             try {
-                const id = this.profileDetails.id;
+                const id = this.profileDetails.user_id;
+                console.log(this.profileDetails, "profileDetails")
                 const payload = {
                     id,
                 };
