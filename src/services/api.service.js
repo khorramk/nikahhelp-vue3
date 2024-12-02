@@ -4,6 +4,8 @@
 //Importing things
 import axios from "axios";
 import JwtService from "./jwt.service";
+import store from "@/store";
+import router from "@/router";
 
 // * So, we initiated a config so we can use it for now, but
 // * in future this config will take access from .env
@@ -26,6 +28,20 @@ const ApiService = {
   init() {
     axios.defaults.baseURL = API_URL;
     this.setHeader();
+
+    axios.interceptors.response.use( response => response, 
+      // If the response is successful, just return it 
+      error => { 
+        if (error.response && error.response.status === 401) { 
+          // Handle invalid token here 
+          console.log("Invalid token");
+          store.dispatch("logout");
+          console.log("Logged out");
+          router.push("/");
+        } else {
+          return Promise.reject(error); 
+        }
+      })
   },
 
   // * After succesfull login we will set token to header
