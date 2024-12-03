@@ -485,7 +485,7 @@ export default {
       return this.$vuetify.display.name;
     },
     isWebSocketReady() {
-      return this.$webSocket.readyState === 1;
+      return this.$store.state.webSocket.webSocket.readyState === 1;
     }
   },
   methods: {

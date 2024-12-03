@@ -43,7 +43,7 @@ export default {
     },
     computed: {
         isWebSocketReady() {
-            return this.$webSocket.readyState === 1;
+            return this.$store.state.webSocket.webSocket.readyState === 1;
         }
     },
     mounted() {

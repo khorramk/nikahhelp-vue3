@@ -632,7 +632,7 @@ export default {
       return [];
     },
     isWebSocketReady() {
-      return this.$webSocket.readyState === 1;
+      return this.$store.state.webSocket.webSocket.readyState === 1;
     },
     // connectionStatus() {
     // 	return this.connectionOverview.connection_overview.connection_status;

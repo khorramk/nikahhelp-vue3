@@ -277,8 +277,13 @@ export default {
       let self = this;
       
       if(this.$webSocket.readyState != 1 && this.$webSocket.readyState != 0) {
+        // create a new websocket connection
         this.$webSocket = new WebSocket(`${import.meta.env.VITE_CHAT_SERVER}`);
-  
+
+        // set the websocket in the store
+        this.$store.commit('setWebSocket', this.$webSocket);
+
+        
         this.$webSocket.onopen = function() {
           console.log('socket connected');
           self.$webSocket.send(JSON.stringify({
