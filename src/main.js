@@ -75,6 +75,8 @@ Vue.config.globalProperties.$webSocket.onopen = function (event) {
     }
 };
 
+store.commit("setWebSocket", Vue.config.globalProperties.$webSocket);
+
 Vue.use(vuetify);
 Vue.use(router);
 Vue.use(store);
