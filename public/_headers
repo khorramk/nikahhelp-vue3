@@ -3,7 +3,7 @@
   X-Frame-Options: sameorigin
   Referrer-Policy: no-referrer
   X-Robots-Tag: nosnippet
-  Content-Security-Policy: default-src 'self'; connect-src 'self' https://server1.matrimonyassist.com:5000 https://biya.nikahhelp.com https://m.stripe.com/6; script-src 'self' https://m.stripe.com/6; frame-ancestors 'none';
+  Content-Security-Policy: default-src 'self'; connect-src 'self' https://server1.matrimonyassist.com:5000 https://biya.nikahhelp.com https://m.stripe.com/6 wss://server1.matrimonyassist.com:5000 https://js.stripe.com/v3 https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap https://fonts.googleapis.com/css2?family=Poppins&display=swap https://fonts.googleapis.com/icon?family=Material+Icons; style-src 'self' 'unsafe-inline'; script-src 'self' https://m.stripe.com/6 https://js.stripe.com/v3; frame-ancestors 'none';
   Feature-Policy: microphone 'none'; camera 'none'; geolocation 'none'
   Strict-Transport-Security: max-age=31536000;
   X-Robots-Tag: nosnippet
