@@ -1,0 +1,10 @@
+/*
+  X-Content-Type-Options:  nosniff
+  X-Frame-Options: sameorigin
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: nosnippet
+  Content-Security-Policy: connect-src 'self'; https://biya.nikahhelp.com script-src 'self'; frame-ancestors 'none';
+  Feature-Policy: microphone 'none'; camera 'none'; geolocation 'none'
+  Strict-Transport-Security: max-age=31536000;
+  X-Robots-Tag: nosnippet
+  Permissions-Policy: document-domain=()
