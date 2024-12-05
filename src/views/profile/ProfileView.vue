@@ -146,7 +146,8 @@ export default {
     async loadTeams() {
       let {data} = await ApiService.get("v1/team-list").then(res => res.data);
       this.teams = data;
-      console.log('this.teams', this.teams)
+      
+      this.$store.commit("setUserTeamsVerificationStatus", data);
 
       let activeTeamId = JwtService.getTeamIDAppWide();
       if(activeTeamId) {

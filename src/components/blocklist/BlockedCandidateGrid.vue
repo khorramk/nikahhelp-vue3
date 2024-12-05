@@ -149,7 +149,7 @@ export default {
       return this.item.first_name + ' ' + this.item.last_name;
     },
     isWebSocketReady() {
-      return this.$webSocket.readyState === 1;
+      return this.$store.state.webSocket.webSocket.readyState === 1;
     }
   },
   methods: {

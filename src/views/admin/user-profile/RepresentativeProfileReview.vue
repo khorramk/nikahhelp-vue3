@@ -518,7 +518,7 @@ export default {
       return parseInt(this.representativeDetails?.user?.status);
     },
     isWebSocketReady() {
-      return this.$webSocket.readyState === 1;
+      return this.$store.state.webSocket.webSocket.readyState === 1;
     }
   },
   created() {

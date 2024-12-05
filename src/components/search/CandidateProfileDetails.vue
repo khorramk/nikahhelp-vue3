@@ -39,11 +39,11 @@
 
         <ProfileBanner
             class="mt-5"
-            :name="profileDetails.first_name + ' ' + profileDetails.last_name"
+            :name="profileDetails?.first_name + ' ' + profileDetails?.last_name"
             :image="
-            profileDetails.personal.per_main_image_url
-                ? profileDetails.personal.per_main_image_url + `?token=${token}`
-                : profileDetails.personal.per_avatar_url + `?token=${token}`
+            profileDetails?.personal?.per_main_image_url
+                ? profileDetails?.personal?.per_main_image_url + `?token=${token}`
+                : profileDetails?.personal?.per_avatar_url + `?token=${token}`
             "
         />
 
@@ -133,13 +133,13 @@ export default {
             to_team_id: "",
         },
         activeTeamId: "",
+        GallerySvg,
     }),
     props: ['role'],
     components: {
         ProfileBanner,
         ButtonComponent,
-        PersonalInformation,
-        GallerySvg
+        PersonalInformation
     },
     created() {
         this.token = JSON.parse(localStorage.getItem("token"));
@@ -303,17 +303,18 @@ export default {
         },
 
         async addShortList() {
+            let loggedUserId = JSON.parse(localStorage.getItem('user')).id;
             let data = {
-            url: `v1/short-listed-candidates/store?shortlisted_by=${JwtService.getUserId()}&user_id=${this.profile.user_id}`,
+            url: `v1/short-listed-candidates/store?shortlisted_by=${loggedUserId}&user_id=${this.profile.user_id}`,
                 value: true,
                 actionType: 'post',
                 user_id: this.profile.user_id,
                 params: {
-                    shortlisted_by: JwtService.getUserId(),
+                    shortlisted_by: loggedUserId,
                     user_id: this.profile.user_id
                 },
                 payload: {
-                    shortlisted_by: JwtService.getUserId(),
+                    shortlisted_by: loggedUserId,
                     user_id: this.profile.user_id
                 }
             }
@@ -346,6 +347,7 @@ export default {
             }
         },
         async addTeamList() {
+            let loggedUserId = JSON.parse(localStorage.getItem('user')).id;
             console.log(this.role)
             console.log(this.role != 'Admin' && this.role != 'Owner & Admin')
             console.log(this.role != 'Admin')
@@ -360,7 +362,7 @@ export default {
                 actionType: 'post',
                 user_id: this.profile.user_id,
                 payload: {
-                    team_listed_by: JwtService.getUserId(),
+                    team_listed_by: loggedUserId,
                     user_id: this.profile.user_id
                 }
             }
