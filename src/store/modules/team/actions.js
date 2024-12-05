@@ -23,10 +23,14 @@ export default {
   },
   async getTeams(context, _) {
     return new Promise((resolve, reject) => {
+      // console.log("inside get teams action", state);
       ApiService.get("v1/team-list")
         .then((data) => {
           console.log(data.data.data);
           context.commit("setUserTeamList", data.data.data);
+
+          let teamList = data.data.data;
+          context.commit("setUserTeamsVerificationStatus", teamList);
           resolve(data);
         })
         .catch((err) => {
