@@ -4,6 +4,6 @@
   Referrer-Policy: no-referrer
   X-Robots-Tag: nosnippet
   Content-Security-Policy: default-src 'self'; connect-src 'self' https://server1.matrimonyassist.com:5000 https://biya.nikahhelp.com https://m.stripe.com/6 wss://server1.matrimonyassist.com:5000 https://js.stripe.com/v3; style-src 'self' 'unsafe-inline' fonts.gstatic.com fonts.googleapis.com; script-src 'self' https://m.stripe.com/6 https://js.stripe.com/v3 https://js.stripe.com; font-src fonts.googleapis.com fonts.gstatic.com 'self'; frame-src 'self' https://js.stripe.com; frame-ancestors 'none'; img-src 'self' https://nikahhelp-vue3.pages.dev https://biya.nikahhelp.com *.r2.cloudflarestorage.com data:;
-  Feature-Policy: microphone 'none'; camera 'none'; geolocation 'none'
+  Permissions-Policy: geolocation=(none) camera=(none) geolocation=(none)
   Strict-Transport-Security: max-age=31536000;
   X-Robots-Tag: nosnippet
