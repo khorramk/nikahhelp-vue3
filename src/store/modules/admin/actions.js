@@ -11,7 +11,7 @@ export default {
     form.append('email', payload.email);
     form.append('password', payload.password);
     
-    await axios.post("v1/admin/login", payload).then(async (response) => {
+    await axios.post("v1/admin-login", payload).then(async (response) => {
       const token = response.data.data.token.access_token;
       let data = { token: token };
        JwtService.saveTokenAndUser(data);
